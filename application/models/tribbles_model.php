@@ -1,6 +1,6 @@
 <?php
 
-class Tribble_model extends CI_Model {
+class Tribbles_model extends CI_Model {
 
     function __construct()
     {
@@ -19,25 +19,38 @@ class Tribble_model extends CI_Model {
     function getLoved(){      
                    
     }
-    
-    function writeImage(){
-      
-    }
-    
-    function post(){
+          
+    function writeTribbleData(){
       $data = array(
          'tribble_parent' => 0 ,
          'tribble_text' => $this->input->post('trText'),
+         'tribble_title' => $this->input->post('trTitle'),
          'tribble_user_id' => $this->session->userdata('uid'),
-         'tribble_views' => 'tribble_views+1';
+         'tribble_views' => 'tribble_views+1'
       );
       
       if($this->db->insert('tribbles', $data)){
-        return $postid;
+        return $this->db->insert_id();
       } else {
         return false;
       }
       
+    }
+    
+    function writeImageData($args){
+      if($this->db->insert('images',$args)){
+        return true;
+      } else {
+        return false;
+      }          
+    }
+    
+    function writeTags($args){
+      if($this->db->insert('tags',$args)){
+        return true;
+      } else {
+        return false;
+      }          
     }
     
     function editPost(){

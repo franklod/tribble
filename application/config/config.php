@@ -2,6 +2,17 @@
 
 /*
 |--------------------------------------------------------------------------
+| Application physical path
+|--------------------------------------------------------------------------
+|
+| The physical path to your application installation folder
+|
+|	c:\mywebserver\myapp
+|
+*/
+$config['app_path']	= 'c:\\wamp\www\\tribble\\';
+/*
+|--------------------------------------------------------------------------
 | Base Site URL
 |--------------------------------------------------------------------------
 |
@@ -356,7 +367,6 @@ $config['rewrite_short_tags'] = FALSE;
 |
 */
 $config['proxy_ips'] = '';
-
 
 /* End of file config.php */
 /* Location: ./application/config/config.php */

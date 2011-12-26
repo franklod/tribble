@@ -12,7 +12,8 @@ class User_model extends CI_Model {
     {      
       $query = $this->db->get_where('users',array('user_email'=>$this->input->post('email',TRUE),'user_password'=>$this->encrypt->sha1($this->encrypt->sha1($this->input->post('password',TRUE)))));
       if($query->num_rows() == 1){
-        return $query->result();
+        $res = $query->result(); 
+        return $res[0];
       } else {
         return false;
       }       

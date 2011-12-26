@@ -21,8 +21,7 @@
  * @package		CodeIgniter
  * @subpackage	Helpers
  * @category	Helpers
- * @author		ExpressionEngine Dev Team
- * @link		http://codeigniter.com/user_guide/helpers/array_helper.html
+ * @author		Pedro Correia@SAPO.pt
  */
 
 // ------------------------------------------------------------------------
@@ -39,9 +38,9 @@
  * @param	mixed
  * @return	mixed	depends on what the array contains
  */
-if ( ! function_exists('element'))
+if ( ! function_exists('getImageColorPalette'))
 {
-  function colorPalette($imageFile, $numColors, $granularity = 5) 
+  function getImageColorPalette($imageFile, $numColors = 8, $granularity = 5) 
   { 
      $granularity = max(1, abs((int)$granularity)); 
      $colors = array(); 
