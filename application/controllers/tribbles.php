@@ -52,7 +52,12 @@ class Tribbles extends CI_Controller {
     $this->load->view('common/top_navigation.php',$data);
 		$this->load->view('home/index.php',$data);
     $this->load->view('common/page_end.php',$data);
-	}      
+	}
+  
+  public function tribble(){
+    
+  }
+        
 }
 
 /* End of file welcome.php */
