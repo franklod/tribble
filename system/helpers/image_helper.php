@@ -93,5 +93,10 @@ if ( ! function_exists('getImageColorPalette'))
   } 
 }
 
+function getThumb($img){
+  $thumb = preg_replace('/(\.jpg|\.png)/','_thumb$1',$img);
+  return $thumb;
+}
+
 /* End of file image_helper.php */
 /* Location: ./system/helpers/image_helper.php */

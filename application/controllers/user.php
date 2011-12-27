@@ -4,40 +4,36 @@ class User extends CI_Controller {
   
   public function __construct()
   {
-      parent::__construct();
-      // $this->output->enable_profiler(TRUE);
+      parent::__construct();      
   }
 
 	public function index()
 	{
-    $data = array(
-      'title' => 'Tribble - Login',
-      'description' => 'A design content sharing and discussion tool.',
-      'keywords' => 'Tribble'    
-    );
-    $this->load->view('common/page_start.php',$data);
-    $this->load->view('common/top_navigation.php',$data);
-		$this->load->view('user/login/login.php',$data);
-    $this->load->view('common/page_end.php',$data);
+    $data['title'] = 'Tribble';
+    $data['meta_description'] = 'A design content sharing and discussion tool.';
+    $data['meta_keywords'] = 'Tribble';    
+    
+    if(!$this->session->userdata('uid')){
+      redirect('/user/login');      
+    } else {}
+        
 	}
   
   public function login(){
     
-    $data = array(
-      'title' => 'Tribble - Login',
-      'description' => 'A design content sharing and discussion tool.',
-      'keywords' => 'Tribble'    
-    );
+    $data['title'] = 'Tribble - Login';
+    $data['meta_description'] = 'A design content sharing and discussion tool.';
+    $data['meta_keywords'] = 'Tribble';
     
     $this->load->model('User_model','uModel');
-    if($user = $this->uModel->checkUserLogin()){
-      $userSessionData = array('uid'=>$user->user_email,'uname'=>$user->user_realname);
-      $this->session->set_userdata($userSessionData);
+    if($result = $this->uModel->checkUserLogin()){    
+      $sessionData = array('uid'=>$result[0]->user_id,'uname'=>$result[0]->user_realname,'unique'=>$result[0]->user_email);
+      $this->session->set_userdata($sessionData);
       redirect('/');
     } else {
       $this->load->view('common/page_start.php',$data);
       $this->load->view('common/top_navigation.php',$data);
-  		$this->load->view('user/login/login.php',$data);
+  		$this->load->view('user/login.php',$data);
       $this->load->view('common/page_end.php',$data);
     }
   }
@@ -47,100 +43,66 @@ class User extends CI_Controller {
     
 	}
   
-  public function register()
+  public function signup()
   {
-    $data = array(
-      'title' => 'Tribble - Login',
-      'description' => 'A design content sharing and discussion tool.',
-      'keywords' => 'Tribble'    
-    );
+    $data['title'] = 'Tribble - Signup';
+    $data['meta_description'] = 'A design content sharing and discussion tool.';
+    $data['meta_keywords'] = 'Tribble';
+    
     $this->load->view('common/page_start.php',$data);
     $this->load->view('common/top_navigation.php',$data);
-		$this->load->view('user/register/register.php',$data);
+		$this->load->view('user/signup.php',$data);
     $this->load->view('common/page_end.php',$data);
   }
   
-  public function create()
-  {
+  public function dosignup(){
     $this->form_validation->set_error_delimiters('<p class="help">', '</p>');
     
-    if($this->form_validation->run('register') == FALSE){
-      
-      $data = array(
-        'title' => 'Tribble - Register',
-        'description' => 'A design content sharing and discussion tool.',
-        'keywords' => 'Tribble'    
-      );
-      
-      $this->load->view('common/page_start.php',$data);
-      $this->load->view('common/top_navigation.php',$data);
-  		$this->load->view('user/register/register.php',$data);
-      $this->load->view('common/page_end.php',$data);
-        
-    } else {
-   
-      $this->load->model('User_model','uModel');
-      
-      if($this->uModel->checkIfUserExists()){
-        $data = array(
-        'title' => 'Tribble - Login',
-        'description' => 'A design content sharing and discussion tool.',
-        'keywords' => 'Tribble',
-        'error' => 'That username is taken'    
-      );       
-        
+    $data['title'] = 'Tribble - Signup';
+    $data['meta_description'] = 'A design content sharing and discussion tool.';
+    $data['meta_keywords'] = 'Tribble';
+    
+    if($this->form_validation->run('register') == FALSE){    
+  
+    $this->load->view('common/page_start.php',$data);
+    $this->load->view('common/top_navigation.php',$data);
+    $this->load->view('user/signup.php',$data);
+    $this->load->view('common/page_end.php',$data);
+  
+  } else {
+  
+    $this->load->model('User_model','uModel');
+    if($result = $this->uModel->createNewUser()){
+      if(@$result->error){
+        $data['error'] = $result->error;
         $this->load->view('common/page_start.php',$data);
         $this->load->view('common/top_navigation.php',$data);
-    		$this->load->view('user/register/register.php',$data);
-        $this->load->view('common/page_end.php',$data);
-      } else { 
-      
-        if($this->uModel->registerUser()){
-          
-          $data = array(
-          'title' => 'Tribble - Login',
-          'description' => 'A design content sharing and discussion tool.',
-          'keywords' => 'Tribble'    
-        );
-          
-          $user_dir = do_hash($this->input->post('email'));        
-          if(!mkdir("./data/".$user_dir)){
-            $this->load->view('common/page_start.php',$data);
-            $this->load->view('common/top_navigation.php',$data);
-        		$this->load->view('user/register/success.php',$data);
-            $this->load->view('common/page_end.php',$data);  
-          } else {
-            $data = array(
-              'title' => 'Tribble - Login',
-              'description' => 'A design content sharing and discussion tool.',
-              'keywords' => 'Tribble',
-              'error' => 'There was an error while creating your images folder'    
-            );       
-              
-            $this->load->view('common/page_start.php',$data);
-            $this->load->view('common/top_navigation.php',$data);
-        		$this->load->view('user/register/register.php',$data);
-            $this->load->view('common/page_end.php',$data);
-          }
-          
-            
-        } else {
-          
-          $data = array(
-          'title' => 'Tribble - Login',
-          'description' => 'A design content sharing and discussion tool.',
-          'keywords' => 'Tribble'    
-        );       
-          
+        $this->load->view('user/signup.php',$data);
+        $this->load->view('common/page_end.php',$data);  
+      } else {
+        $user_hash = $result->user_hash;
+        $user_dir = "./data/".$user_hash;
+        
+        if(is_dir($user_dir)){
+          $data['error'] = "Oops. There something happened while finishing your account setup.";
           $this->load->view('common/page_start.php',$data);
           $this->load->view('common/top_navigation.php',$data);
-      		$this->load->view('user/register/error.php',$data);
+          $this->load->view('user/signup.php',$data);
+          $this->load->view('common/page_end.php',$data);            
+        } else {
+          mkdir($user_dir,0755);
+          $data['success'] = "You're good to go! Go ahead and login.";
+          $this->load->view('common/page_start.php',$data);
+          $this->load->view('common/top_navigation.php',$data);
+          $this->load->view('user/signup.php',$data);
           $this->load->view('common/page_end.php',$data);
-        }
-      }
-    }       
-    
-  }  
+        }                        
+        
+      }      
+    }
+  
+  }           
+}  
 
   public function logout()
 	{    

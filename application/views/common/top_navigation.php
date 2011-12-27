@@ -1,11 +1,13 @@
 <?
 $pages = array(
   'Home' => '',
-  'Newer' => 'tribbles/newer',
-  'Buzzing' => 'tribbles/buzzing',
-  'Loved' => 'tribbles/loved',
+  'Most comments' => 'tribbles/buzzing',
+  'Most likes' => 'tribbles/loved',
+  'Most views' => 'tribbles/viewed',
+  'Upload' => 'tribbles/upload',
   'Login' => 'user'
 );
+
 ?>
 
 <div id="topNavigation" class="blackMenu">

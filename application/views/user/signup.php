@@ -1,5 +1,15 @@
 <div id="main">
-	<?=form_open('user/create',array('class'=>'g75'))?>
+  <? if(isset($error)): ?>
+  <div class="alert-msg error">
+    <p><?=$error?></p>
+  </div>
+  <? endif;?>
+  <? if(isset($success)): ?>
+  <div class="alert-msg success">
+    <p><?=$success?></p>
+  </div>
+  <? endif;?>
+	<?=form_open('user/dosignup',array('class'=>'g75'))?>
   <div class="e_wrap <?=(form_error('email') == TRUE) ? 'error' : ''; ?>">
     <?=form_label('Email','email')?>
     <?=form_input(array('name'=>'email','id'=>'email','placeholder'=>'Your email','value'=>set_value('email')))?>
@@ -26,7 +36,7 @@
     <?=(form_error('bio') == TRUE) ? form_error('bio') : ''; ?>
   </div>
   <div class="e_wrap">
-    <?=form_submit(array('name'=>'doRegister','id'=>'doRegister','value'=>'Register','class'=>'btn_sucess'))?>
+    <?=form_submit(array('name'=>'doRegister','id'=>'doRegister','value'=>'Register','class'=>'btn_success'))?>
   </div>
   <?=form_close()?>
 </div>
