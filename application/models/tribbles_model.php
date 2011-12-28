@@ -28,29 +28,7 @@ class Tribbles_model extends CI_Model {
       $query = $this->db->get();
       $result = $query->result();
       return $result;                            
-    }
-    
-    function getViewed(){
-      $this->db->select('
-        tr_images.image_path as image,
-        tr_images.image_palette as palette,
-        tr_tribbles.tribble_id as id,
-        tr_tribbles.tribble_title as title,
-        tr_tribbles.tribble_text as text,
-        tr_tribbles.tribble_views as views,
-        tr_tribbles.tribble_timestamp as ts,
-        tr_users.user_realname as user
-      ');
-      $this->db->from('tr_tribbles');
-      $this->db->join('tr_images','tr_tribbles.tribble_id = tr_images.image_tribble_id','inner');
-      $this->db->join('tr_tags','tr_tribbles.tribble_id = tr_tags.tags_tribble_id','inner');
-      $this->db->join('tr_users','tr_tribbles.tribble_user_id = tr_users.user_id','inner');
-      $this->db->where('tr_tribbles.tribble_parent = 0');
-      $this->db->order_by("tr_tribbles.tribble_views", "desc"); 
-      $query = $this->db->get();
-      $result = $query->result();
-      return $result;                
-    }
+    }        
     
     function getBuzzing(){
       $this->db->select('tr_images.image_path as image, tr_tribbles.tribble_id as id, tr_tribbles.tribble_title as title, tr_tribbles.tribble_text as text, tr_tribbles.tribble_user_id, tr_tribbles.tribble_views as views, tr_tribbles.tribble_timestamp as ts');

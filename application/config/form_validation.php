@@ -1,6 +1,6 @@
 <?php
   $config = array(
-    'register' => array(
+    'signup' => array(
       array(
         'field' => 'email',
         'label' => 'Email',
@@ -44,11 +44,11 @@
         'rules' => 'required'
       ) 
     ),
-    'upload' => array(
+    'login' => array(
       array(
         'field' => 'email',
         'label' => 'Email',
-        'rules' => 'required|valid_email'
+        'rules' => 'required'
       ),
       array(
         'field' => 'password',

@@ -25,16 +25,26 @@ class User extends CI_Controller {
     $data['meta_description'] = 'A design content sharing and discussion tool.';
     $data['meta_keywords'] = 'Tribble';
     
-    $this->load->model('User_model','uModel');
-    if($result = $this->uModel->checkUserLogin()){    
-      $sessionData = array('uid'=>$result[0]->user_id,'uname'=>$result[0]->user_realname,'unique'=>$result[0]->user_email);
-      $this->session->set_userdata($sessionData);
-      redirect('/');
-    } else {
+    $this->form_validation->set_error_delimiters('<p class="help">', '</p>');
+    
+    if($this->form_validation->run('login') == false){    
       $this->load->view('common/page_start.php',$data);
       $this->load->view('common/top_navigation.php',$data);
   		$this->load->view('user/login.php',$data);
-      $this->load->view('common/page_end.php',$data);
+      $this->load->view('common/page_end.php',$data);      
+    } else {    
+      $this->load->model('User_model','uModel');
+      if($result = $this->uModel->checkUserLogin()){    
+        $sessionData = array('uid'=>$result[0]->user_id,'uname'=>$result[0]->user_realname,'unique'=>$result[0]->user_email);
+        $this->session->set_userdata($sessionData);
+        redirect('/');
+      } else {
+        $data['error'] = "Oops. It seems you have the wrong email, password or both. Try again sucker!";
+        $this->load->view('common/page_start.php',$data);
+        $this->load->view('common/top_navigation.php',$data);
+    		$this->load->view('user/login.php',$data);
+        $this->load->view('common/page_end.php',$data);
+      }
     }
   }
   

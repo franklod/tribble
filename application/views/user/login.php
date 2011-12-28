@@ -4,19 +4,16 @@
     <p><?=$error?></p>
   </div>
   <? endif;?>
-  <? if(isset($success)): ?>
-  <div class="alert-msg success">
-    <p><?=$success?></p>
-  </div>
-  <? endif;?>
 	<?=form_open('user/login',array('class'=>'g75'))?>
-  <div class="e_wrap">
+  <div class="e_wrap <?=(form_error('email') == TRUE) ? 'error' : ''; ?>">
     <?=form_label('Email','email')?>
     <?=form_input(array('name'=>'email','id'=>'email','placeholder'=>'Your email','value'=>''))?>
+    <?=(form_error('email') == TRUE) ? form_error('email') : ''; ?>
   </div>
-  <div class="e_wrap">
+  <div class="e_wrap <?=(form_error('password') == TRUE) ? 'error' : ''; ?>">
     <?=form_label('Password','password')?>
     <?=form_password(array('name'=>'password','id'=>'password','placeholder'=>'Your password','value'=>''))?>
+    <?=(form_error('password') == TRUE) ? form_error('password') : ''; ?>
   </div>
   <div class="e_wrap">
     <?=anchor('/user/signup','Signup')?>

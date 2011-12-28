@@ -39,24 +39,7 @@ class Tribbles extends CI_Controller {
     $this->load->view('common/top_navigation.php',$data);
 		$this->load->view('home/index.php',$data);
     $this->load->view('common/page_end.php',$data);        
-	}
-  
-  public function view($tribble){
-    
-    $data['title'] = 'Tribble - Home';
-    $data['meta_description'] = 'A design content sharing and discussion tool.';
-    $data['meta_keywords'] = 'Tribble';
-    
-    $this->load->model('Tribbles_model','trModel');
-    $this->trModel->incrementViews($tribble);
-    $result = $this->trModel->getTribble($tribble);
-    
-    $data['tribble'] = $result;
-    $this->load->view('common/page_start.php',$data);
-    $this->load->view('common/top_navigation.php',$data);
-		$this->load->view('home/view.php',$data);
-    $this->load->view('common/page_end.php',$data);         
-  }
+	}    
    
   public function buzzing()
 	{
@@ -79,16 +62,17 @@ class Tribbles extends CI_Controller {
     $this->load->view('common/page_start.php',$data);
     $this->load->view('common/top_navigation.php',$data);
 		$this->load->view('home/index.php',$data);
-    $this->load->view('common/page_end.php',$data);
-	}
+    $this->load->view('common/page_end.php',$data); 
+	}  
   
-  public function viewed(){
+  public function loved()
+	{
     $data['title'] = 'Tribble - Home';
     $data['meta_description'] = 'A design content sharing and discussion tool.';
     $data['meta_keywords'] = 'Tribble';    
 
     $this->load->model('Tribbles_model','trModel');
-    $tribble_list = $this->trModel->getViewed();
+    $tribble_list = $this->trModel->getLoved();
     
     //print_r($tribble_list);
     
@@ -102,20 +86,25 @@ class Tribbles extends CI_Controller {
     $this->load->view('common/page_start.php',$data);
     $this->load->view('common/top_navigation.php',$data);
 		$this->load->view('home/index.php',$data);
-    $this->load->view('common/page_end.php',$data);
-  }
+    $this->load->view('common/page_end.php',$data); 
+	}
   
-  public function loved()
-	{
-    $data['title'] = 'Tribble - Loved';
-    $data['meta_description'] = 'A design content sharing and discussion tool.';
-    $data['meta_keywords'] = 'Tribble - Loved';
+  public function view($tribble){
     
+    $data['title'] = 'Tribble - Home';
+    $data['meta_description'] = 'A design content sharing and discussion tool.';
+    $data['meta_keywords'] = 'Tribble';
+    
+    $this->load->model('Tribbles_model','trModel');
+    $this->trModel->incrementViews($tribble);
+    $result = $this->trModel->getTribble($tribble);
+    
+    $data['tribble'] = $result;
     $this->load->view('common/page_start.php',$data);
     $this->load->view('common/top_navigation.php',$data);
-		$this->load->view('home/index.php',$data);
-    $this->load->view('common/page_end.php',$data);
-	}
+		$this->load->view('home/view.php',$data);
+    $this->load->view('common/page_end.php',$data);         
+  }
   
   public function upload(){
           
