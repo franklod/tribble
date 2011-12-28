@@ -1,10 +1,6 @@
 body {
 	background:url(../images/bg.jpg) repeat
 }
-#wrapper {
-	width: 100%;
-	margin: 0;
-}
 #main {
 	width:978px;
 	margin:0 auto;
@@ -28,9 +24,33 @@ body {
 #header h1 a {
 	display:block;
 	width:230px;
-	height:120px;
-	/*text-indent:-9999px;
+	height:120px;/*text-indent:-9999px;
 	overflow:hidden;*/
+}
+ul#login {
+	width:500px;
+	float:right;
+}
+ul#login li.log {
+background: #4c4c4c; /* Old browsers */
+background: -moz-linear-gradient(top, #4c4c4c 0%, #595959 12%, #666666 25%, #474747 39%, #2c2c2c 50%, #000000 51%, #111111 60%, #2b2b2b 76%, #1c1c1c 91%, #131313 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#4c4c4c), color-stop(12%,#595959), color-stop(25%,#666666), color-stop(39%,#474747), color-stop(50%,#2c2c2c), color-stop(51%,#000000), color-stop(60%,#111111), color-stop(76%,#2b2b2b), color-stop(91%,#1c1c1c), color-stop(100%,#131313)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, #4c4c4c 0%,#595959 12%,#666666 25%,#474747 39%,#2c2c2c 50%,#000000 51%,#111111 60%,#2b2b2b 76%,#1c1c1c 91%,#131313 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, #4c4c4c 0%,#595959 12%,#666666 25%,#474747 39%,#2c2c2c 50%,#000000 51%,#111111 60%,#2b2b2b 76%,#1c1c1c 91%,#131313 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top, #4c4c4c 0%,#595959 12%,#666666 25%,#474747 39%,#2c2c2c 50%,#000000 51%,#111111 60%,#2b2b2b 76%,#1c1c1c 91%,#131313 100%); /* IE10+ */
+background: linear-gradient(top, #4c4c4c 0%,#595959 12%,#666666 25%,#474747 39%,#2c2c2c 50%,#000000 51%,#111111 60%,#2b2b2b 76%,#1c1c1c 91%,#131313 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4c4c4c', endColorstr='#131313',GradientType=0 ); /* IE6-9 */
+	color:#fff;
+	zoom:1;
+	border-color:#212325;
+	text-shadow:0 -0.09em 0.03em rgba(0, 0, 0, 0.5);
+	-webkit-box-shadow:inset 0 1px 0 rgba(255, 255, 255, 0.2);
+	-moz-box-shadow:inset 0 1px 0 rgba(255, 255, 255, 0.2);
+	box-shadow:inset 0 1px 0 rgba(255, 255, 255, 0.2);
+	padding:5px 10px;
+
+}
+ul#login li.sign {
 }
 .box {
 	-webkit-box-shadow: 0 1px 3px #aaa;
