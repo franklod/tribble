@@ -92,16 +92,19 @@ class Tribbles extends CI_Controller {
     $this->load->view('common/page_end.php',$data); 
 	}
   
-  public function view($tribble){
-    
-    $data['title'] = 'Tribble - Home';
-    $data['meta_description'] = 'A design content sharing and discussion tool.';
-    $data['meta_keywords'] = 'Tribble';
+  public function view($tribble){       
     
     $this->load->model('Tribbles_model','trModel');
-    $result = $this->trModel->getTribble($tribble);
+    $tribbleData = $this->trModel->getTribble($tribble);
+    $replyData = $this->trModel->getReplies($tribble);
+        
+    $data['tribble'] = $tribbleData;
+    $data['replies'] = $replyData;
     
-    $data['tribble'] = $result;
+    $data['title'] = 'Tribble - ' . $data['tribble'][0]->title;
+    $data['meta_description'] = $data['tribble'][0]->title;
+    $data['meta_keywords'] = 'Tribble';
+    
     $this->load->view('common/page_start.php',$data);
     $this->load->view('common/top_navigation.php',$data);
     $this->load->view('common/header.php',$data);
