@@ -168,9 +168,31 @@ class Tribbles_model extends CI_Model {
     }
               
     
-    function getTribble($tribble){
-      $query = $this->db->get_where('tribbles', array('tribble__id' => $$tribble));
-      return $query->result();
+    function getTribble($tribble){      
+      $this->db->select('
+        tr_tribbles.tribble_id AS id,
+        tr_tribbles.tribble_title AS title,
+        tr_tribbles.tribble_text AS `text`,
+        tr_tribbles.tribble_timestamp AS ts,
+        COUNT(tr_likes.like_id) AS likes,
+        tr_images.image_path as image,
+        tr_images.image_palette as palette
+      ');
+      $this->db->from('tr_tribbles');
+      $this->db->join('tr_likes','tr_tribbles.tribble_id = tr_likes.like_tribble_id','inner');
+      $this->db->join('tr_images','tr_tribbles.tribble_id = tr_images.image_tribble_id','inner');
+      $this->db->where('tr_tribbles.tribble_id',$tribble);
+      $this->db->group_by('
+        tr_tribbles.tribble_id,
+        tr_tribbles.tribble_title,
+        tr_tribbles.tribble_text,
+        tr_tribbles.tribble_timestamp,
+        tr_images.image_path,
+        tr_images.image_palette
+      ');
+      $query = $this->db->get();            
+      $result = $query->result();
+      return $result;
     }
     
     function deletePost(){
@@ -185,11 +207,6 @@ class Tribbles_model extends CI_Model {
       
     }
     
-    function incrementViews($tribble){
-      $this->db->set('tribble_views','tribble_views+1', FALSE);      
-      $this->db->where('tribble_id',$tribble);
-      $this->db->update('tr_tribbles');
-    }
             
 }
 
