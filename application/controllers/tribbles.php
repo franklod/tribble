@@ -96,7 +96,6 @@ class Tribbles extends CI_Controller {
     $data['meta_keywords'] = 'Tribble';
     
     $this->load->model('Tribbles_model','trModel');
-    $this->trModel->incrementViews($tribble);
     $result = $this->trModel->getTribble($tribble);
     
     $data['tribble'] = $result;

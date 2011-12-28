@@ -11,7 +11,7 @@
         <img src="<?=getThumb($tribble->image)?>" width="200" height="150" alt="<?=$tribble->title?>" />
       </div>
       <div class="tribble-tools">
-        <p>views: <?=$tribble->views?></p>
+        <p>comments: <?=$tribble->comments?></p>
         <p>likes: <?=$tribble->likes?></p>        
       </div>
       <h5><?=$tribble->user?></h5>    
