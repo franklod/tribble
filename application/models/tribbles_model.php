@@ -176,11 +176,13 @@ class Tribbles_model extends CI_Model {
         tr_tribbles.tribble_timestamp AS ts,
         COUNT(tr_likes.like_id) AS likes,
         tr_images.image_path as image,
-        tr_images.image_palette as palette
+        tr_images.image_palette as palette,
+        tr_tags.tags_content as tags
       ');
       $this->db->from('tr_tribbles');
       $this->db->join('tr_likes','tr_tribbles.tribble_id = tr_likes.like_tribble_id','inner');
       $this->db->join('tr_images','tr_tribbles.tribble_id = tr_images.image_tribble_id','inner');
+      $this->db->join('tr_tags','tr_tribbles.tribble_id = tr_tags.tags_tribble_id','inner');
       $this->db->where('tr_tribbles.tribble_id',$tribble);
       $this->db->group_by('
         tr_tribbles.tribble_id,
@@ -193,6 +195,13 @@ class Tribbles_model extends CI_Model {
       $query = $this->db->get();            
       $result = $query->result();
       return $result;
+    }
+    
+    function getReplies($tribble,$currentPage=0){
+      $repliesPerPage = 10;
+      $page = $repliesPerPage * $currentPage;
+      $query = $this->db->get_where('replies','reply_tribble_id = '.$tribble,$repliesPerPage,$page);
+      return $query->result();            
     }
     
     function deletePost(){
