@@ -37,6 +37,7 @@ class Tribbles extends CI_Controller {
     $data['tribbles'] = $tribble_list;
     $this->load->view('common/page_start.php',$data);
     $this->load->view('common/top_navigation.php',$data);
+    $this->load->view('common/header.php',$data);
 		$this->load->view('home/index.php',$data);
     $this->load->view('common/page_end.php',$data);        
 	}    
@@ -61,6 +62,7 @@ class Tribbles extends CI_Controller {
     $data['tribbles'] = $tribble_list;
     $this->load->view('common/page_start.php',$data);
     $this->load->view('common/top_navigation.php',$data);
+    $this->load->view('common/header.php',$data);
 		$this->load->view('home/index.php',$data);
     $this->load->view('common/page_end.php',$data); 
 	}  
@@ -101,7 +103,7 @@ class Tribbles extends CI_Controller {
     $data['tribble'] = $result;
     $this->load->view('common/page_start.php',$data);
     $this->load->view('common/top_navigation.php',$data);
-		$this->load->view('home/view.php',$data);
+		$this->load->view('tribbles/view.php',$data);
     $this->load->view('common/page_end.php',$data);         
   }
   
