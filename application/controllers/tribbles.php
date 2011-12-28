@@ -98,24 +98,35 @@ class Tribbles extends CI_Controller {
     $tribbleData = $this->trModel->getTribble($tribble);
     $replyData = $this->trModel->getReplies($tribble);
         
-    $data['tribble'] = $tribbleData;
+    $data['tribble'] = $tribbleData[0];
     $data['replies'] = $replyData;
     
-    $data['title'] = 'Tribble - ' . $data['tribble'][0]->title;
-    $data['meta_description'] = $data['tribble'][0]->title;
-    $data['meta_keywords'] = 'Tribble';
+    $data['title'] = 'Tribble - ' . $data['tribble']->title;
+    $data['meta_description'] = $data['tribble']->title;
+    $data['meta_keywords'] = $data['tribble']->tags;
     
     $this->load->view('common/page_start.php',$data);
     $this->load->view('common/top_navigation.php',$data);
     $this->load->view('common/header.php',$data);
 		$this->load->view('tribbles/view.php',$data);
+    if($this->session->userdata('unique')){    
+      $this->load->view('tribbles/replyform.php',$data);
+    }
     $this->load->view('common/page_end.php',$data);         
+  }
+  
+  function reply($tribble){
+    if(!$this->session->userdata('unique')){
+      redirect('user/login');
+    } else {
+      redirect('/tribbles/view/'.$tribble);
+    }
   }
   
   public function upload(){
           
    if(!$this->session->userdata('unique')){
-    redirect('/user/login');
+    redirect('/user/login/'.uri_string());
    } else {
     // check if the form was posted          
     if(isset($_POST['createTribble'])){
