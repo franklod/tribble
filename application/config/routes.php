@@ -40,6 +40,8 @@
 
 $route['default_controller'] = "tribbles";
 $route['404_override'] = '';
+$route['user/login/(:any)'] = 'user/login/$1';
+$route['user/logout/(:any)']; 'user/logout/$1';
 
 
 /* End of file routes.php */
