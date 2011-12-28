@@ -30,6 +30,7 @@ class User extends CI_Controller {
     if($this->form_validation->run('login') == false){    
       $this->load->view('common/page_start.php',$data);
       $this->load->view('common/top_navigation.php',$data);
+      $this->load->view('common/header.php',$data);;
   		$this->load->view('user/login.php',$data);
       $this->load->view('common/page_end.php',$data);      
     } else {    
@@ -42,6 +43,7 @@ class User extends CI_Controller {
         $data['error'] = "Oops. It seems you have the wrong email, password or both. Try again sucker!";
         $this->load->view('common/page_start.php',$data);
         $this->load->view('common/top_navigation.php',$data);
+        $this->load->view('common/header.php',$data);
     		$this->load->view('user/login.php',$data);
         $this->load->view('common/page_end.php',$data);
       }
@@ -61,6 +63,7 @@ class User extends CI_Controller {
     
     $this->load->view('common/page_start.php',$data);
     $this->load->view('common/top_navigation.php',$data);
+    $this->load->view('common/header.php',$data);
 		$this->load->view('user/signup.php',$data);
     $this->load->view('common/page_end.php',$data);
   }
@@ -76,6 +79,7 @@ class User extends CI_Controller {
   
     $this->load->view('common/page_start.php',$data);
     $this->load->view('common/top_navigation.php',$data);
+    $this->load->view('common/header.php',$data);
     $this->load->view('user/signup.php',$data);
     $this->load->view('common/page_end.php',$data);
   
@@ -87,6 +91,7 @@ class User extends CI_Controller {
         $data['error'] = $result->error;
         $this->load->view('common/page_start.php',$data);
         $this->load->view('common/top_navigation.php',$data);
+        $this->load->view('common/header.php',$data);
         $this->load->view('user/signup.php',$data);
         $this->load->view('common/page_end.php',$data);  
       } else {
@@ -97,6 +102,7 @@ class User extends CI_Controller {
           $data['error'] = "Oops. There something happened while finishing your account setup.";
           $this->load->view('common/page_start.php',$data);
           $this->load->view('common/top_navigation.php',$data);
+          $this->load->view('common/header.php',$data);
           $this->load->view('user/signup.php',$data);
           $this->load->view('common/page_end.php',$data);            
         } else {
@@ -104,6 +110,7 @@ class User extends CI_Controller {
           $data['success'] = "You're good to go! Go ahead and login.";
           $this->load->view('common/page_start.php',$data);
           $this->load->view('common/top_navigation.php',$data);
+          $this->load->view('common/header.php',$data);
           $this->load->view('user/signup.php',$data);
           $this->load->view('common/page_end.php',$data);
         }                        
