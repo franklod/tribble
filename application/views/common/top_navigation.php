@@ -1,15 +1,4 @@
 <?
-//$pages = array(
-//  'Home' => '',
-//  'Most comments' => 'tribbles/buzzing',
-//  'Most likes' => 'tribbles/loved',
-//  'Most views' => 'tribbles/viewed',
-//  'Upload' => 'tribbles/upload',
-//  'Login' => 'user/login',
-//  'logout' => 'user/logout'
-//);
-
-
 $pages->home->uri = '';
 $pages->home->text = 'home';
 $pages->buzzing->uri = 'tribbles/buzzing';
@@ -27,10 +16,6 @@ if($this->session->userdata('uid')){
 }
 
 ?>
-
-<pre>
-<? print_r($pages) ?>
-</pre>
 
 <div id="topNavigation" class="blackMenu">
   <ul class="h_navigation">
