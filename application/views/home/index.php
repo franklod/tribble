@@ -1,4 +1,5 @@
-<div class="g80">
+<link href="../../../assets/css/grid.css" rel="stylesheet" type="text/css" />
+<div class="g75">
   <ul class="tribbles">
 	<? foreach($tribbles as $tribble): ?>
     <li class="box space">      

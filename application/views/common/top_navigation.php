@@ -13,7 +13,7 @@ if($this->session->userdata('uid')){
 }
 
 ?>
-
+<div id="navContainer">
 <div id="topNavigation" class="blackMenu">
 <ul class="h_navigation">
 <? foreach($pages as $page): ?>
@@ -28,4 +28,5 @@ if($this->session->userdata('uid')){
   <input name="txtSearch" type="text" class="" id="txtSearch" placeholder="Pesquisar" />
   <input name="btnSearch" type="button" class="btn" id="btnSearch" value="Pesquisar"> 
   </form>
+</div>
 </div>
