@@ -3,7 +3,7 @@
 	<? foreach($tribbles as $tribble): ?>
     <li class="box space">      
       <div class="tribble-img">
-        <a href="<?=site_url("/tribbles/view/".$tribble->id)?>" class="tribble-hover">
+        <a href="<?=site_url("/tribble/view/".$tribble->id)?>" class="tribble-hover">
           <span class="title"><?=$tribble->title?></span>
           <span class="desc"><?=$tribble->text?></span>
           <em><?=strftime('%B %d, %Y',mysql_to_unix($tribble->ts));?></em>              

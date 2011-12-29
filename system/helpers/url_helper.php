@@ -593,6 +593,21 @@ if ( ! function_exists('_parse_attributes'))
 	}
 }
 
+if ( ! function_exists('uri_to_string'))
+{
+	function uri_to_string($uri,$delimiter = "-")
+	{
+	 return str_replace('/',$delimiter,$uri);	
+	}
+}
+
+if ( ! function_exists('string_to_uri'))
+{
+	function string_to_uri($uri,$delimiter = "-")
+	{
+	 return str_replace($delimiter,'/',$uri);	
+	}
+}
 
 /* End of file url_helper.php */
 /* Location: ./system/helpers/url_helper.php */
