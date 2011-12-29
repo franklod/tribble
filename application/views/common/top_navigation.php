@@ -24,4 +24,8 @@ if($this->session->userdata('uid')){
     <? endif; ?>
   <? endforeach; ?>
   </ul>
-</div>
+    <form id="search">
+    <input name="txtSearch" type="text" class="" id="txtSearch" placeholder="Pesquisar" />
+    <input name="btnSearch" type="button" class="btn" id="btnSearch" value="Pesquisar"> 
+    </form>
+  </div>
