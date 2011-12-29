@@ -15,17 +15,17 @@ if($this->session->userdata('uid')){
 ?>
 
 <div id="topNavigation" class="blackMenu">
-  <ul class="h_navigation">
-  <? foreach($pages as $page): ?>
-    <? if(current_url() == site_url()."/".$page->uri): ?>    
-    <li class="active"><a href="<?=site_url()."/".$page->uri?>"><?=$page->text?></a></li>
-    <? else: ?>
-    <li><a href="<?=site_url()."/".$page->uri?>"><?=$page->text?></a></li>
-    <? endif; ?>
-  <? endforeach; ?>
-  </ul>
-    <form id="search">
-    <input name="txtSearch" type="text" class="" id="txtSearch" placeholder="Pesquisar" />
-    <input name="btnSearch" type="button" class="btn" id="btnSearch" value="Pesquisar"> 
-    </form>
-  </div>
+<ul class="h_navigation">
+<? foreach($pages as $page): ?>
+  <? if(current_url() == site_url()."/".$page->uri): ?>    
+  <li class="active"><a href="<?=site_url()."/".$page->uri?>"><?=$page->text?></a></li>
+  <? else: ?>
+  <li><a href="<?=site_url()."/".$page->uri?>"><?=$page->text?></a></li>
+  <? endif; ?>
+<? endforeach; ?>
+</ul>
+  <form id="search">
+  <input name="txtSearch" type="text" class="" id="txtSearch" placeholder="Pesquisar" />
+  <input name="btnSearch" type="button" class="btn" id="btnSearch" value="Pesquisar"> 
+  </form>
+</div>
