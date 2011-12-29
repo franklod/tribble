@@ -117,7 +117,6 @@ class Tribbles_model extends CI_Model {
          'tribble_text' => $this->input->post('text'),
          'tribble_title' => $this->input->post('title'),
          'tribble_user_id' => $uid,
-         'tribble_views' => 'tribble_views+1'
       );
       
       $this->db->trans_begin();
