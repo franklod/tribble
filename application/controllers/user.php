@@ -19,7 +19,8 @@ class User extends CI_Controller {
         
 	}
   
-  public function login(){
+  public function login($linkback = ''){
+    
     
     $data['title'] = 'Tribble - Login';
     $data['meta_description'] = 'A design content sharing and discussion tool.';
@@ -37,8 +38,8 @@ class User extends CI_Controller {
       $this->load->model('User_model','uModel');
       if($result = $this->uModel->checkUserLogin()){    
         $sessionData = array('uid'=>$result[0]->user_id,'uname'=>$result[0]->user_realname,'unique'=>$result[0]->user_email);
-        $this->session->set_userdata($sessionData);
-        redirect('/');
+        $this->session->set_userdata($sessionData); 
+        redirect('/'.$linkback);
       } else {
         $data['error'] = "Oops. It seems you have the wrong email, password or both. Try again sucker!";
         $this->load->view('common/page_start.php',$data);
