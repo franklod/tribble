@@ -16,3 +16,4 @@ $pages->auth->text = 'logout';
   <?endif;?>  
   </ul>
   </div>
+  <div id="main">
