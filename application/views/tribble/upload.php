@@ -13,7 +13,7 @@
 <? endif;?>
 <?=form_fieldset('',array('class'=>'box g70'))?>
 <p class="note"><strong>Note:</strong> image size is restricted to 400 x 300 pixels.</p>
-<?=form_open_multipart('/tribbles/upload')?>
+<?=form_open_multipart('/tribble/upload')?>
 <div class="e_wrap">
 <?=form_label('Image','image')?>
 <?=form_upload(array('name'=>'image','id'=>'image'))?>

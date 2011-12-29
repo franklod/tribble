@@ -9,7 +9,8 @@
  * @version $Id$
  * @access public
  */
-class Tribbles extends CI_Controller {
+ 
+class Tribble extends CI_Controller {
   
   public function __construct()
   {
@@ -108,16 +109,16 @@ class Tribbles extends CI_Controller {
     $this->load->view('common/page_start.php',$data);
     $this->load->view('common/top_navigation.php',$data);
     $this->load->view('common/header.php',$data);
-		$this->load->view('tribbles/view.php',$data);
+		$this->load->view('tribble/view.php',$data);
     if($this->session->userdata('unique')){    
-      $this->load->view('tribbles/replyform.php',$data);
+      $this->load->view('tribble/replyform.php',$data);
     }
     $this->load->view('common/page_end.php',$data);         
   }
   
   function reply($tribble){
     if(!$this->session->userdata('unique')){
-      redirect('user/login');
+      redirect('auth/login');
     } else {
       redirect('/tribbles/view/'.$tribble);
     }
@@ -126,7 +127,7 @@ class Tribbles extends CI_Controller {
   public function upload(){
           
    if(!$this->session->userdata('unique')){
-    redirect('/user/login/'.uri_string());
+    redirect('/auth/login/'.str_replace('/','-',uri_string()));
    } else {
     // check if the form was posted          
     if(isset($_POST['createTribble'])){
@@ -181,7 +182,7 @@ class Tribbles extends CI_Controller {
     $this->load->view('common/page_start.php',$data);
     $this->load->view('common/top_navigation.php',$data);
     $this->load->view('common/header.php',$data);
-		$this->load->view('tribbles/upload.php',$data);
+		$this->load->view('tribble/upload.php',$data);
     $this->load->view('common/page_end.php',$data);        
        
    }
