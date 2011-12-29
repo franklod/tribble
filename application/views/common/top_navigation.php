@@ -5,8 +5,6 @@ $pages->buzzing->uri = 'tribble/buzzing';
 $pages->buzzing->text = 'buzzing';
 $pages->loved->uri = 'tribble/loved';
 $pages->loved->text = 'loved';
-$pages->upload->uri = 'tribble/upload';
-$pages->upload->text = 'upload';
 if($this->session->userdata('uid')){
   $pages->upload->uri = 'tribble/upload';
   $pages->upload->text = 'upload';
