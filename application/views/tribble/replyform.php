@@ -10,7 +10,7 @@
 </div>
 <? endif;?>
 <p class="note"><strong>Note:</strong> image size is restricted to 400 x 300 pixels.</p>
-<?=form_open_multipart('/tribbles/reply/'.$tribble->id)?>
+<?=form_open_multipart('/tribble/reply/'.$tribble->id)?>
 <?=form_fieldset('',array('class'=>'box g70'))?>
 <div class="e_wrap">
 <?=form_label('Image','image')?>
