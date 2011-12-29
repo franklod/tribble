@@ -4356,7 +4356,7 @@ DEBUG - 2011-12-28 17:15:11 --> Model Class Initialized
 DEBUG - 2011-12-28 17:15:11 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-28 17:15:11 --> File loaded: application/views/common/top_navigation.php
 ERROR - 2011-12-28 17:15:11 --> Severity: Notice  --> Trying to get property of non-object C:\wamp\www\tribble\application\views\tribbles\view.php 1
-DEBUG - 2011-12-28 17:15:11 --> File loaded: application/views/tribbles/view.php
+DEBUG - 2011-12-28 17:15:11 --> File loaded: application/views/tribble/view.php
 DEBUG - 2011-12-28 17:15:11 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-28 17:15:11 --> Final output sent to browser
 DEBUG - 2011-12-28 17:15:11 --> Total execution time: 1.7932
@@ -4398,7 +4398,7 @@ DEBUG - 2011-12-28 17:15:58 --> Model Class Initialized
 DEBUG - 2011-12-28 17:15:58 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-28 17:15:58 --> File loaded: application/views/common/top_navigation.php
 ERROR - 2011-12-28 17:15:58 --> Severity: Notice  --> Trying to get property of non-object C:\wamp\www\tribble\application\views\tribbles\view.php 1
-DEBUG - 2011-12-28 17:15:58 --> File loaded: application/views/tribbles/view.php
+DEBUG - 2011-12-28 17:15:58 --> File loaded: application/views/tribble/view.php
 DEBUG - 2011-12-28 17:15:58 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-28 17:15:58 --> Language file loaded: language/english/profiler_lang.php
 DEBUG - 2011-12-28 17:15:58 --> Helper loaded: text_helper
@@ -4731,7 +4731,7 @@ DEBUG - 2011-12-28 17:26:23 --> Model Class Initialized
 DEBUG - 2011-12-28 17:26:23 --> Model Class Initialized
 DEBUG - 2011-12-28 17:26:23 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-28 17:26:23 --> File loaded: application/views/common/top_navigation.php
-DEBUG - 2011-12-28 17:26:23 --> File loaded: application/views/tribbles/view.php
+DEBUG - 2011-12-28 17:26:23 --> File loaded: application/views/tribble/view.php
 DEBUG - 2011-12-28 17:26:23 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-28 17:26:23 --> Language file loaded: language/english/profiler_lang.php
 DEBUG - 2011-12-28 17:26:23 --> Helper loaded: text_helper
@@ -4774,7 +4774,7 @@ DEBUG - 2011-12-28 17:28:51 --> Model Class Initialized
 DEBUG - 2011-12-28 17:28:51 --> Model Class Initialized
 DEBUG - 2011-12-28 17:28:51 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-28 17:28:51 --> File loaded: application/views/common/top_navigation.php
-DEBUG - 2011-12-28 17:28:51 --> File loaded: application/views/tribbles/view.php
+DEBUG - 2011-12-28 17:28:51 --> File loaded: application/views/tribble/view.php
 DEBUG - 2011-12-28 17:28:51 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-28 17:28:51 --> Language file loaded: language/english/profiler_lang.php
 DEBUG - 2011-12-28 17:28:51 --> Helper loaded: text_helper
@@ -4817,7 +4817,7 @@ DEBUG - 2011-12-28 17:29:12 --> Model Class Initialized
 DEBUG - 2011-12-28 17:29:12 --> Model Class Initialized
 DEBUG - 2011-12-28 17:29:12 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-28 17:29:12 --> File loaded: application/views/common/top_navigation.php
-DEBUG - 2011-12-28 17:29:12 --> File loaded: application/views/tribbles/view.php
+DEBUG - 2011-12-28 17:29:12 --> File loaded: application/views/tribble/view.php
 DEBUG - 2011-12-28 17:29:12 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-28 17:29:12 --> Final output sent to browser
 DEBUG - 2011-12-28 17:29:12 --> Total execution time: 0.3280
@@ -4902,7 +4902,7 @@ DEBUG - 2011-12-28 17:36:27 --> Model Class Initialized
 DEBUG - 2011-12-28 17:36:27 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-28 17:36:27 --> File loaded: application/views/common/top_navigation.php
 DEBUG - 2011-12-28 17:36:27 --> File loaded: application/views/common/header.php
-DEBUG - 2011-12-28 17:36:27 --> File loaded: application/views/tribbles/view.php
+DEBUG - 2011-12-28 17:36:27 --> File loaded: application/views/tribble/view.php
 DEBUG - 2011-12-28 17:36:27 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-28 17:36:27 --> Final output sent to browser
 DEBUG - 2011-12-28 17:36:27 --> Total execution time: 0.4190
@@ -5564,7 +5564,7 @@ DEBUG - 2011-12-28 17:41:44 --> Model Class Initialized
 DEBUG - 2011-12-28 17:41:44 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-28 17:41:44 --> File loaded: application/views/common/top_navigation.php
 DEBUG - 2011-12-28 17:41:44 --> File loaded: application/views/common/header.php
-DEBUG - 2011-12-28 17:41:44 --> File loaded: application/views/tribbles/view.php
+DEBUG - 2011-12-28 17:41:44 --> File loaded: application/views/tribble/view.php
 DEBUG - 2011-12-28 17:41:44 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-28 17:41:44 --> Final output sent to browser
 DEBUG - 2011-12-28 17:41:44 --> Total execution time: 0.3419
@@ -5606,7 +5606,7 @@ DEBUG - 2011-12-28 17:43:13 --> Model Class Initialized
 DEBUG - 2011-12-28 17:43:13 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-28 17:43:13 --> File loaded: application/views/common/top_navigation.php
 DEBUG - 2011-12-28 17:43:13 --> File loaded: application/views/common/header.php
-DEBUG - 2011-12-28 17:43:13 --> File loaded: application/views/tribbles/view.php
+DEBUG - 2011-12-28 17:43:13 --> File loaded: application/views/tribble/view.php
 DEBUG - 2011-12-28 17:43:13 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-28 17:43:13 --> Final output sent to browser
 DEBUG - 2011-12-28 17:43:13 --> Total execution time: 0.3248
@@ -5648,7 +5648,7 @@ DEBUG - 2011-12-28 17:44:10 --> Model Class Initialized
 DEBUG - 2011-12-28 17:44:11 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-28 17:44:11 --> File loaded: application/views/common/top_navigation.php
 DEBUG - 2011-12-28 17:44:11 --> File loaded: application/views/common/header.php
-DEBUG - 2011-12-28 17:44:11 --> File loaded: application/views/tribbles/view.php
+DEBUG - 2011-12-28 17:44:11 --> File loaded: application/views/tribble/view.php
 DEBUG - 2011-12-28 17:44:11 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-28 17:44:11 --> Final output sent to browser
 DEBUG - 2011-12-28 17:44:11 --> Total execution time: 0.4219
@@ -5690,7 +5690,7 @@ DEBUG - 2011-12-28 17:46:19 --> Model Class Initialized
 DEBUG - 2011-12-28 17:46:19 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-28 17:46:19 --> File loaded: application/views/common/top_navigation.php
 DEBUG - 2011-12-28 17:46:19 --> File loaded: application/views/common/header.php
-DEBUG - 2011-12-28 17:46:19 --> File loaded: application/views/tribbles/view.php
+DEBUG - 2011-12-28 17:46:19 --> File loaded: application/views/tribble/view.php
 DEBUG - 2011-12-28 17:46:19 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-28 17:46:19 --> Final output sent to browser
 DEBUG - 2011-12-28 17:46:19 --> Total execution time: 0.3342
@@ -5732,7 +5732,7 @@ DEBUG - 2011-12-28 17:46:35 --> Model Class Initialized
 DEBUG - 2011-12-28 17:46:35 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-28 17:46:35 --> File loaded: application/views/common/top_navigation.php
 DEBUG - 2011-12-28 17:46:35 --> File loaded: application/views/common/header.php
-DEBUG - 2011-12-28 17:46:35 --> File loaded: application/views/tribbles/view.php
+DEBUG - 2011-12-28 17:46:35 --> File loaded: application/views/tribble/view.php
 DEBUG - 2011-12-28 17:46:35 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-28 17:46:35 --> Final output sent to browser
 DEBUG - 2011-12-28 17:46:35 --> Total execution time: 0.3372
@@ -6172,7 +6172,7 @@ ERROR - 2011-12-28 17:56:33 --> Severity: Notice  --> Undefined variable: page C
 DEBUG - 2011-12-28 17:56:33 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-28 17:56:33 --> File loaded: application/views/common/top_navigation.php
 DEBUG - 2011-12-28 17:56:33 --> File loaded: application/views/common/header.php
-DEBUG - 2011-12-28 17:56:33 --> File loaded: application/views/tribbles/view.php
+DEBUG - 2011-12-28 17:56:33 --> File loaded: application/views/tribble/view.php
 DEBUG - 2011-12-28 17:56:33 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-28 17:56:33 --> Final output sent to browser
 DEBUG - 2011-12-28 17:56:33 --> Total execution time: 0.3402
@@ -6215,7 +6215,7 @@ ERROR - 2011-12-28 17:56:41 --> Severity: Notice  --> Undefined variable: page C
 DEBUG - 2011-12-28 17:56:41 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-28 17:56:41 --> File loaded: application/views/common/top_navigation.php
 DEBUG - 2011-12-28 17:56:41 --> File loaded: application/views/common/header.php
-DEBUG - 2011-12-28 17:56:41 --> File loaded: application/views/tribbles/view.php
+DEBUG - 2011-12-28 17:56:41 --> File loaded: application/views/tribble/view.php
 DEBUG - 2011-12-28 17:56:41 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-28 17:56:41 --> Final output sent to browser
 DEBUG - 2011-12-28 17:56:41 --> Total execution time: 0.3409
@@ -6257,7 +6257,7 @@ DEBUG - 2011-12-28 17:59:16 --> Model Class Initialized
 DEBUG - 2011-12-28 17:59:16 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-28 17:59:16 --> File loaded: application/views/common/top_navigation.php
 DEBUG - 2011-12-28 17:59:16 --> File loaded: application/views/common/header.php
-DEBUG - 2011-12-28 17:59:16 --> File loaded: application/views/tribbles/view.php
+DEBUG - 2011-12-28 17:59:16 --> File loaded: application/views/tribble/view.php
 DEBUG - 2011-12-28 17:59:16 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-28 17:59:16 --> Final output sent to browser
 DEBUG - 2011-12-28 17:59:16 --> Total execution time: 0.4274
@@ -6410,7 +6410,7 @@ ERROR - 2011-12-28 18:00:22 --> Severity: Notice  --> Undefined variable: replie
 DEBUG - 2011-12-28 18:00:22 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-28 18:00:22 --> File loaded: application/views/common/top_navigation.php
 DEBUG - 2011-12-28 18:00:22 --> File loaded: application/views/common/header.php
-DEBUG - 2011-12-28 18:00:22 --> File loaded: application/views/tribbles/view.php
+DEBUG - 2011-12-28 18:00:22 --> File loaded: application/views/tribble/view.php
 DEBUG - 2011-12-28 18:00:22 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-28 18:00:22 --> Final output sent to browser
 DEBUG - 2011-12-28 18:00:22 --> Total execution time: 0.3460
@@ -6452,7 +6452,7 @@ DEBUG - 2011-12-28 18:00:42 --> Model Class Initialized
 DEBUG - 2011-12-28 18:00:42 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-28 18:00:42 --> File loaded: application/views/common/top_navigation.php
 DEBUG - 2011-12-28 18:00:43 --> File loaded: application/views/common/header.php
-DEBUG - 2011-12-28 18:00:43 --> File loaded: application/views/tribbles/view.php
+DEBUG - 2011-12-28 18:00:43 --> File loaded: application/views/tribble/view.php
 DEBUG - 2011-12-28 18:00:43 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-28 18:00:43 --> Final output sent to browser
 DEBUG - 2011-12-28 18:00:43 --> Total execution time: 0.3248
@@ -6536,7 +6536,7 @@ DEBUG - 2011-12-28 18:00:47 --> Model Class Initialized
 DEBUG - 2011-12-28 18:00:47 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-28 18:00:47 --> File loaded: application/views/common/top_navigation.php
 DEBUG - 2011-12-28 18:00:47 --> File loaded: application/views/common/header.php
-DEBUG - 2011-12-28 18:00:47 --> File loaded: application/views/tribbles/view.php
+DEBUG - 2011-12-28 18:00:47 --> File loaded: application/views/tribble/view.php
 DEBUG - 2011-12-28 18:00:47 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-28 18:00:47 --> Final output sent to browser
 DEBUG - 2011-12-28 18:00:47 --> Total execution time: 0.3448
@@ -6621,7 +6621,7 @@ DEBUG - 2011-12-28 18:00:52 --> Model Class Initialized
 DEBUG - 2011-12-28 18:00:52 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-28 18:00:52 --> File loaded: application/views/common/top_navigation.php
 DEBUG - 2011-12-28 18:00:52 --> File loaded: application/views/common/header.php
-DEBUG - 2011-12-28 18:00:52 --> File loaded: application/views/tribbles/view.php
+DEBUG - 2011-12-28 18:00:52 --> File loaded: application/views/tribble/view.php
 DEBUG - 2011-12-28 18:00:52 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-28 18:00:52 --> Final output sent to browser
 DEBUG - 2011-12-28 18:00:52 --> Total execution time: 0.4005
@@ -6791,7 +6791,7 @@ DEBUG - 2011-12-28 18:01:00 --> Model Class Initialized
 DEBUG - 2011-12-28 18:01:00 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-28 18:01:00 --> File loaded: application/views/common/top_navigation.php
 DEBUG - 2011-12-28 18:01:00 --> File loaded: application/views/common/header.php
-DEBUG - 2011-12-28 18:01:00 --> File loaded: application/views/tribbles/view.php
+DEBUG - 2011-12-28 18:01:00 --> File loaded: application/views/tribble/view.php
 DEBUG - 2011-12-28 18:01:00 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-28 18:01:00 --> Final output sent to browser
 DEBUG - 2011-12-28 18:01:00 --> Total execution time: 0.3354
@@ -6833,7 +6833,7 @@ DEBUG - 2011-12-28 18:02:05 --> Model Class Initialized
 DEBUG - 2011-12-28 18:02:05 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-28 18:02:05 --> File loaded: application/views/common/top_navigation.php
 DEBUG - 2011-12-28 18:02:05 --> File loaded: application/views/common/header.php
-DEBUG - 2011-12-28 18:02:05 --> File loaded: application/views/tribbles/view.php
+DEBUG - 2011-12-28 18:02:05 --> File loaded: application/views/tribble/view.php
 DEBUG - 2011-12-28 18:02:05 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-28 18:02:05 --> Final output sent to browser
 DEBUG - 2011-12-28 18:02:05 --> Total execution time: 0.3381
@@ -6875,7 +6875,7 @@ DEBUG - 2011-12-28 18:04:30 --> Model Class Initialized
 DEBUG - 2011-12-28 18:04:30 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-28 18:04:30 --> File loaded: application/views/common/top_navigation.php
 DEBUG - 2011-12-28 18:04:30 --> File loaded: application/views/common/header.php
-DEBUG - 2011-12-28 18:04:30 --> File loaded: application/views/tribbles/view.php
+DEBUG - 2011-12-28 18:04:30 --> File loaded: application/views/tribble/view.php
 DEBUG - 2011-12-28 18:04:30 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-28 18:04:30 --> Final output sent to browser
 DEBUG - 2011-12-28 18:04:30 --> Total execution time: 0.4027
@@ -6960,7 +6960,7 @@ DEBUG - 2011-12-28 18:04:36 --> Model Class Initialized
 DEBUG - 2011-12-28 18:04:36 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-28 18:04:36 --> File loaded: application/views/common/top_navigation.php
 DEBUG - 2011-12-28 18:04:36 --> File loaded: application/views/common/header.php
-DEBUG - 2011-12-28 18:04:36 --> File loaded: application/views/tribbles/view.php
+DEBUG - 2011-12-28 18:04:36 --> File loaded: application/views/tribble/view.php
 DEBUG - 2011-12-28 18:04:36 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-28 18:04:36 --> Final output sent to browser
 DEBUG - 2011-12-28 18:04:36 --> Total execution time: 0.3414
@@ -7002,7 +7002,7 @@ DEBUG - 2011-12-28 18:04:42 --> Model Class Initialized
 DEBUG - 2011-12-28 18:04:42 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-28 18:04:42 --> File loaded: application/views/common/top_navigation.php
 DEBUG - 2011-12-28 18:04:42 --> File loaded: application/views/common/header.php
-DEBUG - 2011-12-28 18:04:42 --> File loaded: application/views/tribbles/view.php
+DEBUG - 2011-12-28 18:04:42 --> File loaded: application/views/tribble/view.php
 DEBUG - 2011-12-28 18:04:42 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-28 18:04:42 --> Final output sent to browser
 DEBUG - 2011-12-28 18:04:42 --> Total execution time: 0.3453
@@ -7044,7 +7044,7 @@ DEBUG - 2011-12-28 18:05:23 --> Model Class Initialized
 DEBUG - 2011-12-28 18:05:23 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-28 18:05:23 --> File loaded: application/views/common/top_navigation.php
 DEBUG - 2011-12-28 18:05:23 --> File loaded: application/views/common/header.php
-DEBUG - 2011-12-28 18:05:23 --> File loaded: application/views/tribbles/view.php
+DEBUG - 2011-12-28 18:05:23 --> File loaded: application/views/tribble/view.php
 DEBUG - 2011-12-28 18:05:23 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-28 18:05:23 --> Final output sent to browser
 DEBUG - 2011-12-28 18:05:23 --> Total execution time: 0.3371
@@ -7539,7 +7539,7 @@ DEBUG - 2011-12-28 18:08:38 --> Model Class Initialized
 DEBUG - 2011-12-28 18:08:38 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-28 18:08:38 --> File loaded: application/views/common/top_navigation.php
 DEBUG - 2011-12-28 18:08:38 --> File loaded: application/views/common/header.php
-DEBUG - 2011-12-28 18:08:38 --> File loaded: application/views/tribbles/view.php
+DEBUG - 2011-12-28 18:08:38 --> File loaded: application/views/tribble/view.php
 DEBUG - 2011-12-28 18:08:38 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-28 18:08:38 --> Final output sent to browser
 DEBUG - 2011-12-28 18:08:38 --> Total execution time: 0.3404
@@ -7581,7 +7581,7 @@ DEBUG - 2011-12-28 18:09:12 --> Model Class Initialized
 DEBUG - 2011-12-28 18:09:12 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-28 18:09:12 --> File loaded: application/views/common/top_navigation.php
 DEBUG - 2011-12-28 18:09:12 --> File loaded: application/views/common/header.php
-DEBUG - 2011-12-28 18:09:12 --> File loaded: application/views/tribbles/view.php
+DEBUG - 2011-12-28 18:09:12 --> File loaded: application/views/tribble/view.php
 DEBUG - 2011-12-28 18:09:12 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-28 18:09:12 --> Final output sent to browser
 DEBUG - 2011-12-28 18:09:12 --> Total execution time: 0.3530
@@ -7708,7 +7708,7 @@ DEBUG - 2011-12-28 18:09:26 --> Model Class Initialized
 DEBUG - 2011-12-28 18:09:26 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-28 18:09:26 --> File loaded: application/views/common/top_navigation.php
 DEBUG - 2011-12-28 18:09:26 --> File loaded: application/views/common/header.php
-DEBUG - 2011-12-28 18:09:26 --> File loaded: application/views/tribbles/view.php
+DEBUG - 2011-12-28 18:09:26 --> File loaded: application/views/tribble/view.php
 DEBUG - 2011-12-28 18:09:26 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-28 18:09:26 --> Final output sent to browser
 DEBUG - 2011-12-28 18:09:26 --> Total execution time: 0.3907
@@ -7793,7 +7793,7 @@ DEBUG - 2011-12-28 18:09:30 --> Model Class Initialized
 DEBUG - 2011-12-28 18:09:30 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-28 18:09:30 --> File loaded: application/views/common/top_navigation.php
 DEBUG - 2011-12-28 18:09:30 --> File loaded: application/views/common/header.php
-DEBUG - 2011-12-28 18:09:30 --> File loaded: application/views/tribbles/view.php
+DEBUG - 2011-12-28 18:09:30 --> File loaded: application/views/tribble/view.php
 DEBUG - 2011-12-28 18:09:30 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-28 18:09:30 --> Final output sent to browser
 DEBUG - 2011-12-28 18:09:30 --> Total execution time: 0.3359
@@ -7835,7 +7835,7 @@ DEBUG - 2011-12-28 18:10:41 --> Model Class Initialized
 DEBUG - 2011-12-28 18:10:41 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-28 18:10:41 --> File loaded: application/views/common/top_navigation.php
 DEBUG - 2011-12-28 18:10:41 --> File loaded: application/views/common/header.php
-DEBUG - 2011-12-28 18:10:41 --> File loaded: application/views/tribbles/view.php
+DEBUG - 2011-12-28 18:10:41 --> File loaded: application/views/tribble/view.php
 DEBUG - 2011-12-28 18:10:41 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-28 18:10:41 --> Final output sent to browser
 DEBUG - 2011-12-28 18:10:41 --> Total execution time: 0.3672
@@ -7920,7 +7920,7 @@ DEBUG - 2011-12-28 18:11:46 --> Model Class Initialized
 DEBUG - 2011-12-28 18:11:46 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-28 18:11:46 --> File loaded: application/views/common/top_navigation.php
 DEBUG - 2011-12-28 18:11:46 --> File loaded: application/views/common/header.php
-DEBUG - 2011-12-28 18:11:46 --> File loaded: application/views/tribbles/view.php
+DEBUG - 2011-12-28 18:11:46 --> File loaded: application/views/tribble/view.php
 DEBUG - 2011-12-28 18:11:46 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-28 18:11:46 --> Final output sent to browser
 DEBUG - 2011-12-28 18:11:46 --> Total execution time: 0.3903
@@ -7962,7 +7962,7 @@ DEBUG - 2011-12-28 18:11:50 --> Model Class Initialized
 DEBUG - 2011-12-28 18:11:50 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-28 18:11:50 --> File loaded: application/views/common/top_navigation.php
 DEBUG - 2011-12-28 18:11:50 --> File loaded: application/views/common/header.php
-DEBUG - 2011-12-28 18:11:50 --> File loaded: application/views/tribbles/view.php
+DEBUG - 2011-12-28 18:11:50 --> File loaded: application/views/tribble/view.php
 DEBUG - 2011-12-28 18:11:50 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-28 18:11:50 --> Final output sent to browser
 DEBUG - 2011-12-28 18:11:50 --> Total execution time: 0.3404
@@ -8047,7 +8047,7 @@ DEBUG - 2011-12-28 18:14:34 --> Model Class Initialized
 DEBUG - 2011-12-28 18:14:34 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-28 18:14:34 --> File loaded: application/views/common/top_navigation.php
 DEBUG - 2011-12-28 18:14:34 --> File loaded: application/views/common/header.php
-DEBUG - 2011-12-28 18:14:34 --> File loaded: application/views/tribbles/view.php
+DEBUG - 2011-12-28 18:14:34 --> File loaded: application/views/tribble/view.php
 DEBUG - 2011-12-28 18:14:34 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-28 18:14:34 --> Final output sent to browser
 DEBUG - 2011-12-28 18:14:34 --> Total execution time: 0.3373
@@ -8133,7 +8133,7 @@ DEBUG - 2011-12-28 18:15:21 --> Model Class Initialized
 DEBUG - 2011-12-28 18:15:21 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-28 18:15:21 --> File loaded: application/views/common/top_navigation.php
 DEBUG - 2011-12-28 18:15:21 --> File loaded: application/views/common/header.php
-DEBUG - 2011-12-28 18:15:21 --> File loaded: application/views/tribbles/view.php
+DEBUG - 2011-12-28 18:15:21 --> File loaded: application/views/tribble/view.php
 DEBUG - 2011-12-28 18:15:21 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-28 18:15:21 --> Final output sent to browser
 DEBUG - 2011-12-28 18:15:21 --> Total execution time: 0.5561
@@ -8175,7 +8175,7 @@ DEBUG - 2011-12-28 18:18:35 --> Model Class Initialized
 DEBUG - 2011-12-28 18:18:35 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-28 18:18:35 --> File loaded: application/views/common/top_navigation.php
 DEBUG - 2011-12-28 18:18:35 --> File loaded: application/views/common/header.php
-DEBUG - 2011-12-28 18:18:35 --> File loaded: application/views/tribbles/view.php
+DEBUG - 2011-12-28 18:18:35 --> File loaded: application/views/tribble/view.php
 DEBUG - 2011-12-28 18:18:35 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-28 18:18:35 --> Final output sent to browser
 DEBUG - 2011-12-28 18:18:35 --> Total execution time: 0.4167
@@ -8217,7 +8217,7 @@ DEBUG - 2011-12-28 18:19:07 --> Model Class Initialized
 DEBUG - 2011-12-28 18:19:07 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-28 18:19:07 --> File loaded: application/views/common/top_navigation.php
 DEBUG - 2011-12-28 18:19:07 --> File loaded: application/views/common/header.php
-DEBUG - 2011-12-28 18:19:07 --> File loaded: application/views/tribbles/view.php
+DEBUG - 2011-12-28 18:19:07 --> File loaded: application/views/tribble/view.php
 DEBUG - 2011-12-28 18:19:07 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-28 18:19:07 --> Final output sent to browser
 DEBUG - 2011-12-28 18:19:07 --> Total execution time: 0.3527
@@ -8259,7 +8259,7 @@ DEBUG - 2011-12-28 18:20:36 --> Model Class Initialized
 DEBUG - 2011-12-28 18:20:36 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-28 18:20:36 --> File loaded: application/views/common/top_navigation.php
 DEBUG - 2011-12-28 18:20:36 --> File loaded: application/views/common/header.php
-DEBUG - 2011-12-28 18:20:36 --> File loaded: application/views/tribbles/view.php
+DEBUG - 2011-12-28 18:20:36 --> File loaded: application/views/tribble/view.php
 DEBUG - 2011-12-28 18:20:36 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-28 18:20:36 --> Final output sent to browser
 DEBUG - 2011-12-28 18:20:36 --> Total execution time: 0.3419
@@ -8301,7 +8301,7 @@ DEBUG - 2011-12-28 18:20:59 --> Model Class Initialized
 DEBUG - 2011-12-28 18:20:59 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-28 18:20:59 --> File loaded: application/views/common/top_navigation.php
 DEBUG - 2011-12-28 18:20:59 --> File loaded: application/views/common/header.php
-DEBUG - 2011-12-28 18:20:59 --> File loaded: application/views/tribbles/view.php
+DEBUG - 2011-12-28 18:20:59 --> File loaded: application/views/tribble/view.php
 DEBUG - 2011-12-28 18:20:59 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-28 18:20:59 --> Final output sent to browser
 DEBUG - 2011-12-28 18:20:59 --> Total execution time: 0.3638
@@ -8386,7 +8386,7 @@ DEBUG - 2011-12-28 18:21:06 --> Model Class Initialized
 DEBUG - 2011-12-28 18:21:06 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-28 18:21:06 --> File loaded: application/views/common/top_navigation.php
 DEBUG - 2011-12-28 18:21:06 --> File loaded: application/views/common/header.php
-DEBUG - 2011-12-28 18:21:06 --> File loaded: application/views/tribbles/view.php
+DEBUG - 2011-12-28 18:21:06 --> File loaded: application/views/tribble/view.php
 DEBUG - 2011-12-28 18:21:06 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-28 18:21:06 --> Final output sent to browser
 DEBUG - 2011-12-28 18:21:06 --> Total execution time: 0.3311
@@ -8471,7 +8471,7 @@ DEBUG - 2011-12-28 18:21:17 --> Model Class Initialized
 DEBUG - 2011-12-28 18:21:17 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-28 18:21:17 --> File loaded: application/views/common/top_navigation.php
 DEBUG - 2011-12-28 18:21:17 --> File loaded: application/views/common/header.php
-DEBUG - 2011-12-28 18:21:17 --> File loaded: application/views/tribbles/view.php
+DEBUG - 2011-12-28 18:21:17 --> File loaded: application/views/tribble/view.php
 DEBUG - 2011-12-28 18:21:17 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-28 18:21:17 --> Final output sent to browser
 DEBUG - 2011-12-28 18:21:17 --> Total execution time: 0.3424
@@ -8513,7 +8513,7 @@ DEBUG - 2011-12-28 18:26:03 --> Model Class Initialized
 DEBUG - 2011-12-28 18:26:03 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-28 18:26:03 --> File loaded: application/views/common/top_navigation.php
 DEBUG - 2011-12-28 18:26:03 --> File loaded: application/views/common/header.php
-DEBUG - 2011-12-28 18:26:03 --> File loaded: application/views/tribbles/view.php
+DEBUG - 2011-12-28 18:26:03 --> File loaded: application/views/tribble/view.php
 DEBUG - 2011-12-28 18:26:03 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-28 18:26:03 --> Final output sent to browser
 DEBUG - 2011-12-28 18:26:03 --> Total execution time: 0.4323
@@ -8556,7 +8556,7 @@ DEBUG - 2011-12-28 18:26:36 --> Form Validation Class Initialized
 DEBUG - 2011-12-28 18:26:36 --> Pagination Class Initialized
 DEBUG - 2011-12-28 18:26:36 --> Form_validation class already loaded. Second attempt ignored.
 DEBUG - 2011-12-28 18:26:36 --> Controller Class Initialized
-ERROR - 2011-12-28 18:26:36 --> 404 Page Not Found --> tribbles/reply
+ERROR - 2011-12-28 18:26:36 --> 404 Page Not Found --> tribble/reply
 DEBUG - 2011-12-28 18:28:21 --> Config Class Initialized
 DEBUG - 2011-12-28 18:28:21 --> Hooks Class Initialized
 DEBUG - 2011-12-28 18:28:21 --> Utf8 Class Initialized
@@ -8595,7 +8595,7 @@ DEBUG - 2011-12-28 18:28:22 --> Model Class Initialized
 DEBUG - 2011-12-28 18:28:22 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-28 18:28:22 --> File loaded: application/views/common/top_navigation.php
 DEBUG - 2011-12-28 18:28:22 --> File loaded: application/views/common/header.php
-DEBUG - 2011-12-28 18:28:22 --> File loaded: application/views/tribbles/view.php
+DEBUG - 2011-12-28 18:28:22 --> File loaded: application/views/tribble/view.php
 DEBUG - 2011-12-28 18:28:22 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-28 18:28:22 --> Final output sent to browser
 DEBUG - 2011-12-28 18:28:22 --> Total execution time: 0.3303
@@ -8637,7 +8637,7 @@ DEBUG - 2011-12-28 18:31:05 --> Model Class Initialized
 DEBUG - 2011-12-28 18:31:05 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-28 18:31:05 --> File loaded: application/views/common/top_navigation.php
 DEBUG - 2011-12-28 18:31:05 --> File loaded: application/views/common/header.php
-DEBUG - 2011-12-28 18:31:05 --> File loaded: application/views/tribbles/view.php
+DEBUG - 2011-12-28 18:31:05 --> File loaded: application/views/tribble/view.php
 DEBUG - 2011-12-28 18:31:05 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-28 18:31:05 --> Final output sent to browser
 DEBUG - 2011-12-28 18:31:05 --> Total execution time: 0.4159
@@ -8855,9 +8855,9 @@ DEBUG - 2011-12-28 18:31:25 --> Model Class Initialized
 DEBUG - 2011-12-28 18:31:25 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-28 18:31:25 --> File loaded: application/views/common/top_navigation.php
 DEBUG - 2011-12-28 18:31:25 --> File loaded: application/views/common/header.php
-DEBUG - 2011-12-28 18:31:25 --> File loaded: application/views/tribbles/view.php
+DEBUG - 2011-12-28 18:31:25 --> File loaded: application/views/tribble/view.php
 ERROR - 2011-12-28 18:31:25 --> Severity: Notice  --> Trying to get property of non-object C:\wamp\www\tribble\application\views\tribbles\replyform.php 13
-DEBUG - 2011-12-28 18:31:25 --> File loaded: application/views/tribbles/replyform.php
+DEBUG - 2011-12-28 18:31:25 --> File loaded: application/views/tribble/replyform.php
 DEBUG - 2011-12-28 18:31:25 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-28 18:31:25 --> Final output sent to browser
 DEBUG - 2011-12-28 18:31:25 --> Total execution time: 0.3432
@@ -8934,8 +8934,8 @@ DEBUG - 2011-12-28 18:33:05 --> Model Class Initialized
 DEBUG - 2011-12-28 18:33:05 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-28 18:33:05 --> File loaded: application/views/common/top_navigation.php
 DEBUG - 2011-12-28 18:33:05 --> File loaded: application/views/common/header.php
-DEBUG - 2011-12-28 18:33:05 --> File loaded: application/views/tribbles/view.php
-DEBUG - 2011-12-28 18:33:05 --> File loaded: application/views/tribbles/replyform.php
+DEBUG - 2011-12-28 18:33:05 --> File loaded: application/views/tribble/view.php
+DEBUG - 2011-12-28 18:33:05 --> File loaded: application/views/tribble/replyform.php
 DEBUG - 2011-12-28 18:33:05 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-28 18:33:05 --> Final output sent to browser
 DEBUG - 2011-12-28 18:33:05 --> Total execution time: 0.3439

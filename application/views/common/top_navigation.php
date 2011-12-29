@@ -1,18 +1,15 @@
 <?
 $pages->home->uri = '';
 $pages->home->text = 'home';
-$pages->buzzing->uri = 'tribbles/buzzing';
+$pages->buzzing->uri = 'tribble/buzzing';
 $pages->buzzing->text = 'buzzing';
-$pages->loved->uri = 'tribbles/loved';
+$pages->loved->uri = 'tribble/loved';
 $pages->loved->text = 'loved';
-$pages->upload->uri = 'tribbles/upload';
+$pages->upload->uri = 'tribble/upload';
 $pages->upload->text = 'upload';
 if($this->session->userdata('uid')){
-  $pages->auth->uri = 'user/logout';
-  $pages->auth->text = 'logout';  
-} else {
-  $pages->auth->uri = 'user/login';
-  $pages->auth->text = 'login';
+  $pages->upload->uri = 'tribble/upload';
+  $pages->upload->text = 'upload';
 }
 
 ?>
@@ -20,10 +17,10 @@ if($this->session->userdata('uid')){
 <div id="topNavigation" class="blackMenu">
   <ul class="h_navigation">
   <? foreach($pages as $page): ?>
-    <? if(current_url() == base_url().index_page()."/".$page->uri): ?>    
-    <li class="active"><a href="<?=base_url().index_page()."/".$page->uri?>"><?=$page->text?></a></li>
+    <? if(current_url() == site_url()."/".$page->uri): ?>    
+    <li class="active"><a href="<?=site_url()."/".$page->uri?>"><?=$page->text?></a></li>
     <? else: ?>
-    <li><a href="<?=base_url().index_page()."/".$page->uri?>"><?=$page->text?></a></li>
+    <li><a href="<?=site_url()."/".$page->uri?>"><?=$page->text?></a></li>
     <? endif; ?>
   <? endforeach; ?>
   </ul>

@@ -85,7 +85,7 @@ DEBUG - 2011-12-27 14:19:56 --> Language file loaded: language/english/upload_la
 ERROR - 2011-12-27 14:19:56 --> You did not select a file to upload.
 DEBUG - 2011-12-27 14:19:56 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-27 14:19:56 --> File loaded: application/views/common/top_navigation.php
-DEBUG - 2011-12-27 14:19:56 --> File loaded: application/views/tribbles/upload.php
+DEBUG - 2011-12-27 14:19:56 --> File loaded: application/views/tribble/upload.php
 DEBUG - 2011-12-27 14:19:56 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-27 14:19:56 --> Final output sent to browser
 DEBUG - 2011-12-27 14:19:56 --> Total execution time: 0.4674
@@ -140,7 +140,7 @@ ERROR - 2011-12-27 14:20:38 --> Severity: Notice  --> Undefined variable: meta_d
 ERROR - 2011-12-27 14:20:38 --> Severity: Notice  --> Undefined variable: meta_keywords C:\wamp\www\tribble\application\views\common\page_start.php 6
 DEBUG - 2011-12-27 14:20:38 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-27 14:20:38 --> File loaded: application/views/common/top_navigation.php
-DEBUG - 2011-12-27 14:20:38 --> File loaded: application/views/tribbles/upload.php
+DEBUG - 2011-12-27 14:20:38 --> File loaded: application/views/tribble/upload.php
 DEBUG - 2011-12-27 14:20:38 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-27 14:20:38 --> Final output sent to browser
 DEBUG - 2011-12-27 14:20:38 --> Total execution time: 0.9256
@@ -193,7 +193,7 @@ ERROR - 2011-12-27 14:22:24 --> Severity: Notice  --> Undefined variable: meta_d
 ERROR - 2011-12-27 14:22:24 --> Severity: Notice  --> Undefined variable: meta_keywords C:\wamp\www\tribble\application\views\common\page_start.php 6
 DEBUG - 2011-12-27 14:22:24 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-27 14:22:24 --> File loaded: application/views/common/top_navigation.php
-DEBUG - 2011-12-27 14:22:24 --> File loaded: application/views/tribbles/upload.php
+DEBUG - 2011-12-27 14:22:24 --> File loaded: application/views/tribble/upload.php
 DEBUG - 2011-12-27 14:22:24 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-27 14:22:24 --> Final output sent to browser
 DEBUG - 2011-12-27 14:22:24 --> Total execution time: 0.5192
@@ -246,7 +246,7 @@ ERROR - 2011-12-27 14:24:20 --> Severity: Notice  --> Undefined variable: meta_d
 ERROR - 2011-12-27 14:24:20 --> Severity: Notice  --> Undefined variable: meta_keywords C:\wamp\www\tribble\application\views\common\page_start.php 6
 DEBUG - 2011-12-27 14:24:20 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-27 14:24:20 --> File loaded: application/views/common/top_navigation.php
-DEBUG - 2011-12-27 14:24:20 --> File loaded: application/views/tribbles/upload.php
+DEBUG - 2011-12-27 14:24:20 --> File loaded: application/views/tribble/upload.php
 DEBUG - 2011-12-27 14:24:20 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-27 14:24:20 --> Final output sent to browser
 DEBUG - 2011-12-27 14:24:20 --> Total execution time: 0.5177
@@ -284,7 +284,7 @@ DEBUG - 2011-12-27 15:06:21 --> Form_validation class already loaded. Second att
 DEBUG - 2011-12-27 15:06:21 --> Controller Class Initialized
 DEBUG - 2011-12-27 15:06:21 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-27 15:06:21 --> File loaded: application/views/common/top_navigation.php
-DEBUG - 2011-12-27 15:06:21 --> File loaded: application/views/tribbles/upload.php
+DEBUG - 2011-12-27 15:06:21 --> File loaded: application/views/tribble/upload.php
 DEBUG - 2011-12-27 15:06:21 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-27 15:06:21 --> Final output sent to browser
 DEBUG - 2011-12-27 15:06:21 --> Total execution time: 0.3628
@@ -322,7 +322,7 @@ DEBUG - 2011-12-27 15:06:58 --> Form_validation class already loaded. Second att
 DEBUG - 2011-12-27 15:06:58 --> Controller Class Initialized
 DEBUG - 2011-12-27 15:06:58 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-27 15:06:58 --> File loaded: application/views/common/top_navigation.php
-DEBUG - 2011-12-27 15:06:58 --> File loaded: application/views/tribbles/upload.php
+DEBUG - 2011-12-27 15:06:58 --> File loaded: application/views/tribble/upload.php
 DEBUG - 2011-12-27 15:06:58 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-27 15:06:58 --> Final output sent to browser
 DEBUG - 2011-12-27 15:06:58 --> Total execution time: 0.3196
@@ -360,7 +360,7 @@ DEBUG - 2011-12-27 15:07:00 --> Form_validation class already loaded. Second att
 DEBUG - 2011-12-27 15:07:00 --> Controller Class Initialized
 DEBUG - 2011-12-27 15:07:00 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-27 15:07:00 --> File loaded: application/views/common/top_navigation.php
-DEBUG - 2011-12-27 15:07:00 --> File loaded: application/views/tribbles/upload.php
+DEBUG - 2011-12-27 15:07:00 --> File loaded: application/views/tribble/upload.php
 DEBUG - 2011-12-27 15:07:00 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-27 15:07:00 --> Final output sent to browser
 DEBUG - 2011-12-27 15:07:00 --> Total execution time: 0.3219
@@ -411,7 +411,7 @@ DEBUG - 2011-12-27 15:07:11 --> tag data writen
 DEBUG - 2011-12-27 15:07:11 --> image data writen
 DEBUG - 2011-12-27 15:07:11 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-27 15:07:11 --> File loaded: application/views/common/top_navigation.php
-DEBUG - 2011-12-27 15:07:12 --> File loaded: application/views/tribbles/upload.php
+DEBUG - 2011-12-27 15:07:12 --> File loaded: application/views/tribble/upload.php
 DEBUG - 2011-12-27 15:07:12 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-27 15:07:12 --> Final output sent to browser
 DEBUG - 2011-12-27 15:07:12 --> Total execution time: 0.5773
@@ -3535,7 +3535,7 @@ DEBUG - 2011-12-27 15:47:39 --> Form_validation class already loaded. Second att
 DEBUG - 2011-12-27 15:47:39 --> Controller Class Initialized
 DEBUG - 2011-12-27 15:47:39 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-27 15:47:39 --> File loaded: application/views/common/top_navigation.php
-DEBUG - 2011-12-27 15:47:39 --> File loaded: application/views/tribbles/upload.php
+DEBUG - 2011-12-27 15:47:39 --> File loaded: application/views/tribble/upload.php
 DEBUG - 2011-12-27 15:47:39 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-27 15:47:39 --> Final output sent to browser
 DEBUG - 2011-12-27 15:47:39 --> Total execution time: 0.2933
@@ -3574,7 +3574,7 @@ DEBUG - 2011-12-27 15:48:30 --> Form_validation class already loaded. Second att
 DEBUG - 2011-12-27 15:48:30 --> Controller Class Initialized
 DEBUG - 2011-12-27 15:48:30 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-27 15:48:30 --> File loaded: application/views/common/top_navigation.php
-DEBUG - 2011-12-27 15:48:30 --> File loaded: application/views/tribbles/upload.php
+DEBUG - 2011-12-27 15:48:30 --> File loaded: application/views/tribble/upload.php
 DEBUG - 2011-12-27 15:48:30 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-27 15:48:30 --> Language file loaded: language/english/profiler_lang.php
 DEBUG - 2011-12-27 15:48:30 --> Helper loaded: text_helper
@@ -3666,7 +3666,7 @@ DEBUG - 2011-12-27 15:49:41 --> image data writen
 DEBUG - 2011-12-27 15:49:41 --> like data writen
 DEBUG - 2011-12-27 15:49:41 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-27 15:49:41 --> File loaded: application/views/common/top_navigation.php
-DEBUG - 2011-12-27 15:49:41 --> File loaded: application/views/tribbles/upload.php
+DEBUG - 2011-12-27 15:49:41 --> File loaded: application/views/tribble/upload.php
 DEBUG - 2011-12-27 15:49:41 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-27 15:49:41 --> Language file loaded: language/english/profiler_lang.php
 DEBUG - 2011-12-27 15:49:41 --> Helper loaded: text_helper
@@ -3860,7 +3860,7 @@ DEBUG - 2011-12-27 15:57:18 --> image data writen
 DEBUG - 2011-12-27 15:57:19 --> like data writen
 DEBUG - 2011-12-27 15:57:19 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-27 15:57:19 --> File loaded: application/views/common/top_navigation.php
-DEBUG - 2011-12-27 15:57:19 --> File loaded: application/views/tribbles/upload.php
+DEBUG - 2011-12-27 15:57:19 --> File loaded: application/views/tribble/upload.php
 DEBUG - 2011-12-27 15:57:19 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-27 15:57:19 --> Language file loaded: language/english/profiler_lang.php
 DEBUG - 2011-12-27 15:57:19 --> Helper loaded: text_helper
@@ -3914,7 +3914,7 @@ DEBUG - 2011-12-27 15:57:45 --> image data writen
 DEBUG - 2011-12-27 15:57:45 --> like data writen
 DEBUG - 2011-12-27 15:57:45 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-27 15:57:45 --> File loaded: application/views/common/top_navigation.php
-DEBUG - 2011-12-27 15:57:45 --> File loaded: application/views/tribbles/upload.php
+DEBUG - 2011-12-27 15:57:45 --> File loaded: application/views/tribble/upload.php
 DEBUG - 2011-12-27 15:57:45 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-27 15:57:45 --> Language file loaded: language/english/profiler_lang.php
 DEBUG - 2011-12-27 15:57:45 --> Helper loaded: text_helper
@@ -3967,7 +3967,7 @@ DEBUG - 2011-12-27 15:58:01 --> image data writen
 DEBUG - 2011-12-27 15:58:01 --> like data writen
 DEBUG - 2011-12-27 15:58:02 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-27 15:58:02 --> File loaded: application/views/common/top_navigation.php
-DEBUG - 2011-12-27 15:58:02 --> File loaded: application/views/tribbles/upload.php
+DEBUG - 2011-12-27 15:58:02 --> File loaded: application/views/tribble/upload.php
 DEBUG - 2011-12-27 15:58:02 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-27 15:58:02 --> Language file loaded: language/english/profiler_lang.php
 DEBUG - 2011-12-27 15:58:02 --> Helper loaded: text_helper
@@ -4020,7 +4020,7 @@ DEBUG - 2011-12-27 15:58:03 --> image data writen
 DEBUG - 2011-12-27 15:58:03 --> like data writen
 DEBUG - 2011-12-27 15:58:04 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-27 15:58:04 --> File loaded: application/views/common/top_navigation.php
-DEBUG - 2011-12-27 15:58:04 --> File loaded: application/views/tribbles/upload.php
+DEBUG - 2011-12-27 15:58:04 --> File loaded: application/views/tribble/upload.php
 DEBUG - 2011-12-27 15:58:04 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-27 15:58:04 --> Language file loaded: language/english/profiler_lang.php
 DEBUG - 2011-12-27 15:58:04 --> Helper loaded: text_helper
@@ -5362,17 +5362,17 @@ DEBUG - 2011-12-27 16:33:19 --> Controller Class Initialized
 DEBUG - 2011-12-27 16:33:19 --> Pagination Class Initialized
 DEBUG - 2011-12-27 16:33:19 --> Email Class Initialized
 DEBUG - 2011-12-27 16:33:19 --> Form_validation class already loaded. Second attempt ignored.
-ERROR - 2011-12-27 16:33:19 --> 404 Page Not Found --> tribbles/data
-ERROR - 2011-12-27 16:33:19 --> 404 Page Not Found --> tribbles/data
+ERROR - 2011-12-27 16:33:19 --> 404 Page Not Found --> tribble/data
+ERROR - 2011-12-27 16:33:19 --> 404 Page Not Found --> tribble/data
 DEBUG - 2011-12-27 16:33:19 --> Controller Class Initialized
 DEBUG - 2011-12-27 16:33:19 --> Encrypt Class Initialized
-ERROR - 2011-12-27 16:33:19 --> 404 Page Not Found --> tribbles/data
+ERROR - 2011-12-27 16:33:19 --> 404 Page Not Found --> tribble/data
 DEBUG - 2011-12-27 16:33:19 --> Upload Class Initialized
 DEBUG - 2011-12-27 16:33:19 --> Form Validation Class Initialized
 DEBUG - 2011-12-27 16:33:19 --> Pagination Class Initialized
 DEBUG - 2011-12-27 16:33:19 --> Form_validation class already loaded. Second attempt ignored.
 DEBUG - 2011-12-27 16:33:19 --> Controller Class Initialized
-ERROR - 2011-12-27 16:33:19 --> 404 Page Not Found --> tribbles/data
+ERROR - 2011-12-27 16:33:19 --> 404 Page Not Found --> tribble/data
 DEBUG - 2011-12-27 16:33:42 --> Config Class Initialized
 DEBUG - 2011-12-27 16:33:42 --> Hooks Class Initialized
 DEBUG - 2011-12-27 16:33:42 --> Utf8 Class Initialized
@@ -6688,7 +6688,7 @@ DEBUG - 2011-12-27 17:00:44 --> Form_validation class already loaded. Second att
 DEBUG - 2011-12-27 17:00:44 --> Controller Class Initialized
 DEBUG - 2011-12-27 17:00:44 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-27 17:00:44 --> File loaded: application/views/common/top_navigation.php
-DEBUG - 2011-12-27 17:00:44 --> File loaded: application/views/tribbles/upload.php
+DEBUG - 2011-12-27 17:00:44 --> File loaded: application/views/tribble/upload.php
 DEBUG - 2011-12-27 17:00:44 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-27 17:00:44 --> Language file loaded: language/english/profiler_lang.php
 DEBUG - 2011-12-27 17:00:44 --> Helper loaded: text_helper
@@ -6743,7 +6743,7 @@ DEBUG - 2011-12-27 17:01:50 --> image data writen
 DEBUG - 2011-12-27 17:01:50 --> like data writen
 DEBUG - 2011-12-27 17:01:50 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-27 17:01:50 --> File loaded: application/views/common/top_navigation.php
-DEBUG - 2011-12-27 17:01:50 --> File loaded: application/views/tribbles/upload.php
+DEBUG - 2011-12-27 17:01:50 --> File loaded: application/views/tribble/upload.php
 DEBUG - 2011-12-27 17:01:50 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-27 17:01:50 --> Language file loaded: language/english/profiler_lang.php
 DEBUG - 2011-12-27 17:01:50 --> Helper loaded: text_helper
@@ -6798,7 +6798,7 @@ DEBUG - 2011-12-27 17:02:06 --> image data writen
 DEBUG - 2011-12-27 17:02:06 --> like data writen
 DEBUG - 2011-12-27 17:02:06 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-27 17:02:06 --> File loaded: application/views/common/top_navigation.php
-DEBUG - 2011-12-27 17:02:06 --> File loaded: application/views/tribbles/upload.php
+DEBUG - 2011-12-27 17:02:06 --> File loaded: application/views/tribble/upload.php
 DEBUG - 2011-12-27 17:02:06 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-27 17:02:06 --> Language file loaded: language/english/profiler_lang.php
 DEBUG - 2011-12-27 17:02:06 --> Helper loaded: text_helper
@@ -6853,7 +6853,7 @@ DEBUG - 2011-12-27 17:02:08 --> image data writen
 DEBUG - 2011-12-27 17:02:08 --> like data writen
 DEBUG - 2011-12-27 17:02:08 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-27 17:02:08 --> File loaded: application/views/common/top_navigation.php
-DEBUG - 2011-12-27 17:02:08 --> File loaded: application/views/tribbles/upload.php
+DEBUG - 2011-12-27 17:02:08 --> File loaded: application/views/tribble/upload.php
 DEBUG - 2011-12-27 17:02:08 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-27 17:02:08 --> Language file loaded: language/english/profiler_lang.php
 DEBUG - 2011-12-27 17:02:08 --> Helper loaded: text_helper
@@ -6908,7 +6908,7 @@ DEBUG - 2011-12-27 17:02:10 --> image data writen
 DEBUG - 2011-12-27 17:02:10 --> like data writen
 DEBUG - 2011-12-27 17:02:10 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-27 17:02:10 --> File loaded: application/views/common/top_navigation.php
-DEBUG - 2011-12-27 17:02:10 --> File loaded: application/views/tribbles/upload.php
+DEBUG - 2011-12-27 17:02:10 --> File loaded: application/views/tribble/upload.php
 DEBUG - 2011-12-27 17:02:10 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-27 17:02:10 --> Language file loaded: language/english/profiler_lang.php
 DEBUG - 2011-12-27 17:02:10 --> Helper loaded: text_helper
@@ -7211,18 +7211,18 @@ DEBUG - 2011-12-27 17:09:23 --> Pagination Class Initialized
 DEBUG - 2011-12-27 17:09:23 --> Session routines successfully run
 DEBUG - 2011-12-27 17:09:23 --> Controller Class Initialized
 DEBUG - 2011-12-27 17:09:23 --> Form_validation class already loaded. Second attempt ignored.
-ERROR - 2011-12-27 17:09:23 --> 404 Page Not Found --> tribbles/data
-ERROR - 2011-12-27 17:09:23 --> 404 Page Not Found --> tribbles/data
+ERROR - 2011-12-27 17:09:23 --> 404 Page Not Found --> tribble/data
+ERROR - 2011-12-27 17:09:23 --> 404 Page Not Found --> tribble/data
 DEBUG - 2011-12-27 17:09:23 --> Controller Class Initialized
 DEBUG - 2011-12-27 17:09:23 --> Email Class Initialized
-ERROR - 2011-12-27 17:09:23 --> 404 Page Not Found --> tribbles/data
+ERROR - 2011-12-27 17:09:23 --> 404 Page Not Found --> tribble/data
 DEBUG - 2011-12-27 17:09:23 --> Encrypt Class Initialized
 DEBUG - 2011-12-27 17:09:23 --> Upload Class Initialized
 DEBUG - 2011-12-27 17:09:23 --> Form Validation Class Initialized
 DEBUG - 2011-12-27 17:09:23 --> Pagination Class Initialized
 DEBUG - 2011-12-27 17:09:23 --> Form_validation class already loaded. Second attempt ignored.
 DEBUG - 2011-12-27 17:09:23 --> Controller Class Initialized
-ERROR - 2011-12-27 17:09:23 --> 404 Page Not Found --> tribbles/data
+ERROR - 2011-12-27 17:09:23 --> 404 Page Not Found --> tribble/data
 DEBUG - 2011-12-27 17:11:39 --> Config Class Initialized
 DEBUG - 2011-12-27 17:11:39 --> Hooks Class Initialized
 DEBUG - 2011-12-27 17:11:39 --> Utf8 Class Initialized
@@ -7383,14 +7383,14 @@ DEBUG - 2011-12-27 17:11:40 --> Controller Class Initialized
 DEBUG - 2011-12-27 17:11:40 --> Helper loaded: image_helper
 DEBUG - 2011-12-27 17:11:40 --> Form Validation Class Initialized
 DEBUG - 2011-12-27 17:11:40 --> Controller Class Initialized
-ERROR - 2011-12-27 17:11:40 --> 404 Page Not Found --> tribbles/data
+ERROR - 2011-12-27 17:11:40 --> 404 Page Not Found --> tribble/data
 DEBUG - 2011-12-27 17:11:40 --> Pagination Class Initialized
-ERROR - 2011-12-27 17:11:40 --> 404 Page Not Found --> tribbles/data
+ERROR - 2011-12-27 17:11:40 --> 404 Page Not Found --> tribble/data
 DEBUG - 2011-12-27 17:11:40 --> Helper loaded: date_helper
 DEBUG - 2011-12-27 17:11:40 --> Form_validation class already loaded. Second attempt ignored.
 DEBUG - 2011-12-27 17:11:40 --> Controller Class Initialized
 DEBUG - 2011-12-27 17:11:40 --> Database Driver Class Initialized
-ERROR - 2011-12-27 17:11:40 --> 404 Page Not Found --> tribbles/data
+ERROR - 2011-12-27 17:11:40 --> 404 Page Not Found --> tribble/data
 DEBUG - 2011-12-27 17:11:40 --> Session Class Initialized
 DEBUG - 2011-12-27 17:11:40 --> Helper loaded: string_helper
 DEBUG - 2011-12-27 17:11:40 --> Session routines successfully run
@@ -7401,7 +7401,7 @@ DEBUG - 2011-12-27 17:11:40 --> Form Validation Class Initialized
 DEBUG - 2011-12-27 17:11:40 --> Pagination Class Initialized
 DEBUG - 2011-12-27 17:11:40 --> Form_validation class already loaded. Second attempt ignored.
 DEBUG - 2011-12-27 17:11:40 --> Controller Class Initialized
-ERROR - 2011-12-27 17:11:40 --> 404 Page Not Found --> tribbles/data
+ERROR - 2011-12-27 17:11:40 --> 404 Page Not Found --> tribble/data
 DEBUG - 2011-12-27 17:13:03 --> Config Class Initialized
 DEBUG - 2011-12-27 17:13:03 --> Hooks Class Initialized
 DEBUG - 2011-12-27 17:13:03 --> Utf8 Class Initialized
@@ -7772,7 +7772,7 @@ DEBUG - 2011-12-27 17:22:39 --> Form_validation class already loaded. Second att
 DEBUG - 2011-12-27 17:22:39 --> Controller Class Initialized
 DEBUG - 2011-12-27 17:22:39 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-27 17:22:39 --> File loaded: application/views/common/top_navigation.php
-DEBUG - 2011-12-27 17:22:39 --> File loaded: application/views/tribbles/upload.php
+DEBUG - 2011-12-27 17:22:39 --> File loaded: application/views/tribble/upload.php
 DEBUG - 2011-12-27 17:22:40 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-27 17:22:40 --> Final output sent to browser
 DEBUG - 2011-12-27 17:22:40 --> Total execution time: 0.3943
@@ -7825,7 +7825,7 @@ DEBUG - 2011-12-27 17:23:31 --> image data writen
 DEBUG - 2011-12-27 17:23:31 --> like data writen
 DEBUG - 2011-12-27 17:23:31 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-27 17:23:31 --> File loaded: application/views/common/top_navigation.php
-DEBUG - 2011-12-27 17:23:31 --> File loaded: application/views/tribbles/upload.php
+DEBUG - 2011-12-27 17:23:31 --> File loaded: application/views/tribble/upload.php
 DEBUG - 2011-12-27 17:23:31 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-27 17:23:31 --> Final output sent to browser
 DEBUG - 2011-12-27 17:23:31 --> Total execution time: 0.5568
@@ -9580,7 +9580,7 @@ DEBUG - 2011-12-27 17:36:57 --> Form Validation Class Initialized
 DEBUG - 2011-12-27 17:36:57 --> Pagination Class Initialized
 DEBUG - 2011-12-27 17:36:57 --> Form_validation class already loaded. Second attempt ignored.
 DEBUG - 2011-12-27 17:36:57 --> Controller Class Initialized
-ERROR - 2011-12-27 17:36:57 --> 404 Page Not Found --> tribbles/view20
+ERROR - 2011-12-27 17:36:57 --> 404 Page Not Found --> tribble/view20
 DEBUG - 2011-12-27 17:37:06 --> Config Class Initialized
 DEBUG - 2011-12-27 17:37:06 --> Hooks Class Initialized
 DEBUG - 2011-12-27 17:37:06 --> Utf8 Class Initialized
@@ -12136,7 +12136,7 @@ DEBUG - 2011-12-27 18:22:50 --> Form_validation class already loaded. Second att
 DEBUG - 2011-12-27 18:22:50 --> Controller Class Initialized
 DEBUG - 2011-12-27 18:22:50 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-27 18:22:50 --> File loaded: application/views/common/top_navigation.php
-DEBUG - 2011-12-27 18:22:50 --> File loaded: application/views/tribbles/upload.php
+DEBUG - 2011-12-27 18:22:50 --> File loaded: application/views/tribble/upload.php
 DEBUG - 2011-12-27 18:22:50 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-27 18:22:50 --> Final output sent to browser
 DEBUG - 2011-12-27 18:22:50 --> Total execution time: 0.3179
@@ -14547,7 +14547,7 @@ DEBUG - 2011-12-27 19:05:01 --> Form_validation class already loaded. Second att
 DEBUG - 2011-12-27 19:05:01 --> Controller Class Initialized
 DEBUG - 2011-12-27 19:05:01 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-27 19:05:01 --> File loaded: application/views/common/top_navigation.php
-DEBUG - 2011-12-27 19:05:01 --> File loaded: application/views/tribbles/upload.php
+DEBUG - 2011-12-27 19:05:01 --> File loaded: application/views/tribble/upload.php
 DEBUG - 2011-12-27 19:05:01 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-27 19:05:01 --> Language file loaded: language/english/profiler_lang.php
 DEBUG - 2011-12-27 19:05:01 --> Helper loaded: text_helper
@@ -14602,7 +14602,7 @@ DEBUG - 2011-12-27 19:05:19 --> image data writen
 DEBUG - 2011-12-27 19:05:19 --> like data writen
 DEBUG - 2011-12-27 19:05:19 --> File loaded: application/views/common/page_start.php
 DEBUG - 2011-12-27 19:05:19 --> File loaded: application/views/common/top_navigation.php
-DEBUG - 2011-12-27 19:05:19 --> File loaded: application/views/tribbles/upload.php
+DEBUG - 2011-12-27 19:05:19 --> File loaded: application/views/tribble/upload.php
 DEBUG - 2011-12-27 19:05:19 --> File loaded: application/views/common/page_end.php
 DEBUG - 2011-12-27 19:05:19 --> Language file loaded: language/english/profiler_lang.php
 DEBUG - 2011-12-27 19:05:19 --> Helper loaded: text_helper
