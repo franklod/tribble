@@ -36,7 +36,7 @@
     <?=(form_error('bio') == TRUE) ? form_error('bio') : ''; ?>
   </div>
   <div class="e_wrap">
-    <?=form_submit(array('name'=>'doRegister','id'=>'doRegister','value'=>'Register','class'=>'btn_success'))?>
+    <?=form_submit(array('name'=>'doSignup','id'=>'doSignup','value'=>'Signup','class'=>'btn_success'))?>
   </div>
   <?=form_close()?>
 </div>
