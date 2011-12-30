@@ -11,7 +11,7 @@
 </ul>
 <ul>
   <?foreach(json_decode($tribble->palette) as $color):?>
-    <li style="background: #<?=$color?>;">&nbsp;</li>
+    <li style="background: <?=$color?>;">&nbsp;</li>
   <?endforeach;?>
 </ul>
 <?if(!$replies):?>
