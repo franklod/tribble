@@ -96,12 +96,17 @@ class Tribble extends CI_Controller {
   public function view($tribble){       
     
     $this->load->model('Tribbles_model','trModel');
-    $tribbleData = $this->trModel->getTribble($tribble);
-    $replyData = $this->trModel->getReplies($tribble);
-        
-    $data['tribble'] = $tribbleData[0];
-    $data['replies'] = $replyData;
     
+    if($tribbleData = $this->trModel->getTribble($tribble)){
+      $data['tribble'] = $tribbleData[0];  
+    }
+    
+    if($replyData = $this->trModel->getReplies($tribble)){
+      $data['replies'] = $replyData;  
+    } else {
+      $data['replies'] = false;
+    }
+                    
     $data['title'] = 'Tribble - ' . $data['tribble']->title;
     $data['meta_description'] = $data['tribble']->title;
     $data['meta_keywords'] = $data['tribble']->tags;
