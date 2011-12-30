@@ -150,6 +150,7 @@ class Tribbles_model extends CI_Model {
       
       $likedata['like_tribble_id'] = $tribbleid;
       $likedata['like_user_id'] = $uid;
+      $likedata['like_user_id'] = $uid;
             
       if(!$this->db->insert('likes',$likedata)){
         $result->error = "Error while writing like data";

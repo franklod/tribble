@@ -14,12 +14,8 @@ if($this->session->userdata('uid')){
 <div id="navContainer">
 <div id="topNavigation" class="blackMenu">
 <ul class="h_navigation">
-<? foreach($pages as $page): ?>
-  <? if(current_url() == site_url()."/".$page->uri): ?>    
-  <li class="active"><a href="<?=site_url()."/".$page->uri?>"><?=$page->text?></a></li>
-  <? else: ?>
-  <li><a href="<?=site_url()."/".$page->uri?>"><?=$page->text?></a></li>
-  <? endif; ?>
+<? foreach($pages as $page): ?>   
+  <li <?= (current_url() == site_url()."/".$page->uri) ? 'class="active"' : FALSE?>"><a href="<?=site_url()."/".$page->uri?>"><?=$page->text?></a></li>
 <? endforeach; ?>
 </ul>
   <form id="search">
