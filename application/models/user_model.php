@@ -44,6 +44,13 @@ class User_model extends CI_Model {
       }
     }            
   }
+  
+  function getUserData($uid){
+    $query = $this->db->get_where('users',array('user_id' => $uid));
+    $result = $query->result();
+    return $result;
+  }
+  
 }
 
 ?>
