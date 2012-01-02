@@ -1,43 +1,5 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-/**
- * CodeIgniter
- *
- * An open source application development framework for PHP 5.1.6 or newer
- *
- * @package		CodeIgniter
- * @author		ExpressionEngine Dev Team
- * @copyright	Copyright (c) 2008 - 2011, EllisLab, Inc.
- * @license		http://codeigniter.com/user_guide/license.html
- * @link		http://codeigniter.com
- * @since		Version 1.0
- * @filesource
- */
+<?
 
-// ------------------------------------------------------------------------
-
-/**
- * CodeIgniter Image Helpers
- *
- * @package		CodeIgniter
- * @subpackage	Helpers
- * @category	Helpers
- * @author		Pedro Correia@SAPO.pt
- */
-
-// ------------------------------------------------------------------------
-
-/**
- * getImageColorPalette
- *
- * Lets you extract the n most common colors in an image and returns an array with the hex values.
- * Takes jpeg and png image files.
- *
- * @access	public
- * @param	string
- * @param	array
- * @param	mixed
- * @return	mixed	depends on what the array contains
- */
 if ( ! function_exists('getImageColorPalette'))
 {
   function getImageColorPalette($imageFile, $numColors = 8, $granularity = 5) 
@@ -89,14 +51,20 @@ if ( ! function_exists('getImageColorPalette'))
         } 
      } 
      arsort($colors); 
-     return array_slice(array_keys($colors), 0, $numColors); 
+//     return array_slice(array_keys($colors), 0, $numColors); 
+return $colors;
   } 
 }
-
-function getThumb($img){
-  $thumb = preg_replace('/(\.jpg|\.png)/','_thumb$1',$img);
-  return $thumb;
+$images = array('not.jpg','hat.jpg','test.jpg');
+foreach($images as  $img){
+$y = getImageColorPalette($img,'', 0);
+echo "<div>";
+echo '<img src="'.$img.'">';
+echo "<h2>".count($y)." colors unique extracted</h2>";
+foreach ($y as $hex => $count) {
+   echo '<div style="background: #' . $hex . '; height: 100px; width: 100px; line-height: 100px; text-align: center; display: inline-block;">'.$count.'|'.$hex.'</div> ';   
 }
+echo "</div><br>";
+}
+?>
 
-/* End of file image_helper.php */
-/* Location: ./system/helpers/image_helper.php */
