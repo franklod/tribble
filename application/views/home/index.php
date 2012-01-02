@@ -15,7 +15,7 @@
         <p class="ico"><span class="comments"><?=$tribble->comments?></span>Comments</p>
         <p class="ico"><span class="likes"><?=$tribble->likes?></span>likes</p>     
       </div>
-      <p class="tribble-user-info"><a href="/"><img name="avatar" src="" width="18" height="18" alt=""/><?=$tribble->user?></a></p>  
+      <div class="tribble-user-info"><a href="/"><img name="avatar" src="" width="18" height="18" alt=""/><?=$tribble->user?></a></div>  
       </div>  
     </li>  
   <? endforeach; ?>
