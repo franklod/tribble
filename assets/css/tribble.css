@@ -6,10 +6,14 @@ body {
 	margin:0 auto;
 	clear:left;
 }
-a:hover {
-	color: #669900;
-}
+
 /***********************override INK styles*************************/
+a{
+	color:#669900;
+}
+a:hover {
+	color:#99cc00;
+}
 .btn, input[type=button].btn, defaultBtn, input[type="submit"], input[type="button"], button {
 	background: #5d6167; /* Old browsers */
 	background: -moz-linear-gradient(top, #5d6167 0%, #323740 100%); /* FF3.6+ */
@@ -22,9 +26,9 @@ a:hover {
 	-webkit-box-shadow:inset 0 1px 0 rgba(255, 255, 255, 0.2);
 	-moz-box-shadow:inset 0 1px 0 rgba(255, 255, 255, 0.2);
 	box-shadow:inset 0 1px 0 rgba(255, 255, 255, 0.2);
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	border-radius: 4px;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
 }
 ul {
 	list-style-type: none;
@@ -52,9 +56,9 @@ ul {
 	-webkit-box-shadow: inset 0px 1px 1px 1px rgba(0, 0, 0, 0.2);
 	-moz-box-shadow: inset 0px 1px 1px 1px rgba(0, 0, 0, 0.2);
 	box-shadow: inset 0px 1px 1px 1px rgba(0, 0, 0, 0.2);
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	border-radius: 4px;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
 	border:none;
 	color:#FFF;
 }
@@ -130,7 +134,6 @@ ul#login li.sign {
 	background: -o-linear-gradient(top, #5d6167 0%, #323740 100%); /* Opera 11.10+ */
 	background: -ms-linear-gradient(top, #5d6167 0%, #323740 100%); /* IE10+ */
 	background: linear-gradient(top, #5d6167 0%, #323740 100%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5d6167', endColorstr='#323740', GradientType=0 ); /* IE6-9 */
 	-webkit-box-shadow:0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
 	-moz-box-shadow:0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
 	box-shadow:0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
@@ -147,9 +150,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5d6167', end
 	-webkit-box-shadow: inset 0px 1px 1px 1px rgba(0, 0, 0, 0.2);
 	-moz-box-shadow: inset 0px 1px 1px 1px rgba(0, 0, 0, 0.2);
 	box-shadow: inset 0px 1px 1px 1px rgba(0, 0, 0, 0.2);
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	border-radius: 4px;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
 	padding:10px;
 	border:none;
 	color:#FFF;
@@ -188,6 +191,7 @@ ul.tribbles {
 .tribble-img {
 	overflow: hidden;
 	position: relative;
+	padding-bottom:10px
 }
 .tribble-img:hover .tribble-hover {
 	opacity: 0.90;
@@ -229,14 +233,13 @@ ul.tribbles {
 .tribble-tools {
 	float:right;
 	clear:both;
-	margin-bottom:15px;
 }
 .tribble-tools .ico {
 	background: #F5F3F5;
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	border-radius: 4px;
-	margin:0 5px;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	margin-left:5px;
 	float:right;
 	line-height:1em;
 	text-indent:-9999px;
@@ -290,9 +293,9 @@ ul.tribbles {
 }
 .tags li {
 	background: #F5F3F5;
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	border-radius: 4px;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
 	float:left;
 	margin:0px 5px 5px 0;
 	display:inline;
@@ -354,32 +357,19 @@ ul.tribbles {
 	margin:0;
 	padding:0;
 }
-.tribble-user-info span {
-	display:inline-block;
-}
-.tribble-user-info a {
-	color: #669900;
-	text-decoration:none;
-	font-size:1.5em;
-	line-height:2;
-	margin-left:10px;
-	vertical-align:top;
-	font-weight:700;
-}
-ul.tribbles li p.tribble-user-info a {
-	font-size:1em;
-	line-height:1;
-	margin-left:0;
-}
-.tribble-user-info a img {
+.tribble-user-info h4 {
 	float:left;
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	border-radius: 4px;
-	margin:0 5px;
-	-webkit-box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 0.8);
-	-moz-box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 0.8);
-	box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 0.8);
+}
+.tribble-user-info h4 a {
+	font-size:14px;
+	line-height:1;
+}
+.tribble-user-info img {
+	float:left;
+	margin:0 10px 10px 0;
+		-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
 }
 .tribble-img-container {
 	float:left;
@@ -396,11 +386,25 @@ ul.tribbles li p.tribble-user-info a {
 	color: #26282C;
 	line-height:1.4;
 }
+.tribble-title {
+	margin:0;
+	padding:0;
+	font-size: 1.2em;
+	color: #26282C;
+	font-weight: 700;
+}
 .tribble-date {
 	font-size: 0.9em;
 	color: #5D6167;
 	font-style: normal;
-	margin-bottom: 15px;
+	font-weight:normal;
+	display:inline;
+	margin-left:5px;
+	line-height:2;
+}
+.tribble-date:before {
+	content: "|";
+	margin-right:3px;
 }
 .tribble-container h2 {
 	font-size: 1.4em;
@@ -420,7 +424,7 @@ ul.tribbles li p.tribble-user-info a {
 	text-indent:5px;
 	margin-bottom:10px;
 	font-size: 14px;
-	text-shadow:0 1px 3px rgba(0, 0, 0, 0.3);
+	font-weight:normal;
 }
 /********************comments list******************************/
 
@@ -431,12 +435,38 @@ ul.tribbles li p.tribble-user-info a {
 }
 .comments-list li {
 	background: #F5F3F5;
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	border-radius: 4px;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
 	margin-bottom:10px;
 	padding:10px;
 	color:#26282C;
 	font-size:1em;
 	line-height:1.4;
+}
+
+.response h4 {
+	font-size:13px;
+}
+.response h4 img {
+	margin-right:8px;
+	float:left;	
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+}
+.comment-body{
+	margin-left:48px;
+	margin-top:10px;
+}
+.comment-body-image{
+		margin:10px 0;
+	max-width:360px;
+	overflow:hidden;
+text-align:center;
+}
+.comment-date {
+	margin-left:46px;
+	color:#5D6167;
+	font-size:0.9em;
 }
