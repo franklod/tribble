@@ -10,30 +10,29 @@ class Tribbles_model extends CI_Model {
     
     function getNewer(){
       $this->db->select('
-          tr_images.image_path AS image,
-          tr_images.image_palette AS palette,
           tr_tribbles.tribble_id AS id,
           tr_tribbles.tribble_title AS title,
           tr_tribbles.tribble_text AS `text`,
           tr_tribbles.tribble_timestamp AS ts,
-          tr_users.user_realname AS user,
+          tr_users.user_realname AS username,
+          tr_users.user_id AS userid,
+          tr_images.image_path as image,
           COUNT(tr_likes.like_id) AS likes,
-          COUNT(tr_replies.reply_id) AS comments
+          COUNT(tr_replies_ref.ref_tribble_id) AS replies          
       ');
       $this->db->from('tr_tribbles');
       $this->db->join('tr_images','tr_tribbles.tribble_id = tr_images.image_tribble_id','inner');
-      $this->db->join('tr_tags','tr_tribbles.tribble_id = tr_tags.tags_tribble_id','inner');
-      $this->db->join('tr_users','tr_tribbles.tribble_user_id = tr_users.user_id','inner');
       $this->db->join('tr_likes','tr_tribbles.tribble_id = tr_likes.like_tribble_id','inner');
-      $this->db->join('tr_replies','tr_tribbles.tribble_id = tr_replies.reply_id','left outer');      
+      $this->db->join('tr_users','tr_tribbles.tribble_user_id = tr_users.user_id','inner');
+      $this->db->join('tr_replies_ref','tr_tribbles.tribble_id = tr_replies_ref.ref_tribble_id','LEFT OUTER');
+            
       $this->db->group_by('
-        tr_images.image_path,
-        tr_images.image_palette,
         tr_tribbles.tribble_id,
         tr_tribbles.tribble_title,
         tr_tribbles.tribble_text,
-        tr_tribbles.tribble_timestamp,
-        tr_users.user_realname
+        tr_users.user_realname,
+        tr_users.user_id,
+        tr_images.image_path
       ');
       $this->db->order_by("tr_tribbles.tribble_timestamp", "desc"); 
       $query = $this->db->get();
@@ -43,32 +42,31 @@ class Tribbles_model extends CI_Model {
     
     function getBuzzing(){
       $this->db->select('
-          tr_images.image_path AS image,
-          tr_images.image_palette AS palette,
           tr_tribbles.tribble_id AS id,
           tr_tribbles.tribble_title AS title,
           tr_tribbles.tribble_text AS `text`,
           tr_tribbles.tribble_timestamp AS ts,
-          tr_users.user_realname AS user,
+          tr_users.user_realname AS username,
+          tr_users.user_id AS userid,
+          tr_images.image_path as image,
           COUNT(tr_likes.like_id) AS likes,
-          COUNT(tr_replies.reply_id) AS comments
+          COUNT(tr_replies_ref.ref_tribble_id) AS replies          
       ');
       $this->db->from('tr_tribbles');
       $this->db->join('tr_images','tr_tribbles.tribble_id = tr_images.image_tribble_id','inner');
-      $this->db->join('tr_tags','tr_tribbles.tribble_id = tr_tags.tags_tribble_id','inner');
-      $this->db->join('tr_users','tr_tribbles.tribble_user_id = tr_users.user_id','inner');
       $this->db->join('tr_likes','tr_tribbles.tribble_id = tr_likes.like_tribble_id','inner');
-      $this->db->join('tr_replies','tr_tribbles.tribble_id = tr_replies.reply_id','left outer');      
+      $this->db->join('tr_users','tr_tribbles.tribble_user_id = tr_users.user_id','inner');
+      $this->db->join('tr_replies_ref','tr_tribbles.tribble_id = tr_replies_ref.ref_tribble_id','LEFT OUTER');
+            
       $this->db->group_by('
-        tr_images.image_path,
-        tr_images.image_palette,
         tr_tribbles.tribble_id,
         tr_tribbles.tribble_title,
         tr_tribbles.tribble_text,
-        tr_tribbles.tribble_timestamp,
-        tr_users.user_realname
+        tr_users.user_realname,
+        tr_users.user_id,
+        tr_images.image_path
       ');
-      $this->db->order_by("comments", "desc"); 
+      $this->db->order_by("replies", "desc"); 
       $query = $this->db->get();
       $result = $query->result();
       return $result;                
@@ -76,30 +74,29 @@ class Tribbles_model extends CI_Model {
     
     function getLoved(){      
       $this->db->select('
-          tr_images.image_path AS image,
-          tr_images.image_palette AS palette,
           tr_tribbles.tribble_id AS id,
           tr_tribbles.tribble_title AS title,
           tr_tribbles.tribble_text AS `text`,
           tr_tribbles.tribble_timestamp AS ts,
-          tr_users.user_realname AS user,
+          tr_users.user_realname AS username,
+          tr_users.user_id AS userid,
+          tr_images.image_path as image,
           COUNT(tr_likes.like_id) AS likes,
-          COUNT(tr_replies.reply_id) AS comments
+          COUNT(tr_replies_ref.ref_tribble_id) AS replies          
       ');
       $this->db->from('tr_tribbles');
       $this->db->join('tr_images','tr_tribbles.tribble_id = tr_images.image_tribble_id','inner');
-      $this->db->join('tr_tags','tr_tribbles.tribble_id = tr_tags.tags_tribble_id','inner');
-      $this->db->join('tr_users','tr_tribbles.tribble_user_id = tr_users.user_id','inner');
       $this->db->join('tr_likes','tr_tribbles.tribble_id = tr_likes.like_tribble_id','inner');
-      $this->db->join('tr_replies','tr_tribbles.tribble_id = tr_replies.reply_id','left outer');      
+      $this->db->join('tr_users','tr_tribbles.tribble_user_id = tr_users.user_id','inner');
+      $this->db->join('tr_replies_ref','tr_tribbles.tribble_id = tr_replies_ref.ref_tribble_id','LEFT OUTER');
+            
       $this->db->group_by('
-        tr_images.image_path,
-        tr_images.image_palette,
         tr_tribbles.tribble_id,
         tr_tribbles.tribble_title,
         tr_tribbles.tribble_text,
-        tr_tribbles.tribble_timestamp,
-        tr_users.user_realname
+        tr_users.user_realname,
+        tr_users.user_id,
+        tr_images.image_path
       ');
       $this->db->order_by("likes", "desc"); 
       $query = $this->db->get();
@@ -207,11 +204,11 @@ class Tribbles_model extends CI_Model {
     function getReplies($tribble_id,$currentPage=0){
       $repliesPerPage = 10;
       $page = $repliesPerPage * $currentPage;
-      $query = $this->db->get_where('replies','reply_tribble_id = '.$tribble_id,$repliesPerPage,$page);
+      $query = $this->db->get_where('tribbles','tribble_parent_id = '.$tribble_id,$repliesPerPage,$page);
       return $query->result();            
     }
     
-    function like(){
+    function addLike($tribble_id,$uid){
             
     }
     

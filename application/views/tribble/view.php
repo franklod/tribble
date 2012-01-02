@@ -17,7 +17,7 @@
       </div>
       <div class="tribble-tools">
         <p class="ico">
-          <a href="/" class="likes"><?=$tribble->likes?></a>
+          <a href="<?=site_url('tribble/like/'.$tribble->id)?>" class="likes"><?=$tribble->likes?></a>
         </p>
       </div>
       <h3>Tags</h3>
