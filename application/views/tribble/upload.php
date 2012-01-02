@@ -1,5 +1,5 @@
-<div id="main">
-<h1>Create a new Tribble</h1>
+<div class="g75">
+<h2>Create a new Tribble</h2>
 <p>Use the form to create a new tribble and remember to give you work a proper title, description and a couple of tags.</p>
 <? if(isset($error)): ?>
 <div class="alert-msg error">
@@ -34,7 +34,7 @@
 <?=form_input(array('name'=>'tags','id'=>'tags','placeholder'=>'Use comma separated expressions to tag your work','value'=>set_value('tags')))?>
 <?=(form_error('tags') == TRUE) ? form_error('tags') : ''; ?>
 </div>
-<div class="e_wrap txtRight">
+<div class="e_wrap">
 <?=form_submit(array('name'=>'createTribble','id'=>'createTribble','value'=>'Create Tribble','class'=>'btn_success'))?>
 </div>
 <?=form_fieldset_close()?>
