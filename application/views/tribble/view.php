@@ -2,10 +2,6 @@
   <div class="tribble-container" >
     <div class="tribble-user-info">
       <p><span><img src="" width="42" height="42" /></span><a href="<?=site_url('user/view/'.$tribble->userid)?>"><?=$tribble->username?></a></p>
-<div class="tribble-container" >
-  <div class="tribble-user-info">
-    <p><span><img src="" width="42" height="42" /> </span><a href="/">user name</a></p>
-  </div>
   <div class="tribble-img-container box"> <img src="<?=$tribble->image?>" /></div>
   <div class="tribble-img-data">
     <h2>
@@ -34,7 +30,7 @@
     <h3>Color Scheme</h3>
     <ul class="color-scheme">
       <?foreach(json_decode($tribble->palette) as $color):?>
-      <li style="background: #<?=$color?>;">&nbsp;</li>
+      <li style="background: <?=$color?>;">&nbsp;</li>
       <?endforeach;?>
     </ul>
   </div>
