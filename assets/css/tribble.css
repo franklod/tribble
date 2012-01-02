@@ -34,6 +34,39 @@ a:hover {
 	text-shadow:0 1px 0 #323740;
 	border:1px solid #323740;
 }
+
+
+
+.btn:hover, input[type=button].btn:hover, defaultBtn:hover, input[type="submit"]:hover, input[type="button"]:hover, button:hover {
+
+background: #62666c; /* Old browsers */
+background: -moz-linear-gradient(top, #62666c 0%, #373d47 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#62666c), color-stop(100%,#373d47)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, #62666c 0%,#373d47 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, #62666c 0%,#373d47 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top, #62666c 0%,#373d47 100%); /* IE10+ */
+background: linear-gradient(top, #62666c 0%,#373d47 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#62666c', endColorstr='#373d47',GradientType=0 ); /* IE6-9 */
+	-webkit-box-shadow:inset 0 1px 0 rgba(255, 255, 255, 0.4);
+	-moz-box-shadow:inset 0 1px 0 rgba(255, 255, 255, 0.4);
+	box-shadow:inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.btn:active, input[type=button].btn:active, defaultBtn:active, input[type="submit"]:active, input[type="button"]:active, button:active {
+background: #323740; /* Old browsers */
+background: -moz-linear-gradient(top, #323740 0%, #5d6167 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#323740), color-stop(100%,#5d6167)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, #323740 0%,#5d6167 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, #323740 0%,#5d6167 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top, #323740 0%,#5d6167 100%); /* IE10+ */
+background: linear-gradient(top, #323740 0%,#5d6167 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#323740', endColorstr='#5d6167',GradientType=0 ); /* IE6-9 */
+	-webkit-box-shadow:inset 0 1px 0 rgba(255, 255, 255, 0.4);
+	-moz-box-shadow:inset 0 1px 0 rgba(255, 255, 255, 0.4);
+	box-shadow:inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+
 ul {
 	list-style-type: none;
 	margin:0;
@@ -47,7 +80,7 @@ ul {
 .h_navigation {
 	float:left;
 	width:500px;
-	margin-top:8px;
+	margin-top:10px;
 }
 .h_navigation li {
 	margin-right:10px;
@@ -70,7 +103,7 @@ ul {
 	padding:0px 15px;
 }
 .blackMenu a {
-	line-height:2.7em;
+	line-height:2.3em;
 }
 .g20 {
 	float:right;
@@ -93,6 +126,7 @@ input[type=text]:focus, input[type=password]:focus, textarea:focus, select:focus
 	-moz-box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 10px rgba(150, 216, 71, 0.6);
 	box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 10px rgba(150, 216, 71, 0.6);
 }
+
 label {
 	text-align:left;
 	margin-left:0;
@@ -144,8 +178,8 @@ ul#login {
 	overflow:hidden;
 	color:#fff;
 	text-decoration:none;
-	padding-left:10px;
-	padding-right:10px;
+	padding-left:28px;
+	padding-right:28px;
 }
 .sign {
 	float:left;
@@ -494,12 +528,7 @@ ul.tribbles {
 	margin-left:48px;
 	margin-top:10px;
 }
-.comment-body-image {
-	margin:10px 0;
-	max-width:360px;
-	overflow:hidden;
-	text-align:center;
-}
+
 .comment-date {
 	margin-left:46px;
 	color:#5D6167;
@@ -518,6 +547,12 @@ ul.tribbles {
 .rebound h4 {
 	font-size:13px;
 }
+.rebound h4 img{
+	margin-right:8px;
+	float:left;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;}
 .rebound-image {
 	margin-right:8px;
 	float:left;
@@ -527,10 +562,15 @@ ul.tribbles {
 }
 .rebound-title {
 	margin:0;
-	padding:0;
 	font-size: 1.2em;
 	color: #26282C;
 	font-weight: 700;
+	clear: rght;
+}
+.rebound .comment-body {
+	clear:both;
+	margin-left:48px;
+	margin-top:10px;
 }
 .comment-form {
 	clear:both;
@@ -538,6 +578,6 @@ ul.tribbles {
 .comment-form .e_wrap label {
 	width:100px;
 }
-.comment-form .e_wrap .btn {
+.comment-form .e_wrap .btn_success {
 	margin-left:115px
 }
