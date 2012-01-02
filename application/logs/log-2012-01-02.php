@@ -7773,3 +7773,187 @@ DEBUG - 2012-01-02 13:18:31 --> Language file loaded: language/english/profiler_
 DEBUG - 2012-01-02 13:18:31 --> Helper loaded: text_helper
 DEBUG - 2012-01-02 13:18:31 --> Final output sent to browser
 DEBUG - 2012-01-02 13:18:31 --> Total execution time: 0.3528
+DEBUG - 2012-01-02 13:26:55 --> Config Class Initialized
+DEBUG - 2012-01-02 13:26:55 --> Hooks Class Initialized
+DEBUG - 2012-01-02 13:26:55 --> Utf8 Class Initialized
+DEBUG - 2012-01-02 13:26:55 --> UTF-8 Support Enabled
+DEBUG - 2012-01-02 13:26:55 --> URI Class Initialized
+DEBUG - 2012-01-02 13:26:55 --> Router Class Initialized
+DEBUG - 2012-01-02 13:26:55 --> Output Class Initialized
+DEBUG - 2012-01-02 13:26:55 --> Security Class Initialized
+DEBUG - 2012-01-02 13:26:55 --> Input Class Initialized
+DEBUG - 2012-01-02 13:26:55 --> XSS Filtering completed
+DEBUG - 2012-01-02 13:26:55 --> XSS Filtering completed
+DEBUG - 2012-01-02 13:26:55 --> CRSF cookie Set
+DEBUG - 2012-01-02 13:26:56 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-02 13:26:56 --> Language Class Initialized
+DEBUG - 2012-01-02 13:26:56 --> Loader Class Initialized
+DEBUG - 2012-01-02 13:26:56 --> Helper loaded: url_helper
+DEBUG - 2012-01-02 13:26:56 --> Helper loaded: array_helper
+DEBUG - 2012-01-02 13:26:56 --> Helper loaded: form_helper
+DEBUG - 2012-01-02 13:26:56 --> Helper loaded: html_helper
+DEBUG - 2012-01-02 13:26:56 --> Helper loaded: security_helper
+DEBUG - 2012-01-02 13:26:56 --> Helper loaded: image_helper
+DEBUG - 2012-01-02 13:26:56 --> Helper loaded: date_helper
+DEBUG - 2012-01-02 13:26:56 --> Database Driver Class Initialized
+DEBUG - 2012-01-02 13:26:56 --> Session Class Initialized
+DEBUG - 2012-01-02 13:26:56 --> Helper loaded: string_helper
+DEBUG - 2012-01-02 13:26:56 --> Session routines successfully run
+DEBUG - 2012-01-02 13:26:56 --> Email Class Initialized
+DEBUG - 2012-01-02 13:26:56 --> Encrypt Class Initialized
+DEBUG - 2012-01-02 13:26:56 --> Upload Class Initialized
+DEBUG - 2012-01-02 13:26:56 --> Form Validation Class Initialized
+DEBUG - 2012-01-02 13:26:56 --> Pagination Class Initialized
+DEBUG - 2012-01-02 13:26:56 --> Form_validation class already loaded. Second attempt ignored.
+DEBUG - 2012-01-02 13:26:56 --> Controller Class Initialized
+DEBUG - 2012-01-02 13:26:56 --> Model Class Initialized
+DEBUG - 2012-01-02 13:26:56 --> Model Class Initialized
+DEBUG - 2012-01-02 13:26:56 --> Model Class Initialized
+DEBUG - 2012-01-02 13:26:56 --> File loaded: application/views/common/page_start.php
+DEBUG - 2012-01-02 13:26:56 --> File loaded: application/views/common/top_navigation.php
+DEBUG - 2012-01-02 13:26:56 --> File loaded: application/views/common/header.php
+DEBUG - 2012-01-02 13:26:56 --> File loaded: application/views/tribble/view.php
+DEBUG - 2012-01-02 13:26:56 --> File loaded: application/views/tribble/replyform.php
+DEBUG - 2012-01-02 13:26:56 --> File loaded: application/views/common/page_end.php
+DEBUG - 2012-01-02 13:26:56 --> Language file loaded: language/english/profiler_lang.php
+DEBUG - 2012-01-02 13:26:56 --> Helper loaded: text_helper
+DEBUG - 2012-01-02 13:26:56 --> Final output sent to browser
+DEBUG - 2012-01-02 13:26:56 --> Total execution time: 0.3462
+DEBUG - 2012-01-02 13:27:46 --> Config Class Initialized
+DEBUG - 2012-01-02 13:27:46 --> Hooks Class Initialized
+DEBUG - 2012-01-02 13:27:46 --> Utf8 Class Initialized
+DEBUG - 2012-01-02 13:27:46 --> UTF-8 Support Enabled
+DEBUG - 2012-01-02 13:27:46 --> URI Class Initialized
+DEBUG - 2012-01-02 13:27:46 --> Router Class Initialized
+DEBUG - 2012-01-02 13:27:46 --> Output Class Initialized
+DEBUG - 2012-01-02 13:27:46 --> Security Class Initialized
+DEBUG - 2012-01-02 13:27:46 --> Input Class Initialized
+DEBUG - 2012-01-02 13:27:46 --> XSS Filtering completed
+DEBUG - 2012-01-02 13:27:46 --> XSS Filtering completed
+DEBUG - 2012-01-02 13:27:46 --> CRSF cookie Set
+DEBUG - 2012-01-02 13:27:46 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-02 13:27:46 --> Language Class Initialized
+DEBUG - 2012-01-02 13:27:46 --> Loader Class Initialized
+DEBUG - 2012-01-02 13:27:46 --> Helper loaded: url_helper
+DEBUG - 2012-01-02 13:27:46 --> Helper loaded: array_helper
+DEBUG - 2012-01-02 13:27:46 --> Helper loaded: form_helper
+DEBUG - 2012-01-02 13:27:46 --> Helper loaded: html_helper
+DEBUG - 2012-01-02 13:27:46 --> Helper loaded: security_helper
+DEBUG - 2012-01-02 13:27:46 --> Helper loaded: image_helper
+DEBUG - 2012-01-02 13:27:46 --> Helper loaded: date_helper
+DEBUG - 2012-01-02 13:27:46 --> Database Driver Class Initialized
+DEBUG - 2012-01-02 13:27:46 --> Session Class Initialized
+DEBUG - 2012-01-02 13:27:46 --> Helper loaded: string_helper
+DEBUG - 2012-01-02 13:27:46 --> Session routines successfully run
+DEBUG - 2012-01-02 13:27:46 --> Email Class Initialized
+DEBUG - 2012-01-02 13:27:46 --> Encrypt Class Initialized
+DEBUG - 2012-01-02 13:27:46 --> Upload Class Initialized
+DEBUG - 2012-01-02 13:27:46 --> Form Validation Class Initialized
+DEBUG - 2012-01-02 13:27:46 --> Pagination Class Initialized
+DEBUG - 2012-01-02 13:27:46 --> Form_validation class already loaded. Second attempt ignored.
+DEBUG - 2012-01-02 13:27:46 --> Controller Class Initialized
+DEBUG - 2012-01-02 13:27:46 --> Model Class Initialized
+DEBUG - 2012-01-02 13:27:46 --> Model Class Initialized
+DEBUG - 2012-01-02 13:27:46 --> Model Class Initialized
+DEBUG - 2012-01-02 13:27:46 --> File loaded: application/views/common/page_start.php
+DEBUG - 2012-01-02 13:27:46 --> File loaded: application/views/common/top_navigation.php
+DEBUG - 2012-01-02 13:27:46 --> File loaded: application/views/common/header.php
+DEBUG - 2012-01-02 13:27:46 --> File loaded: application/views/tribble/view.php
+DEBUG - 2012-01-02 13:27:46 --> File loaded: application/views/tribble/replyform.php
+DEBUG - 2012-01-02 13:27:46 --> File loaded: application/views/common/page_end.php
+DEBUG - 2012-01-02 13:27:46 --> Language file loaded: language/english/profiler_lang.php
+DEBUG - 2012-01-02 13:27:46 --> Helper loaded: text_helper
+DEBUG - 2012-01-02 13:27:46 --> Final output sent to browser
+DEBUG - 2012-01-02 13:27:46 --> Total execution time: 0.3675
+DEBUG - 2012-01-02 13:28:30 --> Config Class Initialized
+DEBUG - 2012-01-02 13:28:30 --> Hooks Class Initialized
+DEBUG - 2012-01-02 13:28:30 --> Utf8 Class Initialized
+DEBUG - 2012-01-02 13:28:30 --> UTF-8 Support Enabled
+DEBUG - 2012-01-02 13:28:30 --> URI Class Initialized
+DEBUG - 2012-01-02 13:28:30 --> Router Class Initialized
+DEBUG - 2012-01-02 13:28:30 --> Output Class Initialized
+DEBUG - 2012-01-02 13:28:30 --> Security Class Initialized
+DEBUG - 2012-01-02 13:28:30 --> Input Class Initialized
+DEBUG - 2012-01-02 13:28:30 --> XSS Filtering completed
+DEBUG - 2012-01-02 13:28:30 --> XSS Filtering completed
+DEBUG - 2012-01-02 13:28:30 --> CRSF cookie Set
+DEBUG - 2012-01-02 13:28:30 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-02 13:28:30 --> Language Class Initialized
+DEBUG - 2012-01-02 13:28:30 --> Loader Class Initialized
+DEBUG - 2012-01-02 13:28:30 --> Helper loaded: url_helper
+DEBUG - 2012-01-02 13:28:30 --> Helper loaded: array_helper
+DEBUG - 2012-01-02 13:28:30 --> Helper loaded: form_helper
+DEBUG - 2012-01-02 13:28:30 --> Helper loaded: html_helper
+DEBUG - 2012-01-02 13:28:30 --> Helper loaded: security_helper
+DEBUG - 2012-01-02 13:28:30 --> Helper loaded: image_helper
+DEBUG - 2012-01-02 13:28:30 --> Helper loaded: date_helper
+DEBUG - 2012-01-02 13:28:30 --> Database Driver Class Initialized
+DEBUG - 2012-01-02 13:28:30 --> Session Class Initialized
+DEBUG - 2012-01-02 13:28:30 --> Helper loaded: string_helper
+DEBUG - 2012-01-02 13:28:30 --> Session routines successfully run
+DEBUG - 2012-01-02 13:28:30 --> Email Class Initialized
+DEBUG - 2012-01-02 13:28:30 --> Encrypt Class Initialized
+DEBUG - 2012-01-02 13:28:30 --> Upload Class Initialized
+DEBUG - 2012-01-02 13:28:30 --> Form Validation Class Initialized
+DEBUG - 2012-01-02 13:28:30 --> Pagination Class Initialized
+DEBUG - 2012-01-02 13:28:30 --> Form_validation class already loaded. Second attempt ignored.
+DEBUG - 2012-01-02 13:28:30 --> Controller Class Initialized
+DEBUG - 2012-01-02 13:28:30 --> Model Class Initialized
+DEBUG - 2012-01-02 13:28:30 --> Model Class Initialized
+DEBUG - 2012-01-02 13:28:30 --> Model Class Initialized
+DEBUG - 2012-01-02 13:28:30 --> File loaded: application/views/common/page_start.php
+DEBUG - 2012-01-02 13:28:30 --> File loaded: application/views/common/top_navigation.php
+DEBUG - 2012-01-02 13:28:30 --> File loaded: application/views/common/header.php
+DEBUG - 2012-01-02 13:28:30 --> File loaded: application/views/tribble/view.php
+DEBUG - 2012-01-02 13:28:30 --> File loaded: application/views/tribble/replyform.php
+DEBUG - 2012-01-02 13:28:30 --> File loaded: application/views/common/page_end.php
+DEBUG - 2012-01-02 13:28:30 --> Language file loaded: language/english/profiler_lang.php
+DEBUG - 2012-01-02 13:28:30 --> Helper loaded: text_helper
+DEBUG - 2012-01-02 13:28:30 --> Final output sent to browser
+DEBUG - 2012-01-02 13:28:30 --> Total execution time: 0.3561
+DEBUG - 2012-01-02 13:28:54 --> Config Class Initialized
+DEBUG - 2012-01-02 13:28:54 --> Hooks Class Initialized
+DEBUG - 2012-01-02 13:28:54 --> Utf8 Class Initialized
+DEBUG - 2012-01-02 13:28:54 --> UTF-8 Support Enabled
+DEBUG - 2012-01-02 13:28:54 --> URI Class Initialized
+DEBUG - 2012-01-02 13:28:55 --> Router Class Initialized
+DEBUG - 2012-01-02 13:28:55 --> Output Class Initialized
+DEBUG - 2012-01-02 13:28:55 --> Security Class Initialized
+DEBUG - 2012-01-02 13:28:55 --> Input Class Initialized
+DEBUG - 2012-01-02 13:28:55 --> XSS Filtering completed
+DEBUG - 2012-01-02 13:28:55 --> XSS Filtering completed
+DEBUG - 2012-01-02 13:28:55 --> CRSF cookie Set
+DEBUG - 2012-01-02 13:28:55 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-02 13:28:55 --> Language Class Initialized
+DEBUG - 2012-01-02 13:28:55 --> Loader Class Initialized
+DEBUG - 2012-01-02 13:28:55 --> Helper loaded: url_helper
+DEBUG - 2012-01-02 13:28:55 --> Helper loaded: array_helper
+DEBUG - 2012-01-02 13:28:55 --> Helper loaded: form_helper
+DEBUG - 2012-01-02 13:28:55 --> Helper loaded: html_helper
+DEBUG - 2012-01-02 13:28:55 --> Helper loaded: security_helper
+DEBUG - 2012-01-02 13:28:55 --> Helper loaded: image_helper
+DEBUG - 2012-01-02 13:28:55 --> Helper loaded: date_helper
+DEBUG - 2012-01-02 13:28:55 --> Database Driver Class Initialized
+DEBUG - 2012-01-02 13:28:55 --> Session Class Initialized
+DEBUG - 2012-01-02 13:28:55 --> Helper loaded: string_helper
+DEBUG - 2012-01-02 13:28:55 --> Session routines successfully run
+DEBUG - 2012-01-02 13:28:55 --> Email Class Initialized
+DEBUG - 2012-01-02 13:28:55 --> Encrypt Class Initialized
+DEBUG - 2012-01-02 13:28:55 --> Upload Class Initialized
+DEBUG - 2012-01-02 13:28:55 --> Form Validation Class Initialized
+DEBUG - 2012-01-02 13:28:55 --> Pagination Class Initialized
+DEBUG - 2012-01-02 13:28:55 --> Form_validation class already loaded. Second attempt ignored.
+DEBUG - 2012-01-02 13:28:55 --> Controller Class Initialized
+DEBUG - 2012-01-02 13:28:55 --> Model Class Initialized
+DEBUG - 2012-01-02 13:28:55 --> Model Class Initialized
+DEBUG - 2012-01-02 13:28:55 --> Model Class Initialized
+DEBUG - 2012-01-02 13:28:55 --> File loaded: application/views/common/page_start.php
+DEBUG - 2012-01-02 13:28:55 --> File loaded: application/views/common/top_navigation.php
+DEBUG - 2012-01-02 13:28:55 --> File loaded: application/views/common/header.php
+DEBUG - 2012-01-02 13:28:55 --> File loaded: application/views/tribble/view.php
+DEBUG - 2012-01-02 13:28:55 --> File loaded: application/views/tribble/replyform.php
+DEBUG - 2012-01-02 13:28:55 --> File loaded: application/views/common/page_end.php
+DEBUG - 2012-01-02 13:28:55 --> Language file loaded: language/english/profiler_lang.php
+DEBUG - 2012-01-02 13:28:55 --> Helper loaded: text_helper
+DEBUG - 2012-01-02 13:28:55 --> Final output sent to browser
+DEBUG - 2012-01-02 13:28:55 --> Total execution time: 0.3504
