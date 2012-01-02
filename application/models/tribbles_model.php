@@ -163,12 +163,15 @@ class Tribbles_model extends CI_Model {
         return $result;
       } else {
         $this->db->trans_commit();
-        return true;
+        return $tribbleid;
       }
     }
               
+    function reply($tribble_id){
+      //$this->
+    }
     
-    function getTribble($tribble){      
+    function getTribble($tribble_id){      
       $this->db->select('
         tr_tribbles.tribble_id AS id,
         tr_tribbles.tribble_title AS title,
@@ -177,43 +180,40 @@ class Tribbles_model extends CI_Model {
         COUNT(tr_likes.like_id) AS likes,
         tr_images.image_path as image,
         tr_images.image_palette as palette,
-        tr_tags.tags_content as tags
+        tr_tags.tags_content as tags,
+        tr_users.user_id as userid,
+        tr_users.user_realname username
       ');
       $this->db->from('tr_tribbles');
       $this->db->join('tr_likes','tr_tribbles.tribble_id = tr_likes.like_tribble_id','inner');
       $this->db->join('tr_images','tr_tribbles.tribble_id = tr_images.image_tribble_id','inner');
       $this->db->join('tr_tags','tr_tribbles.tribble_id = tr_tags.tags_tribble_id','inner');
-      $this->db->where('tr_tribbles.tribble_id',$tribble);
+      $this->db->join('tr_users','tr_tribbles.tribble_user_id = tr_users.user_id');
+      $this->db->where('tr_tribbles.tribble_id',$tribble_id);
       $this->db->group_by('
         tr_tribbles.tribble_id,
         tr_tribbles.tribble_title,
         tr_tribbles.tribble_text,
         tr_tribbles.tribble_timestamp,
         tr_images.image_path,
-        tr_images.image_palette
+        tr_images.image_palette,
+        tr_users.user_id,
+        tr_users.user_realname
       ');
       $query = $this->db->get();            
       $result = $query->result();
       return $result;
     }
     
-    function getReplies($tribble,$currentPage=0){
+    function getReplies($tribble_id,$currentPage=0){
       $repliesPerPage = 10;
       $page = $repliesPerPage * $currentPage;
-      $query = $this->db->get_where('replies','reply_tribble_id = '.$tribble,$repliesPerPage,$page);
+      $query = $this->db->get_where('replies','reply_tribble_id = '.$tribble_id,$repliesPerPage,$page);
       return $query->result();            
     }
     
-    function deletePost(){
-      
-    }
-    
-    function reply(){
-      
-    }
-    
-    function rebound(){
-      
+    function like(){
+            
     }
     
             
