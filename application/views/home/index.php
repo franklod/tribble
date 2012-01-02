@@ -18,7 +18,7 @@
         <?=$tribble->likes?></a>likes
       </p>     
       </div>
-      <p class="tribble-user-info"><?=$tribble->user?></p>  
+      <p class="tribble-user-info"><a href="/"><img name="avatar" src="" width="18" height="18" alt=""/><?=$tribble->user?></a></p>  
       </div>  
     </li>  
   <? endforeach; ?>
