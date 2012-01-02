@@ -9,6 +9,7 @@ class User extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->output->enable_profiler(TRUE);
     }
 
     public function index()
@@ -51,7 +52,7 @@ class User extends CI_Controller
         $data['meta_description'] = 'A design content sharing and discussion tool.';
         $data['meta_keywords'] = 'Tribble';
 
-        if($this->form_validation->run('register') == false) {
+        if($this->form_validation->run('signup') == false) {
 
             $this->load->view('common/page_start.php', $data);
             $this->load->view('common/top_navigation.php', $data);

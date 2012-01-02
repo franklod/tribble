@@ -243,7 +243,7 @@ ul.tribbles {
 	overflow:hidden;
 	height:19px;
 }
-.tribble-tools .ico a {
+.tribble-tools .ico a, .tribble-tools .ico span {
 	padding:3px 5px;
 	color: #5d6167;
 	display:block;
@@ -251,10 +251,10 @@ ul.tribbles {
 	text-decoration:none;
 	text-indent:12px;
 }
-.ico a.comments {
+.ico .comments {
 	background:url(../images/icons.png) 0 0 no-repeat scroll;
 }
-.ico a.likes {
+.ico .likes {
 	background:url(../images/icons.png) 0 -18px no-repeat scroll;
 }
 .tribble-tools .ico a:hover {

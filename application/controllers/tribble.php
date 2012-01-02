@@ -15,14 +15,22 @@ class Tribble extends CI_Controller {
   public function __construct()
   {
       parent::__construct();
-      //$this->output->enable_profiler(TRUE);
+      $this->output->enable_profiler(TRUE);      
   }
 
 	public function index()
 	{
     $data['title'] = 'Tribble - Home';
     $data['meta_description'] = 'A design content sharing and discussion tool.';
-    $data['meta_keywords'] = 'Tribble';    
+    $data['meta_keywords'] = 'Tribble';
+    
+    if($uid = $this->session->userdata('uid')){
+      $this->load->model('User_model','uModel');
+      $user = $this->uModel->getUserData($uid);
+      $data['user'] = $user[0];            
+    }
+    
+        
 
     $this->load->model('Tribbles_model','trModel');
     $tribble_list = $this->trModel->getNewer();
@@ -47,7 +55,13 @@ class Tribble extends CI_Controller {
 	{
     $data['title'] = 'Tribble - Home';
     $data['meta_description'] = 'A design content sharing and discussion tool.';
-    $data['meta_keywords'] = 'Tribble';    
+    $data['meta_keywords'] = 'Tribble';
+    
+    if($uid = $this->session->userdata('uid')){
+      $this->load->model('User_model','uModel');
+      $user = $this->uModel->getUserData($uid);
+      $data['user'] = $user[0];
+    }        
 
     $this->load->model('Tribbles_model','trModel');
     $tribble_list = $this->trModel->getBuzzing();
@@ -74,6 +88,12 @@ class Tribble extends CI_Controller {
     $data['meta_description'] = 'A design content sharing and discussion tool.';
     $data['meta_keywords'] = 'Tribble';    
 
+    if($uid = $this->session->userdata('uid')){
+      $this->load->model('User_model','uModel');
+      $user = $this->uModel->getUserData($uid);
+      $data['user'] = $user[0];
+    }
+
     $this->load->model('Tribbles_model','trModel');
     $tribble_list = $this->trModel->getLoved();
     
@@ -93,7 +113,13 @@ class Tribble extends CI_Controller {
     $this->load->view('common/page_end.php',$data); 
 	}
   
-  public function view($tribble){       
+  public function view($tribble){
+    
+    if($uid = $this->session->userdata('uid')){
+      $this->load->model('User_model','uModel');
+      $user = $this->uModel->getUserData($uid);
+      $data['user'] = $user[0];
+    }    
     
     $this->load->model('Tribbles_model','trModel');
     
@@ -129,68 +155,106 @@ class Tribble extends CI_Controller {
     }
   }
   
-  public function upload(){
+  function upload(){
+    $data['title'] = 'Tribble - Upload';
+    $data['meta_description'] = 'A design content sharing and discussion tool.';
+    $data['meta_keywords'] = 'Tribble';
+    
+    if($uid = $this->session->userdata('uid')){
+      // user is logged in: get and show user profile link
+      $this->load->model('User_model','uModel');
+      $user = $this->uModel->getUserData($uid);
+      $data['user'] = $user[0];
+      
+      $this->load->view('common/page_start.php',$data);
+      $this->load->view('common/top_navigation.php',$data);
+      $this->load->view('common/header.php',$data);
+  		$this->load->view('tribble/upload.php',$data);
+      $this->load->view('common/page_end.php',$data); 
+      
+    } else {
+      // user is not logged in: redirect to login form
+      redirect('/auth/login/'.str_replace('/','-',uri_string()));
+    } 
           
-   if(!$this->session->userdata('unique')){
-    redirect('/auth/login/'.str_replace('/','-',uri_string()));
-   } else {
-    // check if the form was posted          
-    if(isset($_POST['createTribble'])){
-      
-      // get the uid from the session data and hash it to be used as the user upload folder name       
-      $user_hash = do_hash($this->session->userdata('unique'));
-      
-      // load the tribble model
-      $this->load->model('Tribbles_model','trModel');           
-        
-      // set the upload configuration
-      $ulConfig['upload_path'] = './data/'.$user_hash.'/';
-  		$ulConfig['allowed_types'] = 'jpg|png';
-  		$ulConfig['max_width']  = '400';
-  		$ulConfig['max_height']  = '300';
-      
-      // load the file uploading lib and initialize
-  		$this->load->library('upload', $ulConfig);
-      $this->upload->initialize($ulConfig);
-      
-      // check if upload was successful and react        
-      if (!$this->upload->do_upload('image')){                  
-  			$error = array('error' => $this->upload->display_errors());
-  		} else {
-  			$data = array('upload_data' => $this->upload->data());       
-        // set the data to write in db;
-        $imgdata = array('image_path'=>substr($ulConfig['upload_path'].$data['upload_data']['file_name'],1),'image_palette'=>json_encode(getImageColorPalette($data['upload_data']['full_path'])));
-        
-        $config['image_library'] = 'gd2'; 
-        $config['source_image'] = $ulConfig['upload_path'].$data['upload_data']['file_name'];	
-        $config['create_thumb'] = TRUE; 
-        $config['maintain_ratio'] = TRUE; 
-        $config['width'] = 200; 
-        $config['height'] = 150; 
-        
-        $this->load->library('image_lib', $config); 
-        $this->image_lib->resize();
-        
-        if(!$result = $this->trModel->createNewTribble($imgdata)){
-          $data['error'] = $result->error;  
-        } else {
-          $data['success'] = "YAY!";
-        }        
-		  }
-                                     
-    }
+  }    
+  
+  public function doupload(){
     
     $data['title'] = 'Tribble - Upload';
     $data['meta_description'] = 'A design content sharing and discussion tool.';
     $data['meta_keywords'] = 'Tribble';
     
-    $this->load->view('common/page_start.php',$data);
-    $this->load->view('common/top_navigation.php',$data);
-    $this->load->view('common/header.php',$data);
-		$this->load->view('tribble/upload.php',$data);
-    $this->load->view('common/page_end.php',$data);        
-       
-   }
+    $this->form_validation->set_error_delimiters('<p class="help">', '</p>');
+
+    if($uid = $this->session->userdata('uid')){
+      // user is logged in: get and show user profile link
+      $this->load->model('User_model','uModel');
+      $user = $this->uModel->getUserData($uid);
+      $data['user'] = $user[0];
+      
+      // check form submission and validate
+      if($this->form_validation->run('upload_image') == false){
+              echo "form validation failed";
+        // form has errors: show page and errors
+        $this->load->view('common/page_start.php',$data);
+        $this->load->view('common/top_navigation.php',$data);
+        $this->load->view('common/header.php',$data);
+    		$this->load->view('tribble/upload.php',$data);
+        $this->load->view('common/page_end.php',$data);          
+      } else {
+        // form validation passed: proceed to upload and save image file and  tribble data
+        
+        // get the uid from the session data and hash it to be used as the user upload folder name       
+        $user_hash = do_hash($this->session->userdata('unique'));
+        
+        // load the tribble model
+        $this->load->model('Tribbles_model','trModel');           
+          
+        // set the upload configuration
+        $ulConfig['upload_path'] = './data/'.$user_hash.'/';
+    		$ulConfig['allowed_types'] = 'jpg|png';
+    		$ulConfig['max_width']  = '400';
+    		$ulConfig['max_height']  = '300';
+        
+        // load the file uploading lib and initialize
+    		$this->load->library('upload', $ulConfig);
+        $this->upload->initialize($ulConfig);
+        
+        // check if upload was successful and react        
+        if (!$this->upload->do_upload('image_file')){                  
+    			$error = array('error' => $this->upload->display_errors());
+    		} else {
+    			$data = array('upload_data' => $this->upload->data());       
+          // set the data to write in db;
+          $imgdata = array('image_path'=>substr($ulConfig['upload_path'].$data['upload_data']['file_name'],1),'image_palette'=>json_encode(getImageColorPalette($data['upload_data']['full_path'])));
+          
+          $config['image_library'] = 'gd2'; 
+          $config['source_image'] = $ulConfig['upload_path'].$data['upload_data']['file_name'];	
+          $config['create_thumb'] = TRUE; 
+          $config['maintain_ratio'] = TRUE; 
+          $config['width'] = 200; 
+          $config['height'] = 150; 
+          
+          $this->load->library('image_lib', $config); 
+          $this->image_lib->resize();
+          
+          if(!$result = $this->trModel->createNewTribble($imgdata)){
+            $data['error'] = $result->error;
+            $this->load->view('common/page_start.php',$data);
+            $this->load->view('common/top_navigation.php',$data);
+            $this->load->view('common/header.php',$data);
+        		$this->load->view('tribble/upload.php',$data);
+            $this->load->view('common/page_end.php',$data);  
+          } else {
+            redirect('/tribble/view/'.$result);
+          }        
+  		  }                
+      }      
+    } else {
+      // user is not logged in: redirect to login form
+      redirect('/auth/login/'.str_replace('/','-',uri_string()));
+    }                                                      
   }
         
 }

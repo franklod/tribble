@@ -22,24 +22,19 @@
         'rules' => 'required'
       )  
     ),
-    'upload' => array(
+    'upload_image' => array(
       array(
-        'field' => 'imagefile',
-        'label' => 'Image file',
+        'field' => 'title',
+        'label' => 'Title',
         'rules' => 'required'
       ),
       array(
-        'field' => 'trTitle',
-        'label' => 'Title',
-        'rules' => 'required|min_length[6]'
-      ),
-      array(
-        'field' => 'trText',
+        'field' => 'text',
         'label' => 'Description',
         'rules' => 'required'
       ),
       array(
-        'field' => 'trTags',
+        'field' => 'tags',
         'label' => 'Tags',
         'rules' => 'required'
       ) 

@@ -1,7 +1,7 @@
 <div class="g75">
   <div class="tribble-container" >
     <div class="tribble-user-info">
-      <p><span><img src="" width="42" height="42" /> </span><a href="/">user name</a></p>
+      <p><span><img src="" width="42" height="42" /></span><a href="<?=site_url('user/view/'.$tribble->userid)?>"><?=$tribble->username?></a></p>
     </div>
     <div class="tribble-img-container box"> <img src="<?=$tribble->image?>" /></div>
     <div class="tribble-img-data">
