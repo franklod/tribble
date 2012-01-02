@@ -38,7 +38,7 @@
       <ul class="color-scheme">
         <? $colors = json_decode($tribble->palette) ?>
         <? foreach($colors as $key => $color):?>
-        <li style="background: <?=$color?>"><a href="/">
+        <li style="background: #<?=$color?>"><a href="/" title="<?=$color?>">
           <?=$color?>
           </a></li>
         <? endforeach; ?>
@@ -82,5 +82,8 @@
       </ul>
       <?endif;?>
     </div>
-  </div>
+    <?if($this->session->userdata('uid')):?>    
+    <? $this->load->view('tribble/replyform.php'); ?>
+  <?endif;?>
+  </div>  
 </div>

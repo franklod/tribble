@@ -204,8 +204,8 @@ class Tribbles_model extends CI_Model {
     function getReplies($tribble_id,$currentPage=0){
       $repliesPerPage = 10;
       $page = $repliesPerPage * $currentPage;
-      $query = $this->db->get_where('tribbles','tribble_parent_id = '.$tribble_id,$repliesPerPage,$page);
-      return $query->result();            
+      //$query = $this->db->get_where('tribbles','tribble_parent_id = '.$tribble_id,$repliesPerPage,$page);
+      //return $query->result();            
     }
     
     function addLike($tribble_id,$uid){

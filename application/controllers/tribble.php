@@ -15,7 +15,7 @@ class Tribble extends CI_Controller {
   public function __construct()
   {
       parent::__construct();
-      $this->output->enable_profiler(TRUE);      
+      //$this->output->enable_profiler(TRUE);      
   }
 
 	public function index()
@@ -136,10 +136,7 @@ class Tribble extends CI_Controller {
     $this->load->view('common/page_start.php',$data);
     $this->load->view('common/top_navigation.php',$data);
     $this->load->view('common/header.php',$data);
-		$this->load->view('tribble/view.php',$data);
-    if($this->session->userdata('unique')){    
-      $this->load->view('tribble/replyform.php',$data);
-    }
+		$this->load->view('tribble/view.php',$data);    
     $this->load->view('common/page_end.php',$data);         
   }
   
