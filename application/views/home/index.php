@@ -12,7 +12,6 @@
         <img src="<?=getThumb($tribble->image)?>" width="195" height="146" alt="<?=$tribble->title?>" />
       </div>
       <div class="tribble-tools">
- 
         <p class="ico"><span class="comments"><?=$tribble->comments?></span>Comments</p>
         <p class="ico"><span class="likes"><?=$tribble->likes?></span>likes</p>     
       </div>
