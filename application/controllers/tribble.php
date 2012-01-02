@@ -15,7 +15,7 @@ class Tribble extends CI_Controller {
   public function __construct()
   {
       parent::__construct();
-      //$this->output->enable_profiler(TRUE);      
+      $this->output->enable_profiler(TRUE);      
   }
 
 	public function index()
@@ -35,9 +35,9 @@ class Tribble extends CI_Controller {
     $this->load->model('Tribbles_model','trModel');
     $tribble_list = $this->trModel->getNewer();
     
-    //print_r($tribble_list);
-    
-    //foreach($tribble_list as $tribble){
+//    print_r($tribble_list);
+//    
+//    foreach($tribble_list as $tribble){
 //      echo "<pre>";
 //      print_r($tribble);
 //      echo "</pre>";
@@ -126,6 +126,7 @@ class Tribble extends CI_Controller {
     $replyData = $this->trModel->getReplies($tribble);
         
     $data['tribble'] = $tribbleData[0];
+    
     $data['replies'] = $replyData;
     
     $data['title'] = 'Tribble - ' . $data['tribble']->title;
@@ -250,6 +251,11 @@ class Tribble extends CI_Controller {
       // user is not logged in: redirect to login form
       redirect('/auth/login/'.str_replace('/','-',uri_string()));
     }                                                      
+  }
+  
+  public function like($tribble_id){
+    $this->load->model('Tribbles_model','trModel');
+    //$this->trModel->li
   }
         
 }

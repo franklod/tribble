@@ -12,10 +12,10 @@
         <img src="<?=getThumb($tribble->image)?>" width="195" height="146" alt="<?=$tribble->title?>" />
       </div>
       <div class="tribble-tools">
-        <p class="ico"><span class="comments"><?=$tribble->comments?></span>Comments</p>
-        <p class="ico"><span class="likes"><?=$tribble->likes?></span>likes</p>     
+        <p class="ico"><a href="" class="comments"><?=$tribble->replies?></a>Comments</p>
+        <p class="ico"><a href="" class="likes"><?=$tribble->likes?></a>likes</p>     
       </div>
-      <div class="tribble-user-info"><a href="/"><img name="avatar" src="" width="18" height="18" alt=""/><?=$tribble->user?></a></div>  
+      <div class="tribble-user-info"><a href="/"><img name="avatar" src="" width="18" height="18" alt=""/><?=$tribble->username?></a></div>  
       </div>  
     </li>  
   <? endforeach; ?>
