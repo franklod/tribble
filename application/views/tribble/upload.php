@@ -13,22 +13,26 @@
 <? endif;?>
 <?=form_fieldset('',array('class'=>'box g70'))?>
 <p class="note"><strong>Note:</strong> image size is restricted to 400 x 300 pixels.</p>
-<?=form_open_multipart('/tribble/upload')?>
-<div class="e_wrap">
-<?=form_label('Image','image')?>
-<?=form_upload(array('name'=>'image','id'=>'image'))?>
+<?=form_open_multipart('/tribble/doupload')?>
+<div class="e_wrap <?=(form_error('image_file') == TRUE) ? 'error' : ''; ?>">
+<?=form_label('Image','image_file')?>
+<?=form_upload(array('name'=>'image_file','id'=>'image_file','value'=>set_value('image_file')))?>
+<?=(form_error('image_file') == TRUE) ? form_error('image_file') : ''; ?>
 </div>
-<div class="e_wrap">
+<div class="e_wrap <?=(form_error('title') == TRUE) ? 'error' : ''; ?>">
 <?=form_label('Title','title')?>
-<?=form_input(array('name'=>'title','id'=>'title','placeholder'=>'Give your work a nice title'))?>
+<?=form_input(array('name'=>'title','id'=>'title','placeholder'=>'Give your work a nice title','value'=>set_value('title')))?>
+<?=(form_error('title') == TRUE) ? form_error('title') : ''; ?>
 </div>
-<div class="e_wrap">
+<div class="e_wrap <?=(form_error('text') == TRUE) ? 'error' : ''; ?>">
 <?=form_label('Description','text')?>
-<?=form_textarea(array('name'=>'text','id'=>'text','placeholder'=>'Write a short comment or description about your work'))?>
+<?=form_textarea(array('name'=>'text','id'=>'text','placeholder'=>'Write a short comment or description about your work','value'=>set_value('text')))?>
+<?=(form_error('text') == TRUE) ? form_error('text') : ''; ?>
 </div>
-<div class="e_wrap">
+<div class="e_wrap <?=(form_error('tags') == TRUE) ? 'error' : ''; ?>">
 <?=form_label('Tags','tags')?>
-<?=form_input(array('name'=>'tags','id'=>'tags','placeholder'=>'Use comma separated expressions to tag your work'))?>
+<?=form_input(array('name'=>'tags','id'=>'tags','placeholder'=>'Use comma separated expressions to tag your work','value'=>set_value('tags')))?>
+<?=(form_error('tags') == TRUE) ? form_error('tags') : ''; ?>
 </div>
 <div class="e_wrap txtRight">
 <?=form_submit(array('name'=>'createTribble','id'=>'createTribble','value'=>'Create Tribble','class'=>'btn_success'))?>
