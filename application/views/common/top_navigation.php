@@ -15,7 +15,7 @@ if($this->session->userdata('uid')){
 <div id="topNavigation" class="blackMenu">
 <ul class="h_navigation">
 <? foreach($pages as $page): ?>
-  <? if(current_url() == site_url()."/".$page->uri): ?>    
+  <? if(current_url() == site_url().$page->uri || current_url() == site_url().'/'.$page->uri): ?>    
   <li class="active"><a href="<?=site_url()."/".$page->uri?>"><?=$page->text?></a></li>
   <? else: ?>
   <li><a href="<?=site_url()."/".$page->uri?>"><?=$page->text?></a></li>
@@ -28,3 +28,4 @@ if($this->session->userdata('uid')){
   </form>
 </div>
 </div>
+
