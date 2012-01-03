@@ -50,35 +50,44 @@
       <p>no comments yet</p>
       <?else:?>
       <ul id="comments">
+        <?foreach($replies as $reply):?>
+        <? if($reply->comment_text):?>
         <li class="response">
-          <h4><a href="/"><img src="http://tribble.local/data/b5e0eaebec229148d61d1881b27d1865e1bb5003/dispic2_thumb.jpg"  width="42" height="42"/>Username</a> </h4>
+          <h4><a href="/user/<?=$reply->com_userid?>"><img src="http://tribble.local/data/b5e0eaebec229148d61d1881b27d1865e1bb5003/dispic2_thumb.jpg"  width="42" height="42"/><?=$reply->com_username?></a> </h4>
           <div class="comment-body">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<a href="/"> Ut enim ad minim veniam, </a>quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+            <p><?=$reply->comment_text?></p>
           </div>
-          <div class="tribble-tools">
-            <p class="ico"><a href="/" class="comments">15</a>comments</p>
-            <p class="ico"><a href="/" class="likes">20</a>likes</p>
+          <!--
+<div class="tribble-tools">
+            <p class="ico"><a href="/" class="comments">15</a></p>
+            <p class="ico"><a href="/" class="likes">20</a>likes</p
           </div>
-          <p class="comment-date">10 days ago</p>
+-->
+          <p class="comment-date"><?=when(mysql_to_unix($reply->ts))?></p>
         </li>
         <hr />
-<li class="rebound">
+        <? else: ?>
+          <li class="rebound">
             <h4><a href="/"><img src="http://tribble.local/data/b5e0eaebec229148d61d1881b27d1865e1bb5003/dispic2_thumb.jpg" width="42" height="42"/></a> </h4>
-            <div class="rebound-image"><a href="/"><img src="http://tribble.local/data/b5e0eaebec229148d61d1881b27d1865e1bb5003/dispic2_thumb.jpg" width="74" height="49" class="box"/></a></div>
+            <div class="rebound-image"><a href="<?=site_url('/tribble/view/'.$reply->reb_id)?>"><img src="<?=$reply->image?>" width="74" height="49" class="box"/></a></div>
             <div class="rebound-title">
-              <h2>twitter app iOS</h2>
-              <h4><a href="/">Username</a></h4>
+              <h2><?=$reply->reb_title?></h2>
+              <h4><a href="/"><?=$reply->reb_username?></a></h4>
             </div>
             <div class="comment-body">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<a href="/"> Ut enim ad minim veniam, </a>quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+              <p><?=$reply->reb_text?></p>
             </div>
-            <div class="tribble-tools">
+            <!--
+<div class="tribble-tools">
             <p class="ico"><a href="/" class="comments">15</a></p>
             <p class="ico"><a href="/" class="likes">20</a>likes</p>
           </div>
-                      <p class="comment-date">10 days ago</p>
-
+-->
+          <p class="comment-date"><?=when(mysql_to_unix($reply->ts))?></p>
           </li>
+          <hr />
+        <? endif; ?>
+        <?endforeach;?>                      
       </ul>
       <?endif;?>
     </div>

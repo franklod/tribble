@@ -129,6 +129,10 @@ class Tribble extends CI_Controller {
     
     $data['replies'] = $replyData;
     
+    //echo "<pre>";
+    //print_r($replyData);
+    //echo "</pre>";
+    
     $data['title'] = 'Tribble - ' . $data['tribble']->title;
     $data['meta_description'] = $data['tribble']->title;
     $data['meta_keywords'] = $data['tribble']->tags;
