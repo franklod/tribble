@@ -249,8 +249,23 @@ class Tribbles_model extends CI_Model {
       return $result;                  
     }
     
-    function addLike($tribble_id,$uid){
-            
+    function addComment($tribble_id,$uid){
+      
+      $comment = array(
+       'comment_text' => $this->input->post('text'),
+       'comment_user_id' => $uid
+      );
+      
+      if(!$this->db->insert('comments',$comment)){
+        return false;
+      } else { 
+        $comment_id = $this->db->insert_id();
+      }            
+      if(!$this->db->insert('replies_ref',array('ref_tribble_id'=>$tribble_id,'ref_comment_id'=>$comment_id))){
+        return false;        
+      } else {
+        return true;
+      }                           
     }
     
             
