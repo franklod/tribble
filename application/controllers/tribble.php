@@ -258,6 +258,12 @@ class Tribble extends CI_Controller {
     $this->load->model('Tribbles_model','trModel');
     //$this->trModel->li
   }
+  
+  public function comment($tribbleid){
+    $this->load->model('Tribbles_model','trModel');
+    $comment = $this->trModel->addComment($tribbleid,$this->session->userdata('uid'));
+    redirect('/tribble/view/'.$tribbleid);          
+  }
         
 }
 
