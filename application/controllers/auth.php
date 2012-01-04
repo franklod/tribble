@@ -26,9 +26,7 @@ class Auth extends CI_Controller
         $this->form_validation->set_error_delimiters('<p class="help">', '</p>');
 
         if($this->form_validation->run('login') == false) {
-            $this->load->view('common/page_start.php', $data);
-            $this->load->view('common/top_navigation.php', $data);
-            $this->load->view('common/header.php', $data);
+            $this->load->view('common/page_top.php', $data);            
             $this->load->view('user/login.php', $data);
             $this->load->view('common/page_end.php', $data);
         } else {            
@@ -39,9 +37,7 @@ class Auth extends CI_Controller
                 redirect($redirectUrl);
             } else {
                 $data['error'] = "Oops. It seems you have the wrong email, password or both. Try again sucker!";
-                $this->load->view('common/page_start.php', $data);
-                $this->load->view('common/top_navigation.php', $data);
-                $this->load->view('common/header.php', $data);
+                $this->load->view('common/page_top.php', $data);
                 $this->load->view('user/login.php', $data);
                 $this->load->view('common/page_end.php', $data);
             }

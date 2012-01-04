@@ -37,9 +37,7 @@ class User extends CI_Controller
         $data['meta_description'] = 'A design content sharing and discussion tool.';
         $data['meta_keywords'] = 'Tribble';
 
-        $this->load->view('common/page_start.php', $data);
-        $this->load->view('common/top_navigation.php', $data);
-        $this->load->view('common/header.php', $data);
+        $this->load->view('common/page_top.php', $data);
         $this->load->view('user/signup.php', $data);
         $this->load->view('common/page_end.php', $data);
     }
@@ -54,9 +52,7 @@ class User extends CI_Controller
 
         if($this->form_validation->run('signup') == false) {
 
-            $this->load->view('common/page_start.php', $data);
-            $this->load->view('common/top_navigation.php', $data);
-            $this->load->view('common/header.php', $data);
+            $this->load->view('common/page_top.php', $data);
             $this->load->view('user/signup.php', $data);
             $this->load->view('common/page_end.php', $data);
 
@@ -66,9 +62,7 @@ class User extends CI_Controller
             if($result = $this->uModel->createNewUser()) {
                 if(@$result->error) {
                     $data['error'] = $result->error;
-                    $this->load->view('common/page_start.php', $data);
-                    $this->load->view('common/top_navigation.php', $data);
-                    $this->load->view('common/header.php', $data);
+                    $this->load->view('common/page_top.php', $data);
                     $this->load->view('user/signup.php', $data);
                     $this->load->view('common/page_end.php', $data);
                 } else {
@@ -77,17 +71,13 @@ class User extends CI_Controller
 
                     if(is_dir($user_dir)) {
                         $data['error'] = "Oops. There something happened while finishing your account setup.";
-                        $this->load->view('common/page_start.php', $data);
-                        $this->load->view('common/top_navigation.php', $data);
-                        $this->load->view('common/header.php', $data);
+                        $this->load->view('common/page_top.php', $data);
                         $this->load->view('user/signup.php', $data);
                         $this->load->view('common/page_end.php', $data);
                     } else {
                         mkdir($user_dir, 0755);
                         $data['success'] = "You're good to go! Go ahead and login.";
-                        $this->load->view('common/page_start.php', $data);
-                        $this->load->view('common/top_navigation.php', $data);
-                        $this->load->view('common/header.php', $data);
+                        $this->load->view('common/page_top.php', $data);
                         $this->load->view('user/signup.php', $data);
                         $this->load->view('common/page_end.php', $data);
                     }
