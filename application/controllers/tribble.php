@@ -15,7 +15,7 @@ class Tribble extends CI_Controller {
   public function __construct()
   {
       parent::__construct();
-      //$this->output->enable_profiler(TRUE);      
+      $this->output->enable_profiler(TRUE);      
   }
 
 	public function index()
@@ -257,6 +257,12 @@ class Tribble extends CI_Controller {
   public function like($tribble_id){
     $this->load->model('Tribbles_model','trModel');
     //$this->trModel->li
+  }
+  
+  public function comment($tribbleid){
+    $this->load->model('Tribbles_model','trModel');
+    $comment = $this->trModel->addComment($tribbleid,$this->session->userdata('uid'));
+    redirect('/tribble/view/'.$tribbleid);          
   }
         
 }
