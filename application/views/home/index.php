@@ -13,7 +13,8 @@
       </div>
       <div class="tribble-tools">
         <p class="ico"><a href="" class="comments"><?=$tribble->replies?></a>Comments</p>
-        <p class="ico"><a href="" class="likes"><?=$tribble->likes?></a>likes</p>     
+        <p class="ico"><a href="" class="likes"><?=$tribble->likes?></a>likes</p>  
+        <p class="ico"><a href="" class="rebound"><?=$tribble->likes?></a>likes</p>     
       </div>
       <div class="tribble-user-info"><a href="/"><img name="avatar" src="" width="18" height="18" alt=""/><?=$tribble->username?></a></div>  
       </div>  
