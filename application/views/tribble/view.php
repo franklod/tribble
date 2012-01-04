@@ -45,7 +45,6 @@
       </ul>
     </div>
     <div class="comments-list">
-      <h3>COMENTARIOS</h3>
       <?if(!$replies):?>
       <p>no comments yet</p>
       <?else:?>
