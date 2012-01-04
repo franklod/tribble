@@ -15,7 +15,7 @@ class Tribble extends CI_Controller {
   public function __construct()
   {
       parent::__construct();
-      $this->output->enable_profiler(TRUE);      
+      //$this->output->enable_profiler(TRUE);      
   }
 
 	public function index()
@@ -44,9 +44,7 @@ class Tribble extends CI_Controller {
 //    }
 
     $data['tribbles'] = $tribble_list;
-    $this->load->view('common/page_start.php',$data);
-    $this->load->view('common/top_navigation.php',$data);
-    $this->load->view('common/header.php',$data);
+    $this->load->view('common/page_top.php', $data);
 		$this->load->view('home/index.php',$data);
     $this->load->view('common/page_end.php',$data);        
 	}    
@@ -75,9 +73,7 @@ class Tribble extends CI_Controller {
 //    }
 
     $data['tribbles'] = $tribble_list;
-    $this->load->view('common/page_start.php',$data);
-    $this->load->view('common/top_navigation.php',$data);
-    $this->load->view('common/header.php',$data);
+    $this->load->view('common/page_top.php', $data);
 		$this->load->view('home/index.php',$data);
     $this->load->view('common/page_end.php',$data); 
 	}  
@@ -106,9 +102,7 @@ class Tribble extends CI_Controller {
 //    }
 
     $data['tribbles'] = $tribble_list;
-    $this->load->view('common/page_start.php',$data);
-    $this->load->view('common/top_navigation.php',$data);
-    $this->load->view('common/header.php',$data);
+    $this->load->view('common/page_top.php', $data);
 		$this->load->view('home/index.php',$data);
     $this->load->view('common/page_end.php',$data); 
 	}
@@ -137,9 +131,7 @@ class Tribble extends CI_Controller {
     $data['meta_description'] = $data['tribble']->title;
     $data['meta_keywords'] = $data['tribble']->tags;
     
-    $this->load->view('common/page_start.php',$data);
-    $this->load->view('common/top_navigation.php',$data);
-    $this->load->view('common/header.php',$data);
+    $this->load->view('common/page_top.php', $data);
 		$this->load->view('tribble/view.php',$data);    
     $this->load->view('common/page_end.php',$data);         
   }
@@ -163,9 +155,7 @@ class Tribble extends CI_Controller {
       $user = $this->uModel->getUserData($uid);
       $data['user'] = $user[0];
       
-      $this->load->view('common/page_start.php',$data);
-      $this->load->view('common/top_navigation.php',$data);
-      $this->load->view('common/header.php',$data);
+      $this->load->view('common/page_top.php', $data);
   		$this->load->view('tribble/upload.php',$data);
       $this->load->view('common/page_end.php',$data); 
       
@@ -194,9 +184,7 @@ class Tribble extends CI_Controller {
       if($this->form_validation->run('upload_image') == false){
               echo "form validation failed";
         // form has errors: show page and errors
-        $this->load->view('common/page_start.php',$data);
-        $this->load->view('common/top_navigation.php',$data);
-        $this->load->view('common/header.php',$data);
+        $this->load->view('common/page_top.php', $data);
     		$this->load->view('tribble/upload.php',$data);
         $this->load->view('common/page_end.php',$data);          
       } else {
@@ -238,9 +226,7 @@ class Tribble extends CI_Controller {
           
           if(!$result = $this->trModel->createNewTribble($imgdata)){
             $data['error'] = $result->error;
-            $this->load->view('common/page_start.php',$data);
-            $this->load->view('common/top_navigation.php',$data);
-            $this->load->view('common/header.php',$data);
+            $this->load->view('common/page_top.php', $data);
         		$this->load->view('tribble/upload.php',$data);
             $this->load->view('common/page_end.php',$data);  
           } else {
