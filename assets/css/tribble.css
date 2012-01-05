@@ -390,16 +390,16 @@ ul.tribbles {
 .tribble-img a {
 	text-decoration: none;
 }
-.tribble-img a 484d52 {
+.tribble-img a span {
 	display: block;
 }
-.tribble-img 484d52.title {
+.tribble-img span.title {
 	font-size: 1.8em;
 	color: #2b343b;
 	font-weight: 700;
 	text-shadow:0 1px 0 #ffffff;
 }
-.tribble-img 484d52.desc {
+.tribble-img span.desc {
 	font-size: 1em;
 	color: #2A2D30;
 }
