@@ -1,7 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
- * Tribbles
+ * Posts
  * 
  * @package tribble
  * @author xxx xxx xxx
@@ -10,87 +10,81 @@
  * @access public
  */
  
-class Tribbles extends CI_Controller {
+class Posts extends CI_Controller {
   
   public function __construct()
   {
-      parent::__construct();     
+      parent::__construct();
+      $this->load->driver('cache');
+      $this->load->model('Tribbles_API_model','trModel');
+      //$this->output->enable_profiler(TRUE);     
   }
 
-	public function getNlatest($page = 0)
+  public function countPosts($page = null, $per_page = 12)
 	{
-    $cachekey = sha1('getNlatest'.'tribble');
-    
-    $memcache = new Memcache;
-    $memcache->connect('localhost', 11211) or die ("Could not connect");
-    
-    $this->load->model('Tribbles_model','trModel');
-    
-    if(!$memcache->get($cachekey)){        
-      $tribble_list = $this->trModel->getNlatest(12,$page);
-      $memcache->set($cachekey,$tribble_list,5*60);
-      echo json_encode($memcache->get($cachekey));                
+    // hash the method name and params to get a cache key 
+    $cachekey = sha1('countPosts');        
+
+    // check if the key exists in cache         
+    if(!$this->cache->memcached->get($cachekey)){
+      // get the data from the db, cache and echo the json string      
+      $posts = $this->trModel->countPosts();                  
+      $this->cache->memcached->save($cachekey,$posts,5*60);      
+      echo json_encode($this->cache->memcached->get($cachekey));
     } else {
-      echo json_encode($memcache->get($cachekey));
-    }                                     
+      // key exists. echo the json string
+      echo json_encode($this->cache->memcached->get($cachekey));
+    }
+                                         
+	}
+
+	public function getMostRecent($page = null, $per_page = 12)
+	{
+    // hash the method name and params to get a cache key 
+    $cachekey = sha1('getMostRecent/'.$page.'/'.$per_page);        
+
+    // check if the key exists in cache         
+    if(!$this->cache->memcached->get($cachekey)){
+      // get the data from the db, cache and echo the json string      
+      $posts = $this->trModel->getMostRecent($page,$per_page);                  
+      $this->cache->memcached->save($cachekey,$posts,5*60);      
+      echo json_encode($this->cache->memcached->get($cachekey));                      
+    } else {
+      // key exists. echo the json string
+      echo json_encode($this->cache->memcached->get($cachekey));
+    }
+                                         
 	}    
    
-  public function buzzing()
+  public function getMostCommented($page = null, $per_page = 12)
 	{
-    $data['title'] = 'Tribble - Home';
-    $data['meta_description'] = 'A design content sharing and discussion tool.';
-    $data['meta_keywords'] = 'Tribble';
-    
-    if($uid = $this->session->userdata('uid')){
-      $this->load->model('User_model','uModel');
-      $user = $this->uModel->getUserData($uid);
-      $data['user'] = $user[0];
-    }        
+    // hash the method name and params to get a cache key 
+    $cachekey = sha1('getMostCommented/'.$page.'/'.$per_page);        
 
-    $this->load->model('Tribbles_model','trModel');
-    $tribble_list = $this->trModel->getBuzzing();
-    
-    //print_r($tribble_list);
-    
-    //foreach($tribble_list as $tribble){
-//      echo "<pre>";
-//      print_r($tribble);
-//      echo "</pre>";
-//    }
-
-    $data['tribbles'] = $tribble_list;
-    $this->load->view('common/page_top.php', $data);
-		$this->load->view('home/index.php',$data);
-    $this->load->view('common/page_end.php',$data); 
+    // check if the key exists in cache         
+    if(!$this->cache->memcached->get($cachekey)){
+      // get the data from the db, cache and echo the json string      
+      $posts = $this->trModel->getMostCommented($page,$per_page);                  
+      $this->cache->memcached->save($cachekey,$posts,5*60);      
+      echo json_encode($this->cache->memcached->get($cachekey));                      
+    } else {
+      // key exists. echo the json string
+      echo json_encode($this->cache->memcached->get($cachekey));
+    }
+                                         
 	}  
   
-  public function loved()
+  public function getMostLiked($page = 0,$posts_per_page = 12)
 	{
-    $data['title'] = 'Tribble - Home';
-    $data['meta_description'] = 'A design content sharing and discussion tool.';
-    $data['meta_keywords'] = 'Tribble';    
-
-    if($uid = $this->session->userdata('uid')){
-      $this->load->model('User_model','uModel');
-      $user = $this->uModel->getUserData($uid);
-      $data['user'] = $user[0];
-    }
-
-    $this->load->model('Tribbles_model','trModel');
-    $tribble_list = $this->trModel->getLoved();
-    
-    //print_r($tribble_list);
-    
-    //foreach($tribble_list as $tribble){
-//      echo "<pre>";
-//      print_r($tribble);
-//      echo "</pre>";
-//    }
-
-    $data['tribbles'] = $tribble_list;
-    $this->load->view('common/page_top.php', $data);
-		$this->load->view('home/index.php',$data);
-    $this->load->view('common/page_end.php',$data); 
+    // hash the method name and params to get a cache key 
+    $cachekey = sha1('getMostLiked/'.$page.'/'.$posts_per_page);         
+    if(!$this->cache->memcached->get($cachekey)){      
+      $tribble_list = $this->trModel->getMostLiked($posts_per_page,$page);
+      $this->cache->memcached->save($cachekey,$tribble_list,5*60);
+      echo json_encode($this->cache->memcached->get($cachekey));                
+    } else {
+      echo json_encode($this->cache->memcached->get($cachekey));
+    }  
 	}
   
   public function view($tribble){
@@ -130,26 +124,49 @@ class Tribbles extends CI_Controller {
     }
   }
   
-  function upload(){
-    $data['title'] = 'Tribble - Upload';
-    $data['meta_description'] = 'A design content sharing and discussion tool.';
-    $data['meta_keywords'] = 'Tribble';
+  function createNewTribble($user_email){
     
-    if($uid = $this->session->userdata('uid')){
-      // user is logged in: get and show user profile link
-      $this->load->model('User_model','uModel');
-      $user = $this->uModel->getUserData($uid);
-      $data['user'] = $user[0];
-      
-      $this->load->view('common/page_top.php', $data);
-  		$this->load->view('tribble/upload.php',$data);
-      $this->load->view('common/page_end.php',$data); 
-      
-    } else {
-      // user is not logged in: redirect to login form
-      redirect('/auth/login/'.str_replace('/','-',uri_string()));
-    } 
+        // get the uid from the session data and hash it to be used as the user upload folder name       
+        $user_hash = do_hash($user_email);        
           
+        // set the upload configuration
+        $ulConfig['upload_path'] = './data/'.$user_hash.'/';
+    		$ulConfig['allowed_types'] = 'jpg|png';
+    		$ulConfig['max_width']  = '400';
+    		$ulConfig['max_height']  = '300';
+        
+        // load the file uploading lib and initialize
+    		$this->load->library('upload', $ulConfig);
+        $this->upload->initialize($ulConfig);
+        
+        // check if upload was successful and react        
+        if (!$this->upload->do_upload('image_file')){                  
+    			$error = array('error' => $this->upload->display_errors());
+    		} else {
+    			$data = array('upload_data' => $this->upload->data());       
+          // set the data to write in db;
+          $imgdata = array('image_path'=>substr($ulConfig['upload_path'].$data['upload_data']['file_name'],1),'image_palette'=>json_encode(getImageColorPalette($data['upload_data']['full_path'])));
+          
+          $config['image_library'] = 'gd2'; 
+          $config['source_image'] = $ulConfig['upload_path'].$data['upload_data']['file_name'];	
+          $config['create_thumb'] = TRUE; 
+          $config['maintain_ratio'] = TRUE; 
+          $config['width'] = 200; 
+          $config['height'] = 150; 
+          
+          $this->load->library('image_lib', $config); 
+          $this->image_lib->resize();
+          
+          if(!$result = $this->trModel->createNewTribble($imgdata)){
+            $response['status'] = false;
+            $response['message'] = $result->error;
+            echo json_encode($response);  
+          } else {
+            $response['status'] = true;
+            $response['message'] = 'Posting successful';
+            echo json_encode($response); 
+          }           
+       }            
   }    
   
   public function doupload(){
