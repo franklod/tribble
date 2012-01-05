@@ -1,5 +1,5 @@
+<div class="push"></div>
 </div>
-<div id="footer">
-</div>
+<div class="footer"></div>
 </body>
 </html>                                                                                                
