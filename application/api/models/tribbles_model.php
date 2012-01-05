@@ -8,7 +8,7 @@ class Tribbles_model extends CI_Model {
         parent::__construct();
     }
     
-    function getNewer(){
+    function getNlatest($n,$o){
       $this->db->select('
           tr_tribbles.tribble_id AS id,
           tr_tribbles.tribble_title AS title,
@@ -34,6 +34,7 @@ class Tribbles_model extends CI_Model {
         tr_users.user_id,
         tr_images.image_path
       ');
+      $this->db->limit($n,$o);
       $this->db->order_by("tr_tribbles.tribble_timestamp", "desc"); 
       $query = $this->db->get();
       $result = $query->result();

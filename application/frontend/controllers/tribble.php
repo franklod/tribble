@@ -28,20 +28,16 @@ class Tribble extends CI_Controller {
       $this->load->model('User_model','uModel');
       $user = $this->uModel->getUserData($uid);
       $data['user'] = $user[0];            
-    }
+    }            
     
-        
-
-    $this->load->model('Tribbles_model','trModel');
-    $tribble_list = $this->trModel->getNewer();
-    
-//    print_r($tribble_list);
-//    
-//    foreach($tribble_list as $tribble){
-//      echo "<pre>";
-//      print_r($tribble);
-//      echo "</pre>";
-//    }
+    // Load the rest client spark
+    $this->load->spark('restclient/2.0.0');    
+    // Load the library
+    $this->load->library('rest');    
+    // Run some setup
+    $this->rest->initialize(array('server' => 'http://tribble.local/api.php/'));
+    // Pull in an array of tweets
+    $tribble_list = json_decode($this->rest->get('tribbles/getNlatest/')); 
 
     $data['tribbles'] = $tribble_list;
     $this->load->view('common/page_top.php', $data);

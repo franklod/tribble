@@ -10,43 +10,29 @@
  * @access public
  */
  
-class Tribble extends CI_Controller {
+class Tribbles extends CI_Controller {
   
   public function __construct()
   {
-      parent::__construct();
-      //$this->output->enable_profiler(TRUE);      
+      parent::__construct();     
   }
 
-	public function index()
+	public function getNlatest($page = 0)
 	{
-    $data['title'] = 'Tribble - Home';
-    $data['meta_description'] = 'A design content sharing and discussion tool.';
-    $data['meta_keywords'] = 'Tribble';
+    $cachekey = sha1('getNlatest'.'tribble');
     
-    if($uid = $this->session->userdata('uid')){
-      $this->load->model('User_model','uModel');
-      $user = $this->uModel->getUserData($uid);
-      $data['user'] = $user[0];            
-    }
+    $memcache = new Memcache;
+    $memcache->connect('localhost', 11211) or die ("Could not connect");
     
-        
-
     $this->load->model('Tribbles_model','trModel');
-    $tribble_list = $this->trModel->getNewer();
     
-//    print_r($tribble_list);
-//    
-//    foreach($tribble_list as $tribble){
-//      echo "<pre>";
-//      print_r($tribble);
-//      echo "</pre>";
-//    }
-
-    $data['tribbles'] = $tribble_list;
-    $this->load->view('common/page_top.php', $data);
-		$this->load->view('home/index.php',$data);
-    $this->load->view('common/page_end.php',$data);        
+    if(!$memcache->get($cachekey)){        
+      $tribble_list = $this->trModel->getNlatest(12,$page);
+      $memcache->set($cachekey,$tribble_list,5*60);
+      echo json_encode($memcache->get($cachekey));                
+    } else {
+      echo json_encode($memcache->get($cachekey));
+    }                                     
 	}    
    
   public function buzzing()
