@@ -15,10 +15,21 @@ class Tribble extends CI_Controller {
   public function __construct()
   {
       parent::__construct();
+      
+      // Load the rest client spark
+      $this->load->spark('restclient/2.0.0');    
+      // Load the library
+      $this->load->library('rest');    
+      // Run some setup
+      $this->rest->initialize(array('server' => 'http://tribble.local/api.php/'));
+      // load the pagination library
+      $this->load->library('pagination'); 
       //$this->output->enable_profiler(TRUE);      
   }
 
-	public function index()
+	
+  
+  public function newer($page = null)
 	{
     $data['title'] = 'Tribble - Home';
     $data['meta_description'] = 'A design content sharing and discussion tool.';
@@ -30,22 +41,31 @@ class Tribble extends CI_Controller {
       $data['user'] = $user[0];            
     }            
     
-    // Load the rest client spark
-    $this->load->spark('restclient/2.0.0');    
-    // Load the library
-    $this->load->library('rest');    
-    // Run some setup
-    $this->rest->initialize(array('server' => 'http://tribble.local/api.php/'));
-    // Pull in an array of tweets
-    $tribble_list = json_decode($this->rest->get('tribbles/getNlatest/')); 
+    // Pull in an array of tribbles
+    $tribble_list = json_decode($this->rest->get('posts/list/recent/'.$page)); 
 
     $data['tribbles'] = $tribble_list;
+    
+    $config['base_url'] = site_url('new/page');
+    $config['display_pages'] = false;
+    $config['total_rows'] = $this->rest->get('posts/count');
+    $config['per_page'] = 12;
+    $config['next_link'] = 'older';
+    $config['prev_link'] = 'newer';
+    $config['last_link'] = false;
+    $config['first_link'] = false;
+    $config['use_page_numbers'] = true; 
+
+    $this->pagination->initialize($config); 
+    
+    $data['paging'] = $this->pagination->create_links();
+    
     $this->load->view('common/page_top.php', $data);
 		$this->load->view('home/index.php',$data);
     $this->load->view('common/page_end.php',$data);        
 	}    
    
-  public function buzzing()
+  public function buzzing($page = 0,$posts_per_page = 12)
 	{
     $data['title'] = 'Tribble - Home';
     $data['meta_description'] = 'A design content sharing and discussion tool.';
@@ -54,27 +74,34 @@ class Tribble extends CI_Controller {
     if($uid = $this->session->userdata('uid')){
       $this->load->model('User_model','uModel');
       $user = $this->uModel->getUserData($uid);
-      $data['user'] = $user[0];
-    }        
-
-    $this->load->model('Tribbles_model','trModel');
-    $tribble_list = $this->trModel->getBuzzing();
+      $data['user'] = $user[0];            
+    }            
     
-    //print_r($tribble_list);
-    
-    //foreach($tribble_list as $tribble){
-//      echo "<pre>";
-//      print_r($tribble);
-//      echo "</pre>";
-//    }
+    // Pull in an array of tribbles
+    $tribble_list = json_decode($this->rest->get('posts/list/commented/'.$page)); 
 
     $data['tribbles'] = $tribble_list;
+    
+    $config['base_url'] = site_url('buzzing/page');
+    $config['display_pages'] = false;
+    $config['total_rows'] = $this->rest->get('posts/count');
+    $config['per_page'] = 12;
+    $config['next_link'] = 'older';
+    $config['prev_link'] = 'newer';
+    $config['last_link'] = false;
+    $config['first_link'] = false;
+    $config['use_page_numbers'] = true; 
+
+    $this->pagination->initialize($config); 
+    
+    $data['paging'] = $this->pagination->create_links();
+    
     $this->load->view('common/page_top.php', $data);
 		$this->load->view('home/index.php',$data);
-    $this->load->view('common/page_end.php',$data); 
+    $this->load->view('common/page_end.php',$data);        
 	}  
   
-  public function loved()
+  public function loved($page = 0,$posts_per_page = 12)
 	{
     $data['title'] = 'Tribble - Home';
     $data['meta_description'] = 'A design content sharing and discussion tool.';
@@ -86,18 +113,22 @@ class Tribble extends CI_Controller {
       $data['user'] = $user[0];
     }
 
-    $this->load->model('Tribbles_model','trModel');
-    $tribble_list = $this->trModel->getLoved();
-    
-    //print_r($tribble_list);
-    
-    //foreach($tribble_list as $tribble){
-//      echo "<pre>";
-//      print_r($tribble);
-//      echo "</pre>";
-//    }
-
+    // Pull in an array of tweets
+    $tribble_list = json_decode($this->rest->get('tribbles/getMostLiked/0/12'));
     $data['tribbles'] = $tribble_list;
+    
+    $config['base_url'] = 'http:tribbe.local/index.php/';
+    $config['display_pages'] = FALSE;
+    $config['total_rows'] = 200;
+    $config['per_page'] = $posts_per_page;
+    $config['next_link'] = 'older';
+    $config['previous_link'] = 'newer';
+    $config['last_link'] = false;
+    $config['first_link'] = false; 
+
+    $this->pagination->initialize($config);
+    $data['paging'] = $this->pagination->create_links();
+    
     $this->load->view('common/page_top.php', $data);
 		$this->load->view('home/index.php',$data);
     $this->load->view('common/page_end.php',$data); 
