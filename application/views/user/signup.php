@@ -1,4 +1,4 @@
-<div id="main">
+<div class="g75 login">
   <? if(isset($error)): ?>
   <div class="alert-msg error">
     <p><?=$error?></p>
@@ -9,6 +9,7 @@
     <p><?=$success?></p>
   </div>
   <? endif;?>
+  <h2>Create your Tribble account</h2>
 	<?=form_open('user/dosignup',array('class'=>'g75'))?>
   <div class="e_wrap <?=(form_error('email') == TRUE) ? 'error' : ''; ?>">
     <?=form_label('Email','email')?>
