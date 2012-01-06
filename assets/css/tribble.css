@@ -361,7 +361,6 @@ ul.tribbles li {
 ul.tribbles {
 	list-style-type: none;
 	padding: 0;
-	margin-top:25px;
 }
 .tribbles li.space {
 	margin:0 5px 0 0;
