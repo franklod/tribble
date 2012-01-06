@@ -617,6 +617,11 @@ ul.tribbles {
 	margin-bottom:5px;
 	font-size: 14px;
 }
+/*profile*/
+.profile {clear:both;}
+.profile h2 {
+	font-size:18px;	
+}
 /********************comments list******************************/
 
 .comments-list, .comment-form {
