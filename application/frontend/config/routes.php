@@ -43,7 +43,7 @@ $route['404_override'] = '';
 
 $route['new'] = 'tribble/newer';
 $route['new/page/(:num)'] = 'tribble/newer/$1';
-$route['buzzing'] = 'tribble/buzzin';
+$route['buzzing'] = 'tribble/buzzing';
 $route['buzzing/page/(:num)'] = 'tribble/buzzing/$1';
 $route['loved'] = 'tribble/loved';
 $route['loved/page/(:num)'] = 'tribble/loved/$1';

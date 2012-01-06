@@ -51,6 +51,9 @@ $route['posts/list/popular/(:num)'] = 'posts/getMostLiked/$1';
 $route['posts/list/popular'] = 'posts/getMostLiked';
 $route['posts/list'] = 'posts/getMostRecent';
 $route['posts/count'] = 'posts/countPosts';
+$route['posts/(:num)'] = 'posts/getPostById';
+$route['posts/upload'] = 'posts/createNewPost';
+$route['posts/upload/(:num)'] = 'posts/createNewPost/$1';
 
 
 /* End of file routes.php */

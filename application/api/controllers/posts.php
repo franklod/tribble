@@ -19,6 +19,11 @@ class Posts extends CI_Controller {
       $this->load->model('Tribbles_API_model','trModel');
       //$this->output->enable_profiler(TRUE);     
   }
+  
+  public function flush(){
+    var_dump(@$this->cache->memcached->cache_info());
+    //$this->cache->memcached->clean();
+  } 
 
   public function countPosts($page = null, $per_page = 12)
 	{
@@ -26,11 +31,11 @@ class Posts extends CI_Controller {
     $cachekey = sha1('countPosts');        
 
     // check if the key exists in cache         
-    if(!$this->cache->memcached->get($cachekey)){
+    if(@!$this->cache->memcached->get($cachekey)){
       // get the data from the db, cache and echo the json string      
       $posts = $this->trModel->countPosts();                  
-      $this->cache->memcached->save($cachekey,$posts,5*60);      
-      echo json_encode($this->cache->memcached->get($cachekey));
+      $this->cache->memcached->save($cachekey,$posts,10*60);      
+      echo json_encode($posts);
     } else {
       // key exists. echo the json string
       echo json_encode($this->cache->memcached->get($cachekey));
@@ -44,11 +49,11 @@ class Posts extends CI_Controller {
     $cachekey = sha1('getMostRecent/'.$page.'/'.$per_page);        
 
     // check if the key exists in cache         
-    if(!$this->cache->memcached->get($cachekey)){
+    if(@!$this->cache->memcached->get($cachekey)){
       // get the data from the db, cache and echo the json string      
       $posts = $this->trModel->getMostRecent($page,$per_page);                  
-      $this->cache->memcached->save($cachekey,$posts,5*60);      
-      echo json_encode($this->cache->memcached->get($cachekey));                      
+      $this->cache->memcached->save($cachekey,$posts,10*60);      
+      echo json_encode($posts);                      
     } else {
       // key exists. echo the json string
       echo json_encode($this->cache->memcached->get($cachekey));
@@ -62,11 +67,11 @@ class Posts extends CI_Controller {
     $cachekey = sha1('getMostCommented/'.$page.'/'.$per_page);        
 
     // check if the key exists in cache         
-    if(!$this->cache->memcached->get($cachekey)){
+    if(@!$this->cache->memcached->get($cachekey)){
       // get the data from the db, cache and echo the json string      
       $posts = $this->trModel->getMostCommented($page,$per_page);                  
-      $this->cache->memcached->save($cachekey,$posts,5*60);      
-      echo json_encode($this->cache->memcached->get($cachekey));                      
+      $this->cache->memcached->save($cachekey,$posts,10*60);      
+      echo json_encode($posts);                      
     } else {
       // key exists. echo the json string
       echo json_encode($this->cache->memcached->get($cachekey));
@@ -74,46 +79,39 @@ class Posts extends CI_Controller {
                                          
 	}  
   
-  public function getMostLiked($page = 0,$posts_per_page = 12)
+  public function getMostLiked($page = null, $per_page = 12)
 	{
     // hash the method name and params to get a cache key 
-    $cachekey = sha1('getMostLiked/'.$page.'/'.$posts_per_page);         
-    if(!$this->cache->memcached->get($cachekey)){      
-      $tribble_list = $this->trModel->getMostLiked($posts_per_page,$page);
-      $this->cache->memcached->save($cachekey,$tribble_list,5*60);
-      echo json_encode($this->cache->memcached->get($cachekey));                
+    $cachekey = sha1('getMostLiked/'.$page.'/'.$per_page);        
+
+    // check if the key exists in cache         
+    if(@!$this->cache->memcached->get($cachekey)){
+      // get the data from the db, cache and echo the json string      
+      $posts = $this->trModel->getMostLiked($page,$per_page);                  
+      $this->cache->memcached->save($cachekey,$posts,10*60);      
+      echo json_encode($posts);                      
     } else {
+      // key exists. echo the json string
       echo json_encode($this->cache->memcached->get($cachekey));
-    }  
+    } 
 	}
   
-  public function view($tribble){
+  public function getPostById($postId = null){
     
-    if($uid = $this->session->userdata('uid')){
-      $this->load->model('User_model','uModel');
-      $user = $this->uModel->getUserData($uid);
-      $data['user'] = $user[0];
-    }    
-    
-    $this->load->model('Tribbles_model','trModel');
-    $tribbleData = $this->trModel->getTribble($tribble);
-    $replyData = $this->trModel->getReplies($tribble);
-        
-    $data['tribble'] = $tribbleData[0];
-    
-    $data['replies'] = $replyData;
-    
-    //echo "<pre>";
-    //print_r($replyData);
-    //echo "</pre>";
-    
-    $data['title'] = 'Tribble - ' . $data['tribble']->title;
-    $data['meta_description'] = $data['tribble']->title;
-    $data['meta_keywords'] = $data['tribble']->tags;
-    
-    $this->load->view('common/page_top.php', $data);
-		$this->load->view('tribble/view.php',$data);    
-    $this->load->view('common/page_end.php',$data);         
+ 
+    // hash the method name and params to get a cache key 
+    $cachekey = sha1('getPostById/'.$postId);        
+
+    // check if the key exists in cache         
+    if(@!$this->cache->memcached->get($cachekey)){
+      // get the data from the db, cache and echo the json string      
+      $posts = $this->trModel->getPostById($postId);                  
+      $this->cache->memcached->save($cachekey,$posts,10*60);      
+      echo json_encode($posts);                      
+    } else {
+      // key exists. echo the json string
+      echo json_encode($this->cache->memcached->get($cachekey));
+    }        
   }
   
   function reply($tribble){
@@ -167,6 +165,19 @@ class Posts extends CI_Controller {
             echo json_encode($response); 
           }           
        }            
+  }
+  
+  public function createNewPost($userId = null){
+    
+    $res = null;
+    
+    if(empty($userId) || !$this->trModel->checkUserId($userId)){
+      $res->status = 'error';
+      $res->message = 'no valid user was supplied';
+      echo json_encode($res);
+    } else {
+      echo "fuck yeah!";      
+    }    
   }    
   
   public function doupload(){
