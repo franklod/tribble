@@ -22,7 +22,23 @@ class Posts extends CI_Controller {
   
   public function flush(){
     var_dump(@$this->cache->memcached->cache_info());
-    //$this->cache->memcached->clean();
+    $this->cache->memcached->clean();
+  }
+  
+  public function searchPostsText($searchString,$page = null,$per_page = 12){
+    // hash the method name and params to get a cache key 
+    $cachekey = sha1('searchPostsText/'.$searchString.'/'.$page.'/'.$per_page);        
+
+    // check if the key exists in cache         
+    if(@!$this->cache->memcached->get($cachekey)){
+      // get the data from the db, cache and echo the json string      
+      $posts = $this->trModel->searchPostsText($searchString,$page,$per_page);                  
+      $this->cache->memcached->save($cachekey,$posts,10*60);      
+      echo json_encode($posts);                     
+    } else {
+      // key exists. echo the json string
+      echo json_encode($this->cache->memcached->get($cachekey));
+    }      
   } 
 
   public function countPosts($page = null, $per_page = 12)
@@ -35,16 +51,17 @@ class Posts extends CI_Controller {
       // get the data from the db, cache and echo the json string      
       $posts = $this->trModel->countPosts();                  
       $this->cache->memcached->save($cachekey,$posts,10*60);      
-      echo json_encode($posts);
+      echo json_encode($posts);      
     } else {
       // key exists. echo the json string
-      echo json_encode($this->cache->memcached->get($cachekey));
+      echo json_encode($this->cache->memcached->get($cachekey));      
     }
                                          
 	}
 
 	public function getMostRecent($page = null, $per_page = 12)
 	{
+	 
     // hash the method name and params to get a cache key 
     $cachekey = sha1('getMostRecent/'.$page.'/'.$per_page);        
 
@@ -53,7 +70,7 @@ class Posts extends CI_Controller {
       // get the data from the db, cache and echo the json string      
       $posts = $this->trModel->getMostRecent($page,$per_page);                  
       $this->cache->memcached->save($cachekey,$posts,10*60);      
-      echo json_encode($posts);                      
+      echo json_encode($posts);                     
     } else {
       // key exists. echo the json string
       echo json_encode($this->cache->memcached->get($cachekey));
@@ -97,8 +114,6 @@ class Posts extends CI_Controller {
 	}
   
   public function getPostById($postId = null){
-    
- 
     // hash the method name and params to get a cache key 
     $cachekey = sha1('getPostById/'.$postId);        
 
@@ -112,6 +127,22 @@ class Posts extends CI_Controller {
       // key exists. echo the json string
       echo json_encode($this->cache->memcached->get($cachekey));
     }        
+  }
+  
+  public function getRepliesByPostId($postId = null){
+    // hash the method name and params to get a cache key 
+    $cachekey = sha1('getRepliesByPostId/'.$postId);        
+
+    // check if the key exists in cache         
+    if(@!$this->cache->memcached->get($cachekey)){
+      // get the data from the db, cache and echo the json string      
+      $posts = $this->trModel->getRepliesByPostId($postId);                  
+      $this->cache->memcached->save($cachekey,$posts,10*60);      
+      echo json_encode($posts);                      
+    } else {
+      // key exists. echo the json string
+      echo json_encode($this->cache->memcached->get($cachekey));
+    }  
   }
   
   function reply($tribble){

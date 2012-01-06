@@ -26,6 +26,7 @@ $config['app_path']	= 'c:\\wamp\www\\tribble\\';
 |
 */
 $config['base_url']	= 'http://tribble.local/';
+//$config['base_url']	= 'http://10.134.132.33/';
 
 /*
 |--------------------------------------------------------------------------

@@ -40,7 +40,33 @@ class Tribble extends CI_Controller {
       //$this->output->enable_profiler(TRUE);      
   }
 
-	
+	public function search($searchString,$page = null)
+	{
+    $data['title'] = 'Tribble - Home';
+    $data['meta_description'] = 'A design content sharing and discussion tool.';
+    $data['meta_keywords'] = 'Tribble';
+    
+    if($uid = $this->session->userdata('uid')){
+      $this->load->model('User_model','uModel');
+      $user = $this->uModel->getUserData($uid);
+      $data['user'] = $user[0];            
+    }            
+    
+    // Pull in an array of tribbles
+    $tribble_list = json_decode($this->rest->get('posts/search/'.$searchString.'/'.$page)); 
+
+    $data['tribbles'] = $tribble_list;
+    
+    $config['base_url'] = site_url('search/page');
+    $config['total_rows'] = $this->rest->get('posts/count');
+        
+    $this->pagination->initialize($config);
+    $data['paging'] = $this->pagination->create_links();
+    
+    $this->load->view('common/page_top.php', $data);
+		$this->load->view('home/index.php',$data);
+    $this->load->view('common/page_end.php',$data);        
+	}
   
   public function newer($page = null)
 	{
@@ -123,7 +149,7 @@ class Tribble extends CI_Controller {
     $this->load->view('common/page_end.php',$data); 
 	}
   
-  public function view($tribble){
+  public function view($postId){
     
     if($uid = $this->session->userdata('uid')){
       $this->load->model('User_model','uModel');
@@ -132,11 +158,12 @@ class Tribble extends CI_Controller {
     }    
     
     $this->load->model('Tribbles_model','trModel');
-    $tribbleData = $this->trModel->getTribble($tribble);
-    $replyData = $this->trModel->getReplies($tribble);
-        
-    $data['tribble'] = $tribbleData[0];
     
+    // Pull in an array of tweets
+    $tribbleData = json_decode($this->rest->get('posts/'.$postId));    
+    $replyData = json_decode($this->rest->get('posts/replies/'.$postId));
+        
+    $data['tribble'] = $tribbleData[0];    
     $data['replies'] = $replyData;
     
     //echo "<pre>";

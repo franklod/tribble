@@ -28,7 +28,7 @@ if($this->session->userdata('uid')){
     <? endforeach; ?>
     <hr />
   </ul>
-  <form id="search">
+  <form id="search" action="<?=site_url('/search')?>" method="get">
     <input name="searchInput" type="text" class="" id="searchInput" placeholder="Pesquisar" />
   </form>    
 </div>

@@ -48,6 +48,7 @@ $route['buzzing/page/(:num)'] = 'tribble/buzzing/$1';
 $route['loved'] = 'tribble/loved';
 $route['loved/page/(:num)'] = 'tribble/loved/$1';
 $route['view/(:num)'] = 'tribble/view/$1';
+$route['search/(:any)/(:num)'] = 'tribble/view/$1/$2';
 
 
 /* End of file routes.php */
