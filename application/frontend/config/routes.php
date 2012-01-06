@@ -38,10 +38,16 @@
 |
 */
 
-$route['default_controller'] = "tribble";
+$route['default_controller'] = "tribble/newer";
 $route['404_override'] = '';
-$route['user/login/(:any)'] = 'user/login/$1';
-$route['user/logout/(:any)'] = 'user/logout/$1';
+
+$route['new'] = 'tribble/newer';
+$route['new/page/(:num)'] = 'tribble/newer/$1';
+$route['buzzing'] = 'tribble/buzzin';
+$route['buzzing/page/(:num)'] = 'tribble/buzzing/$1';
+$route['loved'] = 'tribble/loved';
+$route['loved/page/(:num)'] = 'tribble/loved/$1';
+$route['view/(:num)'] = 'tribble/view/$1';
 
 
 /* End of file routes.php */

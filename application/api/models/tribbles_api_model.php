@@ -1,6 +1,6 @@
 <?php
 
-class Tribbles_model extends CI_Model {
+class Tribbles_API_model extends CI_Model {
 
     function __construct()
     {
@@ -8,7 +8,16 @@ class Tribbles_model extends CI_Model {
         parent::__construct();
     }
     
-    function getNlatest($n,$o){
+    function countPosts(){
+      if($query = $this->db->get('tr_tribbles')){
+        $count = $query->num_rows();
+        return $count;
+      } else {
+        return false;
+      }
+    }
+    
+    function getMostRecent($page = null,$per_page){
       $this->db->select('
           tr_tribbles.tribble_id AS id,
           tr_tribbles.tribble_title AS title,
@@ -33,15 +42,29 @@ class Tribbles_model extends CI_Model {
         tr_users.user_realname,
         tr_users.user_id,
         tr_images.image_path
-      ');
-      $this->db->limit($n,$o);
-      $this->db->order_by("tr_tribbles.tribble_timestamp", "desc"); 
+      ');                 
+      $this->db->order_by("tr_tribbles.tribble_timestamp", "desc");
+      
+      if(is_int($per_page) || is_int($page)){
+        if($page <= 1){
+          $page = 0; 
+        }
+        
+        $offset = $page * $per_page;
+                
+        if($offset > 0){          
+          $this->db->limit($offset,$per_page); 
+        } else {
+          $this->db->limit($per_page); 
+        }                         
+      }
+       
       $query = $this->db->get();
       $result = $query->result();
       return $result;                            
     }        
     
-    function getBuzzing(){
+    function getMostCommented($page = null,$per_page){
       $this->db->select('
           tr_tribbles.tribble_id AS id,
           tr_tribbles.tribble_title AS title,
@@ -66,14 +89,29 @@ class Tribbles_model extends CI_Model {
         tr_users.user_realname,
         tr_users.user_id,
         tr_images.image_path
-      ');
-      $this->db->order_by("replies", "desc"); 
+      ');          
+      $this->db->order_by("replies", "desc");
+      
+      if(is_int($per_page) || is_int($page)){
+        if($page <= 1){
+          $page = 0; 
+        }
+        
+        $offset = $page * $per_page;
+                
+        if($offset > 0){          
+          $this->db->limit($offset,$per_page); 
+        } else {
+          $this->db->limit($per_page); 
+        }                         
+      }
+       
       $query = $this->db->get();
       $result = $query->result();
       return $result;                
     }
     
-    function getLoved(){      
+    function getMostLiked($posts_per_page,$page){      
       $this->db->select('
           tr_tribbles.tribble_id AS id,
           tr_tribbles.tribble_title AS title,
@@ -99,6 +137,7 @@ class Tribbles_model extends CI_Model {
         tr_users.user_id,
         tr_images.image_path
       ');
+      $this->db->limit($posts_per_page,$page);
       $this->db->order_by("likes", "desc"); 
       $query = $this->db->get();
       $result = $query->result();
