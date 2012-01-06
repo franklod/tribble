@@ -17,7 +17,11 @@
           <p class="ico"><a href="" class="rebound"><?=$tribble->likes?></a>likes</p>     
         </div>        
       </div>
-      <div class="tribble-user-info"><a href="/"><img name="avatar" src="" width="18" height="18" alt=""/><?=$tribble->username?></a></div>  
+      <div class="tribble-user-info">
+        <a href="/">
+          <img name="avatar" src="<?= (!empty($tribble->avatar)) ? $tribble->avatar : '/assets/images/avatar.jpg' ?>" width="18" height="18" alt=""/><?=$tribble->username?>
+        </a>
+      </div>  
     </li>  
   <? endforeach; ?>
   </ul>
