@@ -24,21 +24,14 @@ class Tribble extends CI_Controller {
       $this->rest->initialize(array('server' => 'http://tribble.local/api.php/'));
       // load the pagination library
       $this->load->library('pagination');
-      
-      $config['display_pages'] = false;
-      $config['total_rows'] = $this->rest->get('posts/count');
-      $config['per_page'] = 12;
-      $config['next_link'] = 'older';
-      $config['prev_link'] = 'newer';
-      $config['last_link'] = false;
-      $config['first_link'] = false;
-      $config['use_page_numbers'] = true;
-      $config['anchor_class'] = 'class="defaultBtn btn_info"';
-      $config['full_tag_open'] = '<div>\n<ul>';
-      $config['full_tag_close'] = '</ul>\n</div>'; 
-       
+              
       //$this->output->enable_profiler(TRUE);      
   }
+
+    public function dosearch(){
+        //echo $this->input->post('search',true);
+        redirect('search/'.$this->input->post('search',true));
+    }
 
 	public function search($searchString,$page = null)
 	{
@@ -57,7 +50,7 @@ class Tribble extends CI_Controller {
 
     $data['tribbles'] = $tribble_list;
     
-    $config['base_url'] = site_url('search/page');
+    $config['base_url'] = site_url('search');
     $config['total_rows'] = $this->rest->get('posts/count');
         
     $this->pagination->initialize($config);
@@ -92,7 +85,7 @@ class Tribble extends CI_Controller {
     $data['paging'] = $this->pagination->create_links();
     
     $this->load->view('common/page_top.php', $data);
-		$this->load->view('home/index.php',$data);
+	$this->load->view('home/index.php',$data);
     $this->load->view('common/page_end.php',$data);        
 	}    
    
