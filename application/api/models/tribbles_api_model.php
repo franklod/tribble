@@ -17,7 +17,7 @@ class Tribbles_API_model extends CI_Model {
       }
     }
     
-    function getMostRecent($page = null,$per_page){
+    function getMostRecent($page,$per_page){
           
       $this->db->select('
           tr_tribbles.tribble_id AS id,

@@ -25,9 +25,9 @@ class Posts extends CI_Controller {
     $this->cache->memcached->clean();
   }
   
-  public function searchPostsText($searchString,$page = null,$per_page = 12){
+  public function searchPostsText($searchString){
     // hash the method name and params to get a cache key 
-    $cachekey = sha1('searchPostsText/'.$searchString.'/'.$page.'/'.$per_page);        
+    $cachekey = sha1('searchPostsText/'.$searchString);        
 
     // check if the key exists in cache         
     if(@!$this->cache->memcached->get($cachekey)){
@@ -40,6 +40,8 @@ class Posts extends CI_Controller {
       echo json_encode($this->cache->memcached->get($cachekey));
     }      
   } 
+
+
 
   public function countPosts($page = null, $per_page = 12)
 	{
@@ -59,11 +61,11 @@ class Posts extends CI_Controller {
                                          
 	}
 
-	public function getMostRecent($page = null, $per_page = 12)
+	public function getMostRecent($page = 1,$per_page = 500)
 	{
 	 
     // hash the method name and params to get a cache key 
-    $cachekey = sha1('getMostRecent/'.$page.'/'.$per_page);        
+    $cachekey = sha1('getMostRecent/');        
 
     // check if the key exists in cache         
     if(@!$this->cache->memcached->get($cachekey)){
@@ -194,7 +196,10 @@ class Posts extends CI_Controller {
             $response['status'] = true;
             $response['message'] = 'Posting successful';
             echo json_encode($response); 
-          }           
+          }
+          
+          $this->cache->memcached->delete(sha1('getMostRecent/'));
+                     
        }            
   }
   
