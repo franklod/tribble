@@ -61,7 +61,7 @@ class Tribble extends CI_Controller {
     $this->load->view('common/page_end.php',$data);        
 	}
   
-  public function newer($page = null)
+  public function newer($page=null)
 	{
     $data['title'] = 'Tribble - Home';
     $data['meta_description'] = 'A design content sharing and discussion tool.';
@@ -73,10 +73,17 @@ class Tribble extends CI_Controller {
       $data['user'] = $user[0];            
     }            
     
-    // Pull in an array of tribbles
-    $tribble_list = json_decode($this->rest->get('posts/list/recent/'.$page)); 
-
-    $data['tribbles'] = $tribble_list;
+    $per_page = 12;            
+    
+    if((int)$page <= 1){        
+        $offset = 0; 
+    } else {
+        $offset = $per_page * ($page - 1);        
+    } 
+    
+    
+    $tribble_list = json_decode($this->rest->get('posts/list/recent/'));        
+    $data['tribbles'] = array_slice($tribble_list,$offset,$per_page,true);
     
     $config['base_url'] = site_url('new/page');
     $config['total_rows'] = $this->rest->get('posts/count');
