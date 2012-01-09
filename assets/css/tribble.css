@@ -379,6 +379,7 @@ ul.tribbles {
 .tribbles li.space {
 	margin:0 5px 0 0;
 	padding:5px;
+  height: 235px;
 }
 .tribble-img {
 	overflow: hidden;
@@ -510,7 +511,8 @@ ul.tribbles {
 	float:left;
 	margin:0px 5px 5px 0;
 	display:inline;
-	padding:5px;
+	padding:4px 5px 5px 5px;
+  box-shadow: 0px 1px 1px #bbb;
 }
 .tags li a {
 	font-size:12px;

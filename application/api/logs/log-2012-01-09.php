@@ -3749,3 +3749,995 @@ DEBUG - 2012-01-09 12:28:41 --> Model Class Initialized
 DEBUG - 2012-01-09 12:28:41 --> Config file loaded: application/api//config/memcached.php
 DEBUG - 2012-01-09 12:28:41 --> Final output sent to browser
 DEBUG - 2012-01-09 12:28:41 --> Total execution time: 0.2368
+DEBUG - 2012-01-09 12:37:13 --> Config Class Initialized
+DEBUG - 2012-01-09 12:37:13 --> Hooks Class Initialized
+DEBUG - 2012-01-09 12:37:13 --> Utf8 Class Initialized
+DEBUG - 2012-01-09 12:37:13 --> UTF-8 Support Enabled
+DEBUG - 2012-01-09 12:37:13 --> URI Class Initialized
+DEBUG - 2012-01-09 12:37:13 --> Router Class Initialized
+DEBUG - 2012-01-09 12:37:13 --> Output Class Initialized
+DEBUG - 2012-01-09 12:37:13 --> Security Class Initialized
+DEBUG - 2012-01-09 12:37:13 --> Input Class Initialized
+DEBUG - 2012-01-09 12:37:13 --> CRSF cookie Set
+DEBUG - 2012-01-09 12:37:13 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-09 12:37:13 --> Language Class Initialized
+DEBUG - 2012-01-09 12:37:13 --> Loader Class Initialized
+DEBUG - 2012-01-09 12:37:13 --> Helper loaded: url_helper
+DEBUG - 2012-01-09 12:37:13 --> Helper loaded: array_helper
+DEBUG - 2012-01-09 12:37:13 --> Helper loaded: security_helper
+DEBUG - 2012-01-09 12:37:13 --> Helper loaded: image_helper
+DEBUG - 2012-01-09 12:37:13 --> Helper loaded: date_helper
+DEBUG - 2012-01-09 12:37:13 --> Database Driver Class Initialized
+DEBUG - 2012-01-09 12:37:14 --> Session Class Initialized
+DEBUG - 2012-01-09 12:37:14 --> Helper loaded: string_helper
+DEBUG - 2012-01-09 12:37:14 --> A session cookie was not found.
+DEBUG - 2012-01-09 12:37:14 --> Session routines successfully run
+DEBUG - 2012-01-09 12:37:14 --> Encrypt Class Initialized
+DEBUG - 2012-01-09 12:37:14 --> Upload Class Initialized
+DEBUG - 2012-01-09 12:37:14 --> Controller Class Initialized
+DEBUG - 2012-01-09 12:37:14 --> Model Class Initialized
+DEBUG - 2012-01-09 12:37:14 --> Model Class Initialized
+DEBUG - 2012-01-09 12:37:14 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-09 12:37:14 --> Final output sent to browser
+DEBUG - 2012-01-09 12:37:14 --> Total execution time: 0.2673
+DEBUG - 2012-01-09 12:37:14 --> Config Class Initialized
+DEBUG - 2012-01-09 12:37:14 --> Hooks Class Initialized
+DEBUG - 2012-01-09 12:37:14 --> Utf8 Class Initialized
+DEBUG - 2012-01-09 12:37:14 --> UTF-8 Support Enabled
+DEBUG - 2012-01-09 12:37:14 --> URI Class Initialized
+DEBUG - 2012-01-09 12:37:14 --> Router Class Initialized
+DEBUG - 2012-01-09 12:37:14 --> Output Class Initialized
+DEBUG - 2012-01-09 12:37:14 --> Security Class Initialized
+DEBUG - 2012-01-09 12:37:14 --> Input Class Initialized
+DEBUG - 2012-01-09 12:37:14 --> CRSF cookie Set
+DEBUG - 2012-01-09 12:37:14 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-09 12:37:14 --> Language Class Initialized
+DEBUG - 2012-01-09 12:37:14 --> Loader Class Initialized
+DEBUG - 2012-01-09 12:37:14 --> Helper loaded: url_helper
+DEBUG - 2012-01-09 12:37:14 --> Helper loaded: array_helper
+DEBUG - 2012-01-09 12:37:14 --> Helper loaded: security_helper
+DEBUG - 2012-01-09 12:37:14 --> Helper loaded: image_helper
+DEBUG - 2012-01-09 12:37:14 --> Helper loaded: date_helper
+DEBUG - 2012-01-09 12:37:14 --> Database Driver Class Initialized
+DEBUG - 2012-01-09 12:37:14 --> Session Class Initialized
+DEBUG - 2012-01-09 12:37:14 --> Helper loaded: string_helper
+DEBUG - 2012-01-09 12:37:14 --> A session cookie was not found.
+DEBUG - 2012-01-09 12:37:14 --> Session routines successfully run
+DEBUG - 2012-01-09 12:37:14 --> Encrypt Class Initialized
+DEBUG - 2012-01-09 12:37:14 --> Upload Class Initialized
+DEBUG - 2012-01-09 12:37:14 --> Controller Class Initialized
+DEBUG - 2012-01-09 12:37:14 --> Model Class Initialized
+DEBUG - 2012-01-09 12:37:14 --> Model Class Initialized
+DEBUG - 2012-01-09 12:37:14 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-09 12:37:14 --> Final output sent to browser
+DEBUG - 2012-01-09 12:37:14 --> Total execution time: 0.2555
+DEBUG - 2012-01-09 12:37:16 --> Config Class Initialized
+DEBUG - 2012-01-09 12:37:16 --> Hooks Class Initialized
+DEBUG - 2012-01-09 12:37:16 --> Utf8 Class Initialized
+DEBUG - 2012-01-09 12:37:16 --> UTF-8 Support Enabled
+DEBUG - 2012-01-09 12:37:16 --> URI Class Initialized
+DEBUG - 2012-01-09 12:37:16 --> Router Class Initialized
+DEBUG - 2012-01-09 12:37:16 --> Output Class Initialized
+DEBUG - 2012-01-09 12:37:16 --> Security Class Initialized
+DEBUG - 2012-01-09 12:37:16 --> Input Class Initialized
+DEBUG - 2012-01-09 12:37:16 --> CRSF cookie Set
+DEBUG - 2012-01-09 12:37:16 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-09 12:37:16 --> Language Class Initialized
+DEBUG - 2012-01-09 12:37:16 --> Loader Class Initialized
+DEBUG - 2012-01-09 12:37:16 --> Helper loaded: url_helper
+DEBUG - 2012-01-09 12:37:16 --> Helper loaded: array_helper
+DEBUG - 2012-01-09 12:37:16 --> Helper loaded: security_helper
+DEBUG - 2012-01-09 12:37:16 --> Helper loaded: image_helper
+DEBUG - 2012-01-09 12:37:16 --> Helper loaded: date_helper
+DEBUG - 2012-01-09 12:37:16 --> Database Driver Class Initialized
+DEBUG - 2012-01-09 12:37:16 --> Session Class Initialized
+DEBUG - 2012-01-09 12:37:16 --> Helper loaded: string_helper
+DEBUG - 2012-01-09 12:37:16 --> A session cookie was not found.
+DEBUG - 2012-01-09 12:37:16 --> Session routines successfully run
+DEBUG - 2012-01-09 12:37:16 --> Encrypt Class Initialized
+DEBUG - 2012-01-09 12:37:16 --> Upload Class Initialized
+DEBUG - 2012-01-09 12:37:16 --> Controller Class Initialized
+DEBUG - 2012-01-09 12:37:16 --> Model Class Initialized
+DEBUG - 2012-01-09 12:37:16 --> Model Class Initialized
+DEBUG - 2012-01-09 12:37:16 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-09 12:37:16 --> Final output sent to browser
+DEBUG - 2012-01-09 12:37:16 --> Total execution time: 0.2616
+DEBUG - 2012-01-09 12:37:16 --> Config Class Initialized
+DEBUG - 2012-01-09 12:37:16 --> Hooks Class Initialized
+DEBUG - 2012-01-09 12:37:16 --> Utf8 Class Initialized
+DEBUG - 2012-01-09 12:37:17 --> UTF-8 Support Enabled
+DEBUG - 2012-01-09 12:37:17 --> URI Class Initialized
+DEBUG - 2012-01-09 12:37:17 --> Router Class Initialized
+DEBUG - 2012-01-09 12:37:17 --> Output Class Initialized
+DEBUG - 2012-01-09 12:37:17 --> Security Class Initialized
+DEBUG - 2012-01-09 12:37:17 --> Input Class Initialized
+DEBUG - 2012-01-09 12:37:17 --> CRSF cookie Set
+DEBUG - 2012-01-09 12:37:17 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-09 12:37:17 --> Language Class Initialized
+DEBUG - 2012-01-09 12:37:17 --> Loader Class Initialized
+DEBUG - 2012-01-09 12:37:17 --> Helper loaded: url_helper
+DEBUG - 2012-01-09 12:37:17 --> Helper loaded: array_helper
+DEBUG - 2012-01-09 12:37:17 --> Helper loaded: security_helper
+DEBUG - 2012-01-09 12:37:17 --> Helper loaded: image_helper
+DEBUG - 2012-01-09 12:37:17 --> Helper loaded: date_helper
+DEBUG - 2012-01-09 12:37:17 --> Database Driver Class Initialized
+DEBUG - 2012-01-09 12:37:17 --> Session Class Initialized
+DEBUG - 2012-01-09 12:37:17 --> Helper loaded: string_helper
+DEBUG - 2012-01-09 12:37:17 --> A session cookie was not found.
+DEBUG - 2012-01-09 12:37:17 --> Session routines successfully run
+DEBUG - 2012-01-09 12:37:17 --> Encrypt Class Initialized
+DEBUG - 2012-01-09 12:37:17 --> Upload Class Initialized
+DEBUG - 2012-01-09 12:37:17 --> Controller Class Initialized
+DEBUG - 2012-01-09 12:37:17 --> Model Class Initialized
+DEBUG - 2012-01-09 12:37:17 --> Model Class Initialized
+DEBUG - 2012-01-09 12:37:17 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-09 12:37:17 --> Final output sent to browser
+DEBUG - 2012-01-09 12:37:17 --> Total execution time: 0.2759
+DEBUG - 2012-01-09 12:37:20 --> Config Class Initialized
+DEBUG - 2012-01-09 12:37:20 --> Hooks Class Initialized
+DEBUG - 2012-01-09 12:37:20 --> Utf8 Class Initialized
+DEBUG - 2012-01-09 12:37:20 --> UTF-8 Support Enabled
+DEBUG - 2012-01-09 12:37:20 --> URI Class Initialized
+DEBUG - 2012-01-09 12:37:20 --> Router Class Initialized
+DEBUG - 2012-01-09 12:37:20 --> Output Class Initialized
+DEBUG - 2012-01-09 12:37:20 --> Security Class Initialized
+DEBUG - 2012-01-09 12:37:21 --> Input Class Initialized
+DEBUG - 2012-01-09 12:37:21 --> CRSF cookie Set
+DEBUG - 2012-01-09 12:37:21 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-09 12:37:21 --> Language Class Initialized
+DEBUG - 2012-01-09 12:37:21 --> Loader Class Initialized
+DEBUG - 2012-01-09 12:37:21 --> Helper loaded: url_helper
+DEBUG - 2012-01-09 12:37:21 --> Helper loaded: array_helper
+DEBUG - 2012-01-09 12:37:21 --> Helper loaded: security_helper
+DEBUG - 2012-01-09 12:37:21 --> Helper loaded: image_helper
+DEBUG - 2012-01-09 12:37:21 --> Helper loaded: date_helper
+DEBUG - 2012-01-09 12:37:21 --> Database Driver Class Initialized
+DEBUG - 2012-01-09 12:37:21 --> Session Class Initialized
+DEBUG - 2012-01-09 12:37:21 --> Helper loaded: string_helper
+DEBUG - 2012-01-09 12:37:21 --> A session cookie was not found.
+DEBUG - 2012-01-09 12:37:21 --> Session routines successfully run
+DEBUG - 2012-01-09 12:37:21 --> Encrypt Class Initialized
+DEBUG - 2012-01-09 12:37:21 --> Upload Class Initialized
+DEBUG - 2012-01-09 12:37:21 --> Controller Class Initialized
+DEBUG - 2012-01-09 12:37:21 --> Model Class Initialized
+DEBUG - 2012-01-09 12:37:21 --> Model Class Initialized
+DEBUG - 2012-01-09 12:37:21 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-09 12:37:21 --> Final output sent to browser
+DEBUG - 2012-01-09 12:37:21 --> Total execution time: 0.2567
+DEBUG - 2012-01-09 12:37:21 --> Config Class Initialized
+DEBUG - 2012-01-09 12:37:21 --> Hooks Class Initialized
+DEBUG - 2012-01-09 12:37:21 --> Utf8 Class Initialized
+DEBUG - 2012-01-09 12:37:21 --> UTF-8 Support Enabled
+DEBUG - 2012-01-09 12:37:21 --> URI Class Initialized
+DEBUG - 2012-01-09 12:37:21 --> Router Class Initialized
+DEBUG - 2012-01-09 12:37:21 --> Output Class Initialized
+DEBUG - 2012-01-09 12:37:21 --> Security Class Initialized
+DEBUG - 2012-01-09 12:37:21 --> Input Class Initialized
+DEBUG - 2012-01-09 12:37:21 --> CRSF cookie Set
+DEBUG - 2012-01-09 12:37:21 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-09 12:37:21 --> Language Class Initialized
+DEBUG - 2012-01-09 12:37:21 --> Loader Class Initialized
+DEBUG - 2012-01-09 12:37:21 --> Helper loaded: url_helper
+DEBUG - 2012-01-09 12:37:21 --> Helper loaded: array_helper
+DEBUG - 2012-01-09 12:37:21 --> Helper loaded: security_helper
+DEBUG - 2012-01-09 12:37:21 --> Helper loaded: image_helper
+DEBUG - 2012-01-09 12:37:21 --> Helper loaded: date_helper
+DEBUG - 2012-01-09 12:37:21 --> Database Driver Class Initialized
+DEBUG - 2012-01-09 12:37:21 --> Session Class Initialized
+DEBUG - 2012-01-09 12:37:21 --> Helper loaded: string_helper
+DEBUG - 2012-01-09 12:37:21 --> A session cookie was not found.
+DEBUG - 2012-01-09 12:37:21 --> Session routines successfully run
+DEBUG - 2012-01-09 12:37:21 --> Encrypt Class Initialized
+DEBUG - 2012-01-09 12:37:21 --> Upload Class Initialized
+DEBUG - 2012-01-09 12:37:21 --> Controller Class Initialized
+DEBUG - 2012-01-09 12:37:21 --> Model Class Initialized
+DEBUG - 2012-01-09 12:37:21 --> Model Class Initialized
+DEBUG - 2012-01-09 12:37:21 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-09 12:37:21 --> Final output sent to browser
+DEBUG - 2012-01-09 12:37:21 --> Total execution time: 0.2658
+DEBUG - 2012-01-09 12:37:23 --> Config Class Initialized
+DEBUG - 2012-01-09 12:37:23 --> Hooks Class Initialized
+DEBUG - 2012-01-09 12:37:23 --> Utf8 Class Initialized
+DEBUG - 2012-01-09 12:37:23 --> UTF-8 Support Enabled
+DEBUG - 2012-01-09 12:37:23 --> URI Class Initialized
+DEBUG - 2012-01-09 12:37:23 --> Router Class Initialized
+DEBUG - 2012-01-09 12:37:23 --> Output Class Initialized
+DEBUG - 2012-01-09 12:37:23 --> Security Class Initialized
+DEBUG - 2012-01-09 12:37:23 --> Input Class Initialized
+DEBUG - 2012-01-09 12:37:23 --> CRSF cookie Set
+DEBUG - 2012-01-09 12:37:23 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-09 12:37:23 --> Language Class Initialized
+DEBUG - 2012-01-09 12:37:23 --> Loader Class Initialized
+DEBUG - 2012-01-09 12:37:23 --> Helper loaded: url_helper
+DEBUG - 2012-01-09 12:37:23 --> Helper loaded: array_helper
+DEBUG - 2012-01-09 12:37:23 --> Helper loaded: security_helper
+DEBUG - 2012-01-09 12:37:23 --> Helper loaded: image_helper
+DEBUG - 2012-01-09 12:37:23 --> Helper loaded: date_helper
+DEBUG - 2012-01-09 12:37:23 --> Database Driver Class Initialized
+DEBUG - 2012-01-09 12:37:23 --> Session Class Initialized
+DEBUG - 2012-01-09 12:37:23 --> Helper loaded: string_helper
+DEBUG - 2012-01-09 12:37:23 --> A session cookie was not found.
+DEBUG - 2012-01-09 12:37:23 --> Session routines successfully run
+DEBUG - 2012-01-09 12:37:23 --> Encrypt Class Initialized
+DEBUG - 2012-01-09 12:37:23 --> Upload Class Initialized
+DEBUG - 2012-01-09 12:37:23 --> Controller Class Initialized
+DEBUG - 2012-01-09 12:37:23 --> Model Class Initialized
+DEBUG - 2012-01-09 12:37:23 --> Model Class Initialized
+DEBUG - 2012-01-09 12:37:23 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-09 12:37:23 --> Final output sent to browser
+DEBUG - 2012-01-09 12:37:23 --> Total execution time: 0.2522
+DEBUG - 2012-01-09 12:37:23 --> Config Class Initialized
+DEBUG - 2012-01-09 12:37:23 --> Hooks Class Initialized
+DEBUG - 2012-01-09 12:37:23 --> Utf8 Class Initialized
+DEBUG - 2012-01-09 12:37:23 --> UTF-8 Support Enabled
+DEBUG - 2012-01-09 12:37:23 --> URI Class Initialized
+DEBUG - 2012-01-09 12:37:23 --> Router Class Initialized
+DEBUG - 2012-01-09 12:37:23 --> Output Class Initialized
+DEBUG - 2012-01-09 12:37:23 --> Security Class Initialized
+DEBUG - 2012-01-09 12:37:23 --> Input Class Initialized
+DEBUG - 2012-01-09 12:37:23 --> CRSF cookie Set
+DEBUG - 2012-01-09 12:37:23 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-09 12:37:23 --> Language Class Initialized
+DEBUG - 2012-01-09 12:37:23 --> Loader Class Initialized
+DEBUG - 2012-01-09 12:37:23 --> Helper loaded: url_helper
+DEBUG - 2012-01-09 12:37:23 --> Helper loaded: array_helper
+DEBUG - 2012-01-09 12:37:23 --> Helper loaded: security_helper
+DEBUG - 2012-01-09 12:37:23 --> Helper loaded: image_helper
+DEBUG - 2012-01-09 12:37:23 --> Helper loaded: date_helper
+DEBUG - 2012-01-09 12:37:23 --> Database Driver Class Initialized
+DEBUG - 2012-01-09 12:37:23 --> Session Class Initialized
+DEBUG - 2012-01-09 12:37:23 --> Helper loaded: string_helper
+DEBUG - 2012-01-09 12:37:23 --> A session cookie was not found.
+DEBUG - 2012-01-09 12:37:23 --> Session routines successfully run
+DEBUG - 2012-01-09 12:37:23 --> Encrypt Class Initialized
+DEBUG - 2012-01-09 12:37:23 --> Upload Class Initialized
+DEBUG - 2012-01-09 12:37:23 --> Controller Class Initialized
+DEBUG - 2012-01-09 12:37:23 --> Model Class Initialized
+DEBUG - 2012-01-09 12:37:23 --> Model Class Initialized
+DEBUG - 2012-01-09 12:37:23 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-09 12:37:23 --> Final output sent to browser
+DEBUG - 2012-01-09 12:37:23 --> Total execution time: 0.2609
+DEBUG - 2012-01-09 12:37:30 --> Config Class Initialized
+DEBUG - 2012-01-09 12:37:30 --> Hooks Class Initialized
+DEBUG - 2012-01-09 12:37:30 --> Utf8 Class Initialized
+DEBUG - 2012-01-09 12:37:30 --> UTF-8 Support Enabled
+DEBUG - 2012-01-09 12:37:30 --> URI Class Initialized
+DEBUG - 2012-01-09 12:37:30 --> Router Class Initialized
+DEBUG - 2012-01-09 12:37:30 --> Output Class Initialized
+DEBUG - 2012-01-09 12:37:30 --> Security Class Initialized
+DEBUG - 2012-01-09 12:37:30 --> Input Class Initialized
+DEBUG - 2012-01-09 12:37:30 --> CRSF cookie Set
+DEBUG - 2012-01-09 12:37:30 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-09 12:37:30 --> Language Class Initialized
+DEBUG - 2012-01-09 12:37:30 --> Loader Class Initialized
+DEBUG - 2012-01-09 12:37:30 --> Helper loaded: url_helper
+DEBUG - 2012-01-09 12:37:30 --> Helper loaded: array_helper
+DEBUG - 2012-01-09 12:37:30 --> Helper loaded: security_helper
+DEBUG - 2012-01-09 12:37:30 --> Helper loaded: image_helper
+DEBUG - 2012-01-09 12:37:30 --> Helper loaded: date_helper
+DEBUG - 2012-01-09 12:37:30 --> Database Driver Class Initialized
+DEBUG - 2012-01-09 12:37:30 --> Session Class Initialized
+DEBUG - 2012-01-09 12:37:30 --> Helper loaded: string_helper
+DEBUG - 2012-01-09 12:37:30 --> A session cookie was not found.
+DEBUG - 2012-01-09 12:37:30 --> Session routines successfully run
+DEBUG - 2012-01-09 12:37:31 --> Encrypt Class Initialized
+DEBUG - 2012-01-09 12:37:31 --> Upload Class Initialized
+DEBUG - 2012-01-09 12:37:31 --> Controller Class Initialized
+DEBUG - 2012-01-09 12:37:31 --> Model Class Initialized
+DEBUG - 2012-01-09 12:37:31 --> Model Class Initialized
+DEBUG - 2012-01-09 12:37:31 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-09 12:37:31 --> Final output sent to browser
+DEBUG - 2012-01-09 12:37:31 --> Total execution time: 0.2634
+DEBUG - 2012-01-09 12:37:31 --> Config Class Initialized
+DEBUG - 2012-01-09 12:37:31 --> Hooks Class Initialized
+DEBUG - 2012-01-09 12:37:31 --> Utf8 Class Initialized
+DEBUG - 2012-01-09 12:37:31 --> UTF-8 Support Enabled
+DEBUG - 2012-01-09 12:37:31 --> URI Class Initialized
+DEBUG - 2012-01-09 12:37:31 --> Router Class Initialized
+DEBUG - 2012-01-09 12:37:31 --> Output Class Initialized
+DEBUG - 2012-01-09 12:37:31 --> Security Class Initialized
+DEBUG - 2012-01-09 12:37:31 --> Input Class Initialized
+DEBUG - 2012-01-09 12:37:31 --> CRSF cookie Set
+DEBUG - 2012-01-09 12:37:31 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-09 12:37:31 --> Language Class Initialized
+DEBUG - 2012-01-09 12:37:31 --> Loader Class Initialized
+DEBUG - 2012-01-09 12:37:31 --> Helper loaded: url_helper
+DEBUG - 2012-01-09 12:37:31 --> Helper loaded: array_helper
+DEBUG - 2012-01-09 12:37:31 --> Helper loaded: security_helper
+DEBUG - 2012-01-09 12:37:31 --> Helper loaded: image_helper
+DEBUG - 2012-01-09 12:37:31 --> Helper loaded: date_helper
+DEBUG - 2012-01-09 12:37:31 --> Database Driver Class Initialized
+DEBUG - 2012-01-09 12:37:31 --> Session Class Initialized
+DEBUG - 2012-01-09 12:37:31 --> Helper loaded: string_helper
+DEBUG - 2012-01-09 12:37:31 --> A session cookie was not found.
+DEBUG - 2012-01-09 12:37:31 --> Session routines successfully run
+DEBUG - 2012-01-09 12:37:31 --> Encrypt Class Initialized
+DEBUG - 2012-01-09 12:37:31 --> Upload Class Initialized
+DEBUG - 2012-01-09 12:37:31 --> Controller Class Initialized
+DEBUG - 2012-01-09 12:37:31 --> Model Class Initialized
+DEBUG - 2012-01-09 12:37:31 --> Model Class Initialized
+DEBUG - 2012-01-09 12:37:31 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-09 12:37:31 --> Final output sent to browser
+DEBUG - 2012-01-09 12:37:31 --> Total execution time: 0.2639
+DEBUG - 2012-01-09 12:37:33 --> Config Class Initialized
+DEBUG - 2012-01-09 12:37:33 --> Hooks Class Initialized
+DEBUG - 2012-01-09 12:37:33 --> Utf8 Class Initialized
+DEBUG - 2012-01-09 12:37:33 --> UTF-8 Support Enabled
+DEBUG - 2012-01-09 12:37:33 --> URI Class Initialized
+DEBUG - 2012-01-09 12:37:33 --> Router Class Initialized
+DEBUG - 2012-01-09 12:37:33 --> Output Class Initialized
+DEBUG - 2012-01-09 12:37:33 --> Security Class Initialized
+DEBUG - 2012-01-09 12:37:33 --> Input Class Initialized
+DEBUG - 2012-01-09 12:37:33 --> CRSF cookie Set
+DEBUG - 2012-01-09 12:37:33 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-09 12:37:33 --> Language Class Initialized
+DEBUG - 2012-01-09 12:37:33 --> Loader Class Initialized
+DEBUG - 2012-01-09 12:37:33 --> Helper loaded: url_helper
+DEBUG - 2012-01-09 12:37:33 --> Helper loaded: array_helper
+DEBUG - 2012-01-09 12:37:33 --> Helper loaded: security_helper
+DEBUG - 2012-01-09 12:37:33 --> Helper loaded: image_helper
+DEBUG - 2012-01-09 12:37:34 --> Helper loaded: date_helper
+DEBUG - 2012-01-09 12:37:34 --> Database Driver Class Initialized
+DEBUG - 2012-01-09 12:37:34 --> Session Class Initialized
+DEBUG - 2012-01-09 12:37:34 --> Helper loaded: string_helper
+DEBUG - 2012-01-09 12:37:34 --> A session cookie was not found.
+DEBUG - 2012-01-09 12:37:34 --> Session routines successfully run
+DEBUG - 2012-01-09 12:37:34 --> Encrypt Class Initialized
+DEBUG - 2012-01-09 12:37:34 --> Upload Class Initialized
+DEBUG - 2012-01-09 12:37:34 --> Controller Class Initialized
+DEBUG - 2012-01-09 12:37:34 --> Model Class Initialized
+DEBUG - 2012-01-09 12:37:34 --> Model Class Initialized
+DEBUG - 2012-01-09 12:37:34 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-09 12:37:34 --> Final output sent to browser
+DEBUG - 2012-01-09 12:37:34 --> Total execution time: 0.2607
+DEBUG - 2012-01-09 12:37:34 --> Config Class Initialized
+DEBUG - 2012-01-09 12:37:34 --> Hooks Class Initialized
+DEBUG - 2012-01-09 12:37:34 --> Utf8 Class Initialized
+DEBUG - 2012-01-09 12:37:34 --> UTF-8 Support Enabled
+DEBUG - 2012-01-09 12:37:34 --> URI Class Initialized
+DEBUG - 2012-01-09 12:37:34 --> Router Class Initialized
+DEBUG - 2012-01-09 12:37:34 --> Output Class Initialized
+DEBUG - 2012-01-09 12:37:34 --> Security Class Initialized
+DEBUG - 2012-01-09 12:37:34 --> Input Class Initialized
+DEBUG - 2012-01-09 12:37:34 --> CRSF cookie Set
+DEBUG - 2012-01-09 12:37:34 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-09 12:37:34 --> Language Class Initialized
+DEBUG - 2012-01-09 12:37:34 --> Loader Class Initialized
+DEBUG - 2012-01-09 12:37:34 --> Helper loaded: url_helper
+DEBUG - 2012-01-09 12:37:34 --> Helper loaded: array_helper
+DEBUG - 2012-01-09 12:37:34 --> Helper loaded: security_helper
+DEBUG - 2012-01-09 12:37:34 --> Helper loaded: image_helper
+DEBUG - 2012-01-09 12:37:34 --> Helper loaded: date_helper
+DEBUG - 2012-01-09 12:37:34 --> Database Driver Class Initialized
+DEBUG - 2012-01-09 12:37:34 --> Session Class Initialized
+DEBUG - 2012-01-09 12:37:34 --> Helper loaded: string_helper
+DEBUG - 2012-01-09 12:37:34 --> A session cookie was not found.
+DEBUG - 2012-01-09 12:37:34 --> Session routines successfully run
+DEBUG - 2012-01-09 12:37:34 --> Encrypt Class Initialized
+DEBUG - 2012-01-09 12:37:34 --> Upload Class Initialized
+DEBUG - 2012-01-09 12:37:34 --> Controller Class Initialized
+DEBUG - 2012-01-09 12:37:34 --> Model Class Initialized
+DEBUG - 2012-01-09 12:37:34 --> Model Class Initialized
+DEBUG - 2012-01-09 12:37:34 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-09 12:37:34 --> Final output sent to browser
+DEBUG - 2012-01-09 12:37:34 --> Total execution time: 0.2658
+DEBUG - 2012-01-09 12:38:29 --> Config Class Initialized
+DEBUG - 2012-01-09 12:38:29 --> Hooks Class Initialized
+DEBUG - 2012-01-09 12:38:29 --> Utf8 Class Initialized
+DEBUG - 2012-01-09 12:38:29 --> UTF-8 Support Enabled
+DEBUG - 2012-01-09 12:38:29 --> URI Class Initialized
+DEBUG - 2012-01-09 12:38:29 --> Router Class Initialized
+DEBUG - 2012-01-09 12:38:29 --> Output Class Initialized
+DEBUG - 2012-01-09 12:38:29 --> Security Class Initialized
+DEBUG - 2012-01-09 12:38:29 --> Input Class Initialized
+DEBUG - 2012-01-09 12:38:29 --> CRSF cookie Set
+DEBUG - 2012-01-09 12:38:29 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-09 12:38:29 --> Language Class Initialized
+DEBUG - 2012-01-09 12:38:29 --> Loader Class Initialized
+DEBUG - 2012-01-09 12:38:29 --> Helper loaded: url_helper
+DEBUG - 2012-01-09 12:38:29 --> Helper loaded: array_helper
+DEBUG - 2012-01-09 12:38:29 --> Helper loaded: security_helper
+DEBUG - 2012-01-09 12:38:29 --> Helper loaded: image_helper
+DEBUG - 2012-01-09 12:38:29 --> Helper loaded: date_helper
+DEBUG - 2012-01-09 12:38:29 --> Database Driver Class Initialized
+DEBUG - 2012-01-09 12:38:29 --> Session Class Initialized
+DEBUG - 2012-01-09 12:38:29 --> Helper loaded: string_helper
+DEBUG - 2012-01-09 12:38:29 --> A session cookie was not found.
+DEBUG - 2012-01-09 12:38:29 --> Session routines successfully run
+DEBUG - 2012-01-09 12:38:29 --> Encrypt Class Initialized
+DEBUG - 2012-01-09 12:38:29 --> Upload Class Initialized
+DEBUG - 2012-01-09 12:38:29 --> Controller Class Initialized
+DEBUG - 2012-01-09 12:38:29 --> Model Class Initialized
+DEBUG - 2012-01-09 12:38:29 --> Model Class Initialized
+DEBUG - 2012-01-09 12:38:29 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-09 12:38:29 --> Final output sent to browser
+DEBUG - 2012-01-09 12:38:29 --> Total execution time: 0.2907
+DEBUG - 2012-01-09 12:38:30 --> Config Class Initialized
+DEBUG - 2012-01-09 12:38:30 --> Hooks Class Initialized
+DEBUG - 2012-01-09 12:38:30 --> Utf8 Class Initialized
+DEBUG - 2012-01-09 12:38:30 --> UTF-8 Support Enabled
+DEBUG - 2012-01-09 12:38:30 --> URI Class Initialized
+DEBUG - 2012-01-09 12:38:30 --> Router Class Initialized
+DEBUG - 2012-01-09 12:38:30 --> Output Class Initialized
+DEBUG - 2012-01-09 12:38:30 --> Security Class Initialized
+DEBUG - 2012-01-09 12:38:30 --> Input Class Initialized
+DEBUG - 2012-01-09 12:38:30 --> CRSF cookie Set
+DEBUG - 2012-01-09 12:38:30 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-09 12:38:30 --> Language Class Initialized
+DEBUG - 2012-01-09 12:38:30 --> Loader Class Initialized
+DEBUG - 2012-01-09 12:38:30 --> Helper loaded: url_helper
+DEBUG - 2012-01-09 12:38:30 --> Helper loaded: array_helper
+DEBUG - 2012-01-09 12:38:30 --> Helper loaded: security_helper
+DEBUG - 2012-01-09 12:38:30 --> Helper loaded: image_helper
+DEBUG - 2012-01-09 12:38:30 --> Helper loaded: date_helper
+DEBUG - 2012-01-09 12:38:30 --> Database Driver Class Initialized
+DEBUG - 2012-01-09 12:38:30 --> Session Class Initialized
+DEBUG - 2012-01-09 12:38:30 --> Helper loaded: string_helper
+DEBUG - 2012-01-09 12:38:30 --> A session cookie was not found.
+DEBUG - 2012-01-09 12:38:30 --> Session routines successfully run
+DEBUG - 2012-01-09 12:38:30 --> Encrypt Class Initialized
+DEBUG - 2012-01-09 12:38:30 --> Upload Class Initialized
+DEBUG - 2012-01-09 12:38:30 --> Controller Class Initialized
+DEBUG - 2012-01-09 12:38:30 --> Model Class Initialized
+DEBUG - 2012-01-09 12:38:30 --> Model Class Initialized
+DEBUG - 2012-01-09 12:38:30 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-09 12:38:30 --> Final output sent to browser
+DEBUG - 2012-01-09 12:38:30 --> Total execution time: 0.2656
+DEBUG - 2012-01-09 12:40:37 --> Config Class Initialized
+DEBUG - 2012-01-09 12:40:37 --> Hooks Class Initialized
+DEBUG - 2012-01-09 12:40:38 --> Utf8 Class Initialized
+DEBUG - 2012-01-09 12:40:38 --> UTF-8 Support Enabled
+DEBUG - 2012-01-09 12:40:38 --> URI Class Initialized
+DEBUG - 2012-01-09 12:40:38 --> Router Class Initialized
+DEBUG - 2012-01-09 12:40:38 --> Output Class Initialized
+DEBUG - 2012-01-09 12:40:38 --> Security Class Initialized
+DEBUG - 2012-01-09 12:40:38 --> Input Class Initialized
+DEBUG - 2012-01-09 12:40:38 --> CRSF cookie Set
+DEBUG - 2012-01-09 12:40:38 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-09 12:40:38 --> Language Class Initialized
+DEBUG - 2012-01-09 12:40:38 --> Loader Class Initialized
+DEBUG - 2012-01-09 12:40:38 --> Helper loaded: url_helper
+DEBUG - 2012-01-09 12:40:38 --> Helper loaded: array_helper
+DEBUG - 2012-01-09 12:40:38 --> Helper loaded: security_helper
+DEBUG - 2012-01-09 12:40:38 --> Helper loaded: image_helper
+DEBUG - 2012-01-09 12:40:38 --> Helper loaded: date_helper
+DEBUG - 2012-01-09 12:40:38 --> Database Driver Class Initialized
+DEBUG - 2012-01-09 12:40:38 --> Session Class Initialized
+DEBUG - 2012-01-09 12:40:38 --> Helper loaded: string_helper
+DEBUG - 2012-01-09 12:40:38 --> A session cookie was not found.
+DEBUG - 2012-01-09 12:40:38 --> Session routines successfully run
+DEBUG - 2012-01-09 12:40:38 --> Encrypt Class Initialized
+DEBUG - 2012-01-09 12:40:38 --> Upload Class Initialized
+DEBUG - 2012-01-09 12:40:38 --> Controller Class Initialized
+DEBUG - 2012-01-09 12:40:38 --> Model Class Initialized
+DEBUG - 2012-01-09 12:40:38 --> Model Class Initialized
+DEBUG - 2012-01-09 12:40:38 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-09 12:40:38 --> Final output sent to browser
+DEBUG - 2012-01-09 12:40:38 --> Total execution time: 0.2762
+DEBUG - 2012-01-09 12:40:38 --> Config Class Initialized
+DEBUG - 2012-01-09 12:40:38 --> Hooks Class Initialized
+DEBUG - 2012-01-09 12:40:38 --> Utf8 Class Initialized
+DEBUG - 2012-01-09 12:40:38 --> UTF-8 Support Enabled
+DEBUG - 2012-01-09 12:40:38 --> URI Class Initialized
+DEBUG - 2012-01-09 12:40:38 --> Router Class Initialized
+DEBUG - 2012-01-09 12:40:38 --> Output Class Initialized
+DEBUG - 2012-01-09 12:40:38 --> Security Class Initialized
+DEBUG - 2012-01-09 12:40:38 --> Input Class Initialized
+DEBUG - 2012-01-09 12:40:38 --> CRSF cookie Set
+DEBUG - 2012-01-09 12:40:38 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-09 12:40:38 --> Language Class Initialized
+DEBUG - 2012-01-09 12:40:38 --> Loader Class Initialized
+DEBUG - 2012-01-09 12:40:38 --> Helper loaded: url_helper
+DEBUG - 2012-01-09 12:40:38 --> Helper loaded: array_helper
+DEBUG - 2012-01-09 12:40:38 --> Helper loaded: security_helper
+DEBUG - 2012-01-09 12:40:38 --> Helper loaded: image_helper
+DEBUG - 2012-01-09 12:40:38 --> Helper loaded: date_helper
+DEBUG - 2012-01-09 12:40:38 --> Database Driver Class Initialized
+DEBUG - 2012-01-09 12:40:38 --> Session Class Initialized
+DEBUG - 2012-01-09 12:40:38 --> Helper loaded: string_helper
+DEBUG - 2012-01-09 12:40:38 --> A session cookie was not found.
+DEBUG - 2012-01-09 12:40:38 --> Session routines successfully run
+DEBUG - 2012-01-09 12:40:38 --> Encrypt Class Initialized
+DEBUG - 2012-01-09 12:40:38 --> Upload Class Initialized
+DEBUG - 2012-01-09 12:40:38 --> Controller Class Initialized
+DEBUG - 2012-01-09 12:40:38 --> Model Class Initialized
+DEBUG - 2012-01-09 12:40:38 --> Model Class Initialized
+DEBUG - 2012-01-09 12:40:38 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-09 12:40:38 --> Final output sent to browser
+DEBUG - 2012-01-09 12:40:38 --> Total execution time: 0.2594
+DEBUG - 2012-01-09 12:50:07 --> Config Class Initialized
+DEBUG - 2012-01-09 12:50:07 --> Hooks Class Initialized
+DEBUG - 2012-01-09 12:50:07 --> Utf8 Class Initialized
+DEBUG - 2012-01-09 12:50:07 --> UTF-8 Support Enabled
+DEBUG - 2012-01-09 12:50:07 --> URI Class Initialized
+DEBUG - 2012-01-09 12:50:07 --> Router Class Initialized
+DEBUG - 2012-01-09 12:50:07 --> Output Class Initialized
+DEBUG - 2012-01-09 12:50:07 --> Security Class Initialized
+DEBUG - 2012-01-09 12:50:07 --> Input Class Initialized
+DEBUG - 2012-01-09 12:50:07 --> CRSF cookie Set
+DEBUG - 2012-01-09 12:50:07 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-09 12:50:07 --> Language Class Initialized
+DEBUG - 2012-01-09 12:50:07 --> Loader Class Initialized
+DEBUG - 2012-01-09 12:50:07 --> Helper loaded: url_helper
+DEBUG - 2012-01-09 12:50:07 --> Helper loaded: array_helper
+DEBUG - 2012-01-09 12:50:07 --> Helper loaded: security_helper
+DEBUG - 2012-01-09 12:50:07 --> Helper loaded: image_helper
+DEBUG - 2012-01-09 12:50:07 --> Helper loaded: date_helper
+DEBUG - 2012-01-09 12:50:07 --> Database Driver Class Initialized
+DEBUG - 2012-01-09 12:50:07 --> Session Class Initialized
+DEBUG - 2012-01-09 12:50:07 --> Helper loaded: string_helper
+DEBUG - 2012-01-09 12:50:07 --> A session cookie was not found.
+DEBUG - 2012-01-09 12:50:07 --> Session routines successfully run
+DEBUG - 2012-01-09 12:50:07 --> Encrypt Class Initialized
+DEBUG - 2012-01-09 12:50:07 --> Upload Class Initialized
+DEBUG - 2012-01-09 12:50:07 --> Controller Class Initialized
+DEBUG - 2012-01-09 12:50:07 --> Model Class Initialized
+DEBUG - 2012-01-09 12:50:07 --> Model Class Initialized
+DEBUG - 2012-01-09 12:50:07 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-09 12:50:07 --> Final output sent to browser
+DEBUG - 2012-01-09 12:50:07 --> Total execution time: 0.2639
+DEBUG - 2012-01-09 12:50:08 --> Config Class Initialized
+DEBUG - 2012-01-09 12:50:08 --> Hooks Class Initialized
+DEBUG - 2012-01-09 12:50:08 --> Utf8 Class Initialized
+DEBUG - 2012-01-09 12:50:08 --> UTF-8 Support Enabled
+DEBUG - 2012-01-09 12:50:08 --> URI Class Initialized
+DEBUG - 2012-01-09 12:50:08 --> Router Class Initialized
+DEBUG - 2012-01-09 12:50:08 --> Output Class Initialized
+DEBUG - 2012-01-09 12:50:08 --> Security Class Initialized
+DEBUG - 2012-01-09 12:50:08 --> Input Class Initialized
+DEBUG - 2012-01-09 12:50:08 --> CRSF cookie Set
+DEBUG - 2012-01-09 12:50:08 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-09 12:50:08 --> Language Class Initialized
+DEBUG - 2012-01-09 12:50:08 --> Loader Class Initialized
+DEBUG - 2012-01-09 12:50:08 --> Helper loaded: url_helper
+DEBUG - 2012-01-09 12:50:08 --> Helper loaded: array_helper
+DEBUG - 2012-01-09 12:50:08 --> Helper loaded: security_helper
+DEBUG - 2012-01-09 12:50:08 --> Helper loaded: image_helper
+DEBUG - 2012-01-09 12:50:08 --> Helper loaded: date_helper
+DEBUG - 2012-01-09 12:50:08 --> Database Driver Class Initialized
+DEBUG - 2012-01-09 12:50:08 --> Session Class Initialized
+DEBUG - 2012-01-09 12:50:08 --> Helper loaded: string_helper
+DEBUG - 2012-01-09 12:50:08 --> A session cookie was not found.
+DEBUG - 2012-01-09 12:50:08 --> Session routines successfully run
+DEBUG - 2012-01-09 12:50:08 --> Encrypt Class Initialized
+DEBUG - 2012-01-09 12:50:08 --> Upload Class Initialized
+DEBUG - 2012-01-09 12:50:08 --> Controller Class Initialized
+DEBUG - 2012-01-09 12:50:08 --> Model Class Initialized
+DEBUG - 2012-01-09 12:50:08 --> Model Class Initialized
+DEBUG - 2012-01-09 12:50:08 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-09 12:50:08 --> Final output sent to browser
+DEBUG - 2012-01-09 12:50:08 --> Total execution time: 0.2634
+DEBUG - 2012-01-09 13:15:42 --> Config Class Initialized
+DEBUG - 2012-01-09 13:15:42 --> Hooks Class Initialized
+DEBUG - 2012-01-09 13:15:42 --> Utf8 Class Initialized
+DEBUG - 2012-01-09 13:15:42 --> UTF-8 Support Enabled
+DEBUG - 2012-01-09 13:15:42 --> URI Class Initialized
+DEBUG - 2012-01-09 13:15:42 --> Router Class Initialized
+DEBUG - 2012-01-09 13:15:42 --> Output Class Initialized
+DEBUG - 2012-01-09 13:15:42 --> Security Class Initialized
+DEBUG - 2012-01-09 13:15:42 --> Input Class Initialized
+DEBUG - 2012-01-09 13:15:42 --> CRSF cookie Set
+DEBUG - 2012-01-09 13:15:42 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-09 13:15:42 --> Language Class Initialized
+DEBUG - 2012-01-09 13:15:42 --> Loader Class Initialized
+DEBUG - 2012-01-09 13:15:42 --> Helper loaded: url_helper
+DEBUG - 2012-01-09 13:15:42 --> Helper loaded: array_helper
+DEBUG - 2012-01-09 13:15:42 --> Helper loaded: security_helper
+DEBUG - 2012-01-09 13:15:42 --> Helper loaded: image_helper
+DEBUG - 2012-01-09 13:15:42 --> Helper loaded: date_helper
+DEBUG - 2012-01-09 13:15:42 --> Database Driver Class Initialized
+DEBUG - 2012-01-09 13:15:42 --> Session Class Initialized
+DEBUG - 2012-01-09 13:15:42 --> Helper loaded: string_helper
+DEBUG - 2012-01-09 13:15:42 --> A session cookie was not found.
+DEBUG - 2012-01-09 13:15:42 --> Session routines successfully run
+DEBUG - 2012-01-09 13:15:42 --> Encrypt Class Initialized
+DEBUG - 2012-01-09 13:15:42 --> Upload Class Initialized
+DEBUG - 2012-01-09 13:15:42 --> Controller Class Initialized
+DEBUG - 2012-01-09 13:15:42 --> Model Class Initialized
+DEBUG - 2012-01-09 13:15:42 --> Model Class Initialized
+DEBUG - 2012-01-09 13:15:42 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-09 13:15:42 --> Final output sent to browser
+DEBUG - 2012-01-09 13:15:42 --> Total execution time: 0.2712
+DEBUG - 2012-01-09 13:15:42 --> Config Class Initialized
+DEBUG - 2012-01-09 13:15:42 --> Hooks Class Initialized
+DEBUG - 2012-01-09 13:15:42 --> Utf8 Class Initialized
+DEBUG - 2012-01-09 13:15:42 --> UTF-8 Support Enabled
+DEBUG - 2012-01-09 13:15:42 --> URI Class Initialized
+DEBUG - 2012-01-09 13:15:42 --> Router Class Initialized
+DEBUG - 2012-01-09 13:15:42 --> Output Class Initialized
+DEBUG - 2012-01-09 13:15:42 --> Security Class Initialized
+DEBUG - 2012-01-09 13:15:42 --> Input Class Initialized
+DEBUG - 2012-01-09 13:15:42 --> CRSF cookie Set
+DEBUG - 2012-01-09 13:15:42 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-09 13:15:42 --> Language Class Initialized
+DEBUG - 2012-01-09 13:15:42 --> Loader Class Initialized
+DEBUG - 2012-01-09 13:15:42 --> Helper loaded: url_helper
+DEBUG - 2012-01-09 13:15:42 --> Helper loaded: array_helper
+DEBUG - 2012-01-09 13:15:42 --> Helper loaded: security_helper
+DEBUG - 2012-01-09 13:15:42 --> Helper loaded: image_helper
+DEBUG - 2012-01-09 13:15:42 --> Helper loaded: date_helper
+DEBUG - 2012-01-09 13:15:42 --> Database Driver Class Initialized
+DEBUG - 2012-01-09 13:15:42 --> Session Class Initialized
+DEBUG - 2012-01-09 13:15:42 --> Helper loaded: string_helper
+DEBUG - 2012-01-09 13:15:42 --> A session cookie was not found.
+DEBUG - 2012-01-09 13:15:42 --> Session routines successfully run
+DEBUG - 2012-01-09 13:15:42 --> Encrypt Class Initialized
+DEBUG - 2012-01-09 13:15:42 --> Upload Class Initialized
+DEBUG - 2012-01-09 13:15:42 --> Controller Class Initialized
+DEBUG - 2012-01-09 13:15:42 --> Model Class Initialized
+DEBUG - 2012-01-09 13:15:42 --> Model Class Initialized
+DEBUG - 2012-01-09 13:15:42 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-09 13:15:42 --> Final output sent to browser
+DEBUG - 2012-01-09 13:15:42 --> Total execution time: 0.2614
+DEBUG - 2012-01-09 13:15:44 --> Config Class Initialized
+DEBUG - 2012-01-09 13:15:44 --> Hooks Class Initialized
+DEBUG - 2012-01-09 13:15:44 --> Utf8 Class Initialized
+DEBUG - 2012-01-09 13:15:44 --> UTF-8 Support Enabled
+DEBUG - 2012-01-09 13:15:44 --> URI Class Initialized
+DEBUG - 2012-01-09 13:15:44 --> Router Class Initialized
+DEBUG - 2012-01-09 13:15:44 --> Output Class Initialized
+DEBUG - 2012-01-09 13:15:44 --> Security Class Initialized
+DEBUG - 2012-01-09 13:15:44 --> Input Class Initialized
+DEBUG - 2012-01-09 13:15:44 --> CRSF cookie Set
+DEBUG - 2012-01-09 13:15:44 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-09 13:15:44 --> Language Class Initialized
+DEBUG - 2012-01-09 13:15:44 --> Loader Class Initialized
+DEBUG - 2012-01-09 13:15:44 --> Helper loaded: url_helper
+DEBUG - 2012-01-09 13:15:44 --> Helper loaded: array_helper
+DEBUG - 2012-01-09 13:15:44 --> Helper loaded: security_helper
+DEBUG - 2012-01-09 13:15:44 --> Helper loaded: image_helper
+DEBUG - 2012-01-09 13:15:44 --> Helper loaded: date_helper
+DEBUG - 2012-01-09 13:15:44 --> Database Driver Class Initialized
+DEBUG - 2012-01-09 13:15:44 --> Session Class Initialized
+DEBUG - 2012-01-09 13:15:44 --> Helper loaded: string_helper
+DEBUG - 2012-01-09 13:15:44 --> A session cookie was not found.
+DEBUG - 2012-01-09 13:15:44 --> Session routines successfully run
+DEBUG - 2012-01-09 13:15:44 --> Encrypt Class Initialized
+DEBUG - 2012-01-09 13:15:44 --> Upload Class Initialized
+DEBUG - 2012-01-09 13:15:44 --> Controller Class Initialized
+DEBUG - 2012-01-09 13:15:44 --> Model Class Initialized
+DEBUG - 2012-01-09 13:15:44 --> Model Class Initialized
+DEBUG - 2012-01-09 13:15:44 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-09 13:15:44 --> Final output sent to browser
+DEBUG - 2012-01-09 13:15:44 --> Total execution time: 0.2776
+DEBUG - 2012-01-09 13:15:44 --> Config Class Initialized
+DEBUG - 2012-01-09 13:15:44 --> Hooks Class Initialized
+DEBUG - 2012-01-09 13:15:44 --> Utf8 Class Initialized
+DEBUG - 2012-01-09 13:15:44 --> UTF-8 Support Enabled
+DEBUG - 2012-01-09 13:15:44 --> URI Class Initialized
+DEBUG - 2012-01-09 13:15:44 --> Router Class Initialized
+DEBUG - 2012-01-09 13:15:44 --> Output Class Initialized
+DEBUG - 2012-01-09 13:15:44 --> Security Class Initialized
+DEBUG - 2012-01-09 13:15:44 --> Input Class Initialized
+DEBUG - 2012-01-09 13:15:44 --> CRSF cookie Set
+DEBUG - 2012-01-09 13:15:44 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-09 13:15:44 --> Language Class Initialized
+DEBUG - 2012-01-09 13:15:44 --> Loader Class Initialized
+DEBUG - 2012-01-09 13:15:44 --> Helper loaded: url_helper
+DEBUG - 2012-01-09 13:15:44 --> Helper loaded: array_helper
+DEBUG - 2012-01-09 13:15:44 --> Helper loaded: security_helper
+DEBUG - 2012-01-09 13:15:44 --> Helper loaded: image_helper
+DEBUG - 2012-01-09 13:15:44 --> Helper loaded: date_helper
+DEBUG - 2012-01-09 13:15:44 --> Database Driver Class Initialized
+DEBUG - 2012-01-09 13:15:44 --> Session Class Initialized
+DEBUG - 2012-01-09 13:15:44 --> Helper loaded: string_helper
+DEBUG - 2012-01-09 13:15:44 --> A session cookie was not found.
+DEBUG - 2012-01-09 13:15:44 --> Session routines successfully run
+DEBUG - 2012-01-09 13:15:44 --> Encrypt Class Initialized
+DEBUG - 2012-01-09 13:15:44 --> Upload Class Initialized
+DEBUG - 2012-01-09 13:15:44 --> Controller Class Initialized
+DEBUG - 2012-01-09 13:15:44 --> Model Class Initialized
+DEBUG - 2012-01-09 13:15:44 --> Model Class Initialized
+DEBUG - 2012-01-09 13:15:44 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-09 13:15:44 --> Final output sent to browser
+DEBUG - 2012-01-09 13:15:44 --> Total execution time: 0.2677
+DEBUG - 2012-01-09 13:16:16 --> Config Class Initialized
+DEBUG - 2012-01-09 13:16:16 --> Hooks Class Initialized
+DEBUG - 2012-01-09 13:16:16 --> Utf8 Class Initialized
+DEBUG - 2012-01-09 13:16:16 --> UTF-8 Support Enabled
+DEBUG - 2012-01-09 13:16:16 --> URI Class Initialized
+DEBUG - 2012-01-09 13:16:16 --> Router Class Initialized
+DEBUG - 2012-01-09 13:16:16 --> Output Class Initialized
+DEBUG - 2012-01-09 13:16:16 --> Security Class Initialized
+DEBUG - 2012-01-09 13:16:16 --> Input Class Initialized
+DEBUG - 2012-01-09 13:16:16 --> CRSF cookie Set
+DEBUG - 2012-01-09 13:16:16 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-09 13:16:16 --> Language Class Initialized
+DEBUG - 2012-01-09 13:16:16 --> Loader Class Initialized
+DEBUG - 2012-01-09 13:16:16 --> Helper loaded: url_helper
+DEBUG - 2012-01-09 13:16:16 --> Helper loaded: array_helper
+DEBUG - 2012-01-09 13:16:16 --> Helper loaded: security_helper
+DEBUG - 2012-01-09 13:16:16 --> Helper loaded: image_helper
+DEBUG - 2012-01-09 13:16:16 --> Helper loaded: date_helper
+DEBUG - 2012-01-09 13:16:17 --> Database Driver Class Initialized
+DEBUG - 2012-01-09 13:16:17 --> Session Class Initialized
+DEBUG - 2012-01-09 13:16:17 --> Helper loaded: string_helper
+DEBUG - 2012-01-09 13:16:17 --> A session cookie was not found.
+DEBUG - 2012-01-09 13:16:17 --> Session routines successfully run
+DEBUG - 2012-01-09 13:16:17 --> Encrypt Class Initialized
+DEBUG - 2012-01-09 13:16:17 --> Upload Class Initialized
+DEBUG - 2012-01-09 13:16:17 --> Controller Class Initialized
+DEBUG - 2012-01-09 13:16:17 --> Model Class Initialized
+DEBUG - 2012-01-09 13:16:17 --> Model Class Initialized
+DEBUG - 2012-01-09 13:16:17 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-09 13:16:17 --> Final output sent to browser
+DEBUG - 2012-01-09 13:16:17 --> Total execution time: 0.2634
+DEBUG - 2012-01-09 13:16:17 --> Config Class Initialized
+DEBUG - 2012-01-09 13:16:17 --> Hooks Class Initialized
+DEBUG - 2012-01-09 13:16:17 --> Utf8 Class Initialized
+DEBUG - 2012-01-09 13:16:17 --> UTF-8 Support Enabled
+DEBUG - 2012-01-09 13:16:17 --> URI Class Initialized
+DEBUG - 2012-01-09 13:16:17 --> Router Class Initialized
+DEBUG - 2012-01-09 13:16:17 --> Output Class Initialized
+DEBUG - 2012-01-09 13:16:17 --> Security Class Initialized
+DEBUG - 2012-01-09 13:16:17 --> Input Class Initialized
+DEBUG - 2012-01-09 13:16:17 --> CRSF cookie Set
+DEBUG - 2012-01-09 13:16:17 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-09 13:16:17 --> Language Class Initialized
+DEBUG - 2012-01-09 13:16:17 --> Loader Class Initialized
+DEBUG - 2012-01-09 13:16:17 --> Helper loaded: url_helper
+DEBUG - 2012-01-09 13:16:17 --> Helper loaded: array_helper
+DEBUG - 2012-01-09 13:16:17 --> Helper loaded: security_helper
+DEBUG - 2012-01-09 13:16:17 --> Helper loaded: image_helper
+DEBUG - 2012-01-09 13:16:17 --> Helper loaded: date_helper
+DEBUG - 2012-01-09 13:16:17 --> Database Driver Class Initialized
+DEBUG - 2012-01-09 13:16:17 --> Session Class Initialized
+DEBUG - 2012-01-09 13:16:17 --> Helper loaded: string_helper
+DEBUG - 2012-01-09 13:16:17 --> A session cookie was not found.
+DEBUG - 2012-01-09 13:16:17 --> Session routines successfully run
+DEBUG - 2012-01-09 13:16:17 --> Encrypt Class Initialized
+DEBUG - 2012-01-09 13:16:17 --> Upload Class Initialized
+DEBUG - 2012-01-09 13:16:17 --> Controller Class Initialized
+DEBUG - 2012-01-09 13:16:17 --> Model Class Initialized
+DEBUG - 2012-01-09 13:16:17 --> Model Class Initialized
+DEBUG - 2012-01-09 13:16:17 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-09 13:16:17 --> Final output sent to browser
+DEBUG - 2012-01-09 13:16:17 --> Total execution time: 0.2654
+DEBUG - 2012-01-09 13:16:43 --> Config Class Initialized
+DEBUG - 2012-01-09 13:16:43 --> Hooks Class Initialized
+DEBUG - 2012-01-09 13:16:43 --> Utf8 Class Initialized
+DEBUG - 2012-01-09 13:16:43 --> UTF-8 Support Enabled
+DEBUG - 2012-01-09 13:16:43 --> URI Class Initialized
+DEBUG - 2012-01-09 13:16:43 --> Router Class Initialized
+DEBUG - 2012-01-09 13:16:43 --> Output Class Initialized
+DEBUG - 2012-01-09 13:16:43 --> Security Class Initialized
+DEBUG - 2012-01-09 13:16:43 --> Input Class Initialized
+DEBUG - 2012-01-09 13:16:43 --> CRSF cookie Set
+DEBUG - 2012-01-09 13:16:43 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-09 13:16:43 --> Language Class Initialized
+DEBUG - 2012-01-09 13:16:43 --> Loader Class Initialized
+DEBUG - 2012-01-09 13:16:43 --> Helper loaded: url_helper
+DEBUG - 2012-01-09 13:16:43 --> Helper loaded: array_helper
+DEBUG - 2012-01-09 13:16:43 --> Helper loaded: security_helper
+DEBUG - 2012-01-09 13:16:43 --> Helper loaded: image_helper
+DEBUG - 2012-01-09 13:16:43 --> Helper loaded: date_helper
+DEBUG - 2012-01-09 13:16:43 --> Database Driver Class Initialized
+DEBUG - 2012-01-09 13:16:43 --> Session Class Initialized
+DEBUG - 2012-01-09 13:16:43 --> Helper loaded: string_helper
+DEBUG - 2012-01-09 13:16:43 --> A session cookie was not found.
+DEBUG - 2012-01-09 13:16:43 --> Session routines successfully run
+DEBUG - 2012-01-09 13:16:43 --> Encrypt Class Initialized
+DEBUG - 2012-01-09 13:16:43 --> Upload Class Initialized
+DEBUG - 2012-01-09 13:16:43 --> Controller Class Initialized
+DEBUG - 2012-01-09 13:16:43 --> Model Class Initialized
+DEBUG - 2012-01-09 13:16:43 --> Model Class Initialized
+DEBUG - 2012-01-09 13:16:43 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-09 13:16:43 --> Final output sent to browser
+DEBUG - 2012-01-09 13:16:43 --> Total execution time: 0.2629
+DEBUG - 2012-01-09 13:16:43 --> Config Class Initialized
+DEBUG - 2012-01-09 13:16:43 --> Hooks Class Initialized
+DEBUG - 2012-01-09 13:16:43 --> Utf8 Class Initialized
+DEBUG - 2012-01-09 13:16:43 --> UTF-8 Support Enabled
+DEBUG - 2012-01-09 13:16:43 --> URI Class Initialized
+DEBUG - 2012-01-09 13:16:43 --> Router Class Initialized
+DEBUG - 2012-01-09 13:16:43 --> Output Class Initialized
+DEBUG - 2012-01-09 13:16:43 --> Security Class Initialized
+DEBUG - 2012-01-09 13:16:43 --> Input Class Initialized
+DEBUG - 2012-01-09 13:16:43 --> CRSF cookie Set
+DEBUG - 2012-01-09 13:16:43 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-09 13:16:43 --> Language Class Initialized
+DEBUG - 2012-01-09 13:16:43 --> Loader Class Initialized
+DEBUG - 2012-01-09 13:16:44 --> Helper loaded: url_helper
+DEBUG - 2012-01-09 13:16:44 --> Helper loaded: array_helper
+DEBUG - 2012-01-09 13:16:44 --> Helper loaded: security_helper
+DEBUG - 2012-01-09 13:16:44 --> Helper loaded: image_helper
+DEBUG - 2012-01-09 13:16:44 --> Helper loaded: date_helper
+DEBUG - 2012-01-09 13:16:44 --> Database Driver Class Initialized
+DEBUG - 2012-01-09 13:16:44 --> Session Class Initialized
+DEBUG - 2012-01-09 13:16:44 --> Helper loaded: string_helper
+DEBUG - 2012-01-09 13:16:44 --> A session cookie was not found.
+DEBUG - 2012-01-09 13:16:44 --> Session routines successfully run
+DEBUG - 2012-01-09 13:16:44 --> Encrypt Class Initialized
+DEBUG - 2012-01-09 13:16:44 --> Upload Class Initialized
+DEBUG - 2012-01-09 13:16:44 --> Controller Class Initialized
+DEBUG - 2012-01-09 13:16:44 --> Model Class Initialized
+DEBUG - 2012-01-09 13:16:44 --> Model Class Initialized
+DEBUG - 2012-01-09 13:16:44 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-09 13:16:44 --> Final output sent to browser
+DEBUG - 2012-01-09 13:16:44 --> Total execution time: 0.2640
+DEBUG - 2012-01-09 13:16:45 --> Config Class Initialized
+DEBUG - 2012-01-09 13:16:45 --> Hooks Class Initialized
+DEBUG - 2012-01-09 13:16:45 --> Utf8 Class Initialized
+DEBUG - 2012-01-09 13:16:45 --> UTF-8 Support Enabled
+DEBUG - 2012-01-09 13:16:45 --> URI Class Initialized
+DEBUG - 2012-01-09 13:16:45 --> Router Class Initialized
+DEBUG - 2012-01-09 13:16:45 --> Output Class Initialized
+DEBUG - 2012-01-09 13:16:45 --> Security Class Initialized
+DEBUG - 2012-01-09 13:16:45 --> Input Class Initialized
+DEBUG - 2012-01-09 13:16:45 --> CRSF cookie Set
+DEBUG - 2012-01-09 13:16:45 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-09 13:16:45 --> Language Class Initialized
+DEBUG - 2012-01-09 13:16:45 --> Loader Class Initialized
+DEBUG - 2012-01-09 13:16:45 --> Helper loaded: url_helper
+DEBUG - 2012-01-09 13:16:45 --> Helper loaded: array_helper
+DEBUG - 2012-01-09 13:16:45 --> Helper loaded: security_helper
+DEBUG - 2012-01-09 13:16:45 --> Helper loaded: image_helper
+DEBUG - 2012-01-09 13:16:45 --> Helper loaded: date_helper
+DEBUG - 2012-01-09 13:16:45 --> Database Driver Class Initialized
+DEBUG - 2012-01-09 13:16:45 --> Session Class Initialized
+DEBUG - 2012-01-09 13:16:45 --> Helper loaded: string_helper
+DEBUG - 2012-01-09 13:16:45 --> A session cookie was not found.
+DEBUG - 2012-01-09 13:16:45 --> Session routines successfully run
+DEBUG - 2012-01-09 13:16:45 --> Encrypt Class Initialized
+DEBUG - 2012-01-09 13:16:45 --> Upload Class Initialized
+DEBUG - 2012-01-09 13:16:45 --> Controller Class Initialized
+DEBUG - 2012-01-09 13:16:45 --> Model Class Initialized
+DEBUG - 2012-01-09 13:16:45 --> Model Class Initialized
+DEBUG - 2012-01-09 13:16:45 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-09 13:16:45 --> Final output sent to browser
+DEBUG - 2012-01-09 13:16:45 --> Total execution time: 0.2681
+DEBUG - 2012-01-09 13:16:45 --> Config Class Initialized
+DEBUG - 2012-01-09 13:16:45 --> Hooks Class Initialized
+DEBUG - 2012-01-09 13:16:45 --> Utf8 Class Initialized
+DEBUG - 2012-01-09 13:16:45 --> UTF-8 Support Enabled
+DEBUG - 2012-01-09 13:16:45 --> URI Class Initialized
+DEBUG - 2012-01-09 13:16:45 --> Router Class Initialized
+DEBUG - 2012-01-09 13:16:45 --> Output Class Initialized
+DEBUG - 2012-01-09 13:16:46 --> Security Class Initialized
+DEBUG - 2012-01-09 13:16:46 --> Input Class Initialized
+DEBUG - 2012-01-09 13:16:46 --> CRSF cookie Set
+DEBUG - 2012-01-09 13:16:46 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-09 13:16:46 --> Language Class Initialized
+DEBUG - 2012-01-09 13:16:46 --> Loader Class Initialized
+DEBUG - 2012-01-09 13:16:46 --> Helper loaded: url_helper
+DEBUG - 2012-01-09 13:16:46 --> Helper loaded: array_helper
+DEBUG - 2012-01-09 13:16:46 --> Helper loaded: security_helper
+DEBUG - 2012-01-09 13:16:46 --> Helper loaded: image_helper
+DEBUG - 2012-01-09 13:16:46 --> Helper loaded: date_helper
+DEBUG - 2012-01-09 13:16:46 --> Database Driver Class Initialized
+DEBUG - 2012-01-09 13:16:46 --> Session Class Initialized
+DEBUG - 2012-01-09 13:16:46 --> Helper loaded: string_helper
+DEBUG - 2012-01-09 13:16:46 --> A session cookie was not found.
+DEBUG - 2012-01-09 13:16:46 --> Session routines successfully run
+DEBUG - 2012-01-09 13:16:46 --> Encrypt Class Initialized
+DEBUG - 2012-01-09 13:16:46 --> Upload Class Initialized
+DEBUG - 2012-01-09 13:16:46 --> Controller Class Initialized
+DEBUG - 2012-01-09 13:16:46 --> Model Class Initialized
+DEBUG - 2012-01-09 13:16:46 --> Model Class Initialized
+DEBUG - 2012-01-09 13:16:46 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-09 13:16:46 --> Final output sent to browser
+DEBUG - 2012-01-09 13:16:46 --> Total execution time: 0.2707
+DEBUG - 2012-01-09 13:21:44 --> Config Class Initialized
+DEBUG - 2012-01-09 13:21:44 --> Hooks Class Initialized
+DEBUG - 2012-01-09 13:21:44 --> Utf8 Class Initialized
+DEBUG - 2012-01-09 13:21:44 --> UTF-8 Support Enabled
+DEBUG - 2012-01-09 13:21:44 --> URI Class Initialized
+DEBUG - 2012-01-09 13:21:44 --> Router Class Initialized
+DEBUG - 2012-01-09 13:21:44 --> Output Class Initialized
+DEBUG - 2012-01-09 13:21:44 --> Security Class Initialized
+DEBUG - 2012-01-09 13:21:44 --> Input Class Initialized
+DEBUG - 2012-01-09 13:21:44 --> CRSF cookie Set
+DEBUG - 2012-01-09 13:21:44 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-09 13:21:44 --> Language Class Initialized
+DEBUG - 2012-01-09 13:21:44 --> Loader Class Initialized
+DEBUG - 2012-01-09 13:21:44 --> Helper loaded: url_helper
+DEBUG - 2012-01-09 13:21:44 --> Helper loaded: array_helper
+DEBUG - 2012-01-09 13:21:44 --> Helper loaded: security_helper
+DEBUG - 2012-01-09 13:21:44 --> Helper loaded: image_helper
+DEBUG - 2012-01-09 13:21:44 --> Helper loaded: date_helper
+DEBUG - 2012-01-09 13:21:44 --> Database Driver Class Initialized
+DEBUG - 2012-01-09 13:21:44 --> Session Class Initialized
+DEBUG - 2012-01-09 13:21:44 --> Helper loaded: string_helper
+DEBUG - 2012-01-09 13:21:44 --> A session cookie was not found.
+DEBUG - 2012-01-09 13:21:44 --> Session routines successfully run
+DEBUG - 2012-01-09 13:21:44 --> Encrypt Class Initialized
+DEBUG - 2012-01-09 13:21:44 --> Upload Class Initialized
+DEBUG - 2012-01-09 13:21:44 --> Controller Class Initialized
+DEBUG - 2012-01-09 13:21:44 --> Model Class Initialized
+DEBUG - 2012-01-09 13:21:44 --> Model Class Initialized
+DEBUG - 2012-01-09 13:21:44 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-09 13:21:44 --> Final output sent to browser
+DEBUG - 2012-01-09 13:21:44 --> Total execution time: 0.2959
+DEBUG - 2012-01-09 13:21:44 --> Config Class Initialized
+DEBUG - 2012-01-09 13:21:44 --> Hooks Class Initialized
+DEBUG - 2012-01-09 13:21:44 --> Utf8 Class Initialized
+DEBUG - 2012-01-09 13:21:44 --> UTF-8 Support Enabled
+DEBUG - 2012-01-09 13:21:44 --> URI Class Initialized
+DEBUG - 2012-01-09 13:21:44 --> Router Class Initialized
+DEBUG - 2012-01-09 13:21:44 --> Output Class Initialized
+DEBUG - 2012-01-09 13:21:44 --> Security Class Initialized
+DEBUG - 2012-01-09 13:21:44 --> Input Class Initialized
+DEBUG - 2012-01-09 13:21:44 --> CRSF cookie Set
+DEBUG - 2012-01-09 13:21:44 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-09 13:21:44 --> Language Class Initialized
+DEBUG - 2012-01-09 13:21:44 --> Loader Class Initialized
+DEBUG - 2012-01-09 13:21:44 --> Helper loaded: url_helper
+DEBUG - 2012-01-09 13:21:44 --> Helper loaded: array_helper
+DEBUG - 2012-01-09 13:21:44 --> Helper loaded: security_helper
+DEBUG - 2012-01-09 13:21:44 --> Helper loaded: image_helper
+DEBUG - 2012-01-09 13:21:44 --> Helper loaded: date_helper
+DEBUG - 2012-01-09 13:21:44 --> Database Driver Class Initialized
+DEBUG - 2012-01-09 13:21:44 --> Session Class Initialized
+DEBUG - 2012-01-09 13:21:44 --> Helper loaded: string_helper
+DEBUG - 2012-01-09 13:21:44 --> A session cookie was not found.
+DEBUG - 2012-01-09 13:21:44 --> Session routines successfully run
+DEBUG - 2012-01-09 13:21:44 --> Encrypt Class Initialized
+DEBUG - 2012-01-09 13:21:44 --> Upload Class Initialized
+DEBUG - 2012-01-09 13:21:44 --> Controller Class Initialized
+DEBUG - 2012-01-09 13:21:44 --> Model Class Initialized
+DEBUG - 2012-01-09 13:21:44 --> Model Class Initialized
+DEBUG - 2012-01-09 13:21:44 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-09 13:21:44 --> Final output sent to browser
+DEBUG - 2012-01-09 13:21:44 --> Total execution time: 0.2669
+DEBUG - 2012-01-09 13:23:57 --> Config Class Initialized
+DEBUG - 2012-01-09 13:23:57 --> Hooks Class Initialized
+DEBUG - 2012-01-09 13:23:57 --> Utf8 Class Initialized
+DEBUG - 2012-01-09 13:23:57 --> UTF-8 Support Enabled
+DEBUG - 2012-01-09 13:23:57 --> URI Class Initialized
+DEBUG - 2012-01-09 13:23:57 --> Router Class Initialized
+DEBUG - 2012-01-09 13:23:57 --> Output Class Initialized
+DEBUG - 2012-01-09 13:23:57 --> Security Class Initialized
+DEBUG - 2012-01-09 13:23:57 --> Input Class Initialized
+DEBUG - 2012-01-09 13:23:57 --> CRSF cookie Set
+DEBUG - 2012-01-09 13:23:57 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-09 13:23:57 --> Language Class Initialized
+DEBUG - 2012-01-09 13:23:57 --> Loader Class Initialized
+DEBUG - 2012-01-09 13:23:57 --> Helper loaded: url_helper
+DEBUG - 2012-01-09 13:23:57 --> Helper loaded: array_helper
+DEBUG - 2012-01-09 13:23:57 --> Helper loaded: security_helper
+DEBUG - 2012-01-09 13:23:57 --> Helper loaded: image_helper
+DEBUG - 2012-01-09 13:23:57 --> Helper loaded: date_helper
+DEBUG - 2012-01-09 13:23:57 --> Database Driver Class Initialized
+DEBUG - 2012-01-09 13:23:57 --> Session Class Initialized
+DEBUG - 2012-01-09 13:23:57 --> Helper loaded: string_helper
+DEBUG - 2012-01-09 13:23:57 --> A session cookie was not found.
+DEBUG - 2012-01-09 13:23:57 --> Session routines successfully run
+DEBUG - 2012-01-09 13:23:57 --> Encrypt Class Initialized
+DEBUG - 2012-01-09 13:23:57 --> Upload Class Initialized
+DEBUG - 2012-01-09 13:23:57 --> Controller Class Initialized
+DEBUG - 2012-01-09 13:23:57 --> Model Class Initialized
+DEBUG - 2012-01-09 13:23:57 --> Model Class Initialized
+DEBUG - 2012-01-09 13:23:57 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-09 13:23:57 --> Final output sent to browser
+DEBUG - 2012-01-09 13:23:57 --> Total execution time: 0.2837
+DEBUG - 2012-01-09 13:23:57 --> Config Class Initialized
+DEBUG - 2012-01-09 13:23:57 --> Hooks Class Initialized
+DEBUG - 2012-01-09 13:23:57 --> Utf8 Class Initialized
+DEBUG - 2012-01-09 13:23:57 --> UTF-8 Support Enabled
+DEBUG - 2012-01-09 13:23:57 --> URI Class Initialized
+DEBUG - 2012-01-09 13:23:57 --> Router Class Initialized
+DEBUG - 2012-01-09 13:23:57 --> Output Class Initialized
+DEBUG - 2012-01-09 13:23:57 --> Security Class Initialized
+DEBUG - 2012-01-09 13:23:57 --> Input Class Initialized
+DEBUG - 2012-01-09 13:23:57 --> CRSF cookie Set
+DEBUG - 2012-01-09 13:23:57 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-09 13:23:57 --> Language Class Initialized
+DEBUG - 2012-01-09 13:23:57 --> Loader Class Initialized
+DEBUG - 2012-01-09 13:23:57 --> Helper loaded: url_helper
+DEBUG - 2012-01-09 13:23:57 --> Helper loaded: array_helper
+DEBUG - 2012-01-09 13:23:58 --> Helper loaded: security_helper
+DEBUG - 2012-01-09 13:23:58 --> Helper loaded: image_helper
+DEBUG - 2012-01-09 13:23:58 --> Helper loaded: date_helper
+DEBUG - 2012-01-09 13:23:58 --> Database Driver Class Initialized
+DEBUG - 2012-01-09 13:23:58 --> Session Class Initialized
+DEBUG - 2012-01-09 13:23:58 --> Helper loaded: string_helper
+DEBUG - 2012-01-09 13:23:58 --> A session cookie was not found.
+DEBUG - 2012-01-09 13:23:58 --> Session routines successfully run
+DEBUG - 2012-01-09 13:23:58 --> Encrypt Class Initialized
+DEBUG - 2012-01-09 13:23:58 --> Upload Class Initialized
+DEBUG - 2012-01-09 13:23:58 --> Controller Class Initialized
+DEBUG - 2012-01-09 13:23:58 --> Model Class Initialized
+DEBUG - 2012-01-09 13:23:58 --> Model Class Initialized
+DEBUG - 2012-01-09 13:23:58 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-09 13:23:58 --> Final output sent to browser
+DEBUG - 2012-01-09 13:23:58 --> Total execution time: 0.2721
