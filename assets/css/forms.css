@@ -45,7 +45,7 @@ input:empty, textarea:empty, select:empty {
 input, textarea, select, .e_wrap .help {
 	margin:0 5px;
 }
-input[type=text], input[type=password], input[type=file], input[type=reset], textarea, select {
+input[type=text], input[type=password], input[type=file], input[type=reset], textarea, select, div.tagsinput {
 	border-radius:4px;
 	-webkit-border-radius:4px;
 	-moz-border-radius:4px;
