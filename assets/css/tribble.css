@@ -405,15 +405,16 @@ ul.tribbles {
 }
 .tribble-img a span {
 	display: block;
+    padding: 6px 6px 0 6px;
 }
 .tribble-img span.title {
-	font-size: 1.8em;
+	font-size: 1.1em;
 	color: #2b343b;
 	font-weight: 700;
 	text-shadow:0 1px 0 #ffffff;
 }
 .tribble-img span.desc {
-	font-size: 1em;
+	font-size: 0.95em;
 	color: #2A2D30;
 }
 .tribble-img em {
@@ -421,6 +422,7 @@ ul.tribbles {
 	color: #5D6167;
 	position: absolute;
 	bottom:18px;
+    left: 6px;
 	font-style: normal;
 }
 .tribble-tools {

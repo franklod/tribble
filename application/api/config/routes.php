@@ -40,17 +40,32 @@
 
 $route['default_controller'] = "tribble";
 $route['404_override'] = '';
+
 $route['posts/list/recent/(:num)/(:num)'] = 'posts/getMostRecent/$1/$2';
 $route['posts/list/recent/(:num)'] = 'posts/getMostRecent/$1';
 $route['posts/list/recent'] = 'posts/getMostRecent';
+
 $route['posts/list/commented/(:num)/(:num)'] = 'posts/getMostCommented/$1/$2';
 $route['posts/list/commented/(:num)'] = 'posts/getMostCommented/$1';
 $route['posts/list/commented'] = 'posts/getMostCommented';
+
 $route['posts/list/popular/(:num)/(:num)'] = 'posts/getMostLiked/$1/$2';
 $route['posts/list/popular/(:num)'] = 'posts/getMostLiked/$1';
 $route['posts/list/popular'] = 'posts/getMostLiked';
+
 $route['posts/list'] = 'posts/getMostRecent';
+
 $route['posts/count'] = 'posts/countPosts';
+
+$route['posts/(:num)'] = 'posts/getPostById/$1';
+
+$route['posts/replies/(:num)'] = 'posts/getRepliesByPostId/$1';
+
+$route['posts/search/(:any)'] = 'posts/searchPostsText/$1';
+$route['posts/search/(:any)/(:num)'] = 'posts/searchPostsText/$1/$2';
+
+$route['posts/upload'] = 'posts/createNewPost';
+$route['posts/upload/(:num)'] = 'posts/createNewPost/$1';
 
 
 /* End of file routes.php */
