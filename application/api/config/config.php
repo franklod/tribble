@@ -305,7 +305,7 @@ $config['global_xss_filtering'] = TRUE;
 | 'csrf_cookie_name' = The cookie name
 | 'csrf_expire' = The number in seconds the token should expire.
 */
-$config['csrf_protection'] = TRUE;
+$config['csrf_protection'] = false;
 $config['csrf_token_name'] = 'tr_csrf_tk';
 $config['csrf_cookie_name'] = 'tr_csrf';
 $config['csrf_expire'] = 7200;
@@ -327,7 +327,7 @@ $config['csrf_expire'] = 7200;
 | by the output class.  Do not 'echo' any values with compression enabled.
 |
 */
-$config['compress_output'] = FALSE;
+$config['compress_output'] = false;
 
 /*
 |--------------------------------------------------------------------------

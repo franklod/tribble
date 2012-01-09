@@ -213,7 +213,7 @@ class CI_Cache_memcached extends CI_Driver {
 				$this->_memcached->addServer(
 					$cache_server['hostname'],
 					$cache_server['port'],
-					TRUE,
+					FALSE,
 					$cache_server['weight']
 				);
 			}

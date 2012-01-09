@@ -41,6 +41,9 @@
 $route['default_controller'] = "tribble/newer";
 $route['404_override'] = '';
 
+
+$route['test/(:any)'] = 'test/stuff/$1';
+
 $route['new'] = 'tribble/newer';
 $route['new/page/(:num)'] = 'tribble/newer/$1';
 

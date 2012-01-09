@@ -37,7 +37,7 @@ class Format {
 	public function __construct($data = null, $from_type = null)
 	{
 		get_instance()->load->helper('inflector');
-		
+
 		// If the provided data is already formatted we should probably convert it to an array
 		if ($from_type !== null)
 		{
@@ -145,7 +145,7 @@ class Format {
 	public function to_html()
 	{
 		$data = $this->_data;
-		
+
 		// Multi-dimentional array
 		if (isset($data[0]))
 		{
@@ -210,7 +210,7 @@ class Format {
 	{
 		return serialize($this->_data);
 	}
-	
+
 	// Output as a string representing the PHP structure
 	public function to_php()
 	{
