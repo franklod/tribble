@@ -107,11 +107,18 @@ class Tribble extends CI_Controller {
       $user = $this->uModel->getUserData($uid);
       $data['user'] = $user[0];            
     }            
+          
+    $per_page = 12;            
+    
+    if((int)$page <= 1){        
+        $offset = 0; 
+    } else {
+        $offset = $per_page * ($page - 1);        
+    }     
     
     // Pull in an array of tribbles
-    $tribble_list = json_decode($this->rest->get('posts/list/commented/'.$page)); 
-
-    $data['tribbles'] = $tribble_list;
+    $tribble_list = json_decode($this->rest->get('posts/list/commented/'.$page));        
+    $data['tribbles'] = array_slice($tribble_list,$offset,$per_page,true);
     
     $config['base_url'] = site_url('buzzing/page');
     $config['total_rows'] = $this->rest->get('posts/count');  
@@ -134,10 +141,18 @@ class Tribble extends CI_Controller {
       $user = $this->uModel->getUserData($uid);
       $data['user'] = $user[0];
     }
-
+    
+    $per_page = 12;            
+    
+    if((int)$page <= 1){        
+        $offset = 0; 
+    } else {
+        $offset = $per_page * ($page - 1);        
+    }     
+    
     // Pull in an array of tweets
-    $tribble_list = json_decode($this->rest->get('posts/list/popular/'.$page));
-    $data['tribbles'] = $tribble_list;
+    $tribble_list = json_decode($this->rest->get('posts/list/popular/'.$page));       
+    $data['tribbles'] = array_slice($tribble_list,$offset,$per_page,true);
     
     $config['base_url'] = site_url('loved/page');
     $config['total_rows'] = $this->rest->get('posts/count');
