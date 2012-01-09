@@ -9,6 +9,8 @@
  * @version $Id$
  * @access public
  */
+
+require APPPATH.'/libraries/REST_Controller.php';
  
 class Posts extends CI_Controller {
   
@@ -60,6 +62,19 @@ class Posts extends CI_Controller {
     }
                                          
 	}
+  
+  public function list_get($type,$page = 1,$per_page = 500){
+    switch($type){
+      case 'new':
+        break;
+      case 'buzzing':
+        break;
+      case 'loved':
+        break;
+      default: 
+       $this->response(array('status'=>false,'message'=>'Invalid post list type'),404);
+    }
+  }
 
 	public function getMostRecent($page = 1,$per_page = 500)
 	{
