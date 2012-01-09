@@ -43,11 +43,23 @@ $route['404_override'] = '';
 
 $route['new'] = 'tribble/newer';
 $route['new/page/(:num)'] = 'tribble/newer/$1';
-$route['buzzing'] = 'tribble/buzzin';
+
+$route['buzzing'] = 'tribble/buzzing';
 $route['buzzing/page/(:num)'] = 'tribble/buzzing/$1';
+
 $route['loved'] = 'tribble/loved';
 $route['loved/page/(:num)'] = 'tribble/loved/$1';
+
+$route['search/(:any)'] = 'tribble/search/$1';
+$route['search/page/(:num)'] = 'tribble/search/$1';
+
+$route['dosearch'] = 'tribble/dosearch';
+
 $route['view/(:num)'] = 'tribble/view/$1';
+
+$route['upload'] = 'tribble/upload';
+
+$route['search/(:any)/(:num)'] = 'tribble/view/$1/$2';
 
 
 /* End of file routes.php */

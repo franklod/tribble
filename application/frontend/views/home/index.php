@@ -1,15 +1,15 @@
 <div class="g75">
-  <ul class="tribbles">
+  <ul class="tribbles" style="overflow: hidden;">
 	<? foreach($tribbles as $tribble): ?>
     <li class="space"> 
       <div class="box">     
         <div class="tribble-img">
           <a href="<?=site_url("/view/".$tribble->id)?>" class="tribble-hover">
-            <span class="title"><?=$tribble->title?></span>
-            <span class="desc"><?=$tribble->text?></span>
+            <span class="title"><?= character_limiter($tribble->title,12)?></span>
+            <span class="desc"><?=word_limiter($tribble->text,20)?></span>
             <em><?=strftime('%B %d, %Y',mysql_to_unix($tribble->ts));?></em>              
           </a>
-          <img src="<?=getThumb($tribble->image)?>" width="195" height="146" alt="<?=$tribble->title?>" />
+          <img src="<?=getThumb($tribble->image)?>"  alt="<?=$tribble->title?>" />
         </div>
         <div class="tribble-tools">
           <p class="ico"><a href="" class="comments"><?=$tribble->replies?></a>Comments</p>
@@ -17,11 +17,15 @@
           <p class="ico"><a href="" class="rebound"><?=$tribble->likes?></a>likes</p>     
         </div>        
       </div>
-      <div class="tribble-user-info"><a href="/"><img name="avatar" src="" width="18" height="18" alt=""/><?=$tribble->username?></a></div>  
+      <div class="tribble-user-info">
+        <a href="/">
+          <img name="avatar" src="<?= (!empty($tribble->avatar)) ? $tribble->avatar : '/assets/images/avatar.jpg' ?>" width="18" height="18" alt=""/><?=$tribble->username?>
+        </a>
+      </div>  
     </li>  
   <? endforeach; ?>
-  </ul>  
+  </ul>
+  <hr />
+  <?=$paging?>  
 </div>
-<div class="g100">
-  <?=$paging?> 
-  </div>
+ 

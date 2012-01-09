@@ -1,6 +1,6 @@
 <div class="g75">
   <div class="tribble-container">
-    <div class="tribble-user-info"> <a href="/" title="<?=$tribble->username?>"><img src="http://tribble.local/data/b5e0eaebec229148d61d1881b27d1865e1bb5003/dispic2_thumb.jpg" alt="Logobig" width="54" height="54"/></a>
+    <div class="tribble-user-info"> <a href="/" title="<?=$tribble->username?>"><img src="<?= (!empty($tribble->avatar)) ? $tribble->avatar : '/assets/images/avatar.jpg' ?>" alt="Logobig" width="54" height="54"/></a>
       <div class="tribble-title">
         <h2>
           <?=$tribble->title?>
@@ -52,7 +52,7 @@
         <?foreach($replies as $reply):?>
         <? if($reply->comment_text):?>
         <li class="response">
-          <h4><a href="/user/<?=$reply->com_userid?>"><img src="http://tribble.local/data/b5e0eaebec229148d61d1881b27d1865e1bb5003/dispic2_thumb.jpg"  width="42" height="42"/><?=$reply->com_username?></a> </h4>
+          <h4><a href="/user/<?=$reply->com_userid?>"><img src="<?= (!empty($tribble->avatar)) ? $tribble->avatar : '/assets/images/avatar.jpg' ?>"  width="42" height="42"/><?=$reply->com_username?></a> </h4>
           <div class="comment-body">
             <p><?=$reply->comment_text?></p>
           </div>

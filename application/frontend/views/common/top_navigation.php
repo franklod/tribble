@@ -1,12 +1,12 @@
 <?
 $pages->home->uri = '';
 $pages->home->text = 'New';
-$pages->buzzing->uri = 'tribble/buzzing';
+$pages->buzzing->uri = 'buzzing';
 $pages->buzzing->text = 'Buzzing';
-$pages->loved->uri = 'tribble/loved';
+$pages->loved->uri = 'loved';
 $pages->loved->text = 'Loved';
 if($this->session->userdata('uid')){
-  $pages->upload->uri = 'tribble/upload';
+  $pages->upload->uri = 'upload';
   $pages->upload->text = 'Upload';
 }
 
@@ -15,7 +15,8 @@ if($this->session->userdata('uid')){
 <div id="topNavigation" class="blackMenu">
   <ul class="h_navigation">
     <? foreach($pages as $page): ?>
-    <? if(current_url() == site_url().$page->uri || current_url() == site_url().'/'.$page->uri): ?>
+    <? ($page->uri != '') ? $pattern = '/'.substr($page->uri,strpos($page->uri,'/')).'/i' : $pattern = '/'.$page->text.'/i'?>
+    <? if($page->uri == uri_string() || @preg_match($pattern,uri_string())): ?>
     <li class="active"><a href="<?=site_url()."/".$page->uri?>">
       <?=$page->text?>
       </a></li>
@@ -27,8 +28,8 @@ if($this->session->userdata('uid')){
     <? endforeach; ?>
     <hr />
   </ul>
-  <form id="search">
-    <input name="searchInput" type="text" class="" id="searchInput" placeholder="Pesquisar" />
-  </form>    
+  <?= form_open(site_url('/dosearch')) ?>  
+    <input name="search" type="text" class="" id="search" placeholder="Pesquisar" />
+  <?= form_close(); ?>    
 </div>
 <div id="main">
