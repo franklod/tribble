@@ -80,10 +80,10 @@ class Posts extends CI_Controller {
                                          
 	}    
    
-  public function getMostCommented($page = null, $per_page = 12)
+  public function getMostCommented($page = 1,$per_page = 500)
 	{
     // hash the method name and params to get a cache key 
-    $cachekey = sha1('getMostCommented/'.$page.'/'.$per_page);        
+    $cachekey = sha1('getMostCommented/');        
 
     // check if the key exists in cache         
     if(@!$this->cache->memcached->get($cachekey)){
@@ -98,10 +98,10 @@ class Posts extends CI_Controller {
                                          
 	}  
   
-  public function getMostLiked($page = null, $per_page = 12)
+  public function getMostLiked($page = 1,$per_page = 500)
 	{
     // hash the method name and params to get a cache key 
-    $cachekey = sha1('getMostLiked/'.$page.'/'.$per_page);        
+    $cachekey = sha1('getMostLiked/');        
 
     // check if the key exists in cache         
     if(@!$this->cache->memcached->get($cachekey)){
