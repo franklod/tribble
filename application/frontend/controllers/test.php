@@ -22,8 +22,8 @@ class Test extends CI_Controller
       //$this->output->enable_profiler(TRUE);      
   }
   
-  public function index(){
-    print_r($this->rest->get('posts_rest/list/new'));    
+  public function stuff($type){    
+    print_r($this->rest->get('posts_rest/list/new/'.$type));    
   }
 
 }

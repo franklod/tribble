@@ -244,7 +244,7 @@ class REST_Controller extends CI_Controller {
 		{
 			// all the compression settings must be done before sending any headers
 			// if php is not handling the compression by itself
-                        if (@ini_get('zlib.output_compression') == FALSE) {
+                        if (@ini_get('zlib.output_compression') == (bool)FALSE) {
                             // ob_gzhandler depends on zlib
                             if (extension_loaded('zlib')) {
                                 // if the client supports GZIP compression
@@ -253,7 +253,7 @@ class REST_Controller extends CI_Controller {
                                 }
                             }
                         }
-			
+
 			is_numeric($http_code) OR $http_code = 200;
 
 			// If the format method exists, call and return the output in that format
