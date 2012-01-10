@@ -14174,3 +14174,664 @@ DEBUG - 2012-01-10 19:17:51 --> Model Class Initialized
 DEBUG - 2012-01-10 19:17:51 --> Model Class Initialized
 DEBUG - 2012-01-10 19:17:51 --> XSS Filtering completed
 DEBUG - 2012-01-10 19:17:51 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-10 19:32:59 --> Config Class Initialized
+DEBUG - 2012-01-10 19:32:59 --> Hooks Class Initialized
+DEBUG - 2012-01-10 19:32:59 --> Utf8 Class Initialized
+DEBUG - 2012-01-10 19:32:59 --> UTF-8 Support Enabled
+DEBUG - 2012-01-10 19:32:59 --> URI Class Initialized
+DEBUG - 2012-01-10 19:32:59 --> Router Class Initialized
+DEBUG - 2012-01-10 19:32:59 --> Output Class Initialized
+DEBUG - 2012-01-10 19:32:59 --> Security Class Initialized
+DEBUG - 2012-01-10 19:32:59 --> Input Class Initialized
+DEBUG - 2012-01-10 19:32:59 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-10 19:32:59 --> Language Class Initialized
+DEBUG - 2012-01-10 19:32:59 --> Loader Class Initialized
+DEBUG - 2012-01-10 19:32:59 --> Database Driver Class Initialized
+DEBUG - 2012-01-10 19:32:59 --> Controller Class Initialized
+DEBUG - 2012-01-10 19:32:59 --> Config file loaded: application/api//config/rest.php
+DEBUG - 2012-01-10 19:32:59 --> Helper loaded: inflector_helper
+DEBUG - 2012-01-10 19:32:59 --> Model Class Initialized
+DEBUG - 2012-01-10 19:32:59 --> Model Class Initialized
+DEBUG - 2012-01-10 19:32:59 --> XSS Filtering completed
+DEBUG - 2012-01-10 19:32:59 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-10 19:33:01 --> Config Class Initialized
+DEBUG - 2012-01-10 19:33:01 --> Hooks Class Initialized
+DEBUG - 2012-01-10 19:33:01 --> Utf8 Class Initialized
+DEBUG - 2012-01-10 19:33:01 --> UTF-8 Support Enabled
+DEBUG - 2012-01-10 19:33:01 --> URI Class Initialized
+DEBUG - 2012-01-10 19:33:01 --> Router Class Initialized
+DEBUG - 2012-01-10 19:33:01 --> Output Class Initialized
+DEBUG - 2012-01-10 19:33:01 --> Security Class Initialized
+DEBUG - 2012-01-10 19:33:01 --> Input Class Initialized
+DEBUG - 2012-01-10 19:33:01 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-10 19:33:01 --> Language Class Initialized
+DEBUG - 2012-01-10 19:33:01 --> Loader Class Initialized
+DEBUG - 2012-01-10 19:33:01 --> Database Driver Class Initialized
+DEBUG - 2012-01-10 19:33:01 --> Controller Class Initialized
+DEBUG - 2012-01-10 19:33:01 --> Config file loaded: application/api//config/rest.php
+DEBUG - 2012-01-10 19:33:01 --> Helper loaded: inflector_helper
+DEBUG - 2012-01-10 19:33:01 --> Model Class Initialized
+DEBUG - 2012-01-10 19:33:01 --> Model Class Initialized
+DEBUG - 2012-01-10 19:33:01 --> XSS Filtering completed
+DEBUG - 2012-01-10 19:33:01 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-10 19:33:03 --> Config Class Initialized
+DEBUG - 2012-01-10 19:33:03 --> Hooks Class Initialized
+DEBUG - 2012-01-10 19:33:03 --> Utf8 Class Initialized
+DEBUG - 2012-01-10 19:33:03 --> UTF-8 Support Enabled
+DEBUG - 2012-01-10 19:33:03 --> URI Class Initialized
+DEBUG - 2012-01-10 19:33:03 --> Router Class Initialized
+DEBUG - 2012-01-10 19:33:03 --> Output Class Initialized
+DEBUG - 2012-01-10 19:33:03 --> Security Class Initialized
+DEBUG - 2012-01-10 19:33:03 --> Input Class Initialized
+DEBUG - 2012-01-10 19:33:03 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-10 19:33:03 --> Language Class Initialized
+DEBUG - 2012-01-10 19:33:03 --> Loader Class Initialized
+DEBUG - 2012-01-10 19:33:03 --> Database Driver Class Initialized
+DEBUG - 2012-01-10 19:33:03 --> Controller Class Initialized
+DEBUG - 2012-01-10 19:33:03 --> Config file loaded: application/api//config/rest.php
+DEBUG - 2012-01-10 19:33:03 --> Helper loaded: inflector_helper
+DEBUG - 2012-01-10 19:33:03 --> Model Class Initialized
+DEBUG - 2012-01-10 19:33:03 --> Model Class Initialized
+DEBUG - 2012-01-10 19:33:03 --> XSS Filtering completed
+DEBUG - 2012-01-10 19:33:03 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-10 19:33:05 --> Config Class Initialized
+DEBUG - 2012-01-10 19:33:05 --> Hooks Class Initialized
+DEBUG - 2012-01-10 19:33:05 --> Utf8 Class Initialized
+DEBUG - 2012-01-10 19:33:05 --> UTF-8 Support Enabled
+DEBUG - 2012-01-10 19:33:05 --> URI Class Initialized
+DEBUG - 2012-01-10 19:33:05 --> Router Class Initialized
+DEBUG - 2012-01-10 19:33:05 --> Output Class Initialized
+DEBUG - 2012-01-10 19:33:05 --> Security Class Initialized
+DEBUG - 2012-01-10 19:33:05 --> Input Class Initialized
+DEBUG - 2012-01-10 19:33:05 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-10 19:33:05 --> Language Class Initialized
+DEBUG - 2012-01-10 19:33:05 --> Loader Class Initialized
+DEBUG - 2012-01-10 19:33:05 --> Database Driver Class Initialized
+DEBUG - 2012-01-10 19:33:05 --> Controller Class Initialized
+DEBUG - 2012-01-10 19:33:05 --> Config file loaded: application/api//config/rest.php
+DEBUG - 2012-01-10 19:33:05 --> Helper loaded: inflector_helper
+DEBUG - 2012-01-10 19:33:05 --> Model Class Initialized
+DEBUG - 2012-01-10 19:33:05 --> Model Class Initialized
+DEBUG - 2012-01-10 19:33:05 --> XSS Filtering completed
+DEBUG - 2012-01-10 19:33:05 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-10 19:33:08 --> Config Class Initialized
+DEBUG - 2012-01-10 19:33:08 --> Hooks Class Initialized
+DEBUG - 2012-01-10 19:33:08 --> Utf8 Class Initialized
+DEBUG - 2012-01-10 19:33:08 --> UTF-8 Support Enabled
+DEBUG - 2012-01-10 19:33:08 --> URI Class Initialized
+DEBUG - 2012-01-10 19:33:08 --> Router Class Initialized
+DEBUG - 2012-01-10 19:33:08 --> Output Class Initialized
+DEBUG - 2012-01-10 19:33:08 --> Security Class Initialized
+DEBUG - 2012-01-10 19:33:08 --> Input Class Initialized
+DEBUG - 2012-01-10 19:33:08 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-10 19:33:08 --> Language Class Initialized
+DEBUG - 2012-01-10 19:33:08 --> Loader Class Initialized
+DEBUG - 2012-01-10 19:33:08 --> Database Driver Class Initialized
+DEBUG - 2012-01-10 19:33:08 --> Controller Class Initialized
+DEBUG - 2012-01-10 19:33:08 --> Config file loaded: application/api//config/rest.php
+DEBUG - 2012-01-10 19:33:08 --> Helper loaded: inflector_helper
+DEBUG - 2012-01-10 19:33:08 --> Model Class Initialized
+DEBUG - 2012-01-10 19:33:08 --> Model Class Initialized
+DEBUG - 2012-01-10 19:33:08 --> XSS Filtering completed
+DEBUG - 2012-01-10 19:33:08 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-10 19:33:13 --> Config Class Initialized
+DEBUG - 2012-01-10 19:33:13 --> Hooks Class Initialized
+DEBUG - 2012-01-10 19:33:13 --> Utf8 Class Initialized
+DEBUG - 2012-01-10 19:33:13 --> UTF-8 Support Enabled
+DEBUG - 2012-01-10 19:33:13 --> URI Class Initialized
+DEBUG - 2012-01-10 19:33:13 --> Router Class Initialized
+DEBUG - 2012-01-10 19:33:13 --> Output Class Initialized
+DEBUG - 2012-01-10 19:33:13 --> Security Class Initialized
+DEBUG - 2012-01-10 19:33:13 --> Input Class Initialized
+DEBUG - 2012-01-10 19:33:13 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-10 19:33:13 --> Language Class Initialized
+DEBUG - 2012-01-10 19:33:13 --> Loader Class Initialized
+DEBUG - 2012-01-10 19:33:13 --> Database Driver Class Initialized
+DEBUG - 2012-01-10 19:33:13 --> Controller Class Initialized
+DEBUG - 2012-01-10 19:33:13 --> Config file loaded: application/api//config/rest.php
+DEBUG - 2012-01-10 19:33:13 --> Helper loaded: inflector_helper
+DEBUG - 2012-01-10 19:33:13 --> XSS Filtering completed
+DEBUG - 2012-01-10 19:33:13 --> Model Class Initialized
+DEBUG - 2012-01-10 19:33:13 --> Model Class Initialized
+DEBUG - 2012-01-10 19:33:13 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-10 19:33:29 --> Config Class Initialized
+DEBUG - 2012-01-10 19:33:29 --> Hooks Class Initialized
+DEBUG - 2012-01-10 19:33:29 --> Utf8 Class Initialized
+DEBUG - 2012-01-10 19:33:29 --> UTF-8 Support Enabled
+DEBUG - 2012-01-10 19:33:29 --> URI Class Initialized
+DEBUG - 2012-01-10 19:33:29 --> Router Class Initialized
+DEBUG - 2012-01-10 19:33:29 --> Output Class Initialized
+DEBUG - 2012-01-10 19:33:29 --> Security Class Initialized
+DEBUG - 2012-01-10 19:33:29 --> Input Class Initialized
+DEBUG - 2012-01-10 19:33:29 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-10 19:33:29 --> Language Class Initialized
+DEBUG - 2012-01-10 19:33:29 --> Loader Class Initialized
+DEBUG - 2012-01-10 19:33:29 --> Database Driver Class Initialized
+DEBUG - 2012-01-10 19:33:29 --> Controller Class Initialized
+DEBUG - 2012-01-10 19:33:29 --> Config file loaded: application/api//config/rest.php
+DEBUG - 2012-01-10 19:33:29 --> Helper loaded: inflector_helper
+DEBUG - 2012-01-10 19:33:29 --> XSS Filtering completed
+DEBUG - 2012-01-10 19:33:29 --> Model Class Initialized
+DEBUG - 2012-01-10 19:33:29 --> Model Class Initialized
+DEBUG - 2012-01-10 19:33:29 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-10 19:33:52 --> Config Class Initialized
+DEBUG - 2012-01-10 19:33:52 --> Hooks Class Initialized
+DEBUG - 2012-01-10 19:33:52 --> Utf8 Class Initialized
+DEBUG - 2012-01-10 19:33:52 --> UTF-8 Support Enabled
+DEBUG - 2012-01-10 19:33:52 --> URI Class Initialized
+DEBUG - 2012-01-10 19:33:52 --> Router Class Initialized
+DEBUG - 2012-01-10 19:33:52 --> Output Class Initialized
+DEBUG - 2012-01-10 19:33:52 --> Security Class Initialized
+DEBUG - 2012-01-10 19:33:52 --> Input Class Initialized
+DEBUG - 2012-01-10 19:33:52 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-10 19:33:52 --> Language Class Initialized
+DEBUG - 2012-01-10 19:33:52 --> Loader Class Initialized
+DEBUG - 2012-01-10 19:33:52 --> Database Driver Class Initialized
+DEBUG - 2012-01-10 19:33:52 --> Controller Class Initialized
+DEBUG - 2012-01-10 19:33:52 --> Config file loaded: application/api//config/rest.php
+DEBUG - 2012-01-10 19:33:52 --> Helper loaded: inflector_helper
+DEBUG - 2012-01-10 19:33:52 --> Model Class Initialized
+DEBUG - 2012-01-10 19:33:52 --> Model Class Initialized
+DEBUG - 2012-01-10 19:33:52 --> XSS Filtering completed
+DEBUG - 2012-01-10 19:33:52 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-10 19:33:56 --> Config Class Initialized
+DEBUG - 2012-01-10 19:33:56 --> Hooks Class Initialized
+DEBUG - 2012-01-10 19:33:56 --> Utf8 Class Initialized
+DEBUG - 2012-01-10 19:33:56 --> UTF-8 Support Enabled
+DEBUG - 2012-01-10 19:33:56 --> URI Class Initialized
+DEBUG - 2012-01-10 19:33:56 --> Router Class Initialized
+DEBUG - 2012-01-10 19:33:56 --> Output Class Initialized
+DEBUG - 2012-01-10 19:33:56 --> Security Class Initialized
+DEBUG - 2012-01-10 19:33:56 --> Input Class Initialized
+DEBUG - 2012-01-10 19:33:56 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-10 19:33:56 --> Language Class Initialized
+DEBUG - 2012-01-10 19:33:56 --> Loader Class Initialized
+DEBUG - 2012-01-10 19:33:56 --> Database Driver Class Initialized
+DEBUG - 2012-01-10 19:33:56 --> Controller Class Initialized
+DEBUG - 2012-01-10 19:33:56 --> Config file loaded: application/api//config/rest.php
+DEBUG - 2012-01-10 19:33:56 --> Helper loaded: inflector_helper
+DEBUG - 2012-01-10 19:33:56 --> Model Class Initialized
+DEBUG - 2012-01-10 19:33:56 --> Model Class Initialized
+DEBUG - 2012-01-10 19:33:56 --> XSS Filtering completed
+DEBUG - 2012-01-10 19:33:56 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-10 19:33:57 --> Config Class Initialized
+DEBUG - 2012-01-10 19:33:57 --> Hooks Class Initialized
+DEBUG - 2012-01-10 19:33:57 --> Utf8 Class Initialized
+DEBUG - 2012-01-10 19:33:57 --> UTF-8 Support Enabled
+DEBUG - 2012-01-10 19:33:57 --> URI Class Initialized
+DEBUG - 2012-01-10 19:33:57 --> Router Class Initialized
+DEBUG - 2012-01-10 19:33:57 --> Output Class Initialized
+DEBUG - 2012-01-10 19:33:57 --> Security Class Initialized
+DEBUG - 2012-01-10 19:33:57 --> Input Class Initialized
+DEBUG - 2012-01-10 19:33:57 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-10 19:33:57 --> Language Class Initialized
+DEBUG - 2012-01-10 19:33:57 --> Loader Class Initialized
+DEBUG - 2012-01-10 19:33:57 --> Database Driver Class Initialized
+DEBUG - 2012-01-10 19:33:57 --> Controller Class Initialized
+DEBUG - 2012-01-10 19:33:57 --> Config file loaded: application/api//config/rest.php
+DEBUG - 2012-01-10 19:33:57 --> Helper loaded: inflector_helper
+DEBUG - 2012-01-10 19:33:57 --> Model Class Initialized
+DEBUG - 2012-01-10 19:33:57 --> Model Class Initialized
+DEBUG - 2012-01-10 19:33:57 --> XSS Filtering completed
+DEBUG - 2012-01-10 19:33:57 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-10 19:34:12 --> Config Class Initialized
+DEBUG - 2012-01-10 19:34:12 --> Hooks Class Initialized
+DEBUG - 2012-01-10 19:34:12 --> Utf8 Class Initialized
+DEBUG - 2012-01-10 19:34:12 --> UTF-8 Support Enabled
+DEBUG - 2012-01-10 19:34:12 --> URI Class Initialized
+DEBUG - 2012-01-10 19:34:12 --> Router Class Initialized
+DEBUG - 2012-01-10 19:34:12 --> Output Class Initialized
+DEBUG - 2012-01-10 19:34:12 --> Security Class Initialized
+DEBUG - 2012-01-10 19:34:12 --> Input Class Initialized
+DEBUG - 2012-01-10 19:34:12 --> XSS Filtering completed
+DEBUG - 2012-01-10 19:34:12 --> XSS Filtering completed
+DEBUG - 2012-01-10 19:34:12 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-10 19:34:12 --> Language Class Initialized
+DEBUG - 2012-01-10 19:34:12 --> Loader Class Initialized
+DEBUG - 2012-01-10 19:34:12 --> Database Driver Class Initialized
+DEBUG - 2012-01-10 19:34:12 --> Controller Class Initialized
+DEBUG - 2012-01-10 19:34:12 --> Config file loaded: application/api//config/rest.php
+DEBUG - 2012-01-10 19:34:12 --> Helper loaded: inflector_helper
+DEBUG - 2012-01-10 19:34:12 --> XSS Filtering completed
+DEBUG - 2012-01-10 19:34:12 --> Model Class Initialized
+DEBUG - 2012-01-10 19:34:12 --> Model Class Initialized
+DEBUG - 2012-01-10 19:34:12 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-10 19:34:16 --> Config Class Initialized
+DEBUG - 2012-01-10 19:34:16 --> Hooks Class Initialized
+DEBUG - 2012-01-10 19:34:16 --> Utf8 Class Initialized
+DEBUG - 2012-01-10 19:34:16 --> UTF-8 Support Enabled
+DEBUG - 2012-01-10 19:34:16 --> URI Class Initialized
+DEBUG - 2012-01-10 19:34:16 --> Router Class Initialized
+DEBUG - 2012-01-10 19:34:16 --> Output Class Initialized
+DEBUG - 2012-01-10 19:34:16 --> Security Class Initialized
+DEBUG - 2012-01-10 19:34:16 --> Input Class Initialized
+DEBUG - 2012-01-10 19:34:16 --> XSS Filtering completed
+DEBUG - 2012-01-10 19:34:16 --> XSS Filtering completed
+DEBUG - 2012-01-10 19:34:16 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-10 19:34:16 --> Language Class Initialized
+DEBUG - 2012-01-10 19:34:16 --> Loader Class Initialized
+DEBUG - 2012-01-10 19:34:16 --> Database Driver Class Initialized
+DEBUG - 2012-01-10 19:34:16 --> Controller Class Initialized
+DEBUG - 2012-01-10 19:34:16 --> Config file loaded: application/api//config/rest.php
+DEBUG - 2012-01-10 19:34:16 --> Helper loaded: inflector_helper
+DEBUG - 2012-01-10 19:34:16 --> XSS Filtering completed
+DEBUG - 2012-01-10 19:34:16 --> Model Class Initialized
+DEBUG - 2012-01-10 19:34:16 --> Model Class Initialized
+DEBUG - 2012-01-10 19:34:16 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-10 19:34:19 --> Config Class Initialized
+DEBUG - 2012-01-10 19:34:19 --> Hooks Class Initialized
+DEBUG - 2012-01-10 19:34:19 --> Utf8 Class Initialized
+DEBUG - 2012-01-10 19:34:19 --> UTF-8 Support Enabled
+DEBUG - 2012-01-10 19:34:19 --> URI Class Initialized
+DEBUG - 2012-01-10 19:34:19 --> Router Class Initialized
+DEBUG - 2012-01-10 19:34:19 --> Output Class Initialized
+DEBUG - 2012-01-10 19:34:19 --> Security Class Initialized
+DEBUG - 2012-01-10 19:34:19 --> Input Class Initialized
+DEBUG - 2012-01-10 19:34:19 --> XSS Filtering completed
+DEBUG - 2012-01-10 19:34:19 --> XSS Filtering completed
+DEBUG - 2012-01-10 19:34:19 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-10 19:34:20 --> Language Class Initialized
+DEBUG - 2012-01-10 19:34:20 --> Loader Class Initialized
+DEBUG - 2012-01-10 19:34:20 --> Database Driver Class Initialized
+DEBUG - 2012-01-10 19:34:20 --> Controller Class Initialized
+DEBUG - 2012-01-10 19:34:20 --> Config file loaded: application/api//config/rest.php
+DEBUG - 2012-01-10 19:34:20 --> Helper loaded: inflector_helper
+DEBUG - 2012-01-10 19:34:32 --> Config Class Initialized
+DEBUG - 2012-01-10 19:34:32 --> Hooks Class Initialized
+DEBUG - 2012-01-10 19:34:32 --> Utf8 Class Initialized
+DEBUG - 2012-01-10 19:34:32 --> UTF-8 Support Enabled
+DEBUG - 2012-01-10 19:34:32 --> URI Class Initialized
+DEBUG - 2012-01-10 19:34:32 --> Router Class Initialized
+DEBUG - 2012-01-10 19:34:32 --> Output Class Initialized
+DEBUG - 2012-01-10 19:34:32 --> Security Class Initialized
+DEBUG - 2012-01-10 19:34:32 --> Input Class Initialized
+DEBUG - 2012-01-10 19:34:32 --> XSS Filtering completed
+DEBUG - 2012-01-10 19:34:32 --> XSS Filtering completed
+DEBUG - 2012-01-10 19:34:32 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-10 19:34:32 --> Language Class Initialized
+DEBUG - 2012-01-10 19:34:32 --> Loader Class Initialized
+DEBUG - 2012-01-10 19:34:32 --> Database Driver Class Initialized
+DEBUG - 2012-01-10 19:34:32 --> Controller Class Initialized
+DEBUG - 2012-01-10 19:34:32 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-10 19:34:32 --> Final output sent to browser
+DEBUG - 2012-01-10 19:34:32 --> Total execution time: 0.1714
+DEBUG - 2012-01-10 19:35:36 --> Config Class Initialized
+DEBUG - 2012-01-10 19:35:36 --> Hooks Class Initialized
+DEBUG - 2012-01-10 19:35:36 --> Utf8 Class Initialized
+DEBUG - 2012-01-10 19:35:36 --> UTF-8 Support Enabled
+DEBUG - 2012-01-10 19:35:36 --> URI Class Initialized
+DEBUG - 2012-01-10 19:35:36 --> Router Class Initialized
+DEBUG - 2012-01-10 19:35:36 --> Output Class Initialized
+DEBUG - 2012-01-10 19:35:36 --> Security Class Initialized
+DEBUG - 2012-01-10 19:35:36 --> Input Class Initialized
+DEBUG - 2012-01-10 19:35:36 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-10 19:35:36 --> Language Class Initialized
+DEBUG - 2012-01-10 19:35:36 --> Loader Class Initialized
+DEBUG - 2012-01-10 19:35:36 --> Database Driver Class Initialized
+DEBUG - 2012-01-10 19:35:36 --> Controller Class Initialized
+DEBUG - 2012-01-10 19:35:36 --> Config file loaded: application/api//config/rest.php
+DEBUG - 2012-01-10 19:35:36 --> Helper loaded: inflector_helper
+DEBUG - 2012-01-10 19:35:36 --> Model Class Initialized
+DEBUG - 2012-01-10 19:35:36 --> Model Class Initialized
+DEBUG - 2012-01-10 19:35:36 --> XSS Filtering completed
+DEBUG - 2012-01-10 19:35:36 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-10 19:35:42 --> Config Class Initialized
+DEBUG - 2012-01-10 19:35:42 --> Hooks Class Initialized
+DEBUG - 2012-01-10 19:35:42 --> Utf8 Class Initialized
+DEBUG - 2012-01-10 19:35:42 --> UTF-8 Support Enabled
+DEBUG - 2012-01-10 19:35:42 --> URI Class Initialized
+DEBUG - 2012-01-10 19:35:42 --> Router Class Initialized
+DEBUG - 2012-01-10 19:35:42 --> Output Class Initialized
+DEBUG - 2012-01-10 19:35:42 --> Security Class Initialized
+DEBUG - 2012-01-10 19:35:42 --> Input Class Initialized
+DEBUG - 2012-01-10 19:35:42 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-10 19:35:42 --> Language Class Initialized
+DEBUG - 2012-01-10 19:35:42 --> Loader Class Initialized
+DEBUG - 2012-01-10 19:35:42 --> Database Driver Class Initialized
+DEBUG - 2012-01-10 19:35:42 --> Controller Class Initialized
+DEBUG - 2012-01-10 19:35:42 --> Config file loaded: application/api//config/rest.php
+DEBUG - 2012-01-10 19:35:42 --> Helper loaded: inflector_helper
+DEBUG - 2012-01-10 19:35:42 --> Model Class Initialized
+DEBUG - 2012-01-10 19:35:42 --> Model Class Initialized
+DEBUG - 2012-01-10 19:35:42 --> XSS Filtering completed
+DEBUG - 2012-01-10 19:35:42 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-10 19:41:15 --> Config Class Initialized
+DEBUG - 2012-01-10 19:41:15 --> Hooks Class Initialized
+DEBUG - 2012-01-10 19:41:15 --> Utf8 Class Initialized
+DEBUG - 2012-01-10 19:41:15 --> UTF-8 Support Enabled
+DEBUG - 2012-01-10 19:41:15 --> URI Class Initialized
+DEBUG - 2012-01-10 19:41:15 --> Router Class Initialized
+DEBUG - 2012-01-10 19:41:15 --> Output Class Initialized
+DEBUG - 2012-01-10 19:41:15 --> Security Class Initialized
+DEBUG - 2012-01-10 19:41:15 --> Input Class Initialized
+DEBUG - 2012-01-10 19:41:15 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-10 19:41:15 --> Language Class Initialized
+DEBUG - 2012-01-10 19:41:15 --> Loader Class Initialized
+DEBUG - 2012-01-10 19:41:15 --> Database Driver Class Initialized
+DEBUG - 2012-01-10 19:41:15 --> Controller Class Initialized
+DEBUG - 2012-01-10 19:41:15 --> Config file loaded: application/api//config/rest.php
+DEBUG - 2012-01-10 19:41:15 --> Helper loaded: inflector_helper
+DEBUG - 2012-01-10 19:41:15 --> Model Class Initialized
+DEBUG - 2012-01-10 19:41:15 --> Model Class Initialized
+DEBUG - 2012-01-10 19:41:15 --> XSS Filtering completed
+DEBUG - 2012-01-10 19:41:15 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-10 19:41:17 --> Config Class Initialized
+DEBUG - 2012-01-10 19:41:17 --> Hooks Class Initialized
+DEBUG - 2012-01-10 19:41:17 --> Utf8 Class Initialized
+DEBUG - 2012-01-10 19:41:17 --> UTF-8 Support Enabled
+DEBUG - 2012-01-10 19:41:17 --> URI Class Initialized
+DEBUG - 2012-01-10 19:41:17 --> Router Class Initialized
+DEBUG - 2012-01-10 19:41:17 --> Output Class Initialized
+DEBUG - 2012-01-10 19:41:17 --> Security Class Initialized
+DEBUG - 2012-01-10 19:41:17 --> Input Class Initialized
+DEBUG - 2012-01-10 19:41:17 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-10 19:41:17 --> Language Class Initialized
+DEBUG - 2012-01-10 19:41:17 --> Loader Class Initialized
+DEBUG - 2012-01-10 19:41:17 --> Database Driver Class Initialized
+DEBUG - 2012-01-10 19:41:17 --> Controller Class Initialized
+DEBUG - 2012-01-10 19:41:17 --> Config file loaded: application/api//config/rest.php
+DEBUG - 2012-01-10 19:41:17 --> Helper loaded: inflector_helper
+DEBUG - 2012-01-10 19:41:17 --> Model Class Initialized
+DEBUG - 2012-01-10 19:41:17 --> Model Class Initialized
+DEBUG - 2012-01-10 19:41:17 --> XSS Filtering completed
+DEBUG - 2012-01-10 19:41:17 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-10 19:41:32 --> Config Class Initialized
+DEBUG - 2012-01-10 19:41:32 --> Hooks Class Initialized
+DEBUG - 2012-01-10 19:41:32 --> Utf8 Class Initialized
+DEBUG - 2012-01-10 19:41:32 --> UTF-8 Support Enabled
+DEBUG - 2012-01-10 19:41:32 --> URI Class Initialized
+DEBUG - 2012-01-10 19:41:32 --> Router Class Initialized
+DEBUG - 2012-01-10 19:41:32 --> Output Class Initialized
+DEBUG - 2012-01-10 19:41:32 --> Security Class Initialized
+DEBUG - 2012-01-10 19:41:32 --> Input Class Initialized
+DEBUG - 2012-01-10 19:41:32 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-10 19:41:32 --> Language Class Initialized
+DEBUG - 2012-01-10 19:41:32 --> Loader Class Initialized
+DEBUG - 2012-01-10 19:41:32 --> Database Driver Class Initialized
+DEBUG - 2012-01-10 19:41:32 --> Controller Class Initialized
+DEBUG - 2012-01-10 19:41:32 --> Config file loaded: application/api//config/rest.php
+DEBUG - 2012-01-10 19:41:32 --> Helper loaded: inflector_helper
+DEBUG - 2012-01-10 19:41:32 --> Model Class Initialized
+DEBUG - 2012-01-10 19:41:32 --> Model Class Initialized
+DEBUG - 2012-01-10 19:41:32 --> XSS Filtering completed
+DEBUG - 2012-01-10 19:41:32 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-10 19:42:10 --> Config Class Initialized
+DEBUG - 2012-01-10 19:42:10 --> Hooks Class Initialized
+DEBUG - 2012-01-10 19:42:10 --> Utf8 Class Initialized
+DEBUG - 2012-01-10 19:42:10 --> UTF-8 Support Enabled
+DEBUG - 2012-01-10 19:42:10 --> URI Class Initialized
+DEBUG - 2012-01-10 19:42:10 --> Router Class Initialized
+DEBUG - 2012-01-10 19:42:10 --> Output Class Initialized
+DEBUG - 2012-01-10 19:42:10 --> Security Class Initialized
+DEBUG - 2012-01-10 19:42:10 --> Input Class Initialized
+DEBUG - 2012-01-10 19:42:10 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-10 19:42:10 --> Language Class Initialized
+DEBUG - 2012-01-10 19:42:10 --> Loader Class Initialized
+DEBUG - 2012-01-10 19:42:10 --> Database Driver Class Initialized
+DEBUG - 2012-01-10 19:42:10 --> Controller Class Initialized
+DEBUG - 2012-01-10 19:42:10 --> Config file loaded: application/api//config/rest.php
+DEBUG - 2012-01-10 19:42:10 --> Helper loaded: inflector_helper
+DEBUG - 2012-01-10 19:42:10 --> Model Class Initialized
+DEBUG - 2012-01-10 19:42:10 --> Model Class Initialized
+DEBUG - 2012-01-10 19:42:10 --> XSS Filtering completed
+DEBUG - 2012-01-10 19:42:10 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-10 19:42:15 --> Config Class Initialized
+DEBUG - 2012-01-10 19:42:15 --> Hooks Class Initialized
+DEBUG - 2012-01-10 19:42:15 --> Utf8 Class Initialized
+DEBUG - 2012-01-10 19:42:15 --> UTF-8 Support Enabled
+DEBUG - 2012-01-10 19:42:15 --> URI Class Initialized
+DEBUG - 2012-01-10 19:42:15 --> Router Class Initialized
+DEBUG - 2012-01-10 19:42:15 --> Output Class Initialized
+DEBUG - 2012-01-10 19:42:15 --> Security Class Initialized
+DEBUG - 2012-01-10 19:42:15 --> Input Class Initialized
+DEBUG - 2012-01-10 19:42:15 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-10 19:42:15 --> Language Class Initialized
+DEBUG - 2012-01-10 19:42:15 --> Loader Class Initialized
+DEBUG - 2012-01-10 19:42:15 --> Database Driver Class Initialized
+DEBUG - 2012-01-10 19:42:15 --> Controller Class Initialized
+DEBUG - 2012-01-10 19:42:15 --> Config file loaded: application/api//config/rest.php
+DEBUG - 2012-01-10 19:42:15 --> Helper loaded: inflector_helper
+DEBUG - 2012-01-10 19:42:15 --> Model Class Initialized
+DEBUG - 2012-01-10 19:42:15 --> Model Class Initialized
+DEBUG - 2012-01-10 19:42:15 --> XSS Filtering completed
+DEBUG - 2012-01-10 19:42:15 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-10 19:42:16 --> Config Class Initialized
+DEBUG - 2012-01-10 19:42:16 --> Hooks Class Initialized
+DEBUG - 2012-01-10 19:42:16 --> Utf8 Class Initialized
+DEBUG - 2012-01-10 19:42:16 --> UTF-8 Support Enabled
+DEBUG - 2012-01-10 19:42:16 --> URI Class Initialized
+DEBUG - 2012-01-10 19:42:16 --> Router Class Initialized
+DEBUG - 2012-01-10 19:42:16 --> Output Class Initialized
+DEBUG - 2012-01-10 19:42:16 --> Security Class Initialized
+DEBUG - 2012-01-10 19:42:16 --> Input Class Initialized
+DEBUG - 2012-01-10 19:42:16 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-10 19:42:16 --> Language Class Initialized
+DEBUG - 2012-01-10 19:42:16 --> Loader Class Initialized
+DEBUG - 2012-01-10 19:42:16 --> Database Driver Class Initialized
+DEBUG - 2012-01-10 19:42:16 --> Controller Class Initialized
+DEBUG - 2012-01-10 19:42:16 --> Config file loaded: application/api//config/rest.php
+DEBUG - 2012-01-10 19:42:16 --> Helper loaded: inflector_helper
+DEBUG - 2012-01-10 19:42:16 --> Model Class Initialized
+DEBUG - 2012-01-10 19:42:16 --> Model Class Initialized
+DEBUG - 2012-01-10 19:42:16 --> XSS Filtering completed
+DEBUG - 2012-01-10 19:42:16 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-10 19:42:16 --> Config Class Initialized
+DEBUG - 2012-01-10 19:42:16 --> Hooks Class Initialized
+DEBUG - 2012-01-10 19:42:16 --> Utf8 Class Initialized
+DEBUG - 2012-01-10 19:42:16 --> UTF-8 Support Enabled
+DEBUG - 2012-01-10 19:42:16 --> URI Class Initialized
+DEBUG - 2012-01-10 19:42:16 --> Router Class Initialized
+DEBUG - 2012-01-10 19:42:16 --> Output Class Initialized
+DEBUG - 2012-01-10 19:42:16 --> Security Class Initialized
+DEBUG - 2012-01-10 19:42:16 --> Input Class Initialized
+DEBUG - 2012-01-10 19:42:16 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-10 19:42:16 --> Language Class Initialized
+DEBUG - 2012-01-10 19:42:16 --> Loader Class Initialized
+DEBUG - 2012-01-10 19:42:16 --> Database Driver Class Initialized
+DEBUG - 2012-01-10 19:42:16 --> Controller Class Initialized
+DEBUG - 2012-01-10 19:42:16 --> Config file loaded: application/api//config/rest.php
+DEBUG - 2012-01-10 19:42:16 --> Helper loaded: inflector_helper
+DEBUG - 2012-01-10 19:42:16 --> Model Class Initialized
+DEBUG - 2012-01-10 19:42:16 --> Model Class Initialized
+DEBUG - 2012-01-10 19:42:16 --> XSS Filtering completed
+DEBUG - 2012-01-10 19:42:16 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-10 19:42:16 --> Config Class Initialized
+DEBUG - 2012-01-10 19:42:16 --> Hooks Class Initialized
+DEBUG - 2012-01-10 19:42:16 --> Utf8 Class Initialized
+DEBUG - 2012-01-10 19:42:16 --> UTF-8 Support Enabled
+DEBUG - 2012-01-10 19:42:16 --> URI Class Initialized
+DEBUG - 2012-01-10 19:42:17 --> Router Class Initialized
+DEBUG - 2012-01-10 19:42:17 --> Output Class Initialized
+DEBUG - 2012-01-10 19:42:17 --> Security Class Initialized
+DEBUG - 2012-01-10 19:42:17 --> Input Class Initialized
+DEBUG - 2012-01-10 19:42:17 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-10 19:42:17 --> Language Class Initialized
+DEBUG - 2012-01-10 19:42:17 --> Loader Class Initialized
+DEBUG - 2012-01-10 19:42:17 --> Database Driver Class Initialized
+DEBUG - 2012-01-10 19:42:17 --> Controller Class Initialized
+DEBUG - 2012-01-10 19:42:17 --> Config file loaded: application/api//config/rest.php
+DEBUG - 2012-01-10 19:42:17 --> Helper loaded: inflector_helper
+DEBUG - 2012-01-10 19:42:17 --> Model Class Initialized
+DEBUG - 2012-01-10 19:42:17 --> Model Class Initialized
+DEBUG - 2012-01-10 19:42:17 --> XSS Filtering completed
+DEBUG - 2012-01-10 19:42:17 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-10 19:42:17 --> Config Class Initialized
+DEBUG - 2012-01-10 19:42:17 --> Hooks Class Initialized
+DEBUG - 2012-01-10 19:42:17 --> Utf8 Class Initialized
+DEBUG - 2012-01-10 19:42:17 --> UTF-8 Support Enabled
+DEBUG - 2012-01-10 19:42:17 --> URI Class Initialized
+DEBUG - 2012-01-10 19:42:17 --> Router Class Initialized
+DEBUG - 2012-01-10 19:42:17 --> Output Class Initialized
+DEBUG - 2012-01-10 19:42:17 --> Security Class Initialized
+DEBUG - 2012-01-10 19:42:17 --> Input Class Initialized
+DEBUG - 2012-01-10 19:42:17 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-10 19:42:17 --> Language Class Initialized
+DEBUG - 2012-01-10 19:42:17 --> Loader Class Initialized
+DEBUG - 2012-01-10 19:42:17 --> Database Driver Class Initialized
+DEBUG - 2012-01-10 19:42:17 --> Controller Class Initialized
+DEBUG - 2012-01-10 19:42:17 --> Config file loaded: application/api//config/rest.php
+DEBUG - 2012-01-10 19:42:17 --> Helper loaded: inflector_helper
+DEBUG - 2012-01-10 19:42:17 --> Model Class Initialized
+DEBUG - 2012-01-10 19:42:17 --> Model Class Initialized
+DEBUG - 2012-01-10 19:42:17 --> XSS Filtering completed
+DEBUG - 2012-01-10 19:42:17 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-10 19:42:17 --> Config Class Initialized
+DEBUG - 2012-01-10 19:42:17 --> Hooks Class Initialized
+DEBUG - 2012-01-10 19:42:17 --> Utf8 Class Initialized
+DEBUG - 2012-01-10 19:42:17 --> UTF-8 Support Enabled
+DEBUG - 2012-01-10 19:42:17 --> URI Class Initialized
+DEBUG - 2012-01-10 19:42:17 --> Router Class Initialized
+DEBUG - 2012-01-10 19:42:17 --> Output Class Initialized
+DEBUG - 2012-01-10 19:42:17 --> Security Class Initialized
+DEBUG - 2012-01-10 19:42:17 --> Input Class Initialized
+DEBUG - 2012-01-10 19:42:17 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-10 19:42:17 --> Language Class Initialized
+DEBUG - 2012-01-10 19:42:17 --> Loader Class Initialized
+DEBUG - 2012-01-10 19:42:17 --> Database Driver Class Initialized
+DEBUG - 2012-01-10 19:42:17 --> Controller Class Initialized
+DEBUG - 2012-01-10 19:42:17 --> Config file loaded: application/api//config/rest.php
+DEBUG - 2012-01-10 19:42:17 --> Helper loaded: inflector_helper
+DEBUG - 2012-01-10 19:42:17 --> Model Class Initialized
+DEBUG - 2012-01-10 19:42:17 --> Model Class Initialized
+DEBUG - 2012-01-10 19:42:17 --> XSS Filtering completed
+DEBUG - 2012-01-10 19:42:17 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-10 19:42:37 --> Config Class Initialized
+DEBUG - 2012-01-10 19:42:37 --> Hooks Class Initialized
+DEBUG - 2012-01-10 19:42:37 --> Utf8 Class Initialized
+DEBUG - 2012-01-10 19:42:37 --> UTF-8 Support Enabled
+DEBUG - 2012-01-10 19:42:37 --> URI Class Initialized
+DEBUG - 2012-01-10 19:42:37 --> Router Class Initialized
+DEBUG - 2012-01-10 19:42:37 --> Output Class Initialized
+DEBUG - 2012-01-10 19:42:37 --> Security Class Initialized
+DEBUG - 2012-01-10 19:42:37 --> Input Class Initialized
+DEBUG - 2012-01-10 19:42:37 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-10 19:42:37 --> Language Class Initialized
+DEBUG - 2012-01-10 19:42:37 --> Loader Class Initialized
+DEBUG - 2012-01-10 19:42:37 --> Database Driver Class Initialized
+DEBUG - 2012-01-10 19:42:37 --> Controller Class Initialized
+DEBUG - 2012-01-10 19:42:37 --> Config file loaded: application/api//config/rest.php
+DEBUG - 2012-01-10 19:42:37 --> Helper loaded: inflector_helper
+DEBUG - 2012-01-10 19:42:37 --> Model Class Initialized
+DEBUG - 2012-01-10 19:42:37 --> Model Class Initialized
+DEBUG - 2012-01-10 19:42:37 --> XSS Filtering completed
+DEBUG - 2012-01-10 19:42:37 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-10 19:46:38 --> Config Class Initialized
+DEBUG - 2012-01-10 19:46:38 --> Hooks Class Initialized
+DEBUG - 2012-01-10 19:46:38 --> Utf8 Class Initialized
+DEBUG - 2012-01-10 19:46:38 --> UTF-8 Support Enabled
+DEBUG - 2012-01-10 19:46:38 --> URI Class Initialized
+DEBUG - 2012-01-10 19:46:38 --> Router Class Initialized
+DEBUG - 2012-01-10 19:46:38 --> Output Class Initialized
+DEBUG - 2012-01-10 19:46:38 --> Security Class Initialized
+DEBUG - 2012-01-10 19:46:38 --> Input Class Initialized
+DEBUG - 2012-01-10 19:46:38 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-10 19:46:39 --> Language Class Initialized
+DEBUG - 2012-01-10 19:46:39 --> Loader Class Initialized
+DEBUG - 2012-01-10 19:46:39 --> Database Driver Class Initialized
+DEBUG - 2012-01-10 19:46:39 --> Controller Class Initialized
+DEBUG - 2012-01-10 19:46:39 --> Config file loaded: application/api//config/rest.php
+DEBUG - 2012-01-10 19:46:39 --> Helper loaded: inflector_helper
+DEBUG - 2012-01-10 19:46:39 --> Model Class Initialized
+DEBUG - 2012-01-10 19:46:39 --> Model Class Initialized
+DEBUG - 2012-01-10 19:46:39 --> XSS Filtering completed
+DEBUG - 2012-01-10 19:46:39 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-10 19:47:22 --> Config Class Initialized
+DEBUG - 2012-01-10 19:47:22 --> Hooks Class Initialized
+DEBUG - 2012-01-10 19:47:22 --> Utf8 Class Initialized
+DEBUG - 2012-01-10 19:47:22 --> UTF-8 Support Enabled
+DEBUG - 2012-01-10 19:47:22 --> URI Class Initialized
+DEBUG - 2012-01-10 19:47:22 --> Router Class Initialized
+DEBUG - 2012-01-10 19:47:22 --> Output Class Initialized
+DEBUG - 2012-01-10 19:47:22 --> Security Class Initialized
+DEBUG - 2012-01-10 19:47:22 --> Input Class Initialized
+DEBUG - 2012-01-10 19:47:22 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-10 19:47:22 --> Language Class Initialized
+DEBUG - 2012-01-10 19:47:22 --> Loader Class Initialized
+DEBUG - 2012-01-10 19:47:22 --> Database Driver Class Initialized
+DEBUG - 2012-01-10 19:47:22 --> Controller Class Initialized
+DEBUG - 2012-01-10 19:47:22 --> Config file loaded: application/api//config/rest.php
+DEBUG - 2012-01-10 19:47:22 --> Helper loaded: inflector_helper
+DEBUG - 2012-01-10 19:47:22 --> Model Class Initialized
+DEBUG - 2012-01-10 19:47:22 --> Model Class Initialized
+DEBUG - 2012-01-10 19:47:22 --> XSS Filtering completed
+DEBUG - 2012-01-10 19:47:22 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-10 19:47:51 --> Config Class Initialized
+DEBUG - 2012-01-10 19:47:51 --> Hooks Class Initialized
+DEBUG - 2012-01-10 19:47:51 --> Utf8 Class Initialized
+DEBUG - 2012-01-10 19:47:51 --> UTF-8 Support Enabled
+DEBUG - 2012-01-10 19:47:51 --> URI Class Initialized
+DEBUG - 2012-01-10 19:47:51 --> Router Class Initialized
+DEBUG - 2012-01-10 19:47:51 --> Output Class Initialized
+DEBUG - 2012-01-10 19:47:51 --> Security Class Initialized
+DEBUG - 2012-01-10 19:47:51 --> Input Class Initialized
+DEBUG - 2012-01-10 19:47:51 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-10 19:47:51 --> Language Class Initialized
+DEBUG - 2012-01-10 19:47:51 --> Loader Class Initialized
+DEBUG - 2012-01-10 19:47:51 --> Database Driver Class Initialized
+DEBUG - 2012-01-10 19:47:51 --> Controller Class Initialized
+DEBUG - 2012-01-10 19:47:51 --> Config file loaded: application/api//config/rest.php
+DEBUG - 2012-01-10 19:47:51 --> Helper loaded: inflector_helper
+DEBUG - 2012-01-10 19:47:51 --> Model Class Initialized
+DEBUG - 2012-01-10 19:47:51 --> Model Class Initialized
+DEBUG - 2012-01-10 19:47:51 --> XSS Filtering completed
+DEBUG - 2012-01-10 19:47:51 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-10 19:47:54 --> Config Class Initialized
+DEBUG - 2012-01-10 19:47:54 --> Hooks Class Initialized
+DEBUG - 2012-01-10 19:47:54 --> Utf8 Class Initialized
+DEBUG - 2012-01-10 19:47:54 --> UTF-8 Support Enabled
+DEBUG - 2012-01-10 19:47:54 --> URI Class Initialized
+DEBUG - 2012-01-10 19:47:54 --> Router Class Initialized
+DEBUG - 2012-01-10 19:47:54 --> Output Class Initialized
+DEBUG - 2012-01-10 19:47:54 --> Security Class Initialized
+DEBUG - 2012-01-10 19:47:54 --> Input Class Initialized
+DEBUG - 2012-01-10 19:47:54 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-10 19:47:54 --> Language Class Initialized
+DEBUG - 2012-01-10 19:47:54 --> Loader Class Initialized
+DEBUG - 2012-01-10 19:47:54 --> Database Driver Class Initialized
+DEBUG - 2012-01-10 19:47:54 --> Controller Class Initialized
+DEBUG - 2012-01-10 19:47:54 --> Config file loaded: application/api//config/rest.php
+DEBUG - 2012-01-10 19:47:54 --> Helper loaded: inflector_helper
+DEBUG - 2012-01-10 19:47:54 --> Model Class Initialized
+DEBUG - 2012-01-10 19:47:54 --> Model Class Initialized
+DEBUG - 2012-01-10 19:47:54 --> XSS Filtering completed
+DEBUG - 2012-01-10 19:47:54 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-10 19:47:55 --> Config Class Initialized
+DEBUG - 2012-01-10 19:47:55 --> Hooks Class Initialized
+DEBUG - 2012-01-10 19:47:55 --> Utf8 Class Initialized
+DEBUG - 2012-01-10 19:47:56 --> UTF-8 Support Enabled
+DEBUG - 2012-01-10 19:47:56 --> URI Class Initialized
+DEBUG - 2012-01-10 19:47:56 --> Router Class Initialized
+DEBUG - 2012-01-10 19:47:56 --> Output Class Initialized
+DEBUG - 2012-01-10 19:47:56 --> Security Class Initialized
+DEBUG - 2012-01-10 19:47:56 --> Input Class Initialized
+DEBUG - 2012-01-10 19:47:56 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-10 19:47:56 --> Language Class Initialized
+DEBUG - 2012-01-10 19:47:56 --> Loader Class Initialized
+DEBUG - 2012-01-10 19:47:56 --> Database Driver Class Initialized
+DEBUG - 2012-01-10 19:47:56 --> Controller Class Initialized
+DEBUG - 2012-01-10 19:47:56 --> Config file loaded: application/api//config/rest.php
+DEBUG - 2012-01-10 19:47:56 --> Helper loaded: inflector_helper
+DEBUG - 2012-01-10 19:47:56 --> Model Class Initialized
+DEBUG - 2012-01-10 19:47:56 --> Model Class Initialized
+DEBUG - 2012-01-10 19:47:56 --> XSS Filtering completed
+DEBUG - 2012-01-10 19:47:56 --> Config file loaded: application/api//config/memcached.php
+DEBUG - 2012-01-10 19:48:00 --> Config Class Initialized
+DEBUG - 2012-01-10 19:48:00 --> Hooks Class Initialized
+DEBUG - 2012-01-10 19:48:00 --> Utf8 Class Initialized
+DEBUG - 2012-01-10 19:48:00 --> UTF-8 Support Enabled
+DEBUG - 2012-01-10 19:48:00 --> URI Class Initialized
+DEBUG - 2012-01-10 19:48:00 --> Router Class Initialized
+DEBUG - 2012-01-10 19:48:00 --> Output Class Initialized
+DEBUG - 2012-01-10 19:48:00 --> Security Class Initialized
+DEBUG - 2012-01-10 19:48:00 --> Input Class Initialized
+DEBUG - 2012-01-10 19:48:00 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-01-10 19:48:00 --> Language Class Initialized
+DEBUG - 2012-01-10 19:48:00 --> Loader Class Initialized
+DEBUG - 2012-01-10 19:48:00 --> Database Driver Class Initialized
+DEBUG - 2012-01-10 19:48:00 --> Controller Class Initialized
+DEBUG - 2012-01-10 19:48:00 --> Config file loaded: application/api//config/rest.php
+DEBUG - 2012-01-10 19:48:00 --> Helper loaded: inflector_helper
+DEBUG - 2012-01-10 19:48:00 --> Model Class Initialized
+DEBUG - 2012-01-10 19:48:00 --> Model Class Initialized
+DEBUG - 2012-01-10 19:48:00 --> XSS Filtering completed
+DEBUG - 2012-01-10 19:48:00 --> Config file loaded: application/api//config/memcached.php
