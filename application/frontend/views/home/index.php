@@ -1,4 +1,5 @@
 <div class="g75">
+  <div class="inner-wrapper">
   <ul class="tribbles" style="overflow: hidden;">
 	<? foreach($tribbles as $tribble): ?>
     <li class="space"> 
@@ -27,5 +28,6 @@
   </ul>
   <hr />
   <?=$paging?>  
+  </div>
 </div>
  

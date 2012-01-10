@@ -34,15 +34,10 @@ h3 {
 	text-shadow:0 1px 0 #ffffff;
 }
 
-.g75 {
-	width:73%;
-	margin-right:10px;
-}
 .g25 {
-	width:24%;
 	float:right;
-	padding: 10px;
 }
+
 #topNavigation {
 	width:978px;
 	margin:0 auto;
@@ -358,6 +353,7 @@ h2.searchResult {
 }
 #login ul {
 	float:right;
+  line-height: 63px;
 }
 #login ul li {
 	display:inline;
@@ -772,4 +768,7 @@ ul.tribbles {
 }
 .footer {
 	background-color:#2b343b;
+}
+.inner-wrapper {
+  margin-right: 10px;
 }

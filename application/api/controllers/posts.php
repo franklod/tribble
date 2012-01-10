@@ -16,8 +16,21 @@ require APPPATH . '/libraries/REST_Controller.php';
 class Posts extends REST_Controller
 {
 
+    public function __construct()
+    {
+        parent::__construct();
+                
+        //$this->output->enable_profiler(TRUE);
+        
+    }
+
     public function list_get()
     {
+
+        // load the memcached driver
+        $this->load->driver('cache');
+        // load the posts model
+        $this->load->model('Posts_API_model', 'MPosts');
 
         // get the uri parameters
         $type = $this->get('type');
@@ -25,10 +38,7 @@ class Posts extends REST_Controller
         $limit = $this->get('limit');
 
         // create the cache key
-        $cachekey = sha1('list/' . $type . $page . $limit);
-
-        // load the memcached driver
-        $this->load->driver('cache');
+        $cachekey = sha1('list/' . $type . $page . $limit);        
 
         // check if the key exists in cache
         if (!$this->cache->memcached->get($cachekey)) {
@@ -42,21 +52,23 @@ class Posts extends REST_Controller
                 case 'loved':
                     break;
                 default:
-                    $this->response(array('status' => false, 'message' => 'An invalid post list type was requested.'));
+                    $this->response(array('status' => false, 'message' =>
+                        'An invalid post list type was requested.'));
             }
 
-            // load the posts model
-            $this->load->model('Posts_API_model', 'MPosts');
+            
             // get the data from the database
             if ($posts = $this->MPosts->getPostList($type, $page, $limit)) {
-                $posts_count = $this->MPosts->countPosts();                                
+                $posts_count = $this->MPosts->countPosts();
                 // we have a dataset from the database, let's save it to memcached
-                @$this->cache->memcached->save($cachekey, array('status'=>true,'count'=>$posts_count,'posts'=>$posts), 10 * 60);
+                $object = array('status' => true, 'count' => $posts_count,'posts' => $posts);
+                @$this->cache->memcached->save($cachekey, $object, 10 * 60);
                 // output the response
-                $this->response($posts);                
+                $this->response($object);
             } else {
                 // we got nothing to show, output error
-                $this->response(array('status' => false, 'message' => 'Fatal error: Could not get data either from cache or database.'), 404);
+                $this->response(array('status' => false, 'message' =>
+                    'Fatal error: Could not get data either from cache or database.'), 404);
             }
         } else {
             // the object is cached, send it
@@ -64,6 +76,35 @@ class Posts extends REST_Controller
             $this->response($cache);
         }
 
+    }
+
+    public function detail_get()
+    {
+        $post_id = $this->get('id');
+        
+        // load the memcached driver
+        $this->load->driver('cache');
+        // load the posts model
+        $this->load->model('Posts_API_model', 'MPosts');
+
+        // hash the method name and params to get a cache key
+        $cachekey = sha1('detail' . $post_id);
+
+        // check if the key exists in cache
+        if(@!$this->cache->memcached->get($cachekey)){
+          // get the data from the db, cache and echo the json string
+          if (!(bool)$post = $this->MPosts->getPostById($post_id)) {
+            $this->response(array('status' => false, 'message' => 'Couldn\'t get the post data.'));            
+          } else {
+            $replies = $this->MPosts->getRepliesByPostId($post_id);
+            $object = array('status' => true, 'post' => $post, 'replies' => array('count' => count($replies),'replies'=>$replies));
+            $this->cache->memcached->save($cachekey,$object,10*60);
+            $this->response($object);
+          } 
+        } else {
+        // key exists. echo the json string
+          $this->response($this->cache->memcached->get($cachekey));
+        }
     }
 
 }
