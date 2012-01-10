@@ -79,7 +79,9 @@ class Tribble extends CI_Controller {
         $offset = $per_page * ($page - 1);        
     } 
         
-    $REST_data = $this->rest->get('posts/list/type/new');
+    if(!$REST_data = $this->rest->get('posts/list/type/new')){
+      show_error('Couldn\'t connect to the API.',404);
+    }
     
     if($REST_data->status == FALSE){
       show_error($REST_data->message,404);
@@ -119,7 +121,9 @@ class Tribble extends CI_Controller {
         $offset = $per_page * ($page - 1);        
     } 
         
-    $REST_data = $this->rest->get('posts/list/type/buzzing');
+    if(!$REST_data = $this->rest->get('posts/list/type/buzzing')){
+      show_error('Couldn\'t connect to the API.',404);
+    }
     
     if($REST_data->status == FALSE){
       show_error($REST_data->message,404);
@@ -127,7 +131,7 @@ class Tribble extends CI_Controller {
                                         
     $data['tribbles'] = array_slice($REST_data->posts,$offset,$per_page,true);
     
-    $config['base_url'] = site_url('new/page');
+    $config['base_url'] = site_url('buzzing/page');
     $config['total_rows'] = $REST_data->count;
         
     $this->pagination->initialize($config);
@@ -158,7 +162,9 @@ class Tribble extends CI_Controller {
         $offset = $per_page * ($page - 1);        
     } 
         
-    $REST_data = $this->rest->get('posts/list/type/loved');
+    if(!$REST_data = $this->rest->get('posts/list/type/loved')){
+      show_error('Couldn\'t connect to the API.',404);
+    }
     
     if($REST_data->status == FALSE){
       show_error($REST_data->message,404);
@@ -166,7 +172,7 @@ class Tribble extends CI_Controller {
                                         
     $data['tribbles'] = array_slice($REST_data->posts,$offset,$per_page,true);
     
-    $config['base_url'] = site_url('new/page');
+    $config['base_url'] = site_url('loved/page');
     $config['total_rows'] = $REST_data->count;
         
     $this->pagination->initialize($config);
@@ -177,39 +183,32 @@ class Tribble extends CI_Controller {
     $this->load->view('common/page_end.php',$data);        
 	}  
   
-
   
-
-//  
-//  public function view($postId){
-//    
-//    if($uid = $this->session->userdata('uid')){
-//      $this->load->model('User_model','uModel');
-//      $user = $this->uModel->getUserData($uid);
-//      $data['user'] = $user[0];
-//    }    
-//    
-//    $this->load->model('Tribbles_model','trModel');
-//    
-//    // Pull in an array of tweets
-//    $tribbleData = json_decode($this->rest->get('posts/'.$postId));    
-//    $replyData = json_decode($this->rest->get('posts/replies/'.$postId));
-//        
-//    $data['tribble'] = $tribbleData[0];    
-//    $data['replies'] = $replyData;
-//    
-//    //echo "<pre>";
-//    //print_r($replyData);
-//    //echo "</pre>";
-//    
-//    $data['title'] = 'Tribble - ' . $data['tribble']->title;
-//    $data['meta_description'] = $data['tribble']->title;
-//    $data['meta_keywords'] = $data['tribble']->tags;
-//    
-//    $this->load->view('common/page_top.php', $data);
-//		$this->load->view('tribble/view.php',$data);    
-//    $this->load->view('common/page_end.php',$data);         
-//  }
+  public function view($postId){
+    
+    if($uid = $this->session->userdata('uid')){
+      $this->load->model('User_model','uModel');
+      $user = $this->uModel->getUserData($uid);
+      $data['user'] = $user[0];
+    }    
+    
+    $this->load->model('Tribbles_model','trModel');
+    
+    //Pull in an array of tweets
+    $REST_Data = $this->rest->get('posts/detail/id/'.$postId); 
+        
+    $data['tribble'] = $REST_Data->post[0];    
+    $data['replies'] = $REST_Data->replies->replies;
+    $data['replies_count'] = $REST_Data->replies->count;
+        
+    $data['title'] = 'Tribble - ' . $data['tribble']->title;
+    $data['meta_description'] = $data['tribble']->title;
+    $data['meta_keywords'] = $data['tribble']->tags;
+    
+    $this->load->view('common/page_top.php', $data);
+		$this->load->view('tribble/view.php',$data);    
+    $this->load->view('common/page_end.php',$data);         
+  }
 //  
 //  function reply($tribble){
 //    if(!$this->session->userdata('unique')){

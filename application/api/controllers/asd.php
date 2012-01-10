@@ -12,7 +12,7 @@
 
 require APPPATH.'/libraries/REST_Controller.php';
  
-class old extends CI_Controller {
+class Asd extends CI_Controller {
   
   public function __construct()
   {

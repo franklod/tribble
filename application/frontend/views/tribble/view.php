@@ -46,7 +46,7 @@
     </div>
     <div class="comments-list">
       <?if(!$replies):?>
-      <p>no comments yet</p>
+      <p><?=$replies_count?> responses</p>
       <?else:?>
       <ul id="comments">
         <?foreach($replies as $reply):?>
