@@ -12,7 +12,7 @@
 
 require APPPATH.'/libraries/REST_Controller.php';
  
-class Posts_rest extends REST_Controller {
+class Posts extends REST_Controller {
    
   public function list_get(){
     
@@ -22,33 +22,42 @@ class Posts_rest extends REST_Controller {
     $limit = $this->get('limit');
     
     // create the cache key 
-    $cachekey = sha1('list/'.$type);
+    $cachekey = sha1('list/'.$type.$page.$limit);
     
     // load the memcached driver    
     $this->load->driver('cache');                
 
     // check if the key exists in cache         
-    //if(!$this->cache->memcached->get($cachekey)){
+    if(!$this->cache->memcached->get($cachekey)){
       
-      // check if the list type is valid
-      if($type != 'new' && $type != 'buzzing' && $type != 'loved'){
-         $this->response(array('status'=>false,'message'=>'Invalid post list type'));
+      // check if the list type is valid    
+      switch($type){
+        case 'new': 
+          break;
+        case: 'buzzing':
+          break;
+        case 'loved':
+          break;
+        default:
+          $this->response(array('status'=>false,'message'=>'Invalid post list type'));            
       }
       
+      // load the posts model
       $this->load->model('Posts_API_model','trModel');
-     
+      // get the data from the database     
       if($posts = $this->trModel->getPostList($type,$page,$limit)){
-        
-        //$this->cache->memcached->save($cachekey,$posts,10*60);              
-        $this->response($posts);          
+        // we have a dataset from the database, let's save it to memcached
+        $this->cache->memcached->save($cachekey,$posts,10*60);
+        // output the response              
+        $this->response(array('status'=>true,'data'=>$cache),200);          
       } else {
-        $this->response(array('status'=>false,'message'=>'Fatal error: Could not get data either from cache or database.'));        
+        // we got nothing to show, output error 
+        $this->response(array('status'=>false,'message'=>'Fatal error: Could not get data either from cache or database.'),404);        
       }                                              
     //} else {
       // key exists. echo the json string
-      //$cache = @$this->cache->memcached->get($cachekey);
-      // var_dump($cache); 
-       //$this->response(array('status'=>true,'data'=>$cache));
+      $cache = @$this->cache->memcached->get($cachekey); 
+      $this->response(array('status'=>true,'data'=>$cache),200);
     //} 
     
   }

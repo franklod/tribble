@@ -66,6 +66,15 @@ class Posts_API_model extends CI_Model {
       } else {
         return false;
       }                            
+    }
+    
+    function countPosts(){
+      if($query = $this->db->get('tr_tribbles')){
+        $count = $query->num_rows();
+        return $count;
+      } else {
+        return false;
+      }
     }                        
 }
 
