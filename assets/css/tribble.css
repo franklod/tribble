@@ -596,6 +596,45 @@ ul.tribbles {
 	margin-top:-4px;
 	z-index:1;
 }
+
+.sidebar-item .color-scheme {
+	margin-bottom:5px;
+	position:relative;
+}
+.sidebar-item .color-scheme li {
+	float:left;
+	margin:0px;
+	display:inline;
+	width:59px;
+	height:59px;
+  margin: 1px;
+}
+.sidebar-item .color-scheme li:first-child {
+	-moz-border-radius: 0px;
+	-webkit-border-radius: 0px;
+	border-radius: 0px;
+}
+.sidebar-item .color-scheme li:last-child {
+	-moz-border-radius: 0px;
+	-webkit-border-radius: 0px;
+	border-radius: 0px;
+}
+.sidebar-item .color-scheme li a {
+	float:left;
+	display:block;
+  width: 56px;
+  height: 56px;
+	overflow:hidden;
+	-webkit-transition:0.1s linear all;
+	-moz-transition:0.1s linear all;
+	-ms-transition:0.1s linear all;
+	-o-transition:0.1s linear all;
+	transition:0.1s linear all;
+}
+.sidebar-item .color-scheme li a:hover, .color-scheme li:hover {
+
+	z-index:1;
+}
 /*******************************tribble details*******************************/
 .tribble-user-info {
 	margin:0;

@@ -12,10 +12,13 @@
   <? endif;?>
   
   <?=form_open_multipart('/tribble/comment/'.$tribble->id)?>
+  
+  <?=form_hidden('user_id',$this->session->userdata('uid'))?>
+  <?=form_hidden('post_id',$tribble->id)?>
   <?=form_fieldset('')?>
     <div class="e_wrap">
   <?=form_label('Comment','text')?>
-  <?=form_textarea(array('name'=>'text','id'=>'text','placeholder'=>''))?>
+  <?=form_textarea(array('name'=>'comment_text','id'=>'comment_text','placeholder'=>''))?>
   </div>
   <div class="e_wrap">
   <?=form_submit(array('name'=>'reply','id'=>'reply','value'=>'Comment','class'=>'btn_success'))?>

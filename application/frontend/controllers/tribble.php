@@ -26,38 +26,52 @@ class Tribble extends CI_Controller {
       //$this->output->enable_profiler(TRUE);      
   }
 
-//  public function dosearch(){
-//      //echo $this->input->post('search',true);
-//      redirect('search/'.$this->input->post('search',true));
-//  }
+  public function dosearch(){
+      echo $this->input->post('search',true);
+      redirect('search/'.$this->input->post('search',true));
+  }
 
-	//public function search($searchString,$page = null)
-//	{
-//    $data['title'] = 'Tribble - Home';
-//    $data['meta_description'] = 'A design content sharing and discussion tool.';
-//    $data['meta_keywords'] = 'Tribble';
-//    
-//    if($uid = $this->session->userdata('uid')){
-//      $this->load->model('User_model','uModel');
-//      $user = $this->uModel->getUserData($uid);
-//      $data['user'] = $user[0];            
-//    }            
-//    
-//    // Pull in an array of tribbles
-//    $tribble_list = json_decode($this->rest->get('posts/search/'.$searchString.'/'.$page)); 
-//
-//    $data['tribbles'] = $tribble_list;
-//    
-//    $config['base_url'] = site_url('search');
-//    $config['total_rows'] = $this->rest->get('posts/count');
-//        
-//    $this->pagination->initialize($config);
-//    $data['paging'] = $this->pagination->create_links();
-//    
-//    $this->load->view('common/page_top.php', $data);
-//		$this->load->view('home/index.php',$data);
-//    $this->load->view('common/page_end.php',$data);        
-//	}
+	public function search($searchString,$page = null)
+	{
+    $data['title'] = 'Tribble - Home';
+    $data['meta_description'] = 'A design content sharing and discussion tool.';
+    $data['meta_keywords'] = 'Tribble';
+    
+    if($uid = $this->session->userdata('uid')){
+      $this->load->model('User_model','uModel');
+      $user = $this->uModel->getUserData($uid);
+      $data['user'] = $user[0];            
+    }            
+    
+    $search_results = $this->rest->get('posts/find/txt/'.$searchString.'/'.$page);    
+    
+    if($search_results->status == false)
+      show_error($search_results->message,404);
+
+    $data['search_text'] = $search_results->search->string;
+    $data['results'] = $search_results->search->count;
+    
+    var_dump($tag_data);
+    
+    
+    if($search_results->search->count == 0){
+      $this->load->view('common/page_top.php', $data);
+  		$this->load->view('lists/empty_search.php',$data);
+      $this->load->view('common/page_end.php',$data);  
+    } else {       
+      $data['tribbles'] = $search_results->search->posts;
+      
+      $config['base_url'] = site_url('search');
+      $config['total_rows'] = $search_results->search->count;
+          
+      $this->pagination->initialize($config);
+      $data['paging'] = $this->pagination->create_links();
+      
+      $this->load->view('common/page_top.php', $data);
+  		$this->load->view('lists/search.php',$data);
+      $this->load->view('common/page_end.php',$data);
+    }        
+	}
   
   public function newer($page=null)
 	{
@@ -85,7 +99,12 @@ class Tribble extends CI_Controller {
     
     if($REST_data->status == FALSE){
       show_error($REST_data->message,404);
-    }    
+    }
+    
+    $tag_data = $this->rest->get('meta/tags');
+    $color_data = $this->rest->get('meta/colors');
+    $data['tags'] = $tag_data->tags;
+    $data['colors'] = $color_data->colors;    
                                         
     $data['tribbles'] = array_slice($REST_data->posts,$offset,$per_page,true);
     
@@ -96,7 +115,8 @@ class Tribble extends CI_Controller {
     $data['paging'] = $this->pagination->create_links();
     
     $this->load->view('common/page_top.php', $data);
-	  $this->load->view('home/index.php',$data);
+	  $this->load->view('lists/index.php',$data);
+    $this->load->view('widgets/widgets.php',$data);
     $this->load->view('common/page_end.php',$data);        
 	}    
    
@@ -127,7 +147,12 @@ class Tribble extends CI_Controller {
     
     if($REST_data->status == FALSE){
       show_error($REST_data->message,404);
-    }    
+    }
+    
+    $tag_data = $this->rest->get('meta/tags');
+    $color_data = $this->rest->get('meta/colors');
+    $data['tags'] = $tag_data->tags;
+    $data['colors'] = $color_data->colors;    
                                         
     $data['tribbles'] = array_slice($REST_data->posts,$offset,$per_page,true);
     
@@ -138,7 +163,8 @@ class Tribble extends CI_Controller {
     $data['paging'] = $this->pagination->create_links();
     
     $this->load->view('common/page_top.php', $data);
-	  $this->load->view('home/index.php',$data);
+	  $this->load->view('lists/index.php',$data);
+    $this->load->view('widgets/widgets.php',$data);
     $this->load->view('common/page_end.php',$data);        
 	}
   
@@ -169,6 +195,11 @@ class Tribble extends CI_Controller {
     if($REST_data->status == FALSE){
       show_error($REST_data->message,404);
     }    
+    
+    $tag_data = $this->rest->get('meta/tags');
+    $color_data = $this->rest->get('meta/colors');
+    $data['tags'] = $tag_data->tags;
+    $data['colors'] = $color_data->colors;
                                         
     $data['tribbles'] = array_slice($REST_data->posts,$offset,$per_page,true);
     
@@ -179,7 +210,8 @@ class Tribble extends CI_Controller {
     $data['paging'] = $this->pagination->create_links();
     
     $this->load->view('common/page_top.php', $data);
-	  $this->load->view('home/index.php',$data);
+	  $this->load->view('lists/index.php',$data);
+    $this->load->view('widgets/widgets.php',$data);
     $this->load->view('common/page_end.php',$data);        
 	}  
   
@@ -195,7 +227,12 @@ class Tribble extends CI_Controller {
     $this->load->model('Tribbles_model','trModel');
     
     //Pull in an array of tweets
-    $REST_Data = $this->rest->get('posts/detail/id/'.$postId); 
+    $REST_Data = $this->rest->get('posts/detail/id/'.$postId);
+    
+    $tag_data = $this->rest->get('meta/tags');
+    $color_data = $this->rest->get('meta/colors');
+    $data['tags'] = $tag_data->tags;
+    $data['colors'] = $color_data->colors; 
         
     $data['tribble'] = $REST_Data->post[0];    
     $data['replies'] = $REST_Data->replies->replies;
@@ -206,7 +243,8 @@ class Tribble extends CI_Controller {
     $data['meta_keywords'] = $data['tribble']->tags;
     
     $this->load->view('common/page_top.php', $data);
-		$this->load->view('tribble/view.php',$data);    
+		$this->load->view('tribble/view.php',$data);
+    $this->load->view('widgets/widgets.php',$data);    
     $this->load->view('common/page_end.php',$data);         
   }
 //  
@@ -319,11 +357,18 @@ class Tribble extends CI_Controller {
 //    //$this->trModel->li
 //  }
 //  
-//  public function comment($tribbleid){
-//    $this->load->model('Tribbles_model','trModel');
-//    $comment = $this->trModel->addComment($tribbleid,$this->session->userdata('uid'));
-//    redirect('/tribble/view/'.$tribbleid);          
-//  }
+  public function comment($tribbleid){    
+    $user_id = $this->input->post('user_id');
+    $post_id = $this->input->post('post_id');
+    $comment_text = $this->input->post('comment_text');
+    $comment_response = $this->rest->post('/posts/comment',array('post_id'=>$post_id,'user_id'=>$user_id,'comment_text'=>$comment_text));
+    if($comment_response->status){
+      redirect('/tribble/view/'.$tribbleid);
+    } else {
+      show_error('An error ocurred while saving your comment. Please try again later.',500);
+    }
+              
+  }
         
 }
 
