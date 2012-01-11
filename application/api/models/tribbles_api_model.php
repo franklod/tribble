@@ -40,7 +40,7 @@ class Tribbles_API_model extends CI_Model {
           tr_users.user_id AS userid,
           tr_users.user_avatar AS avatar,
           tr_images.image_path as image,
-          COUNT(DISTINCT tr_likes.like_id) AS likes,
+          COUNT(DISTINCT tr_likes.like_tribble_id) AS likes,
           COUNT(tr_replies.reply_tribble_id) AS replies          
       ');
       $this->db->from('tr_tribbles');

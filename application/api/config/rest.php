@@ -35,7 +35,7 @@ $config['enable_emulate_request'] = TRUE;
 |	E.g: My Secret REST API
 |
 */
-$config['rest_realm'] = 'REST API';
+$config['rest_realm'] = 'Tribble API';
 
 /*
 |--------------------------------------------------------------------------
@@ -70,7 +70,7 @@ $config['rest_auth'] = false;
 */
 // $config['auth_override_class_method']['deals']['view'] = 'none';
 // $config['auth_override_class_method']['deals']['insert'] = 'digest';
-// $config['auth_override_class_method']['accounts']['user'] = 'basic';
+$config['auth_override_class_method']['users']['liked'] = 'none';
 
 /*
 |--------------------------------------------------------------------------
@@ -82,7 +82,7 @@ $config['rest_auth'] = false;
 |	array('admin' => '1234')
 |
 */
-$config['rest_valid_logins'] = array('admin' => '1234');
+$config['rest_valid_logins'] = array('tribble' => 'tribble');
 
 /*
 |--------------------------------------------------------------------------
