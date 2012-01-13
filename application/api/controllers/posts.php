@@ -77,12 +77,10 @@ class Posts extends REST_Controller
       // get the data from the database
       if ($posts = $this->mPosts->getPostList($type, $page, $limit))
       {
-        $posts_count = $this->mPosts->countPosts();
         // we have a dataset from the database, let's save it to memcached
         $object = array(
           'page' => $page,
           'status' => true,
-          'total_posts' => $posts_count,
           'count' => $limit,
           'posts' => $posts);
         @$this->cache->memcached->save($cachekey, $object, 10 * 60);
@@ -162,14 +160,21 @@ class Posts extends REST_Controller
     $this->load->model('Posts_API_model', 'mPosts');
 
     // hash the method name and params to get a cache key
-    $cachekey = sha1('tagged' . $tag . $page . $limit);
+    $cachekey = sha1('tagged/' . $tag . $page . $limit);
 
     if (@!$this->cache->memcached->get($cachekey))
     {
       $posts = $this->mPosts->getPostsByTag($tag, $page, $limit);
       if ($posts)
       {
-        $this->cache->memcached->save($cachekey, array('status' => true, 'search' => $posts), 10 * 60);
+        $object = array(
+          'page' => $page,
+          'status' => true,
+          'count' => $posts['count'],
+          'posts' => $posts['posts'],
+          'tag' => $posts['tag']        
+          );
+        $this->cache->memcached->save($cachekey, $object, 10 * 60);
         $this->response(array('status' => true, 'search' => $posts));
       }
     } else
