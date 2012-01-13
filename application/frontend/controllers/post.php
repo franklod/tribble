@@ -31,7 +31,7 @@ class Post extends CI_Controller {
       redirect('search/'.$this->input->post('search',true));
   }
   
-  public function tag($tag){
+  public function tag($tag,$page=1){
     $data['title'] = 'Tribble - Home';
     $data['meta_description'] = 'A design content sharing and discussion tool.';
     $data['meta_keywords'] = 'Tribble';
@@ -41,33 +41,48 @@ class Post extends CI_Controller {
       $data['user']->name = $this->session->userdata('uname');
       $data['user']->id = $this->session->userdata('uid');
     }            
-    
-    $search_results = $this->rest->get('posts/tagged/tag/'.$tag);
-    
-    if($search_results->status == false)
-      show_error($search_results->message,404);
+   
+    $display_per_page = 12;    
+    $api_dataset_rows = 600;
+             
+    $api_page = floor((($page * $display_per_page)-$display_per_page) / $api_dataset_rows)+1;
 
-    $data['search_text'] = $search_results->search->tag;
-    $data['results'] = $search_results->search->count; 
+    if(!$REST_data = $this->rest->get('posts/tagged/tag/'.$tag.'/page/'.$api_page)){
+      show_error('Couldn\'t connect to the API.',404);
+      log_message(1,'API Failure. CALL: posts/tagged/tag/'.$tag.'/page/'.$api_page);
+    }                                 
     
+    $page = (int)$page;                   
+    $offset = (($page - 1) * $display_per_page) - ($api_dataset_rows * ($api_page-1));
+    
+    if($REST_data->status == FALSE){
+      show_error($REST_data->message,404);
+    }
+    
+    $page = (int)$page;
+    $offset = (($page - 1) * $display_per_page) - ($api_dataset_rows * ($api_page-1));
+        
     $tag_data = $this->rest->get('meta/tags');
     $color_data = $this->rest->get('meta/colors');
     $data['tags'] = $tag_data->tags;
     $data['colors'] = $color_data->colors;  
     
-    if($search_results->search->count == 0){
+    if($REST_data->count == 0){
       $this->load->view('common/page_top.php', $data);
   		$this->load->view('lists/empty_search.php',$data);
       $this->load->view('widgets/widgets.php',$data);
       $this->load->view('common/page_end.php',$data);  
     } else {       
-      $data['tribbles'] = $search_results->search->posts;
+      $data['tribbles'] = $REST_data->posts;
       
-      $config['base_url'] = site_url('search');
-      $config['total_rows'] = $search_results->search->count;
+      $config['base_url'] = site_url('tag/'.$tag.'/page');
+      $config['total_rows'] = $REST_data->count;
           
       $this->pagination->initialize($config);
       $data['paging'] = $this->pagination->create_links();
+      
+      $data['search_text'] = $REST_data->tag;
+      $data['results'] = $REST_data->count;
       
       $this->load->view('common/page_top.php', $data);
   		$this->load->view('lists/search.php',$data);
@@ -146,24 +161,25 @@ class Post extends CI_Controller {
           show_error('Couldn\'t connect to the API.',404);
     }
     
-    $display_per_page = 12;    
+    // set the defaults
+    $display_per_page = 12;
+    // number of rows per result set    
     $api_dataset_rows = 600;
-               
-    $max_pages_per_dataset = ceil($api_dataset_rows / $display_per_page);
-    $max_pages_total = ceil($POST_Total->total_posts / $display_per_page);                   
-    
+                               
+    // calculate wich result set page should we request from the api
     $api_page = floor((($page * $display_per_page)-$display_per_page) / $api_dataset_rows)+1;
-
+  
+    // try to get the data from the API and show error on failure
     if(!$REST_data = $this->rest->get('posts/list/type/new/page/'.$api_page)){
       show_error('Couldn\'t connect to the API.',404);
+      log_message(1,'API Failure. CALL: posts/list/type/new/page/'.$api_page);
     }     
                             
     if($REST_data->status == FALSE){
       show_error($REST_data->message,404);
     }
     
-    $page = (int)$page;
-                   
+    $page = (int)$page;    
     $offset = (($page - 1) * $display_per_page) - ($api_dataset_rows * ($api_page-1));
                 
     $tag_data = $this->rest->get('meta/tags');
@@ -212,6 +228,7 @@ class Post extends CI_Controller {
 
     if(!$REST_data = $this->rest->get('posts/list/type/buzzing/page/'.$api_page)){
       show_error('Couldn\'t connect to the API.',404);
+      log_message(1,'API Failure. CALL: posts/list/type/buzzing/page/'.$api_page);
     }     
                             
     if($REST_data->status == FALSE){
@@ -266,6 +283,7 @@ class Post extends CI_Controller {
 
     if(!$REST_data = $this->rest->get('posts/list/type/loved/page/'.$api_page)){
       show_error('Couldn\'t connect to the API.',404);
+      log_message(1,'API Failure. CALL: posts/list/type/loved/page/'.$api_page);
     }     
                             
     if($REST_data->status == FALSE){

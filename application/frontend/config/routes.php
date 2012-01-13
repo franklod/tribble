@@ -67,6 +67,7 @@ $route['like/add/(:num)'] = 'post/add_like/$1';
 $route['like/remove/(:num)'] = 'post/remove_like/$1';
 // TAGS
 $route['tag/(:any)'] = 'post/tag/$1';
+$route['tag/(:any)/page/(:num)'] = 'post/tag/$1/$2';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
