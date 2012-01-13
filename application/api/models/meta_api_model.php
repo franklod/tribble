@@ -3,8 +3,8 @@
 class Meta_API_model extends CI_Model {
       
     function getTags(){
-      $this->db->select('tags_content');
-      $this->db->from('tags');
+      $this->db->select('tag_content');
+      $this->db->from('tag');
       $query = $this->db->get();
       if($query->num_rows() > 0){
         return $query->result();
@@ -15,7 +15,7 @@ class Meta_API_model extends CI_Model {
     
     function getColors(){
       $this->db->select('image_palette');
-      $this->db->from('images');
+      $this->db->from('image');
       $query = $this->db->get();
       if($query->num_rows() > 0){
         return $query->result();

@@ -1,5 +1,4 @@
 <?php
-
 if (!defined('BASEPATH'))
   exit('No direct script access allowed');
 
@@ -34,7 +33,6 @@ class Users extends REST_Controller
       $this->response(array('status' => false, 'message' =>
           'Insuficient data provided.'), 404);
 
-
     $user_like_status = $this->mUser->checkUserLiked($user_id, $post_id);
 
     if ($user_like_status)
@@ -64,24 +62,63 @@ class Users extends REST_Controller
       $this->response(array('status' => false, 'message' => 'Unknown user.'));
     }
   }
-  
-  public function profile_post(){
-    
+
+  public function profile_put()
+  {
+
     $user_data = array(
-      'user_email'=>$this->post('email'),
-      'user_realname'=>$this->post('realname'),
-      'user_bio'=>$this->post('bio'),
-      'user_avatar'=>$this->post('avatar');
-    );
-    
-    if($this->mUser->updateProfile($this->post('id'),$user_data)){
-      $this->response(array('status'=>true,'message'=>'User profile successfuly updated.'));
-    } else {
-      $this->response(array('status'=>false,'message'=>'Couldn\'t update the user profile.'));
+      'user_email' => $this->post('email'),
+      'user_realname' => $this->post('realname'),
+      'user_bio' => $this->post('bio'),
+      'user_avatar' => $this->post('avatar'); );
+
+    if ($this->mUser->updateProfile($this->post('id'), $user_data))
+    {
+      $this->response(array('status' => true, 'message' =>
+          'User profile successfuly updated.'));
+    } else
+    {
+      $this->response(array('status' => false, 'message' => 'Couldn\'t update the user profile.'));
     }
-    
+
   }
 
+  public function signup_put()
+  {    
+      $this->load->model('User_model', 'uModel');
+      if ($result = $this->uModel->createNewUser())
+      {
+        if (@$result->error)
+        {
+          $data['error'] = $result->error;
+          $this->load->view('common/page_top.php', $data);
+          $this->load->view('user/signup.php', $data);
+          $this->load->view('common/page_end.php', $data);
+        } else
+        {
+          $user_hash = $result->user_hash;
+          $user_dir = "./data/" . $user_hash;
+
+          if (is_dir($user_dir))
+          {
+            $data['error'] = "Oops. There something happened while finishing your account setup.";
+            $this->load->view('common/page_top.php', $data);
+            $this->load->view('user/signup.php', $data);
+            $this->load->view('common/page_end.php', $data);
+          } else
+          {
+            mkdir($user_dir, 0755);
+            $data['success'] = "You're good to go! Go ahead and login.";
+            $this->load->view('common/page_top.php', $data);
+            $this->load->view('user/signup.php', $data);
+            $this->load->view('common/page_end.php', $data);
+          }
+
+        }
+      }
+
+    
+  }
 
 }
 

@@ -21,28 +21,29 @@ CREATE DATABASE `tribble_schema`
 USE `tribble_schema`;
 
 #
-# Structure for the `tr_comments` table : 
+# Structure for the `tr_comment` table : 
 #
 
-DROP TABLE IF EXISTS `tr_comments`;
+DROP TABLE IF EXISTS `tr_comment`;
 
-CREATE TABLE `tr_comments` (
+CREATE TABLE `tr_comment` (
   `comment_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
   `comment_text` TEXT COLLATE utf8_general_ci NOT NULL,
   `comment_user_id` INTEGER(11) NOT NULL,
+  `comment_is_deleted` TINYINT(1) DEFAULT '0',
   PRIMARY KEY (`comment_id`)
 )ENGINE=InnoDB
-AUTO_INCREMENT=19 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
+AUTO_INCREMENT=37 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
 
 #
-# Structure for the `tr_images` table : 
+# Structure for the `tr_image` table : 
 #
 
-DROP TABLE IF EXISTS `tr_images`;
+DROP TABLE IF EXISTS `tr_image`;
 
-CREATE TABLE `tr_images` (
+CREATE TABLE `tr_image` (
   `image_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `image_tribble_id` INTEGER(11) NOT NULL,
+  `image_post_id` INTEGER(11) NOT NULL,
   `image_path` VARCHAR(255) COLLATE utf8_general_ci NOT NULL DEFAULT '',
   `image_palette` VARCHAR(255) COLLATE utf8_general_ci NOT NULL DEFAULT '',
   PRIMARY KEY (`image_id`)
@@ -50,42 +51,60 @@ CREATE TABLE `tr_images` (
 AUTO_INCREMENT=87 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
 
 #
-# Structure for the `tr_likes` table : 
+# Structure for the `tr_like` table : 
 #
 
-DROP TABLE IF EXISTS `tr_likes`;
+DROP TABLE IF EXISTS `tr_like`;
 
-CREATE TABLE `tr_likes` (
-  `like_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `like_tribble_id` INTEGER(11) NOT NULL,
+CREATE TABLE `tr_like` (
+  `like_post_id` INTEGER(11) NOT NULL,
   `like_user_id` INTEGER(11) NOT NULL,
+  `like_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`like_id`)
 )ENGINE=InnoDB
-AUTO_INCREMENT=79 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
+AUTO_INCREMENT=40 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
 
 #
-# Structure for the `tr_replies` table : 
+# Structure for the `tr_post` table : 
 #
 
-DROP TABLE IF EXISTS `tr_replies`;
+DROP TABLE IF EXISTS `tr_post`;
 
-CREATE TABLE `tr_replies` (
+CREATE TABLE `tr_post` (
+  `post_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `post_title` VARCHAR(255) COLLATE utf8_general_ci DEFAULT '',
+  `post_text` VARCHAR(255) COLLATE utf8_general_ci NOT NULL DEFAULT '',
+  `post_user_id` INTEGER(11) NOT NULL,
+  `post_timestamp` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `post_is_deleted` TINYINT(1) DEFAULT '0',
+  PRIMARY KEY (`post_id`)
+)ENGINE=InnoDB
+AUTO_INCREMENT=90 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
+
+#
+# Structure for the `tr_reply` table : 
+#
+
+DROP TABLE IF EXISTS `tr_reply`;
+
+CREATE TABLE `tr_reply` (
   `reply_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `reply_tribble_id` INTEGER(11) NOT NULL,
+  `reply_post_id` INTEGER(11) NOT NULL,
   `reply_comment_id` INTEGER(11) DEFAULT NULL,
   `reply_rebound_id` INTEGER(11) DEFAULT NULL,
   `reply_timestamp` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `reply_is_deleted` TINYINT(1) DEFAULT '0',
   PRIMARY KEY (`reply_id`)
 )ENGINE=InnoDB
-AUTO_INCREMENT=17 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
+AUTO_INCREMENT=34 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
 
 #
-# Structure for the `tr_sessions` table : 
+# Structure for the `tr_session` table : 
 #
 
-DROP TABLE IF EXISTS `tr_sessions`;
+DROP TABLE IF EXISTS `tr_session`;
 
-CREATE TABLE `tr_sessions` (
+CREATE TABLE `tr_session` (
   `session_id` VARCHAR(40) COLLATE utf8_general_ci NOT NULL DEFAULT '0',
   `ip_address` VARCHAR(16) COLLATE utf8_general_ci NOT NULL DEFAULT '0',
   `user_agent` VARCHAR(120) COLLATE utf8_general_ci NOT NULL DEFAULT '',
@@ -97,52 +116,37 @@ CREATE TABLE `tr_sessions` (
 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
 
 #
-# Structure for the `tr_tags` table : 
+# Structure for the `tr_tag` table : 
 #
 
-DROP TABLE IF EXISTS `tr_tags`;
+DROP TABLE IF EXISTS `tr_tag`;
 
-CREATE TABLE `tr_tags` (
-  `tags_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `tags_tribble_id` INTEGER(11) DEFAULT NULL,
-  `tags_content` VARCHAR(255) COLLATE utf8_general_ci NOT NULL DEFAULT '',
-  PRIMARY KEY (`tags_id`)
+CREATE TABLE `tr_tag` (
+  `tag_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `tag_post_id` INTEGER(11) DEFAULT NULL,
+  `tag_content` TEXT COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`tag_id`)
 )ENGINE=InnoDB
 AUTO_INCREMENT=83 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
 
 #
-# Structure for the `tr_tribbles` table : 
+# Structure for the `tr_user` table : 
 #
 
-DROP TABLE IF EXISTS `tr_tribbles`;
+DROP TABLE IF EXISTS `tr_user`;
 
-CREATE TABLE `tr_tribbles` (
-  `tribble_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `tribble_title` VARCHAR(255) COLLATE utf8_general_ci DEFAULT '',
-  `tribble_text` VARCHAR(255) COLLATE utf8_general_ci NOT NULL DEFAULT '',
-  `tribble_user_id` INTEGER(11) NOT NULL,
-  `tribble_timestamp` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`tribble_id`)
-)ENGINE=InnoDB
-AUTO_INCREMENT=90 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
-
-#
-# Structure for the `tr_users` table : 
-#
-
-DROP TABLE IF EXISTS `tr_users`;
-
-CREATE TABLE `tr_users` (
+CREATE TABLE `tr_user` (
   `user_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
   `user_email` VARCHAR(255) COLLATE utf8_general_ci NOT NULL DEFAULT '',
   `user_password` VARCHAR(128) COLLATE utf8_general_ci NOT NULL DEFAULT '',
   `user_realname` VARCHAR(255) COLLATE utf8_general_ci NOT NULL DEFAULT '',
   `user_bio` TEXT COLLATE utf8_general_ci,
   `user_avatar` VARCHAR(256) COLLATE utf8_general_ci DEFAULT NULL,
+  `user_stubb` VARCHAR(255) COLLATE utf8_general_ci DEFAULT NULL,
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `user_email_UNIQUE` (`user_email`)
 )ENGINE=InnoDB
-AUTO_INCREMENT=9 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+AUTO_INCREMENT=11 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
 COMMENT='\t';
 
 

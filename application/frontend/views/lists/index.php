@@ -13,8 +13,8 @@
           <img src="<?=getThumb($tribble->image)?>"  alt="<?=$tribble->title?>" />
         </div>
         <div class="tribble-tools">
-          <p class="ico"><a href="" class="comments"><?=$tribble->replies?></a>Comments</p>
-          <p class="ico"><a href="" class="likes"><?=$tribble->likes?></a>likes</p>  
+          <p class="ico"><a href="" class="comments" title="There are <?=$tribble->replies?> replies to this post"><?=$tribble->replies?></a>Comments</p>
+          <p class="ico"><a href="" class="likes" title="<?=$tribble->likes?> users like this post"><?=$tribble->likes?></a>likes</p>  
           <p class="ico"><a href="" class="rebound"><?=$tribble->likes?></a>likes</p>     
         </div>        
       </div>
