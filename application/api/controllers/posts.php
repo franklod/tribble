@@ -170,12 +170,12 @@ class Posts extends REST_Controller
         $object = array(
           'page' => $page,
           'status' => true,
+          'tag' => $posts['tag'],
           'count' => $posts['count'],
-          'posts' => $posts['posts'],
-          'tag' => $posts['tag']        
+          'posts' => $posts['posts']                  
           );
         $this->cache->memcached->save($cachekey, $object, 10 * 60);
-        $this->response(array('status' => true, 'search' => $posts));
+        $this->response($object);
       }
     } else
     {
