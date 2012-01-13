@@ -67,6 +67,12 @@ $route['posts/search/(:any)/(:num)'] = 'posts/searchPostsText/$1/$2';
 $route['posts/upload'] = 'posts/createNewPost';
 $route['posts/upload/(:num)'] = 'posts/createNewPost/$1';
 
+$route['posts/comment/add'] = 'posts/comment';
+$route['posts/comment/delete'] = 'posts/comment';
+
+$route['likes/add'] = 'posts/like';
+$route['likes/remove'] = 'posts/like';
+
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

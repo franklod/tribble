@@ -8,7 +8,7 @@ class User_model extends CI_Model {
     }
     
   function checkUserLogin(){      
-    $query = $this->db->get_where('users',array('user_email'=>$this->input->post('email',TRUE),'user_password'=>$this->encrypt->sha1($this->encrypt->sha1($this->input->post('password',TRUE)))));
+    $query = $this->db->get_where('user',array('user_email'=>$this->input->post('email',TRUE),'user_password'=>$this->encrypt->sha1($this->encrypt->sha1($this->input->post('password',TRUE)))));
     if($query->num_rows() == 1){       
       return $query->result(); 
     } else {
@@ -26,14 +26,14 @@ class User_model extends CI_Model {
     $this->user_bio = $this->input->post('bio',TRUE);
           
     // check if the email already exists
-    $query = $this->db->get_where('users', array('user_email' => $this->input->post('email',TRUE)));
+    $query = $this->db->get_where('user', array('user_email' => $this->input->post('email',TRUE)));
     if ($query->num_rows() > 0){
       // user exists: return error message
       $result->error = "We already have that email on our database?";
       return $result;
     } else {
       // user is new: write to db and return uid
-      if(!$this->db->insert('users',$this)){
+      if(!$this->db->insert('user',$this)){
         // error while writing to db: return error message
         $result->error = "We're sorry but the database dwarf made a mistake. The dungeon master has been notified";          
         return $result;        
@@ -46,7 +46,7 @@ class User_model extends CI_Model {
   }
   
   function getUserData($uid){
-    $query = $this->db->get_where('users',array('user_id' => $uid));
+    $query = $this->db->get_where('user',array('user_id' => $uid));
     $result = $query->result();
     return $result;
   }

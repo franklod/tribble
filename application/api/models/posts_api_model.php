@@ -1,65 +1,105 @@
 <?php
   
 class Posts_API_model extends CI_Model {
+
+
+    function getPostsByTag($tag,$page,$per_page){                   
+      
+      $this->db->select('
+          tr_post.post_id as id,
+          tr_post.post_title as title,
+          tr_post.post_text as text,
+          tr_post.post_timestamp as ts,
+          tr_image.image_path as image,
+          tr_user.user_id userid,
+          tr_user.user_realname username,
+          tr_user.user_avatar avatar,
+          (SELECT COUNT(1) FROM tr_like WHERE tr_like.like_post_id = tr_post.post_id) as likes,
+          (SELECT COUNT(1) FROM tr_reply WHERE tr_reply.reply_post_id = tr_post.post_id AND tr_reply.reply_is_deleted = 0) as replies            
+      ');
+      $this->db->from('tr_post');
+      $this->db->join('tr_image','tr_post.post_id = tr_image.image_post_id','inner');
+      $this->db->join('tr_user','tr_post.post_user_id = tr_user.user_id','inner');
+      $this->db->join('tr_tag','tr_post.post_id = tr_tag.tag_post_id','inner');           
+
+      $this->db->like('tr_tag.tag_content', $tag.',', 'after');
+      $this->db->or_like('tr_tag.tag_content', ','.$tag.',', 'both');
+      $this->db->or_like('tr_tag.tag_content', ','.$tag, 'before');
+      $this->db->order_by('tr_post.post_timestamp','desc');             
+      
+      $page = (int)$page;
+      $per_page = (int)$per_page;
+      
+      if($page <= 1){
+        $page = 1; 
+      }
+
+      $offset = ($page-1) * $per_page;                
+              
+      if($offset > 0){          
+        $this->db->limit($per_page,$offset);
+      } else {          
+        $this->db->limit($per_page); 
+      } 
+      
+      if($query = $this->db->get()){
+        $result = array('tag'=>$tag,'count'=>$query->num_rows(),'posts'=>$query->result());
+        return $result;
+      } else {
+        return false;
+      }
+      
+    }
+  
       
     function getPostList($type,$page,$per_page){
             
       switch($type){
         case 'new':
-          $sort_field = 'tr_tribbles.tribble_timestamp desc';
+          $sort_field = 'tr_post.post_timestamp desc';
           break;
         case 'buzzing':
-          $sort_field = 'replies desc, tr_tribbles.tribble_timestamp desc';
+          $sort_field = 'replies desc, tr_post.post_timestamp desc';
           break;
         case 'loved':
-          $sort_field = 'likes desc, tr_tribbles.tribble_timestamp desc';
+          $sort_field = 'likes desc, tr_post.post_timestamp desc';
           break;
       }
           
       $this->db->select('
-          tr_tribbles.tribble_id AS id,
-          tr_tribbles.tribble_title AS title,
-          tr_tribbles.tribble_text AS `text`,
-          tr_tribbles.tribble_timestamp AS ts,
-          tr_users.user_realname AS username,
-          tr_users.user_id AS userid,
-          tr_users.user_avatar AS avatar,,
-          tr_images.image_path as image,
-          COUNT(DISTINCT tr_likes.like_tribble_id) AS likes,
-          COUNT(tr_replies.reply_tribble_id) AS replies          
+          tr_post.post_id AS id,
+          tr_post.post_title AS title,
+          tr_post.post_text AS `text`,
+          tr_post.post_timestamp AS ts,
+          tr_user.user_realname AS username,
+          tr_user.user_id AS userid,
+          tr_user.user_avatar AS avatar,,
+          tr_image.image_path as image,
+          (SELECT COUNT(1) FROM tr_like WHERE tr_like.like_post_id = tr_post.post_id) as likes,
+          (SELECT COUNT(1) FROM tr_reply WHERE tr_reply.reply_post_id = tr_post.post_id AND tr_reply.reply_is_deleted = 0) as replies            
       ');
-      $this->db->from('tr_tribbles');
-      $this->db->join('tr_images','tr_tribbles.tribble_id = tr_images.image_tribble_id','inner');
-      $this->db->join('tr_likes','tr_tribbles.tribble_id = tr_likes.like_tribble_id','inner');
-      $this->db->join('tr_users','tr_tribbles.tribble_user_id = tr_users.user_id','inner');
-      $this->db->join('tr_replies','tr_tribbles.tribble_id = tr_replies.reply_tribble_id','LEFT OUTER');
-            
-      $this->db->group_by('
-        tr_tribbles.tribble_id,
-        tr_tribbles.tribble_title,
-        tr_tribbles.tribble_text,
-        tr_users.user_realname,
-        tr_users.user_id,
-        tr_images.image_path
-      ');
+      $this->db->from('tr_post');
+      $this->db->join('tr_image','tr_post.post_id = tr_image.image_post_id','inner');
+      $this->db->join('tr_user','tr_post.post_user_id = tr_user.user_id','inner');           
+
+      $this->db->where('tr_post.post_is_deleted',0);            
                        
       $this->db->order_by($sort_field);
       
-      if((int)$per_page || (int)$page){
-        if($page <= 1){
-          $page = 0; 
-        }
-        
-        $offset = $page * $per_page;        
-                
-        if($offset > 0){          
-          $this->db->limit($offset,$per_page);
-        } else {          
-          $this->db->limit($per_page); 
-        }                         
-      } else {
-        
+      $page = (int)$page;
+      $per_page = (int)$per_page;
+      
+      if($page <= 1){
+        $page = 1; 
       }
+
+      $offset = ($page-1) * $per_page;                
+              
+      if($offset > 0){          
+        $this->db->limit($per_page,$offset);
+      } else {          
+        $this->db->limit($per_page); 
+      }                         
       
       if($query = $this->db->get()){
         return $query->result();
@@ -69,7 +109,7 @@ class Posts_API_model extends CI_Model {
     }
     
     function countPosts(){
-      if($query = $this->db->get('tr_tribbles')){
+      if($query = $this->db->get('tr_post')){
         $count = $query->num_rows();
         return $count;
       } else {
@@ -80,62 +120,64 @@ class Posts_API_model extends CI_Model {
     function getPostById($postId){
       
       $this->db->select('
-        tr_tribbles.tribble_id AS id,
-        tr_tribbles.tribble_title AS title,
-        tr_tribbles.tribble_text AS `text`,
-        tr_tribbles.tribble_timestamp AS ts,
-        COUNT(tr_likes.like_tribble_id) AS likes,
-        tr_images.image_path as image,
-        tr_images.image_palette as palette,
-        tr_tags.tags_content as tags,
-        tr_users.user_id as userid,
-        tr_users.user_realname AS username,
-        tr_users.user_avatar AS avatar,
+        tr_post.post_id AS id,
+        tr_post.post_title AS title,
+        tr_post.post_text AS `text`,
+        tr_post.post_timestamp AS ts,
+        COUNT(tr_like.like_post_id) AS likes,
+        tr_image.image_path as image,
+        tr_image.image_palette as palette,
+        tr_tag.tag_content as tags,
+        tr_user.user_id as userid,
+        tr_user.user_realname AS username,
+        tr_user.user_avatar AS avatar,
       ');
-      $this->db->from('tr_tribbles');
-      $this->db->join('tr_likes','tr_tribbles.tribble_id = tr_likes.like_tribble_id','inner');
-      $this->db->join('tr_images','tr_tribbles.tribble_id = tr_images.image_tribble_id','inner');
-      $this->db->join('tr_tags','tr_tribbles.tribble_id = tr_tags.tags_tribble_id','inner');
-      $this->db->join('tr_users','tr_tribbles.tribble_user_id = tr_users.user_id');
-      $this->db->where('tr_tribbles.tribble_id',$postId);
+      $this->db->from('tr_post');
+      $this->db->join('tr_like','tr_post.post_id = tr_like.like_post_id','left outer');
+      $this->db->join('tr_image','tr_post.post_id = tr_image.image_post_id','inner');
+      $this->db->join('tr_tag','tr_post.post_id = tr_tag.tag_post_id','inner');
+      $this->db->join('tr_user','tr_post.post_user_id = tr_user.user_id');
+      $this->db->where('tr_post.post_id',$postId);
       $this->db->group_by('
-        tr_tribbles.tribble_id,
-        tr_tribbles.tribble_title,
-        tr_tribbles.tribble_text,
-        tr_tribbles.tribble_timestamp,
-        tr_images.image_path,
-        tr_images.image_palette,
-        tr_users.user_id,
-        tr_users.user_realname
+        tr_post.post_id,
+        tr_post.post_title,
+        tr_post.post_text,
+        tr_post.post_timestamp,
+        tr_image.image_path,
+        tr_image.image_palette,
+        tr_user.user_id,
+        tr_user.user_realname
       ');
       $query = $this->db->get();            
       $result = $query->result();
       return $result;
     }
     
-    function getRepliesByPostId($tribble_id){
+    function getRepliesByPostId($post_id){
   
       $this->db->select('
-        tr_tribbles.tribble_text AS reb_text,
-        tr_tribbles.tribble_title AS reb_title,
-        tr_comments.comment_text,
-        tr_replies.reply_timestamp as ts,
-        tr_users.user_realname AS com_username,
-        tr_users.user_id AS com_userid,
-        tr_users.user_avatar AS avatar,
-        tr_users1.user_realname AS reb_username,
-        tr_users1.user_id AS reb_userid,
-        tr_users1.user_avatar AS reb_avatar,
-        tr_images.image_path AS image,
-        tr_tribbles.tribble_id AS reb_id
+        tr_post.post_text AS reb_text,
+        tr_post.post_title AS reb_title,
+        tr_comment.comment_text,
+        tr_comment.comment_id,
+        tr_reply.reply_timestamp as ts,
+        tr_user.user_realname AS com_username,
+        tr_user.user_id AS com_userid,
+        tr_user.user_avatar AS avatar,
+        tr_user1.user_realname AS reb_username,
+        tr_user1.user_id AS reb_userid,
+        tr_user1.user_avatar AS reb_avatar,
+        tr_image.image_path AS image,
+        tr_post.post_id AS reb_id
       ');
-      $this->db->from('tr_replies');
-      $this->db->join('tr_comments','tr_replies.reply_comment_id = tr_comments.comment_id','LEFT OUTER');
-      $this->db->join('tr_tribbles','tr_replies.reply_rebound_id = tr_tribbles.tribble_id','LEFT OUTER');
-      $this->db->join('tr_users','tr_comments.comment_user_id = tr_users.user_id','LEFT OUTER');
-      $this->db->join('tr_users tr_users1','tr_tribbles.tribble_user_id = tr_users1.user_id','LEFT OUTER');
-      $this->db->join('tr_images','tr_tribbles.tribble_id = tr_images.image_tribble_id','LEFT OUTER');
-      $this->db->where(array('tr_replies.reply_tribble_id'=>$tribble_id));
+      $this->db->from('tr_reply');
+      $this->db->join('tr_comment','tr_reply.reply_comment_id = tr_comment.comment_id','LEFT OUTER');
+      $this->db->join('tr_post','tr_reply.reply_rebound_id = tr_post.post_id','LEFT OUTER');
+      $this->db->join('tr_user','tr_comment.comment_user_id = tr_user.user_id','LEFT OUTER');
+      $this->db->join('tr_user tr_user1','tr_post.post_user_id = tr_user1.user_id','LEFT OUTER');
+      $this->db->join('tr_image','tr_post.post_id = tr_image.image_post_id','LEFT OUTER');
+      $this->db->where('tr_reply.reply_post_id',$post_id);
+      $this->db->where('tr_reply.reply_is_deleted',0);      
       
       $query = $this->db->get();
       if($query->num_rows() == 0){
@@ -148,36 +190,27 @@ class Posts_API_model extends CI_Model {
     function searchPostsTitleAndDescription($string,$page,$per_page){
           
       $this->db->select('
-          tr_tribbles.tribble_id AS id,
-          tr_tribbles.tribble_title AS title,
-          tr_tribbles.tribble_text AS `text`,
-          tr_tribbles.tribble_timestamp AS ts,
-          tr_users.user_realname AS username,
-          tr_users.user_id AS userid,
-          tr_users.user_avatar AS avatar,,
-          tr_images.image_path as image,
-          COUNT(DISTINCT tr_likes.like_tribble_id) AS likes,
-          COUNT(tr_replies.reply_tribble_id) AS replies          
+          tr_post.post_id AS id,
+          tr_post.post_title AS title,
+          tr_post.post_text AS `text`,
+          tr_post.post_timestamp AS ts,
+          tr_user.user_realname AS username,
+          tr_user.user_id AS userid,
+          tr_user.user_avatar AS avatar,,
+          tr_image.image_path as image,
+          COUNT(DISTINCT tr_like.like_post_id) AS likes,
+          COUNT(tr_reply.reply_post_id) AS reply          
       ');
-      $this->db->from('tr_tribbles');
-      $this->db->join('tr_images','tr_tribbles.tribble_id = tr_images.image_tribble_id','inner');
-      $this->db->join('tr_likes','tr_tribbles.tribble_id = tr_likes.like_tribble_id','inner');
-      $this->db->join('tr_users','tr_tribbles.tribble_user_id = tr_users.user_id','inner');
-      $this->db->join('tr_replies','tr_tribbles.tribble_id = tr_replies.reply_tribble_id','LEFT OUTER');
+      $this->db->from('tr_post');
+      $this->db->join('tr_image','tr_post.post_id = tr_image.image_post_id','inner');
+      $this->db->join('tr_like','tr_post.post_id = tr_like.like_post_id','inner');
+      $this->db->join('tr_user','tr_post.post_user_id = tr_user.user_id','inner');
+      $this->db->join('tr_reply','tr_post.post_id = tr_reply.reply_post_id','LEFT OUTER');
       
-      $this->db->like(array('tr_tribbles.tribble_title'=>$string));
-      $this->db->or_like(array('tr_tribbles.tribble_text'=>$string));
-            
-      $this->db->group_by('
-        tr_tribbles.tribble_id,
-        tr_tribbles.tribble_title,
-        tr_tribbles.tribble_text,
-        tr_users.user_realname,
-        tr_users.user_id,
-        tr_images.image_path
-      ');
-                       
-      $this->db->order_by('tr_tribbles.tribble_timestamp desc');
+      $this->db->like(array('tr_post.post_title'=>$string));
+      $this->db->or_like(array('tr_post.post_text'=>$string));
+                                   
+      $this->db->order_by('tr_post.post_timestamp desc');
       
       if((int)$per_page || (int)$page){
         if($page <= 1){
@@ -203,16 +236,16 @@ class Posts_API_model extends CI_Model {
       }                            
     }
     
-    function insertComment($post_id,$user_id,$comment_text){
+    function insert_comment($post_id,$user_id,$comment_text){
       
       $comment = array(
        'comment_text' => $comment_text,
        'comment_user_id' => $user_id
       );
       $this->db->trans_start();
-      $this->db->insert('comments',$comment);
+      $this->db->insert('comment',$comment);
       $comment_id = $this->db->insert_id();            
-      $this->db->insert('replies',array('reply_tribble_id'=>$post_id,'reply_comment_id'=>$comment_id));
+      $this->db->insert('reply',array('reply_post_id'=>$post_id,'reply_comment_id'=>$comment_id));
       $this->db->trans_complete();
       
       if ($this->db->trans_status() === FALSE)
@@ -224,14 +257,49 @@ class Posts_API_model extends CI_Model {
                                  
     }
     
+    function delete_comment($post_id,$comment_id,$user_id)
+    {
+      
+      $this->db->trans_begin();
+      // flag comment as deleted
+      $comment_update = array('comment_is_deleted'=>1);
+      $this->db->where('comment_id',$comment_id);
+      $this->db->where('comment_user_id',$user_id);
+      $this->db->update('comment',$comment_update);
+      // flag reply as deleted
+      $reply_update = array('reply_is_deleted'=>1);
+      $this->db->where('reply_comment_id',$comment_id);
+      $this->db->where('reply_post_id',$post_id);
+      $this->db->update('reply',$reply_update); 
+      $this->db->trans_complete();
+      
+      if ($this->db->trans_status() === FALSE)
+      {
+        return false;
+      } else {
+        return true;
+      }
+      
+                 
+    }
+    
     function checkIfPostExists($post_id){
-      $query = $this->db->get_where('tribbles',array('tribble_id'=>$post_id));
+      $query = $this->db->get_where('post',array('post_id'=>$post_id));
       if($query->num_rows() == 0){
         return false;
       } else {
         return true;
       }
     }        
+    
+    function checkIfCommentExists($comment_id){
+      $query = $this->db->get_where('comment',array('comment_id'=>$comment_id));
+      if($query->num_rows() == 0){
+        return false;
+      } else {
+        return true;
+      }
+    }
                                     
 } 
   

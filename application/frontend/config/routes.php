@@ -38,32 +38,35 @@
 |
 */
 
-$route['default_controller'] = "tribble/newer";
+$route['default_controller'] = "post/newer";
 $route['404_override'] = '';
+// LIST THE NEWEST POSTS
+$route['new'] = 'post/newer';
+$route['new/page/(:num)'] = 'post/newer/$1';
+// LIST THE MOST COMMENTED POSTS
+$route['buzzing'] = 'post/buzzing';
+$route['buzzing/page/(:num)'] = 'post/buzzing/$1';
+// LIST THE MOST LIKED POSTS
+$route['loved'] = 'post/loved';
+$route['loved/page/(:num)'] = 'post/loved/$1';
+// SEARCH POSTS
+$route['search/(:any)'] = 'post/search/$1';
+$route['search/page/(:num)'] = 'post/search/$1';
+$route['dosearch'] = 'post/dosearch';
+// VIEW A SINGLE POST
+$route['view/(:num)'] = 'post/view/$1';
 
-
-$route['test/(:any)'] = 'test/stuff/$1';
-
-$route['new'] = 'tribble/newer';
-$route['new/page/(:num)'] = 'tribble/newer/$1';
-
-$route['buzzing'] = 'tribble/buzzing';
-$route['buzzing/page/(:num)'] = 'tribble/buzzing/$1';
-
-$route['loved'] = 'tribble/loved';
-$route['loved/page/(:num)'] = 'tribble/loved/$1';
-
-$route['search/(:any)'] = 'tribble/search/$1';
-$route['search/page/(:num)'] = 'tribble/search/$1';
-
-$route['dosearch'] = 'tribble/dosearch';
-
-$route['view/(:num)'] = 'tribble/view/$1';
-
-$route['upload'] = 'tribble/upload';
-
-$route['search/(:any)/(:num)'] = 'tribble/view/$1/$2';
-
+$route['upload'] = 'post/upload';
+// SEARCH
+$route['search/(:any)/(:num)'] = 'post/view/$1/$2';
+// COMMENTS
+$route['comment/delete/(:num)/(:num)/(:num)'] = 'post/delete_comment/$1/$2/$3';
+$route['comment/add'] = 'post/add_comment';
+// LIKES
+$route['like/add/(:num)'] = 'post/add_like/$1';
+$route['like/remove/(:num)'] = 'post/remove_like/$1';
+// TAGS
+$route['tag/(:any)'] = 'post/tag/$1';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

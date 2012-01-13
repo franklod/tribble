@@ -11,7 +11,7 @@
   </div>
   <? endif;?>
   
-  <?=form_open_multipart('/tribble/comment/'.$tribble->id)?>
+  <?=form_open_multipart('/comment/add')?>
   
   <?=form_hidden('user_id',$this->session->userdata('uid'))?>
   <?=form_hidden('post_id',$tribble->id)?>

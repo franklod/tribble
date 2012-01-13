@@ -3,7 +3,7 @@
 class User_API_model extends CI_Model {
     
     function checkUserLiked($user_id,$post_id){
-        $query = $this->db->get_where('likes',array('like_user_id'=>$user_id,'like_tribble_id'=>$post_id));
+        $query = $this->db->get_where('like',array('like_user_id'=>$user_id,'like_post_id'=>$post_id));
         if($query->num_rows() == 0){
             return false;
         } else {
@@ -13,7 +13,7 @@ class User_API_model extends CI_Model {
     
     function getUserProfile($user_id){      
       $this->db->select('user_id as id,user_email as email,user_realname as realname,user_bio as bio, user_avatar as avatar');
-      $this->db->from('users');
+      $this->db->from('user');
       $this->db->where(array('user_id'=>$user_id));      
       $query = $this->db->get();
       if($query->num_rows() == 1){
@@ -35,13 +35,19 @@ class User_API_model extends CI_Model {
     }
     
     function checkIfUserExists($user_id){
-      $query = $this->db->get_where('users',array('user_id'=>$user_id));
+      $query = $this->db->get_where('user',array('user_id'=>$user_id));
       if($query->num_rows() == 0){
         return false;
       } else {
         return true;
       }
-    } 
+    }
+    
+    function getUserData($uid){
+      $query = $this->db->get_where('users',array('user_id' => $uid));
+      $result = $query->result();
+      return $result;
+    }  
                             
 }
 

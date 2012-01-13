@@ -54,7 +54,7 @@ class Meta extends REST_Controller
         foreach ($all_tags as $tag_group)
         {
           // explode the post tags csv string
-          $tags = explode(',', $tag_group->tags_content);
+          $tags = explode(',', $tag_group->tag_content);
           // iterate over each individual tag
           foreach ($tags as $tag)
           {
@@ -75,7 +75,7 @@ class Meta extends REST_Controller
         // define the response object structure                
         $object = array('status' => true, 'tags' => array_slice($unique_tags,0,$limit));
         // we have a dataset from the database, let's save it to memcached
-        @$this->cache->memcached->save($cachekey, $object, 10 * 60);
+        @$this->cache->memcached->save($cachekey, $object, 20 * 60);
         // output the response
         $this->response($object);
       } else
@@ -151,7 +151,7 @@ class Meta extends REST_Controller
         // define the response object structure                
         $object = array('status' => true, 'colors' => array_slice($unique_colors,0,$limit));
         // we have a dataset from the database, let's save it to memcached
-        @$this->cache->memcached->save($cachekey, $object, 10 * 60);
+        @$this->cache->memcached->save($cachekey, $object, 20 * 60);
         // output the response
         $this->response($object);
       } else
