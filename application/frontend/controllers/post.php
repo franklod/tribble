@@ -4,14 +4,18 @@
  * Post
  * 
  * @package tribble
- * @author xxx xxx xxx
- * @copyright 2011
+ * @author 123456
+ * @copyright 2012
  * @version $Id$
  * @access public
  */
- 
 class Post extends CI_Controller {
   
+  /**
+   * Post::__construct()
+   * 
+   * @return
+   */
   public function __construct()
   {
       parent::__construct();
@@ -26,72 +30,90 @@ class Post extends CI_Controller {
       //$this->output->enable_profiler(TRUE);      
   }
 
+  /**
+   * Post::dosearch()
+   * 
+   * @return
+   */
   public function dosearch(){
       echo $this->input->post('search',true);
       redirect('search/'.$this->input->post('search',true));
   }
   
-  public function tag($tag,$page=1){
+  /**
+   * Post::tag()
+   * 
+   * @param string $tag
+   * @param integer $page
+   * @return
+   */
+  public function tag($tag,$page=1)
+	{
     $data['title'] = 'Tribble - Home';
     $data['meta_description'] = 'A design content sharing and discussion tool.';
     $data['meta_keywords'] = 'Tribble';
     
-    if($uid = $this->session->userdata('uid')){
-            
+    if($uid = $this->session->userdata('uid')){            
       $data['user']->name = $this->session->userdata('uname');
-      $data['user']->id = $this->session->userdata('uid');
-    }            
-   
-    $display_per_page = 12;    
+      $data['user']->id = $this->session->userdata('uid');    
+    }                            
+    
+    // set the defaults
+    $display_per_page = 12;
+    // number of rows per result set    
     $api_dataset_rows = 600;
-             
+                               
+    // calculate wich result set page should we request from the api
     $api_page = floor((($page * $display_per_page)-$display_per_page) / $api_dataset_rows)+1;
-
+  
+    // try to get the data from the API and show error on failure
     if(!$REST_data = $this->rest->get('posts/tagged/tag/'.$tag.'/page/'.$api_page)){
       show_error('Couldn\'t connect to the API.',404);
       log_message(1,'API Failure. CALL: posts/tagged/tag/'.$tag.'/page/'.$api_page);
-    }                                 
-    
-    $page = (int)$page;                   
-    $offset = (($page - 1) * $display_per_page) - ($api_dataset_rows * ($api_page-1));
-    
+    }     
+    // check if the data is here                        
     if($REST_data->status == FALSE){
       show_error($REST_data->message,404);
     }
-    
-    $page = (int)$page;
-    $offset = (($page - 1) * $display_per_page) - ($api_dataset_rows * ($api_page-1));
-        
+            
+    // get the data for the sidebar widgets            
     $tag_data = $this->rest->get('meta/tags');
     $color_data = $this->rest->get('meta/colors');
+    // set the data fro the sidebar widgets
     $data['tags'] = $tag_data->tags;
-    $data['colors'] = $color_data->colors;  
+    $data['colors'] = $color_data->colors;                                             
     
-    if($REST_data->count == 0){
-      $this->load->view('common/page_top.php', $data);
-  		$this->load->view('lists/empty_search.php',$data);
-      $this->load->view('widgets/widgets.php',$data);
-      $this->load->view('common/page_end.php',$data);  
-    } else {       
-      $data['tribbles'] = $REST_data->posts;
-      
-      $config['base_url'] = site_url('tag/'.$tag.'/page');
-      $config['total_rows'] = $REST_data->count;
-          
-      $this->pagination->initialize($config);
-      $data['paging'] = $this->pagination->create_links();
-      
-      $data['search_text'] = $REST_data->tag;
-      $data['results'] = $REST_data->count;
-      
-      $this->load->view('common/page_top.php', $data);
-  		$this->load->view('lists/search.php',$data);
-      $this->load->view('widgets/widgets.php',$data);
-      $this->load->view('common/page_end.php',$data);
-    } 
-      
-  }
+    // pagination    
+    $config['base_url'] = site_url('new/page');
+    $config['total_rows'] = $REST_data->count;        
+    $this->pagination->initialize($config);
+    $data['paging'] = $this->pagination->create_links();
+    
+    // cast the uri segment as int
+    $page = (int)$page;
+    
+    // calculate the offset to use below    
+    $offset = (($page - 1) * $display_per_page) - ($api_dataset_rows * ($api_page-1));
+    
+    // chop the posts data object to the default per page length
+    $data['posts'] = array_slice($REST_data->posts,$offset,$display_per_page,true);
+    $data['tag'] = $REST_data->tag;
+    $data['count'] = $REST_data->count;
+    
+    // load views and show the page
+    $this->load->view('common/page_top.php', $data);
+	  $this->load->view('search/tags.php',$data);
+    $this->load->view('widgets/widgets.php',$data);
+    $this->load->view('common/page_end.php',$data);        
+	} 
 
+	/**
+	 * Post::search()
+	 * 
+	 * @param mixed $searchString
+	 * @param mixed $page
+	 * @return
+	 */
 	public function search($searchString,$page = null)
 	{
     $data['title'] = 'Tribble - Home';
@@ -145,6 +167,12 @@ class Post extends CI_Controller {
     }        
 	}
   
+  /**
+   * Post::newer()
+   * 
+   * @param integer $page
+   * @return
+   */
   public function newer($page=1)
 	{
     $data['title'] = 'Tribble - Home';
@@ -202,6 +230,12 @@ class Post extends CI_Controller {
 	}    
    
 
+   /**
+    * Post::buzzing()
+    * 
+    * @param integer $page
+    * @return
+    */
    public function buzzing($page=1)
 	{
     $data['title'] = 'Tribble - Home';
@@ -258,6 +292,12 @@ class Post extends CI_Controller {
     $this->load->view('common/page_end.php',$data);        
 	}
   
+  /**
+   * Post::loved()
+   * 
+   * @param integer $page
+   * @return
+   */
   public function loved($page=1)
 	{
     $data['title'] = 'Tribble - Home';
@@ -314,6 +354,12 @@ class Post extends CI_Controller {
 	}  
   
   
+  /**
+   * Post::view()
+   * 
+   * @param mixed $postId
+   * @return
+   */
   public function view($postId){
     
     //if($uid = $this->session->userdata('uid')){
@@ -467,6 +513,11 @@ class Post extends CI_Controller {
 //    //$this->trModel->li
 //  }
 //  
+  /**
+   * Post::add_comment()
+   * 
+   * @return
+   */
   public function add_comment(){
     
     if(!$this->session->userdata('uid')){
@@ -485,6 +536,14 @@ class Post extends CI_Controller {
               
   }
 
+  /**
+   * Post::delete_comment()
+   * 
+   * @param mixed $comment_id
+   * @param mixed $post_id
+   * @param mixed $user_id
+   * @return
+   */
   public function delete_comment($comment_id,$post_id,$user_id){
     
     if(!$this->session->userdata('uid')){
@@ -501,6 +560,12 @@ class Post extends CI_Controller {
   }
   
   
+  /**
+   * Post::add_like()
+   * 
+   * @param mixed $post_id
+   * @return
+   */
   public function add_like($post_id){
     if(!$this->session->userdata('uid')){
       redirect(site_url());
@@ -515,6 +580,12 @@ class Post extends CI_Controller {
     }  
   }
   
+  /**
+   * Post::remove_like()
+   * 
+   * @param mixed $post_id
+   * @return
+   */
   public function remove_like($post_id){
     
     if(!$this->session->userdata('uid')){
