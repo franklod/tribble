@@ -48,7 +48,7 @@ CREATE TABLE `tr_image` (
   `image_palette` VARCHAR(255) COLLATE utf8_general_ci NOT NULL DEFAULT '',
   PRIMARY KEY (`image_id`)
 )ENGINE=InnoDB
-AUTO_INCREMENT=87 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
+AUTO_INCREMENT=1816 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
 
 #
 # Structure for the `tr_like` table : 
@@ -62,7 +62,7 @@ CREATE TABLE `tr_like` (
   `like_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`like_id`)
 )ENGINE=InnoDB
-AUTO_INCREMENT=40 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
+AUTO_INCREMENT=1769 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
 
 #
 # Structure for the `tr_post` table : 
@@ -79,7 +79,7 @@ CREATE TABLE `tr_post` (
   `post_is_deleted` TINYINT(1) DEFAULT '0',
   PRIMARY KEY (`post_id`)
 )ENGINE=InnoDB
-AUTO_INCREMENT=90 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
+AUTO_INCREMENT=1820 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
 
 #
 # Structure for the `tr_reply` table : 
@@ -127,7 +127,7 @@ CREATE TABLE `tr_tag` (
   `tag_content` TEXT COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`tag_id`)
 )ENGINE=InnoDB
-AUTO_INCREMENT=83 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
+AUTO_INCREMENT=1812 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
 
 #
 # Structure for the `tr_user` table : 
@@ -146,7 +146,7 @@ CREATE TABLE `tr_user` (
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `user_email_UNIQUE` (`user_email`)
 )ENGINE=InnoDB
-AUTO_INCREMENT=11 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+AUTO_INCREMENT=1010 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
 COMMENT='\t';
 
 
