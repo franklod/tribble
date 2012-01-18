@@ -5,10 +5,10 @@
         <ul>
           <?if(!isset($user)):?>
           <li><a href="<?=site_url('/user/signup/')?>">Sign Up</a></li>
-          <li><a href="<?=site_url('/auth/login/'.uri_to_string(uri_string()))?>" class="defaultBtn btn_send">Log in</a></li>
+          <li><a href="<?=site_url('/login/'.uri_to_string(uri_string()))?>" class="defaultBtn btn_send">Log in</a></li>
           <?else:?>
           <li><a href="<?=site_url('/user/profile/'.$user->id)?>"><?=$user->name?></a></li>
-          <li><a href="<?=site_url('/auth/logout/'.uri_to_string(uri_string()))?>" class="defaultBtn btn_send">Logout</a></li>
+          <li><a href="<?=site_url('/logout/'.uri_to_string(uri_string()))?>" class="defaultBtn btn_send">Logout</a></li>
           <?endif;?>
         </ul>
       </div>

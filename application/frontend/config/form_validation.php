@@ -24,17 +24,17 @@
     ),
     'upload_image' => array(
       array(
-        'field' => 'title',
+        'field' => 'post_title',
         'label' => 'Title',
         'rules' => 'required'
       ),
       array(
-        'field' => 'text',
+        'field' => 'post_text',
         'label' => 'Description',
         'rules' => 'required'
       ),
       array(
-        'field' => 'tags',
+        'field' => 'post_tags',
         'label' => 'Tags',
         'rules' => 'required'
       ) 

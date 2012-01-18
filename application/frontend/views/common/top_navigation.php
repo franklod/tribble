@@ -9,6 +9,8 @@ if($this->session->userdata('uid')){
   $pages->upload->uri = 'upload';
   $pages->upload->text = 'Upload';
 }
+$pages->tags->uri = 'tags';
+$pages->tags->text = 'Tags';
 
 ?>
 
@@ -17,11 +19,11 @@ if($this->session->userdata('uid')){
     <? foreach($pages as $page): ?>
     <? ($page->uri != '') ? $pattern = '/'.substr($page->uri,strpos($page->uri,'/')).'/i' : $pattern = '/'.$page->text.'/i'?>
     <? if($page->uri == uri_string() || @preg_match($pattern,uri_string())): ?>
-    <li class="active"><a href="<?=site_url()."/".$page->uri?>">
+    <li class="active"><a href="<?=site_url().$page->uri?>">
       <?=$page->text?>
       </a></li>
     <? else: ?>
-    <li><a href="<?=site_url()."/".$page->uri?>">
+    <li><a href="<?=site_url().$page->uri?>">
       <?=$page->text?>
       </a></li>
     <? endif; ?>

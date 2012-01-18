@@ -38,38 +38,47 @@
 |
 */
 
-$route['default_controller'] = "tribble";
-$route['404_override'] = '';
-
-$route['posts/list/recent/(:num)/(:num)'] = 'posts/getMostRecent/$1/$2';
-$route['posts/list/recent/(:num)'] = 'posts/getMostRecent/$1';
-$route['posts/list/recent'] = 'posts/getMostRecent';
-
-$route['posts/list/commented/(:num)/(:num)'] = 'posts/getMostCommented/$1/$2';
-$route['posts/list/commented/(:num)'] = 'posts/getMostCommented/$1';
-$route['posts/list/commented'] = 'posts/getMostCommented';
-
-$route['posts/list/popular/(:num)/(:num)'] = 'posts/getMostLiked/$1/$2';
-$route['posts/list/popular/(:num)'] = 'posts/getMostLiked/$1';
-$route['posts/list/popular'] = 'posts/getMostLiked';
-
-$route['posts/list'] = 'posts/getMostRecent';
-
-$route['posts/count'] = 'posts/countPosts';
-
-$route['posts/(:num)'] = 'posts/getPostById/$1';
-
+$route['default_controller'] = "docs";
+$route['404_override'] = 'docs';
+// GET LIST OF RECENT POSTS
+$route['posts/list/new/(:num)/(:num)'] = 'posts/list/type/new/page/$1/limit/$2';
+$route['posts/list/new/(:num)/(:num)/format/(xml|json|serialized)'] = 'posts/list/type/new/page/$1/limit/$2/format/$3';
+$route['posts/list/new/(:num)'] = 'posts/list/type/new/page/$1';
+$route['posts/list/new/(:num)/format/(xml|json|serialized)'] = 'posts/list/type/new/page/$1/format/$2';
+$route['posts/list/new'] = 'posts/list/type/new/';
+$route['posts/list/new/format/(xml|json|serialized)'] = 'posts/list/type/new/format/$1';
+// GET LIST OF MOST COMMENTED POSTS
+$route['posts/list/buzzing/(:num)/(:num)'] = 'posts/list/type/buzzing/page/$1/limit/$2';
+$route['posts/list/buzzing/(:num)/(:num)/format/(xml|json|serialized)'] = 'posts/list/type/buzzing/page/$1/limit/$2/format/$3';
+$route['posts/list/buzzing/(:num)'] = 'posts/list/type/buzzing/page/$1';
+$route['posts/list/buzzing/(:num)/format/(xml|json|serialized)'] = 'posts/list/type/buzzing/page/$1/format/$2';
+$route['posts/list/buzzing'] = 'posts/list/type/buzzing/';
+$route['posts/list/buzzing/format/(xml|json|serialized)'] = 'posts/list/type/buzzing/format/$1';
+// GET LIST OF MOST LIKED POSTS
+$route['posts/list/loved/(:num)/(:num)'] = 'posts/list/type/loved/page/$1/limit/$2';
+$route['posts/list/loved/(:num)/(:num)/format/(xml|json|serialized)'] = 'posts/list/type/loved/page/$1/limit/$2/format/$3';
+$route['posts/list/loved/(:num)'] = 'posts/list/type/loved/page/$1';
+$route['posts/list/loved/(:num)/format/(xml|json|serialized)'] = 'posts/list/type/loved/page/$1/format/$2';
+$route['posts/list/loved'] = 'posts/list/type/loved/';
+$route['posts/list/loved/format/(xml|json|serialized)'] = 'posts/list/type/loved/format/$1';
+// GET A SINGLE POST
+$route['posts/single/(:num)'] = 'posts/detail/id/$1';
+$route['posts/single/(:num)/format/(xml|json|serialized)'] = 'posts/detail/id/$1/format/$2';
+// GET POST COUNT TOTAL
+$route['posts/count'] = 'posts/total';
+$route['posts/count/format/(xml|json|serialized)'] = 'posts/total/format/$1';
+// GET REPLIES TO A POST
 $route['posts/replies/(:num)'] = 'posts/getRepliesByPostId/$1';
-
+// GET A LIST OF POST THAT MATCH THE SEARCH STRING 
 $route['posts/search/(:any)'] = 'posts/searchPostsText/$1';
 $route['posts/search/(:any)/(:num)'] = 'posts/searchPostsText/$1/$2';
-
-$route['posts/upload'] = 'posts/createNewPost';
-$route['posts/upload/(:num)'] = 'posts/createNewPost/$1';
-
+// PUT A NEW POST
+$route['posts/upload'] = 'posts/post';
+// PUT A COMMENT
 $route['posts/comment/add'] = 'posts/comment';
+// DELETE A COMMENT
 $route['posts/comment/delete'] = 'posts/comment';
-
+// PUT A LIKE ON A POST
 $route['likes/add'] = 'posts/like';
 $route['likes/remove'] = 'posts/like';
 

@@ -33,7 +33,7 @@ class Auth extends CI_Controller
             if($result = $this->aModel->checkUserLogin()) {
                 $sessionData = array('uid' => $result[0]->user_id, 'uname' => $result[0]->user_realname, 'unique' => $result[0]->user_email,'stubb'=>$result[0]->user_stubb);
                 $this->session->set_userdata($sessionData);
-                $redirectUrl = site_url()."/".string_to_uri($lb);
+                $redirectUrl = site_url().string_to_uri($lb);
                 redirect($redirectUrl);
             } else {
                 $data['error'] = "Oops. It seems you have the wrong email, password or both. Try again sucker!";
@@ -47,7 +47,7 @@ class Auth extends CI_Controller
     public function logout($lb = NULL)
 	{    
     $this->session->sess_destroy();
-    $redirectUrl = site_url()."/".string_to_uri($lb);    
+    $redirectUrl = site_url().string_to_uri($lb);    
     redirect($redirectUrl);
 	}
 

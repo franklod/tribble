@@ -51,10 +51,10 @@ class Likes extends REST_Controller
 
     if (!$like_status)
     {
-      $this->response(array('status' => true, 'like' => false));
+      $this->response(array('request_status' => true, 'like' => false));
     } else
     {
-      $this->response(array('status' => true, 'like' => true));
+      $this->response(array('request_status' => true, 'like' => true));
     }
 
   }
