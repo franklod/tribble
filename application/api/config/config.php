@@ -25,7 +25,7 @@ $config['app_path']	= 'c:\\wamp\www\\tribble\\';
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://tribble.local/';
+$config['base_url']	= 'http://api.tribble.local/';
 //$config['base_url']	= 'http://10.134.132.33/';
 
 /*
@@ -38,7 +38,7 @@ $config['base_url']	= 'http://tribble.local/';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = 'api.php';
+$config['index_page'] = '';
 
 /*
 |--------------------------------------------------------------------------
@@ -56,7 +56,7 @@ $config['index_page'] = 'api.php';
 | 'ORIG_PATH_INFO'	Uses the ORIG_PATH_INFO
 |
 */
-$config['uri_protocol']	= 'AUTO';
+$config['uri_protocol']	= 'QUERY_STRING';
 
 /*
 |--------------------------------------------------------------------------

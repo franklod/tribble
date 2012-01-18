@@ -6,16 +6,16 @@ class Posts_API_model extends CI_Model {
     function getPostsByTag($tag,$page,$per_page){                   
       
       $this->db->select('
-          tr_post.post_id as id,
-          tr_post.post_title as title,
-          tr_post.post_text as text,
-          tr_post.post_timestamp as ts,
-          tr_image.image_path as image,
-          tr_user.user_id userid,
-          tr_user.user_realname username,
-          tr_user.user_avatar avatar,
-          (SELECT COUNT(1) FROM tr_like WHERE tr_like.like_post_id = tr_post.post_id) as likes,
-          (SELECT COUNT(1) FROM tr_reply WHERE tr_reply.reply_post_id = tr_post.post_id AND tr_reply.reply_is_deleted = 0) as replies            
+          tr_post.post_id AS post_id,
+          tr_post.post_title AS post_title,
+          tr_post.post_text AS post_text,
+          tr_post.post_timestamp AS post_date,
+          tr_image.image_path as post_image_path,
+          (SELECT COUNT(1) FROM tr_like WHERE tr_like.like_post_id = tr_post.post_id) as post_like_count,
+          (SELECT COUNT(1) FROM tr_reply WHERE tr_reply.reply_post_id = tr_post.post_id AND tr_reply.reply_is_deleted = 0) as post_reply_count,
+          tr_user.user_id AS user_id,
+          tr_user.user_realname AS user_name,          
+          tr_user.user_avatar AS user_avatar            
       ');
       $this->db->from('tr_post');
       $this->db->join('tr_image','tr_post.post_id = tr_image.image_post_id','inner');
@@ -59,24 +59,24 @@ class Posts_API_model extends CI_Model {
           $sort_field = 'tr_post.post_timestamp desc';
           break;
         case 'buzzing':
-          $sort_field = 'replies desc, tr_post.post_timestamp desc';
+          $sort_field = 'post_reply_count desc, tr_post.post_timestamp desc';
           break;
         case 'loved':
-          $sort_field = 'likes desc, tr_post.post_timestamp desc';
+          $sort_field = 'post_like_count desc, tr_post.post_timestamp desc';
           break;
       }
           
       $this->db->select('
-          tr_post.post_id AS id,
-          tr_post.post_title AS title,
-          tr_post.post_text AS `text`,
-          tr_post.post_timestamp AS ts,
-          tr_user.user_realname AS username,
-          tr_user.user_id AS userid,
-          tr_user.user_avatar AS avatar,,
-          tr_image.image_path as image,
-          (SELECT COUNT(1) FROM tr_like WHERE tr_like.like_post_id = tr_post.post_id) as likes,
-          (SELECT COUNT(1) FROM tr_reply WHERE tr_reply.reply_post_id = tr_post.post_id AND tr_reply.reply_is_deleted = 0) as replies            
+          tr_post.post_id AS post_id,
+          tr_post.post_title AS post_title,
+          tr_post.post_text AS post_text,
+          tr_post.post_timestamp AS post_date,
+          tr_image.image_path as post_image_path,
+          (SELECT COUNT(1) FROM tr_like WHERE tr_like.like_post_id = tr_post.post_id) as post_like_count,
+          (SELECT COUNT(1) FROM tr_reply WHERE tr_reply.reply_post_id = tr_post.post_id AND tr_reply.reply_is_deleted = 0) as post_reply_count,
+          tr_user.user_id AS user_id,
+          tr_user.user_realname AS user_name,          
+          tr_user.user_avatar AS user_avatar                              
       ');
       $this->db->from('tr_post');
       $this->db->join('tr_image','tr_post.post_id = tr_image.image_post_id','inner');
@@ -120,17 +120,17 @@ class Posts_API_model extends CI_Model {
     function getPostById($postId){
       
       $this->db->select('
-        tr_post.post_id AS id,
-        tr_post.post_title AS title,
-        tr_post.post_text AS `text`,
-        tr_post.post_timestamp AS ts,
-        COUNT(tr_like.like_post_id) AS likes,
-        tr_image.image_path as image,
-        tr_image.image_palette as palette,
-        tr_tag.tag_content as tags,
-        tr_user.user_id as userid,
-        tr_user.user_realname AS username,
-        tr_user.user_avatar AS avatar,
+        tr_post.post_id AS post_id,
+        tr_post.post_title AS post_title,
+        tr_post.post_text AS post_text,
+        tr_post.post_timestamp AS post_date,
+        COUNT(tr_like.like_post_id) AS post_like_count,
+        tr_image.image_path as post_image_path,
+        tr_image.image_palette as post_image_palette,
+        tr_tag.tag_content as post_tags,
+        tr_user.user_id as user_id,
+        tr_user.user_realname AS user_name,
+        tr_user.user_avatar AS user_avatar,
       ');
       $this->db->from('tr_post');
       $this->db->join('tr_like','tr_post.post_id = tr_like.like_post_id','left outer');
@@ -156,25 +156,26 @@ class Posts_API_model extends CI_Model {
     function getRepliesByPostId($post_id){
   
       $this->db->select('
-        tr_post.post_text AS reb_text,
-        tr_post.post_title AS reb_title,
-        tr_comment.comment_text,
-        tr_comment.comment_id,
-        tr_reply.reply_timestamp as ts,
-        tr_user.user_realname AS com_username,
-        tr_user.user_id AS com_userid,
-        tr_user.user_avatar AS avatar,
-        tr_user1.user_realname AS reb_username,
-        tr_user1.user_id AS reb_userid,
-        tr_user1.user_avatar AS reb_avatar,
-        tr_image.image_path AS image,
-        tr_post.post_id AS reb_id
+        tr_post.post_id AS reply_post_id,
+        tr_post.post_title AS reply_post_title,
+        tr_post.post_text AS reply_post_text,
+        tr_image.image_path AS post_image_path,
+        tr_user_post.user_id AS reply_post_user_id,
+        tr_user_post.user_realname AS reply_post_user_name,        
+        tr_user_post.user_avatar AS reply_post_user_avatar,
+        tr_comment.comment_id as reply_comment_id,        
+        tr_comment.comment_text as reply_comment_text,                
+        tr_user_comment.user_id AS reply_comment_user_id,
+        tr_user_comment.user_realname AS reply_comment_user_name,
+        tr_user_comment.user_avatar AS reply_comment_user_avatar,
+        tr_reply.reply_timestamp as reply_date                        
       ');
+      
       $this->db->from('tr_reply');
       $this->db->join('tr_comment','tr_reply.reply_comment_id = tr_comment.comment_id','LEFT OUTER');
       $this->db->join('tr_post','tr_reply.reply_rebound_id = tr_post.post_id','LEFT OUTER');
-      $this->db->join('tr_user','tr_comment.comment_user_id = tr_user.user_id','LEFT OUTER');
-      $this->db->join('tr_user tr_user1','tr_post.post_user_id = tr_user1.user_id','LEFT OUTER');
+      $this->db->join('tr_user tr_user_comment','tr_comment.comment_user_id = tr_user_comment.user_id','LEFT OUTER');
+      $this->db->join('tr_user tr_user_post','tr_post.post_user_id = tr_user_post.user_id','LEFT OUTER');
       $this->db->join('tr_image','tr_post.post_id = tr_image.image_post_id','LEFT OUTER');
       $this->db->where('tr_reply.reply_post_id',$post_id);
       $this->db->where('tr_reply.reply_is_deleted',0);      
@@ -190,16 +191,16 @@ class Posts_API_model extends CI_Model {
     function searchPostsTitleAndDescription($string,$page,$per_page){
           
       $this->db->select('
-          tr_post.post_id AS id,
-          tr_post.post_title AS title,
-          tr_post.post_text AS `text`,
-          tr_post.post_timestamp AS ts,
-          tr_user.user_realname AS username,
-          tr_user.user_id AS userid,
-          tr_user.user_avatar AS avatar,,
-          tr_image.image_path as image,
-          COUNT(DISTINCT tr_like.like_post_id) AS likes,
-          COUNT(tr_reply.reply_post_id) AS reply          
+          tr_post.post_id AS post_id,
+          tr_post.post_title AS post_title,
+          tr_post.post_text AS post_text,
+          tr_post.post_timestamp AS post_date,
+          tr_user.user_realname AS user_name,
+          tr_user.user_id AS user_id,
+          tr_user.user_avatar AS user_avatar,
+          tr_image.image_path as post_image_path,
+          (SELECT COUNT(1) FROM tr_like WHERE tr_like.like_post_id = tr_post.post_id) as post_like_count,
+          (SELECT COUNT(1) FROM tr_reply WHERE tr_reply.reply_post_id = tr_post.post_id AND tr_reply.reply_is_deleted = 0) as post_reply_count         
       ');
       $this->db->from('tr_post');
       $this->db->join('tr_image','tr_post.post_id = tr_image.image_post_id','inner');
@@ -299,6 +300,63 @@ class Posts_API_model extends CI_Model {
       } else {
         return true;
       }
+    }
+    
+    function insertNewPost($post){
+      
+
+      
+      //$data = array(
+//         'tribble_text' => $this->input->post('text'),
+//         'tribble_title' => $this->input->post('title'),
+//         'tribble_user_id' => $uid
+//      );
+//      
+//      $this->db->trans_begin();
+//      if(!$this->db->insert('tribbles', $data)){
+//         $result->error = 'Error while writing tribble data.';
+//      }
+//      
+//      log_message('debug','tribble data writen');
+//      
+//      $tribbleid = $this->db->insert_id();
+//      
+//      $tagdata['tags_content'] = $this->input->post('tags');
+//      $tagdata['tags_tribble_id'] = $tribbleid;
+//        
+//      if(!$this->db->insert('tags',$tagdata)){
+//        $result->error = 'Error while writing tag data.';
+//      }
+//      
+//      log_message('debug', 'tag data writen');
+//      
+//      $imagedata['image_tribble_id'] = $tribbleid;
+//      $imagedata['image_path'] = $args['image_path'];
+//      $imagedata['image_palette'] = $args['image_palette'];
+//      
+//      if(!$this->db->insert('images',$imagedata)){
+//        $result->error = 'Error while writing image data.';  
+//      }
+//      
+//      log_message('debug','image data writen');
+//      
+//      
+//      $likedata['like_tribble_id'] = $tribbleid;
+//      $likedata['like_user_id'] = $uid;
+//            
+//      if(!$this->db->insert('likes',$likedata)){
+//        $result->error = "Error while writing like data";
+//      }
+//      
+//      log_message('debug','like data writen');
+//              
+//      if ($this->db->trans_status() === FALSE){
+//        $this->db->trans_rollback();
+//        return $result;
+//      } else {
+//        $this->db->trans_commit();
+//        return $tribbleid;
+//      }
     }
                                     
 } 

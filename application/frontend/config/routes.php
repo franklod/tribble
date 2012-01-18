@@ -37,7 +37,7 @@
 | in the URL cannot be matched to a valid route.
 |
 */
-
+// CI RESERVED ROUTES
 $route['default_controller'] = "post/newer";
 $route['404_override'] = '';
 // LIST THE NEWEST POSTS
@@ -68,6 +68,13 @@ $route['like/remove/(:num)'] = 'post/remove_like/$1';
 // TAGS
 $route['tag/(:any)'] = 'post/tag/$1';
 $route['tag/(:any)/page/(:num)'] = 'post/tag/$1/$2';
+// LOGIN
+$route['login'] = 'auth/login';
+$route['login/(:any)'] = 'auth/login/$1';
+$route['logout'] = 'auth/logout';
+$route['logout/(:any)'] = 'auth/logout/$1';
+// TAGS
+$route['tags'] = 'post/tags';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

@@ -1,26 +1,26 @@
 <div class="g75">
   <div class="inner-wrapper">
   <ul class="tribbles" style="overflow: hidden;">
-	<? foreach($tribbles as $tribble): ?>
+	<? foreach($posts as $post): ?>
     <li class="space"> 
       <div class="box">     
         <div class="tribble-img">
-          <a href="<?=site_url("/view/".$tribble->id)?>" class="tribble-hover">
-            <span class="title"><?= character_limiter($tribble->title,12)?></span>
-            <span class="desc"><?=word_limiter($tribble->text,20)?></span>
-            <em><?=strftime('%B %d, %Y',mysql_to_unix($tribble->ts));?></em>              
+          <a href="<?=site_url("/view/".$post->post_id)?>" class="tribble-hover">
+            <span class="title"><?= character_limiter($post->post_title,12)?></span>
+            <span class="desc"><?=word_limiter($post->post_text,20)?></span>
+            <em><?=strftime('%B %d, %Y',mysql_to_unix($post->post_date));?></em>              
           </a>
-          <img src="<?=getThumb($tribble->image)?>"  alt="<?=$tribble->title?>" />
+          <img src="<?=getThumb($post->post_image_path)?>"  alt="<?=$post->post_title?>" />
         </div>
         <div class="tribble-tools">
-          <p class="ico"><a href="" class="comments" title="There are <?=$tribble->replies?> replies to this post"><?=$tribble->replies?></a>Comments</p>
-          <p class="ico"><a href="" class="likes" title="<?=$tribble->likes?> users like this post"><?=$tribble->likes?></a>likes</p>  
-          <p class="ico"><a href="" class="rebound"><?=$tribble->likes?></a>likes</p>     
+          <p class="ico"><a href="" class="comments" title="There are <?=$post->post_reply_count?> replies to this post"><?=$post->post_reply_count?></a>Comments</p>
+          <p class="ico"><a href="" class="likes" title="<?=$post->post_like_count?> users like this post"><?=$post->post_like_count?></a>likes</p>  
+          <p class="ico"><a href="" class="rebound"><?=$post->post_like_count?></a>likes</p>     
         </div>        
       </div>
       <div class="tribble-user-info">
         <a href="/">
-          <img name="avatar" src="<?= (!empty($tribble->avatar)) ? $tribble->avatar : '/assets/images/avatar.jpg' ?>" width="18" height="18" alt=""/><?=$tribble->username?>
+          <img name="avatar" src="<?= (!empty($post->user_avatar)) ? $post->avatar : '/assets/images/avatar.jpg' ?>" width="18" height="18" alt=""/><?=$post->user_name?>
         </a>
       </div>  
     </li>  

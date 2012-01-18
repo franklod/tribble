@@ -597,7 +597,7 @@ if ( ! function_exists('uri_to_string'))
 {
 	function uri_to_string($uri,$delimiter = "-")
 	{
-	 return str_replace('/',$delimiter,$uri);	
+	 return substr(str_replace('/',$delimiter,$uri),1);	
 	}
 }
 

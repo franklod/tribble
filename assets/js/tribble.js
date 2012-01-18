@@ -1,5 +1,5 @@
 $(function() {
-		$('#tags').tagsInput({
+		$('#post_tags').tagsInput({
 		 //'autocomplete_url': url_to_autocomplete_api,
      //'autocomplete': { option: value, option: value},
      'interactive':true,

@@ -24,14 +24,22 @@ class Posts extends REST_Controller
     $cacheTTL = 15 * 60;
 
   }
-  
-  public function total_get(){
+
+  public function index()
+  {
+    redirect('http://tribble.local');
+  }
+
+  public function total_get()
+  {
     $this->load->model('Posts_API_model', 'mPosts');
     $posts_count = $this->mPosts->countPosts();
-    if(!$posts_count){
-      $this->response(array('status'=>false,'message'=>'Could not get the post count.'));
-    } else {
-      $this->response(array('status'=>true,'total_posts'=>$posts_count));
+    if (!$posts_count)
+    {
+      $this->response(array('request_status' => false, 'message' => 'Could not get the post count.'));
+    } else
+    {
+      $this->response(array('request_status' => true, 'post_count' => $posts_count));
     }
   }
 
@@ -71,7 +79,7 @@ class Posts extends REST_Controller
         case 'loved':
           break;
         default:
-          $this->response(array('status' => false, 'message' => 'An invalid post list type was requested.'));
+          $this->response(array('status' => false, 'message' => 'An invalid post list type was requested. Supported types are: new, buzzing, loved. '));
       }
 
       // get the data from the database
@@ -79,9 +87,9 @@ class Posts extends REST_Controller
       {
         // we have a dataset from the database, let's save it to memcached
         $object = array(
-          'page' => $page,
-          'status' => true,
-          'count' => $limit,
+          'request_status' => true,
+          'result_page' => $page,
+          'post_count' => $limit,
           'posts' => $posts);
         @$this->cache->memcached->save($cachekey, $object, 10 * 60);
         // output the response
@@ -89,7 +97,7 @@ class Posts extends REST_Controller
       } else
       {
         // we got nothing to show, output error
-         $this->response(array('status' => false, 'message' => 'Fatal error: Could not get data either from cache or database.'), 404);
+        $this->response(array('status' => false, 'message' => 'Fatal error: Could not get data either from cache or database.'), 404);
       }
     } else
     {
@@ -126,9 +134,9 @@ class Posts extends REST_Controller
       {
         $replies = $this->mPosts->getRepliesByPostId($post_id);
         $object = array(
-          'status' => true,
+          'request_status' => true,
           'post' => $post,
-          'replies' => array('count' => count($replies), 'replies' => $replies));
+          'post_replies' => array('count' => count($replies), 'replies' => $replies));
         $this->cache->memcached->save($cachekey, $object, 10 * 60);
         $this->response($object);
       }
@@ -168,12 +176,11 @@ class Posts extends REST_Controller
       if ($posts)
       {
         $object = array(
-          'page' => $page,
-          'status' => true,
+          'request_status' => true,
+          'result_page' => $page,
           'tag' => $posts['tag'],
-          'count' => $posts['count'],
-          'posts' => $posts['posts']                  
-          );
+          'post_count' => $posts['count'],
+          'posts' => $posts['posts']);
         $this->cache->memcached->save($cachekey, $object, 10 * 60);
         $this->response($object);
       }
@@ -303,7 +310,7 @@ class Posts extends REST_Controller
     if (!$user_id)
       $this->response(array('status' => false, 'message' => 'No user id was supplied.'));
     if (!$this->mUsers->checkIfUserExists($user_id))
-      $this->response(array('status' => false, 'message' => 'Unknown post.'));
+      $this->response(array('status' => false, 'message' => 'Unknown user.'));
 
     $comment_delete = $this->mPosts->delete_comment($post_id, $comment_id, $user_id);
 
@@ -325,6 +332,46 @@ class Posts extends REST_Controller
       $this->response(array('status' => true, 'message' => 'Comment was deleted successfuly.'));
     }
 
+  }
+  
+  public function post_put(){    
+    // load the memcached driver
+    $this->load->driver('cache');
+    // load the posts model
+    $this->load->model('Posts_API_model', 'mPosts');
+    // load the user model
+    $this->load->model('User_API_model', 'mUsers');
+    
+    $image_data = $this->put('image_data');
+    $post_title = $this->put('post_title');
+    $post_text = $this->put('post_text');
+    $post_tags = $this->put('post_tags');
+    $user_id = $this->put('user_id');
+    
+    if(!$image_data)
+      $this->response(array('response_status'=>false,'message'=>'No image data was suplied.'));
+    if(!$post_title)
+      $this->response(array('response_status'=>false,'message'=>'No post title was suplied.'));
+    if(!$post_text)
+      $this->response(array('response_status'=>false,'message'=>'No post text was suplied.'));      
+    if(!$post_tags)
+      $this->response(array('response_status'=>false,'message'=>'No post tags were suplied.'));
+    if (!$user_id)
+      $this->response(array('status' => false, 'message' => 'No user id was supplied.'));
+    if (!$this->mUsers->checkIfUserExists($user_id))
+      $this->response(array('status' => false, 'message' => 'Unknown user.'));    
+    
+    $insert_object = array($image_data,$post_title,$post_text,$post_tags);
+    $insert_post = $this->mPosts->insertNewPost($insert_object);
+    
+    $this->response(array('request_status'=>false,'post_id'=>$insert_post)); 
+    
+    if ($insert_post == false)
+    {
+      $this->response(array('request_status' => false, 'message' => 'Could create the new post.'), 404);
+    } else {
+      $this->response(array('request_status'=>true,'post_id'=>$insert_post));    
+    }    
   }
 
 }
