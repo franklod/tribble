@@ -9,7 +9,7 @@ $pages->tags->uri = 'tags';
 $pages->tags->text = 'Tags';
 //$pages->designers->uri = 'designers';
 //$pages->designers->text = 'Designers';
-if($this->session->userdata('uid')){
+if($this->session->userdata('sid')){
   $pages->upload->uri = 'upload';
   $pages->upload->text = 'Upload';
 }

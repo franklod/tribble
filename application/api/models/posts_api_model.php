@@ -302,61 +302,52 @@ class Posts_API_model extends CI_Model {
       }
     }
     
-    function insertNewPost($post){
+    function insertNewPost($post_data,$tags,$image){
+          
       
-
+      $this->db->trans_start();
+      if(!$this->db->insert('post', $post_data)){
+         $result->error = 'Error while writing tribble data.';
+      }
       
-      //$data = array(
-//         'tribble_text' => $this->input->post('text'),
-//         'tribble_title' => $this->input->post('title'),
-//         'tribble_user_id' => $uid
-//      );
-//      
-//      $this->db->trans_begin();
-//      if(!$this->db->insert('tribbles', $data)){
-//         $result->error = 'Error while writing tribble data.';
-//      }
-//      
-//      log_message('debug','tribble data writen');
-//      
-//      $tribbleid = $this->db->insert_id();
-//      
-//      $tagdata['tags_content'] = $this->input->post('tags');
-//      $tagdata['tags_tribble_id'] = $tribbleid;
-//        
-//      if(!$this->db->insert('tags',$tagdata)){
-//        $result->error = 'Error while writing tag data.';
-//      }
-//      
-//      log_message('debug', 'tag data writen');
-//      
-//      $imagedata['image_tribble_id'] = $tribbleid;
-//      $imagedata['image_path'] = $args['image_path'];
-//      $imagedata['image_palette'] = $args['image_palette'];
-//      
-//      if(!$this->db->insert('images',$imagedata)){
-//        $result->error = 'Error while writing image data.';  
-//      }
-//      
-//      log_message('debug','image data writen');
-//      
-//      
-//      $likedata['like_tribble_id'] = $tribbleid;
-//      $likedata['like_user_id'] = $uid;
-//            
-//      if(!$this->db->insert('likes',$likedata)){
-//        $result->error = "Error while writing like data";
-//      }
-//      
-//      log_message('debug','like data writen');
-//              
-//      if ($this->db->trans_status() === FALSE){
-//        $this->db->trans_rollback();
-//        return $result;
-//      } else {
-//        $this->db->trans_commit();
-//        return $tribbleid;
-//      }
+      log_message('debug','Post data writen');
+      
+      $post_id = $this->db->insert_id();
+      
+      $tagdata['tag_content'] = $tags;
+      $tagdata['tag_post_id'] = $post_id;
+        
+      if(!$this->db->insert('tag',$tagdata)){
+        $result->error = 'Error while writing tag data.';
+      }
+      
+      log_message('debug', 'tag data writen');
+      
+      $imagedata['image_post_id'] = $post_id;
+      $imagedata['image_path'] = $image['image_path'];
+      $imagedata['image_palette'] = $image['image_palette'];
+      
+      if(!$this->db->insert('image',$imagedata)){
+        $result->error = 'Error while writing image data.';  
+      }
+      
+      log_message('debug','image data writen');
+      
+      
+      $likedata['like_post_id'] = $post_id;
+      $likedata['like_user_id'] = $post_data['post_user_id'];
+            
+      if(!$this->db->insert('like',$likedata)){
+        $result->error = "Error while writing like data";
+      }            
+      log_message('debug','like data writen');
+      $this->db->trans_complete();
+              
+      if ($this->db->trans_status() === FALSE){
+        return false;
+      } else {
+        return $post_id;
+      }
     }
                                     
 } 

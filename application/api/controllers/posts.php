@@ -198,10 +198,10 @@ class Posts extends REST_Controller
     $limit = $this->get('limit');
 
     if (!$string)
-      $this->response(array('status' => false, 'message' => 'No search text was supplied'));
+      $this->response(array('request_status' => false, 'message' => 'No search text was supplied'));
 
     if (strlen($string) < 3)
-      $this->response(array('status' => false, 'message' => 'Search text must be longer than 3 characters'));
+      $this->response(array('request_status' => false, 'message' => 'Search text must be longer than 3 characters'));
 
     if (!$page)
       $page = 1;
@@ -222,8 +222,8 @@ class Posts extends REST_Controller
       $posts = $this->mPosts->searchPostsTitleAndDescription($string, $page, $limit);
       if ($posts)
       {
-        $this->cache->memcached->save($cachekey, array('status' => true, 'search' => $posts), 10 * 60);
-        $this->response(array('status' => true, 'search' => $posts));
+        $this->cache->memcached->save($cachekey, array('request_status' => true, 'search' => $posts), 10 * 60);
+        $this->response(array('request_status' => true, 'search' => $posts));
       }
     } else
     {
@@ -232,46 +232,50 @@ class Posts extends REST_Controller
 
   }
 
-  
-  
-  public function post_put(){    
+  public function post_put()
+  {
     // load the memcached driver
     $this->load->driver('cache');
     // load the posts model
     $this->load->model('Posts_API_model', 'mPosts');
     // load the user model
     $this->load->model('User_API_model', 'mUsers');
-    
+
     $image_data = $this->put('image_data');
     $post_title = $this->put('post_title');
     $post_text = $this->put('post_text');
     $post_tags = $this->put('post_tags');
     $user_id = $this->put('user_id');
-    
-    if(!$image_data)
-      $this->response(array('response_status'=>false,'message'=>'No image data was suplied.'));
-    if(!$post_title)
-      $this->response(array('response_status'=>false,'message'=>'No post title was suplied.'));
-    if(!$post_text)
-      $this->response(array('response_status'=>false,'message'=>'No post text was suplied.'));      
-    if(!$post_tags)
-      $this->response(array('response_status'=>false,'message'=>'No post tags were suplied.'));
+
+    if (!$image_data)
+      $this->response(array('response_status' => false, 'message' => 'No image data was suplied.'));
+    if (!$post_title)
+      $this->response(array('response_status' => false, 'message' => 'No post title was suplied.'));
+    if (!$post_text)
+      $this->response(array('response_status' => false, 'message' => 'No post text was suplied.'));
+    if (!$post_tags)
+      $this->response(array('response_status' => false, 'message' => 'No post tags were suplied.'));
     if (!$user_id)
-      $this->response(array('status' => false, 'message' => 'No user id was supplied.'));
+      $this->response(array('request_status' => false, 'message' => 'No user id was supplied.'));
     if (!$this->mUsers->checkIfUserExists($user_id))
-      $this->response(array('status' => false, 'message' => 'Unknown user.'));    
-    
-    $insert_object = array($image_data,$post_title,$post_text,$post_tags);
-    $insert_post = $this->mPosts->insertNewPost($insert_object);
-    
-    $this->response(array('request_status'=>false,'post_id'=>$insert_post)); 
-    
+      $this->response(array('request_status' => false, 'message' => 'Unknown user.'));
+
+    $post_data = array(
+      'post_title' => $post_title,
+      'post_text' => $post_text,
+      'post_user_id' => $user_id);
+
+    $insert_post = $this->mPosts->insertNewPost($post_data, $post_tags, $image_data);
+
+    $this->response(array('request_status' => false, 'post_id' => $insert_post));
+
     if ($insert_post == false)
     {
       $this->response(array('request_status' => false, 'message' => 'Could create the new post.'), 404);
-    } else {
-      $this->response(array('request_status'=>true,'post_id'=>$insert_post));    
-    }    
+    } else
+    {
+      $this->response(array('request_status' => true, 'post_id' => $insert_post));
+    }
   }
 
 }

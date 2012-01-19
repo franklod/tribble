@@ -53,7 +53,7 @@ class Auth extends REST_Controller
     $this->load->driver('cache');
     $cachekey = sha1($session_data['user_email']);
     if(!$this->cache->memcached->get($cachekey)){
-      $this->cache->memcached->save($cachekey,$session_data,30*60);
+      $this->cache->memcached->save($cachekey,$session_data,24*60*60);
       $this->response(array('request_status'=>true,'id'=>$cachekey));
     } else {
       $this->response(array('request_status'=>true,'id'=>$cachekey));
@@ -62,24 +62,28 @@ class Auth extends REST_Controller
   }
   
   public function session_get(){    
-    $session = $this->get('id');
+    $id = $this->get('id');
     // load the memcached driver
     $this->load->driver('cache');
-    if(!$this->cache->memcached->get($session)){
+    if(!$this->cache->memcached->get($id)){
       $this->response(array('request_status'=>false,'message'=>'There\'s no such session.'));
     } else {
-      $this->response(array('request_status'=>true,'id'=>$this->cache->memcached->get($session)));
+      $metadata = $this->cache->memcached->get_metadata($id);   
+      $TTL = (int)floor(($metadata['expire'] - time()) / 60);
+      if($TTL < 26)
+        $this->cache->memcached->save($id,$metadata['data'],24*60*60);                    
+      $this->response(array('request_status'=>true,'user'=>$this->cache->memcached->get($id)));
     }     
   }
   
   public function session_delete(){    
-    $session_data = $this->delete('id');
+    $id = $this->delete('id');
     // load the memcached driver
     $this->load->driver('cache');
-    $cachekey = $session_data;
-    if(!$this->cache->memcached->get($cachekey)){      
+    if(!$this->cache->memcached->get($id)){      
       $this->response(array('request_status'=>false,'message'=>'Session does not exist.'));
     } else {
+      $this->cache->memcached->delete($id);
       $this->response(array('request_status'=>true,'message'=>'Session was destroyed'));
     }   
   }

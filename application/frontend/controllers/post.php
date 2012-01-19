@@ -51,16 +51,23 @@ class Post extends CI_Controller
    * @param integer $page
    * @return
    */
-  public function tag($tag,$dummy = null, $page = 1)
+  public function tag($tag, $dummy = null, $page = 1)
   {
     $data['title'] = 'Tribble - Home';
     $data['meta_description'] = 'A design content sharing and discussion tool.';
     $data['meta_keywords'] = 'Tribble';
 
-    if ($uid = $this->session->userdata('uid'))
+    if ($session = $this->rest->get('auth/session/', array('id' => $this->session->userdata('sid'))))
+      ;
     {
-      $data['user']->name = $this->session->userdata('uname');
-      $data['user']->id = $this->session->userdata('uid');
+      if ($session->request_status == true)
+      {
+        $data['user']->name = $session->user->user_name;
+        $data['user']->id = $session->user->user_id;
+      } else
+      {
+        $this->session->sess_destroy();
+      }
     }
 
     // set the defaults
@@ -92,14 +99,14 @@ class Post extends CI_Controller
 
     // pagination
     $config['uri_segment'] = 4;
-    $config['base_url'] = '/tag/'.$tag.'/page';
+    $config['base_url'] = '/tag/' . $tag . '/page';
     $config['total_rows'] = $REST_data->post_count;
     $this->pagination->initialize($config);
     $data['paging'] = $this->pagination->create_links();
 
     // cast the uri segment as int
     $page = (int)$page;
-    
+
     // calculate the offset to use below
     $offset = (($page - 1) * $display_per_page) - ($api_dataset_rows * ($api_page - 1));
 
@@ -128,17 +135,16 @@ class Post extends CI_Controller
     $data['meta_description'] = 'A design content sharing and discussion tool.';
     $data['meta_keywords'] = 'Tribble';
 
-    if ($uid = $this->session->userdata('uid'))
+    if ($session = $this->rest->get('auth/session/', array('id' => $this->session->userdata('sid'))))
+      ;
     {
-
-      $data['user']->name = $this->session->userdata('uname');
-      $data['user']->id = $this->session->userdata('uid');
-
-      $LIKE_Data = $this->rest->get('likes/is_liked/post/' . $postId . '/user/' . $uid);
-
-      if ($LIKE_Data->status)
+      if ($session->request_status == true)
       {
-        $data['like_status'] = $LIKE_Data->like;
+        $data['user']->name = $session->user->user_name;
+        $data['user']->id = $session->user->user_id;
+      } else
+      {
+        $this->session->sess_destroy();
       }
     }
 
@@ -190,13 +196,17 @@ class Post extends CI_Controller
     $data['meta_description'] = 'A design content sharing and discussion tool.';
     $data['meta_keywords'] = 'Tribble';
 
-    if ($user = $this->rest->get('session/id/'.$this->session->userdata('sid')));
+    if ($session = $this->rest->get('auth/session/', array('id' => $this->session->userdata('sid'))))
+      ;
     {
-      
-      echo($user);
-      
-      $data['user']->name = $this->session->userdata('uname');
-      $data['user']->id = $this->session->userdata('uid');
+      if ($session->request_status == true)
+      {
+        $data['user']->name = $session->user->user_name;
+        $data['user']->id = $session->user->user_id;
+      } else
+      {
+        $this->session->sess_destroy();
+      }
     }
 
     if (!$POST_Total = $this->rest->get('posts/total'))
@@ -258,10 +268,17 @@ class Post extends CI_Controller
     $data['meta_description'] = 'A design content sharing and discussion tool.';
     $data['meta_keywords'] = 'Tribble';
 
-    if ($uid = $this->session->userdata('uid'))
+    if ($session = $this->rest->get('auth/session/', array('id' => $this->session->userdata('sid'))))
+      ;
     {
-      $data['user']->name = $this->session->userdata('uname');
-      $data['user']->id = $this->session->userdata('uid');
+      if ($session->request_status == true)
+      {
+        $data['user']->name = $session->user->user_name;
+        $data['user']->id = $session->user->user_id;
+      } else
+      {
+        $this->session->sess_destroy();
+      }
     }
 
     if (!$POST_Total = $this->rest->get('posts/total'))
@@ -320,10 +337,17 @@ class Post extends CI_Controller
     $data['meta_description'] = 'A design content sharing and discussion tool.';
     $data['meta_keywords'] = 'Tribble';
 
-    if ($uid = $this->session->userdata('uid'))
+    if ($session = $this->rest->get('auth/session/', array('id' => $this->session->userdata('sid'))))
+      ;
     {
-      $data['user']->name = $this->session->userdata('uname');
-      $data['user']->id = $this->session->userdata('uid');
+      if ($session->request_status == true)
+      {
+        $data['user']->name = $session->user->user_name;
+        $data['user']->id = $session->user->user_id;
+      } else
+      {
+        $this->session->sess_destroy();
+      }
     }
 
     if (!$POST_Total = $this->rest->get('posts/total'))
@@ -375,21 +399,28 @@ class Post extends CI_Controller
     $data['title'] = 'Tribble - Home';
     $data['meta_description'] = 'A design content sharing and discussion tool.';
     $data['meta_keywords'] = 'Tribble';
-    
-    if ($uid = $this->session->userdata('uid'))
+
+    if ($session = $this->rest->get('auth/session/', array('id' => $this->session->userdata('sid'))))
+      ;
     {
-      $data['user']->name = $this->session->userdata('uname');
-      $data['user']->id = $this->session->userdata('uid');
+      if ($session->request_status == true)
+      {
+        $data['user']->name = $session->user->user_name;
+        $data['user']->id = $session->user->user_id;
+      } else
+      {
+        $this->session->sess_destroy();
+      }
     }
-    
-    if(!$TAGS_get = $this->rest->get('meta/tags/0'))
-      show_error('The API could not be reached!',404,'Carmona says:');
-        
-    if(!$TAGS_get->request_status)
-      show_error('The API didn\'t get any tags!',503,'503 Carmona is unavailable');
-      
+
+    if (!$TAGS_get = $this->rest->get('meta/tags/0'))
+      show_error('The API could not be reached!', 404, 'Carmona says:');
+
+    if (!$TAGS_get->request_status)
+      show_error('The API didn\'t get any tags!', 503, '503 Carmona is unavailable');
+
     $data['tag_list'] = $TAGS_get->tags;
-    
+
     $this->load->view('common/page_top.php', $data);
     $this->load->view('lists/tags.php', $data);
     $this->load->view('widgets/widgets.php', $data);
@@ -416,17 +447,24 @@ class Post extends CI_Controller
     //Pull in an array of tweets
     $REST_Data = $this->rest->get('posts/single/' . $postId);
 
-    if ($uid = $this->session->userdata('uid'))
+    if ($session = $this->rest->get('auth/session/', array('id' => $this->session->userdata('sid'))))
+      ;
     {
-
-      $data['user']->name = $this->session->userdata('uname');
-      $data['user']->id = $this->session->userdata('uid');
-
-      $LIKE_Data = $this->rest->get('likes/is_liked/post/' . $postId . '/user/' . $uid);
-
-      if ($LIKE_Data->request_status)
+      if ($session->request_status == true)
       {
-        $data['like_status'] = $LIKE_Data->like;
+        $data['user']->name = $session->user->user_name;
+        $data['user']->id = $session->user->user_id;
+
+        $LIKE_Data = $this->rest->get('likes/is_liked/post/' . $postId . '/user/' . $session->user->user_id);
+
+        if ($LIKE_Data->request_status)
+        {
+          $data['like_status'] = $LIKE_Data->like;
+        }
+
+      } else
+      {
+        $this->session->sess_destroy();
       }
     }
 
@@ -463,45 +501,20 @@ class Post extends CI_Controller
     $data['meta_description'] = 'A design content sharing and discussion tool.';
     $data['meta_keywords'] = 'Tribble';
 
-    if ($uid = $this->session->userdata('uid'))
+    if ($session = $this->rest->get('auth/session/', array('id' => $this->session->userdata('sid'))))
+      ;
     {
-      $data['user']->name = $this->session->userdata('uname');
-      $data['user']->id = $this->session->userdata('uid');
-
-      $this->form_validation->set_error_delimiters('<p class="help">', '</p>');
-
-      // check form submission and validate
-      if ($this->form_validation->run('upload_image') == false)
+      if ($session->request_status == true)
       {
+        $data['user']->name = $session->user->user_name;
+        $data['user']->id = $session->user->user_id;        
 
-        //form has errors : show page and errors
-        $this->load->view('common/page_top.php', $data);
-        $this->load->view('post/upload.php', $data);
-        $this->load->view('common/page_end.php', $data);
+        $this->form_validation->set_error_delimiters('<p class="help">', '</p>');
 
-      } else
-      {
-
-        // get the uid from the session data and hash it to be used as the user upload folder name
-        $user_hash = do_hash($this->session->userdata('unique'));
-
-        // set the upload configuration
-        $ulConfig['upload_path'] = './data/' . $user_hash . '/';
-        $ulConfig['allowed_types'] = 'jpg|png';
-        $ulConfig['max_width'] = '400';
-        $ulConfig['max_height'] = '300';
-        $ulConfig['min_width'] = '400';
-        $ulConfig['min_height'] = '300';
-
-        // load the file uploading lib and initialize
-        $this->load->library('upload', $ulConfig);
-        $this->upload->initialize($ulConfig);
-
-        // check if upload was successful and react
-        if (!$this->upload->do_upload('image_file'))
+        // check form submission and validate
+        if ($this->form_validation->run('upload_image') == false)
         {
 
-          $data['errors'] = array('message' => $this->upload->display_errors());
           //form has errors : show page and errors
           $this->load->view('common/page_top.php', $data);
           $this->load->view('post/upload.php', $data);
@@ -509,142 +522,176 @@ class Post extends CI_Controller
 
         } else
         {
-          $data = array('upload_data' => $this->upload->data());
-          // set the data to write in db;
-          $imgdata = array('image_path' => substr($ulConfig['upload_path'] . $data['upload_data']['file_name'], 1), 'image_palette' => json_encode(getImageColorPalette($data['upload_data']['full_path'])));
 
-          $config['image_library'] = 'gd2';
-          $config['source_image'] = $ulConfig['upload_path'] . $data['upload_data']['file_name'];
-          $config['create_thumb'] = true;
-          $config['maintain_ratio'] = true;
-          $config['width'] = 200;
-          $config['height'] = 150;
+          // get the uid from the session data and hash it to be used as the user upload folder name
+          $user_hash = do_hash($session->user->user_email);
 
-          $this->load->library('image_lib', $config);
-          $this->image_lib->resize();
-        }
-        
-        $post_put_data = array(
-          'image_data' => $imgdata,
-          'post_title' => $this->input->post('post_title'),
-          'post_text' => $this->input->post('post_text'),
-          'post_tags' => $this->input->post('post_tags'),
-          'user_id' => $this->session->userdata('uid')
-        );
-        
-        $post_put = $this->rest->put('posts/upload', $post_put_data);
-        
-        if ($post_put->request_status)
-        {
-          var_dump($post_put);
-          //redirect('/view/' . $post_id);
-        } else
-        {
-          var_dump($post_put);
-          if(file_exists($imgdata['image_path'])){
-            unlink($imgdata['image_path']);
-          }
-          
-          $data['errors'] = array('message' => 'Something is broken. Let\'s all pray to the Mighty Carmona!');
-          //form has errors : show page and errors
-          $this->load->view('common/page_top.php', $data);
-          $this->load->view('post/upload.php', $data);
-          $this->load->view('common/page_end.php', $data);
-        }
+          // set the upload configuration
+          $ulConfig['upload_path'] = './data/' . $user_hash . '/';
+          $ulConfig['allowed_types'] = 'jpg|png';
+          $ulConfig['max_width'] = '400';
+          $ulConfig['max_height'] = '300';
+          $ulConfig['min_width'] = '400';
+          $ulConfig['min_height'] = '300';
 
-      }
+          // load the file uploading lib and initialize
+          $this->load->library('upload', $ulConfig);
+          $this->upload->initialize($ulConfig);
 
-    } else
-    {
-      // user is not logged in: redirect to login form
-      redirect('/auth/login/upload');
-    }
-
-  }
-
-  public function doupload()
-  {
-
-    $data['title'] = 'Tribble - Upload';
-    $data['meta_description'] = 'A design content sharing and discussion tool.';
-    $data['meta_keywords'] = 'Tribble';
-
-    $this->form_validation->set_error_delimiters('<p class="help">', '</p>');
-
-    if ($uid = $this->session->userdata('uid'))
-    {
-      $data['user']->name = $this->session->userdata('uname');
-      $data['user']->id = $this->session->userdata('uid');
-
-      // check form submission and validate
-      if ($this->form_validation->run('upload_image') == false)
-      {
-        echo "form validation failed";
-        // form has errors : show page and errors $this->load->view('common/page_top.php', $data);
-        $this->load->view('tribble/upload.php', $data);
-        $this->load->view('common/page_end.php', $data);
-      } else
-      {
-        // form validation passed: proceed to upload and save image file and  tribble data
-
-        // get the uid from the session data and hash it to be used as the user upload folder name
-        $user_hash = do_hash($this->session->userdata('unique'));
-
-        // load the tribble model
-        $this->load->model('Tribbles_model', 'trModel');
-
-        // set the upload configuration
-        $ulConfig['upload_path'] = './data/' . $user_hash . '/';
-        $ulConfig['allowed_types'] = 'jpg|png';
-        $ulConfig['max_width'] = '400';
-        $ulConfig['max_height'] = '300';
-
-        // load the file uploading lib and initialize
-        $this->load->library('upload', $ulConfig);
-        $this->upload->initialize($ulConfig);
-
-        // check if upload was successful and react
-        if (!$this->upload->do_upload('image_file'))
-        {
-          $data['errors'] = array('message' => $this->upload->display_errors());
-          //form has errors : show page and errors
-          $this->load->view('common/page_top.php', $data);
-          $this->load->view('post/upload.php', $data);
-          $this->load->view('common/page_end.php', $data);
-        } else
-        {
-          $data = array('upload_data' => $this->upload->data());
-          // set the data to write in db;
-          $imgdata = array('image_path' => substr($ulConfig['upload_path'] . $data['upload_data']['file_name'], 1), 'image_palette' => json_encode(getImageColorPalette($data['upload_data']['full_path'])));
-
-          $config['image_library'] = 'gd2';
-          $config['source_image'] = $ulConfig['upload_path'] . $data['upload_data']['file_name'];
-          $config['create_thumb'] = true;
-          $config['maintain_ratio'] = true;
-          $config['width'] = 200;
-          $config['height'] = 150;
-
-          $this->load->library('image_lib', $config);
-          $this->image_lib->resize();
-
-          if (!$result = $this->trModel->createNewTribble($imgdata))
+          // check if upload was successful and react
+          if (!$this->upload->do_upload('image_file'))
           {
-            $data['error'] = $result->error;
+
+            $data['errors'] = array('message' => $this->upload->display_errors());
+            //form has errors : show page and errors
             $this->load->view('common/page_top.php', $data);
-            $this->load->view('tribble/upload.php', $data);
+            $this->load->view('post/upload.php', $data);
             $this->load->view('common/page_end.php', $data);
+
           } else
           {
-            redirect('/tribble/view/' . $result);
+            $data = array('upload_data' => $this->upload->data());
+            // set the data to write in db;
+            $imgdata = array('image_path' => substr($ulConfig['upload_path'] . $data['upload_data']['file_name'], 1), 'image_palette' => json_encode(getImageColorPalette($data['upload_data']['full_path'])));
+
+            $config['image_library'] = 'gd2';
+            $config['source_image'] = $ulConfig['upload_path'] . $data['upload_data']['file_name'];
+            $config['create_thumb'] = true;
+            $config['maintain_ratio'] = true;
+            $config['width'] = 200;
+            $config['height'] = 150;
+
+            $this->load->library('image_lib', $config);
+            $this->image_lib->resize();
           }
+
+          $post_put_data = array(
+            'image_data' => $imgdata,
+            'post_title' => $this->input->post('post_title'),
+            'post_text' => $this->input->post('post_text'),
+            'post_tags' => $this->input->post('post_tags'),
+            'user_id' => $session->user->user_id
+            );
+
+          $post_put = $this->rest->put('posts/upload', $post_put_data);
+
+          if ($post_put->request_status)
+          {
+            echo($post_put);
+            //redirect('/view/' . $post_id);
+          } else
+          {
+            echo($post_put);
+            if (file_exists($imgdata['image_path']))
+            {
+              unlink($imgdata['image_path']);
+            }
+
+            $data['title'] = 'Tribble - Upload';
+            $data['meta_description'] = 'A design content sharing and discussion tool.';
+            $data['meta_keywords'] = 'Tribble';
+
+            $data['errors'] = array('message' => 'Something is broken. Let\'s all pray to the Mighty Carmona!');
+            //form has errors : show page and errors
+            $this->load->view('common/page_top.php', $data);
+            $this->load->view('post/upload.php', $data);
+            $this->load->view('common/page_end.php', $data);
+          }
+
         }
+
+      } else
+      {
+        // user is not logged in: redirect to login form
+        redirect('/auth/login/upload');
       }
-    } else
-    {
-      // user is not logged in: redirect to login form
-      redirect('/auth/login/' . str_replace('/', '-', uri_string()));
+
     }
   }
+
+  //public function doupload()
+  //{
+  //
+  //  $data['title'] = 'Tribble - Upload';
+  //  $data['meta_description'] = 'A design content sharing and discussion tool.';
+  //  $data['meta_keywords'] = 'Tribble';
+  //
+  //  $this->form_validation->set_error_delimiters('<p class="help">', '</p>');
+  //
+  //  if ($uid = $this->session->userdata('uid'))
+  //  {
+  //    $data['user']->name = $this->session->userdata('uname');
+  //    $data['user']->id = $this->session->userdata('uid');
+  //
+  //    // check form submission and validate
+  //    if ($this->form_validation->run('upload_image') == false)
+  //    {
+  //      echo "form validation failed";
+  //      // form has errors : show page and errors $this->load->view('common/page_top.php', $data);
+  //      $this->load->view('tribble/upload.php', $data);
+  //      $this->load->view('common/page_end.php', $data);
+  //    } else
+  //    {
+  //      // form validation passed: proceed to upload and save image file and  tribble data
+  //
+  //      // get the uid from the session data and hash it to be used as the user upload folder name
+  //      $user_hash = do_hash($this->session->userdata('unique'));
+  //
+  //      // load the tribble model
+  //      $this->load->model('Tribbles_model', 'trModel');
+  //
+  //      // set the upload configuration
+  //      $ulConfig['upload_path'] = './data/' . $user_hash . '/';
+  //      $ulConfig['allowed_types'] = 'jpg|png';
+  //      $ulConfig['max_width'] = '400';
+  //      $ulConfig['max_height'] = '300';
+  //
+  //      // load the file uploading lib and initialize
+  //      $this->load->library('upload', $ulConfig);
+  //      $this->upload->initialize($ulConfig);
+  //
+  //      // check if upload was successful and react
+  //      if (!$this->upload->do_upload('image_file'))
+  //      {
+  //        $data['errors'] = array('message' => $this->upload->display_errors());
+  //        //form has errors : show page and errors
+  //        $this->load->view('common/page_top.php', $data);
+  //        $this->load->view('post/upload.php', $data);
+  //        $this->load->view('common/page_end.php', $data);
+  //      } else
+  //      {
+  //        $data = array('upload_data' => $this->upload->data());
+  //        // set the data to write in db;
+  //        $imgdata = array('image_path' => substr($ulConfig['upload_path'] . $data['upload_data']['file_name'], 1), 'image_palette' => json_encode(getImageColorPalette($data['upload_data']['full_path'])));
+  //
+  //        $config['image_library'] = 'gd2';
+  //        $config['source_image'] = $ulConfig['upload_path'] . $data['upload_data']['file_name'];
+  //        $config['create_thumb'] = true;
+  //        $config['maintain_ratio'] = true;
+  //        $config['width'] = 200;
+  //        $config['height'] = 150;
+  //
+  //        $this->load->library('image_lib', $config);
+  //        $this->image_lib->resize();
+  //
+  //        if (!$result = $this->trModel->createNewTribble($imgdata))
+  //        {
+  //          $data['error'] = $result->error;
+  //          $this->load->view('common/page_top.php', $data);
+  //          $this->load->view('tribble/upload.php', $data);
+  //          $this->load->view('common/page_end.php', $data);
+  //        } else
+  //        {
+  //          redirect('/tribble/view/' . $result);
+  //        }
+  //      }
+  //    }
+  //  } else
+  //  {
+  //    // user is not logged in: redirect to login form
+  //    redirect('/auth/login/' . str_replace('/', '-', uri_string()));
+  //  }
+  //}
   //
   //  public function like($tribble_id){
   //    $this->load->model('Tribbles_model','trModel');
@@ -719,11 +766,21 @@ class Post extends CI_Controller
    */
   public function add_like($post_id)
   {
-    if (!$this->session->userdata('uid'))
+    if ($session = $this->rest->get('auth/session/', array('id' => $this->session->userdata('sid'))))
+      ;
     {
-      redirect(site_url());
+      if ($session->request_status == true)
+      {
+        $data['user']->name = $session->user->user_name;
+        $data['user']->id = $session->user->user_id;
+      } else
+      {
+        $this->session->sess_destroy();
+        redirect(site_url());
+      }
     }
-    $like_add = $this->rest->put('/likes/like', array('post_id' => $post_id, 'user_id' => $this->session->userdata('uid')));
+
+    $like_add = $this->rest->put('/likes/like', array('post_id' => $post_id, 'user_id' => $data['user']->id));
     if ($like_add->status)
     {
       //var_($like_add);
@@ -744,12 +801,21 @@ class Post extends CI_Controller
   public function remove_like($post_id)
   {
 
-    if (!$this->session->userdata('uid'))
+    if ($session = $this->rest->get('auth/session/', array('id' => $this->session->userdata('sid'))))
+      ;
     {
-      redirect(site_url());
+      if ($session->request_status == true)
+      {
+        $data['user']->name = $session->user->user_name;
+        $data['user']->id = $session->user->user_id;
+      } else
+      {
+        $this->session->sess_destroy();
+        redirect(site_url());
+      }
     }
 
-    $like_remove = $this->rest->delete('/likes/like', array('post_id' => $post_id, 'user_id' => $this->session->userdata('uid')));
+    $like_remove = $this->rest->delete('/likes/like', array('post_id' => $post_id, 'user_id' => $data['user']->id));
     if ($like_remove->status)
     {
       redirect('/view/' . $post_id);
