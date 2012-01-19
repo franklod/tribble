@@ -75,13 +75,17 @@ $route['posts/search/(:any)/(:num)'] = 'posts/searchPostsText/$1/$2';
 // PUT A NEW POST
 $route['posts/upload'] = 'posts/post';
 // PUT A COMMENT
-$route['posts/comment/add'] = 'posts/comment';
-// DELETE A COMMENT
-$route['posts/comment/delete'] = 'posts/comment';
+$route['reply/comment'] = 'replies/comment';
 // PUT A LIKE ON A POST
 $route['likes/add'] = 'posts/like';
 $route['likes/remove'] = 'posts/like';
-
+// TAGS GET
+$route['meta/tags'] = 'meta/tags/limit/12';
+$route['meta/tags/(:num)'] = 'meta/tags/limit/$1';
+// GET POST LIST BY TAG
+$route['posts/tag/(:any)'] = 'posts/tagged/tag/$1';
+$route['posts/tag/(:any)/(:num)'] = 'posts/tagged/tag/$1/page/$2';
+$route['posts/tag/(:any)/(:num)/(:num)'] = 'posts/tagged/tag/$1/page/$2/limit/$3';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

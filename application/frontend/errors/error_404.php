@@ -22,12 +22,12 @@
         body {background: none;}
         
         .wrapper {
-          width: 400px;
+          width: 500px;
           position: absolute;
           top: 50%;
           margin-top: -50px;
           left: 50%;
-          margin-left: -200px;
+          margin-left: -225px;
         }
         
         .error {
@@ -45,7 +45,7 @@
           background: url(/assets/images/404_arrow.png);
           width: 30px;
           height: 26px;
-          margin-left: 330px;
+          margin-left: 380px;
         }
         
         .error h4 { color: #0fb7ff; font-size: 2em; }

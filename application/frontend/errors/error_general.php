@@ -10,42 +10,54 @@
     <script type="text/javascript" src="/assets/js/jquery.1.4.1-min.js"></script>
     <script type="text/javascript" src="/assets/js/jquery.tagsinput.min.js"></script>
     <script type="text/javascript" src="/assets/js/tribble.js"></script>
+    <style type="text/css">
+      html {
+        background: url(/assets/images/404.jpg) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        }
+        
+        body {background: none;}
+        
+        .wrapper {
+          width: 500px;
+          position: absolute;
+          top: 50%;
+          margin-top: -50px;
+          left: 50%;
+          margin-left: -225px;
+        }
+        
+        .error {
+          color: #fff !important;
+          text-align: center;
+          background: rgba(0,0,0,0.8);
+          padding: 16px;
+          -webkit-border-radius: 6px;
+          -moz-border-radius: 6px;
+          border-radius: 6px;
+        }
+        
+        span {
+          display: block;
+          background: url(/assets/images/404_arrow.png);
+          width: 30px;
+          height: 26px;
+          margin-left: 380px;
+        }
+        
+        .error h4 { color: #0fb7ff; font-size: 2em; }
+    </style>
   </head>
   <body>
-    <div id="headerContainer">
-      <div id="header">
-        <h1><a href="http://tribble.local/index.php">Tribble</a></h1>
-        <div id="login">
-          <ul>
-            <li><a href="http://tribble.local/index.php/user/signup">Sign Up</a></li>
-            <li><a href="http://tribble.local/index.php/auth/login" class="defaultBtn btn_send">Log in</a></li>
-          </ul>
-        </div>
+    <div class="wrapper">
+      <span>&nbsp;</span>
+      <div class="error">
+          <h4><?=$heading?></h4>
+          <p><?=$message?></p>
       </div>
     </div>
-    <div id="topNavigation" class="blackMenu">
-      <ul class="h_navigation">
-        <li><a href="http://tribble.local/index.php/">New</a></li>
-        <li><a href="http://tribble.local/index.php/buzzing">Buzzing</a></li>
-        <li><a href="http://tribble.local/index.php/loved">Loved</a></li>
-        <hr />
-      </ul>
-      <form action="http://tribble.local/index.php/dosearch" method="post" accept-charset="utf-8">
-        <div style="display:none">
-          <input type="hidden" name="tr_csrf_tk" value="0d0e0d1049bd8a57b49ac0e86f4c9605" />
-        </div>  
-        <input name="search" type="text" class="" id="search" placeholder="Pesquisar" />
-      </form>    
-    </div>
-    <div id="main">
-      <div class="g75">
-        <div class="block-alert-msg error">
-        <h4><?=$heading?></h4>
-        <p><?=$message?></p>
-        </div>  
-      </div>
-    </div>
-    <div class="push"></div>  
-    <div class="footer"></div>
   </body>
-</html>                                                                                                
+</html>

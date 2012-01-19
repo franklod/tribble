@@ -523,12 +523,26 @@ ul.tribbles {
 	display:inline-block;
 	margin-bottom:5px;
 }
+
+.tags.list {
+	display:block;
+	margin: 0 12px 5px 12px;
+}
+
 .tags li {
 	float:left;
 	margin:0px 5px 5px 0;
 	display:inline;
 }
-.tags li a {
+
+.tags.list li {
+  overflow: hidden;
+  float: none;
+	margin:10px 0;
+  display: block;
+}
+
+.tags li a, .tags.list li a {
 		text-shadow:0 1px 0 #ffffff;
 	-webkit-box-shadow: inset 0px 1px 1px 1px rgba(0, 0, 0, 0.1);
 	-moz-box-shadow: inset 0px 1px 1px 1px rgba(0, 0, 0, 0.1);
@@ -552,6 +566,7 @@ ul.tribbles {
 	background: rgba(0, 0, 0, 0.04);
 	color:#3399CC;
 }
+.tags.list li a span {float: right;}
 .color-scheme {
 	margin-bottom:5px;
 	position:relative;
