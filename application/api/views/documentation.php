@@ -47,7 +47,7 @@
   
 <h1>Welcome to the <?=$api_site_name?></h1>
 
-<p>Access to the api is provided only over HTTP requests and by default results are return as JSON.</p>
+<p>Access to the api is provided only over HTTP requests and by default results are returned as JSON.</p>
 <p>You can get the results in other formats  by adding /format/desired_format at the end of the request url. The following formats are available:</p>
 <ul>
   <li>JSON (format/json)</li>
@@ -55,16 +55,38 @@
   <li>Serialized PHP object (format/serialized)</li>
 </ul>
 <pre>
-  This request woud get you the second page of 600 results of the most recent posts:
+This request woud get you the second page of 600 results of the most recent posts:
   
-  <strong>curl http://api.tribble.local/posts/list/new/2/format/xml</strong>
+<strong>$ curl http://api.tribble.local/posts/list/new/format/xml</strong>
+  
+  &lt;?xml version="1.0" encoding="utf-8"?&gt;
+  &lt;xml&gt;
+    &lt;request_status&gt;1&lt;/request_status&gt;
+    &lt;result_page&gt;1&lt;/result_page&gt;
+    &lt;post_count&gt;600&lt;/post_count&gt;
+    &lt;posts&gt;
+      &lt;post&gt;
+        &lt;post_id&gt;1817&lt;/post_id&gt;
+        &lt;post_title&gt;funny iPhone composition&lt;/post_title&gt;
+        &lt;post_text&gt;funny iPhone composition&lt;/post_text&gt;
+        &lt;post_date&gt;2012-01-13 17:08:19&lt;/post_date&gt;
+        &lt;post_image_path&gt;/data/tests/15.png&lt;/post_image_path&gt;
+        &lt;post_like_count&gt;1&lt;/post_like_count&gt;
+        &lt;post_reply_count&gt;0&lt;/post_reply_count&gt;
+        &lt;user_id&gt;907&lt;/user_id&gt;
+        &lt;user_name&gt;Serafina Henriques&lt;/user_name&gt;
+        &lt;user_avatar&gt;&lt;/user_avatar&gt;
+      &lt;/post&gt;
+      ...
+    &lt;/posts&gt;
+  &lt;/xml&gt;      
 </pre>
 <p class="note">Note: </p>
 <p>By default when requesting lists, only the first 600 results are returned. If you wish to request more results you can use the 'page/n' uri parameter to get more pages:</p>
 <pre>
-  This request woud get you the second page of 600 results of the most recent posts:
-  
-  <strong>curl http://api.tribble.local/posts/list/new/2</strong>
+This request woud get you the second page of 600 results of the most recent posts:
+
+<strong>$ curl http://api.tribble.local/posts/list/new/2</strong>
 </pre>
 
 
@@ -73,7 +95,7 @@
 <article>
 <section>
 <h3><span class="label_new">GET</span> posts/list/new</h3>
-<p>Retrives a list of the most recent posts.</p>
+<p>Gets a list of the most recent posts.</p>
 <pre>
 <strong>$ curl <?=site_url('/posts/list/new')?></strong>
 
@@ -101,7 +123,7 @@
 </section>
 <section>
   <h3><span class="label_new">GET</span> posts/list/buzzing</h3>
-<p class="note">Retrives a list of posts sorted by number of replies and date.</p>
+<p class="note">Gets a list of posts sorted by number of replies and date.</p>
 <pre>
 <strong>$ curl <?=site_url('/posts/list/buzzing')?></strong>
 
@@ -129,9 +151,38 @@
 </section>
 <section>
 <h3><span class="label_new">GET</span> posts/list/loved</h3>
-<p>Retrives a list of the most recent posts.</p>
+<p>Gets a list of the most liked posts.</p>
 <pre>
 <strong>$ curl <?=site_url('/posts/list/loved')?></strong>
+
+
+  {
+    "request_status":true,
+    "result_page":1,
+    "post_count":600,
+    "posts":[
+      {
+        "post_id":"88",
+        "post_title":"Stats (iPad UX\/UI)",
+        "post_text":"Here is part of an iPad App UX project I'm working on...",
+        "post_date":"2012-01-09 13:21:39",
+        "post_image_path":"\/data\/b5e0eaebec229148d61d1881b27d1865e1bb5003\/21.png",
+        "post_like_count":"3",
+        "post_reply_count":"0",
+        "user_id":"8",
+        "user_name":"Pedro Correia",
+        "user_avatar":null
+      },
+      ...
+    ]
+  }
+</pre>
+</section>
+<section>
+<h3><span class="label_new">GET</span> /posts/tag/:string</h3>
+<p>Get a list of all posts tagged as (:string)</p>
+<pre>
+<strong>$ curl <?=site_url('/posts/tag/iPhone')?></strong>
 
 
   {
@@ -205,6 +256,11 @@
     }
 </pre>
 </section>
+
+
+
+
+
 <section>
 <h3><span class="label_new">GET</span> posts/count</h3>
 <p>Retrieve a count of all posts</p>

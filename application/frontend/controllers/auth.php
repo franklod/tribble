@@ -16,10 +16,7 @@ class Auth extends CI_Controller
     }
 
     public function login($lb = NULL)        
-    {
-        
-        
-        
+    {                        
         $data['title'] = 'Tribble - Login';
         $data['meta_description'] = 'A design content sharing and discussion tool.';
         $data['meta_keywords'] = 'Tribble';
@@ -61,6 +58,8 @@ class Auth extends CI_Controller
     
     public function logout($lb = NULL)
 	{    
+    $sid = $this->session->userdata('sid');
+    $delete = $this->rest->delete('auth/session/',array('id'=>$sid));    
     $this->session->sess_destroy();
     $redirectUrl = site_url().string_to_uri($lb);    
     redirect($redirectUrl);
