@@ -51,7 +51,7 @@ class Post extends CI_Controller
    * @param integer $page
    * @return
    */
-  public function tag($tag, $page = 1)
+  public function tag($tag,$dummy = null, $page = 1)
   {
     $data['title'] = 'Tribble - Home';
     $data['meta_description'] = 'A design content sharing and discussion tool.';
@@ -69,13 +69,13 @@ class Post extends CI_Controller
     $api_dataset_rows = 600;
 
     // calculate wich result set page should we request from the api
-    $api_page = floor((($page * $display_per_page) - $display_per_page) / $api_dataset_rows) + 1;
+    $api_page = (int)floor((($page * $display_per_page) - $display_per_page) / $api_dataset_rows) + 1;
 
     // try to get the data from the API and show error on failure
-    if (!$REST_data = $this->rest->get('posts/tagged/tag/' . $tag . '/page/' . $api_page))
+    if (!$REST_data = $this->rest->get('posts/tag/' . $tag . '/' . $api_page))
     {
       show_error('Couldn\'t connect to the API.', 404);
-      log_message(1, 'API Failure. CALL: posts/tagged/tag/' . $tag . '/page/' . $api_page);
+      log_message(1, 'API Failure. CALL: posts/tag/' . $tag . '/' . $api_page);
     }
     // check if the data is here
     if ($REST_data->request_status == false)
@@ -91,21 +91,22 @@ class Post extends CI_Controller
     $data['colors'] = $color_data->colors;
 
     // pagination
-    $config['base_url'] = site_url('new/page');
-    $config['total_rows'] = $REST_data->count;
+    $config['uri_segment'] = 4;
+    $config['base_url'] = '/tag/'.$tag.'/page';
+    $config['total_rows'] = $REST_data->post_count;
     $this->pagination->initialize($config);
     $data['paging'] = $this->pagination->create_links();
 
     // cast the uri segment as int
     $page = (int)$page;
-
+    
     // calculate the offset to use below
     $offset = (($page - 1) * $display_per_page) - ($api_dataset_rows * ($api_page - 1));
 
     // chop the posts data object to the default per page length
     $data['posts'] = array_slice($REST_data->posts, $offset, $display_per_page, true);
     $data['tag'] = $REST_data->tag;
-    $data['count'] = $REST_data->count;
+    $data['count'] = $REST_data->post_count;
 
     // load views and show the page
     $this->load->view('common/page_top.php', $data);
@@ -189,8 +190,11 @@ class Post extends CI_Controller
     $data['meta_description'] = 'A design content sharing and discussion tool.';
     $data['meta_keywords'] = 'Tribble';
 
-    if ($uid = $this->session->userdata('uid'))
+    if ($user = $this->rest->get('session/id/'.$this->session->userdata('sid')));
     {
+      
+      echo($user);
+      
       $data['user']->name = $this->session->userdata('uname');
       $data['user']->id = $this->session->userdata('uid');
     }
@@ -368,7 +372,28 @@ class Post extends CI_Controller
 
   public function tags()
   {
-
+    $data['title'] = 'Tribble - Home';
+    $data['meta_description'] = 'A design content sharing and discussion tool.';
+    $data['meta_keywords'] = 'Tribble';
+    
+    if ($uid = $this->session->userdata('uid'))
+    {
+      $data['user']->name = $this->session->userdata('uname');
+      $data['user']->id = $this->session->userdata('uid');
+    }
+    
+    if(!$TAGS_get = $this->rest->get('meta/tags/0'))
+      show_error('The API could not be reached!',404,'Carmona says:');
+        
+    if(!$TAGS_get->request_status)
+      show_error('The API didn\'t get any tags!',503,'503 Carmona is unavailable');
+      
+    $data['tag_list'] = $TAGS_get->tags;
+    
+    $this->load->view('common/page_top.php', $data);
+    $this->load->view('lists/tags.php', $data);
+    $this->load->view('widgets/widgets.php', $data);
+    $this->load->view('common/page_end.php', $data);
   }
 
   /**
@@ -642,11 +667,11 @@ class Post extends CI_Controller
     $user_id = $this->input->post('user_id');
     $post_id = $this->input->post('post_id');
     $comment_text = $this->input->post('comment_text');
-    $comment_response = $this->rest->put('/posts/comment', array(
+    $comment_response = $this->rest->put('/reply/comment', array(
       'post_id' => $post_id,
       'user_id' => $user_id,
       'comment_text' => $comment_text));
-    if ($comment_response->status)
+    if ($comment_response->request_status)
     {
       redirect('/view/' . $post_id);
     } else
@@ -672,11 +697,11 @@ class Post extends CI_Controller
       redirect(site_url());
     }
 
-    $comment_response = $this->rest->delete('/posts/comment', array(
+    $comment_response = $this->rest->delete('/reply/comment', array(
       'post_id' => $post_id,
       'comment_id' => $comment_id,
       'user_id' => $user_id));
-    if ($comment_response->status)
+    if ($comment_response->request_status)
     {
       redirect(site_url('/view/' . $post_id));
     } else

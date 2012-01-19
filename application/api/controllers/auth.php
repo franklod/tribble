@@ -1,57 +1,88 @@
 <?php
+if (!defined('BASEPATH'))
+  exit('No direct script access allowed');
+  
+require APPPATH . '/libraries/REST_Controller.php';
 
-if(!defined('BASEPATH'))
-    exit('No direct script access allowed');
-
-class Auth extends CI_Controller
+class Auth extends REST_Controller
 {
 
-    public function __construct()
-    {
-        parent::__construct();
-        $this->load->model('Auth_model', 'aModel');
-    }
+  public function __construct()
+  {
+    parent::__construct();
+  }
 
-    public function login($lb = NULL)        
-    {
-        
-        
-        
-        $data['title'] = 'Tribble - Login';
-        $data['meta_description'] = 'A design content sharing and discussion tool.';
-        $data['meta_keywords'] = 'Tribble';
-        $data['form_action'] = current_url();
-                 
+  public function login_post()
+  {
+    $email = $this->post('email');
+    $password = $this->post('password');
 
-        $this->form_validation->set_error_delimiters('<p class="help">', '</p>');
-
-        if($this->form_validation->run('login') == false) {
-            $this->load->view('common/page_top.php', $data);            
-            $this->load->view('user/login.php', $data);
-            $this->load->view('common/page_end.php', $data);
-        } else {            
-            if($result = $this->aModel->checkUserLogin()) {
-                $sessionData = array('uid' => $result[0]->user_id, 'uname' => $result[0]->user_realname, 'unique' => $result[0]->user_email);
-                $this->session->set_userdata($sessionData);
-                $redirectUrl = site_url()."/".string_to_uri($lb);
-                redirect($redirectUrl);
-            } else {
-                $data['error'] = "Oops. It seems you have the wrong email, password or both. Try again sucker!";
-                $this->load->view('common/page_top.php', $data);
-                $this->load->view('user/login.php', $data);
-                $this->load->view('common/page_end.php', $data);
-            }
-        }
-    }
+    if (!$email)
+      $this->response(array('resquest_status' => false, 'message' => 'No email was suplied.'));
+    if (!$password)
+      $this->response(array('resquest_status' => false, 'message' => 'No password was suplied.'));
+              
+    // load the auth model
+    $this->load->model('Auth_api_model', 'mAuth');
     
-    public function logout($lb = NULL)
-	{    
-    $this->session->sess_destroy();
-    $redirectUrl = site_url()."/".string_to_uri($lb);    
-    redirect($redirectUrl);
-	}
+    $this->load->library('encrypt');
+    
+    $login = $this->mAuth->checkUserLogin($email,$password);
+    if(!$login)
+      $this->response(array('resquest_status' => false, 'message' => 'Invalid user/password combination.'));
 
+    $this->response(array('resquest_status' => true, 'user' => $login));
+  }
+
+  public function logout($lb = null)
+  {
+    $this->session->sess_destroy();
+    $redirectUrl = site_url() . "/" . string_to_uri($lb);
+    redirect($redirectUrl);
+  }
+  
+  public function session_put(){
+    
+    $session_data = array(
+      'user_id'=>$this->put('user_id'),
+      'user_name'=>$this->put('user_name'),
+      'user_email'=>$this->put('user_email'),
+      'user_avatar'=>$this->put('user_avatar')
+    );
+    // load the memcached driver
+    $this->load->driver('cache');
+    $cachekey = sha1($session_data['user_email']);
+    if(!$this->cache->memcached->get($cachekey)){
+      $this->cache->memcached->save($cachekey,$session_data,30*60);
+      $this->response(array('request_status'=>true,'id'=>$cachekey));
+    } else {
+      $this->response(array('request_status'=>true,'id'=>$cachekey));
+    } 
+    
+  }
+  
+  public function session_get(){    
+    $session = $this->get('id');
+    // load the memcached driver
+    $this->load->driver('cache');
+    if(!$this->cache->memcached->get($session)){
+      $this->response(array('request_status'=>false,'message'=>'There\'s no such session.'));
+    } else {
+      $this->response(array('request_status'=>true,'id'=>$this->cache->memcached->get($session)));
+    }     
+  }
+  
+  public function session_delete(){    
+    $session_data = $this->delete('id');
+    // load the memcached driver
+    $this->load->driver('cache');
+    $cachekey = $session_data;
+    if(!$this->cache->memcached->get($cachekey)){      
+      $this->response(array('request_status'=>false,'message'=>'Session does not exist.'));
+    } else {
+      $this->response(array('request_status'=>true,'message'=>'Session was destroyed'));
+    }   
+  }
 
 }
-
 ?>

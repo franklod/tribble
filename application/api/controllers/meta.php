@@ -29,18 +29,17 @@ class Meta extends REST_Controller
   public function tags_get()
   {
 
+
     // load the memcached driver
     $this->load->driver('cache');
     // load the posts model
     $this->load->model('Meta_API_model', 'mMeta');
 
-    $limit = $this->get('limit');
-
-    if (!$limit)
-      $limit = 12;
+    $limit = (int)$this->get('limit');
 
     // create the cache key
     $cachekey = sha1('tags/' . $limit);
+    
     // create the final array
     $unique_tags = array();
     // check if the key exists in cache
@@ -72,8 +71,14 @@ class Meta extends REST_Controller
         }
         // sort the final tags array 
         arsort($unique_tags);
-        // define the response object structure                
-        $object = array('status' => true, 'tags' => array_slice($unique_tags,0,$limit));
+        // if the limit is 0 give 'em all the tags
+        if ($limit == 0){
+          // define the response object structure
+          $object = array('request_status' => true, 'tags' => $unique_tags);
+        } else {
+          // define the response object structure                
+          $object = array('request_status' => true, 'tags' => array_slice($unique_tags,0,$limit)); 
+        }        
         // we have a dataset from the database, let's save it to memcached
         @$this->cache->memcached->save($cachekey, $object, 20 * 60);
         // output the response
@@ -81,7 +86,7 @@ class Meta extends REST_Controller
       } else
       {
         // we got nothing to show, output error
-        $this->response(array('status' => false, 'message' =>
+        $this->response(array('request_status' => false, 'message' =>
             'Fatal error: Could not get data either from cache or database.'), 404);
       }
     } else

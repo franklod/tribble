@@ -5,12 +5,15 @@ $pages->buzzing->uri = 'buzzing';
 $pages->buzzing->text = 'Buzzing';
 $pages->loved->uri = 'loved';
 $pages->loved->text = 'Loved';
+$pages->tags->uri = 'tags';
+$pages->tags->text = 'Tags';
+//$pages->designers->uri = 'designers';
+//$pages->designers->text = 'Designers';
 if($this->session->userdata('uid')){
   $pages->upload->uri = 'upload';
   $pages->upload->text = 'Upload';
 }
-$pages->tags->uri = 'tags';
-$pages->tags->text = 'Tags';
+
 
 ?>
 
