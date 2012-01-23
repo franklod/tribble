@@ -10,7 +10,7 @@
 |	c:\mywebserver\myapp
 |
 */
-$config['app_path']	= 'c:\\wamp\www\\tribble\\';
+$config['app_path']	= '/var/www/tribble';
 /*
 |--------------------------------------------------------------------------
 | Base Site URL

@@ -22,6 +22,35 @@
         'rules' => 'required'
       )  
     ),
+    'profile' => array(
+      array(
+        'field' => 'email',
+        'label' => 'Email',
+        'rules' => 'required|valid_email'
+      ),
+      array(
+        'field' => 'realname',
+        'label' => 'Real name',
+        'rules' => 'required'
+      )  
+    ),
+    'change_password' => array(
+      array(
+        'field' => 'old_password',
+        'label' => 'Old password',
+        'rules' => 'required'
+      ),
+      array(
+        'field' => 'new_password',
+        'label' => 'New password',
+        'rules' => 'required|min_length[6]'
+      ),
+      array(
+        'field' => 'retype_new_password',
+        'label' => 'Confirm new password',
+        'rules' => 'required|matches[new_password]'
+      ),
+    ),
     'upload_image' => array(
       array(
         'field' => 'post_title',

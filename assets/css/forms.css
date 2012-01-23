@@ -119,8 +119,14 @@ form .help {
 	color:#bbb;
 	float:none !important;
 }
-.e_wrap .help {
-	margin-left:135px;
+form .error {
+	display:block;
+	font-size:11px;
+	color:#C80A10;
+	float:none !important;
+}
+.e_wrap .help,.e_wrap .error {
+	margin-left:190px;
 	width:300px;
 	padding:3px;
 }

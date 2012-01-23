@@ -110,7 +110,7 @@
       </ul>
       <?endif;?>
     </div>
-    <?if($this->session->userdata('uid')):?>    
+    <?if(@$user->id):?>    
     <? $this->load->view('post/replyform.php'); ?>
   <?endif;?>
   </div>

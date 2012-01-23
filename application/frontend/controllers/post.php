@@ -30,7 +30,7 @@ class Post extends CI_Controller
     // load the pagination library
     $this->load->library('pagination');
 
-    //$this->output->enable_profiler(TRUE);
+    // $this->output->enable_profiler(TRUE);
   }
 
   /**
@@ -531,8 +531,8 @@ class Post extends CI_Controller
           $ulConfig['allowed_types'] = 'jpg|png';
           $ulConfig['max_width'] = '400';
           $ulConfig['max_height'] = '300';
-          $ulConfig['min_width'] = '400';
-          $ulConfig['min_height'] = '300';
+          // $ulConfig['min_width'] = '400';
+          // $ulConfig['min_height'] = '300';
 
           // load the file uploading lib and initialize
           $this->load->library('upload', $ulConfig);
@@ -577,15 +577,9 @@ class Post extends CI_Controller
 
           if ($post_put->request_status)
           {
-            echo($post_put);
-            //redirect('/view/' . $post_id);
+            redirect('/view/' . $post_put->post_id);
           } else
           {
-            echo($post_put);
-            if (file_exists($imgdata['image_path']))
-            {
-              unlink($imgdata['image_path']);
-            }
 
             $data['title'] = 'Tribble - Upload';
             $data['meta_description'] = 'A design content sharing and discussion tool.';

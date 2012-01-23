@@ -1,10 +1,11 @@
-<div class="g75">
+<div class="g75 box">
 <h2>Post a new image</h2>
-<p><strong>You can only use jpeg or png image file formats.</strong></p>
-<p><strong>Image size is restricted to 400 x 300 pixels.</strong></p>
-<p class="note">This is simply to keep the storage needs as low as possible and to "encourage" designers to focus on the really important detail rather than whole layouts. Remember, you can allways post another image!</p>
-
-<p>Be kind to others and yourself when choosing your post title, description and tags. Posts entitled <strong>"d381ybd ib3"</strong> won't be easy to find later.</p>
+<hr>
+<p>You can only use jpeg or png files and image size is restricted to 400 x 300 pixels.</p>
+<p>This is simply to keep the storage needs as low as possible and to "encourage" designers to focus on the really important detail rather than posting whole layouts.</p>
+<p>Remember, you can allways post another image!</p>
+<p>Be kind to other, and youself, and give your work a proper title, tags and description.</p>
+<hr>
 <? if(isset($errors)): ?>
 <div class="alert-msg error">
   <?foreach($errors as $key => $message):?>
@@ -17,7 +18,7 @@
   <p><?=$success?></p>
 </div>
 <? endif;?>
-<?=form_fieldset('',array('class'=>'box'))?>
+<?=form_fieldset()?>
 <?=form_open_multipart('/upload')?>
 <div class="e_wrap <?=(form_error('image_file') == TRUE) ? 'error' : ''; ?>">
 <?=form_label('Image','image_file')?>

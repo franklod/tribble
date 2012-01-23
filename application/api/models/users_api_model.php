@@ -1,6 +1,6 @@
 <?php
 
-class User_API_model extends CI_Model {
+class Users_API_model extends CI_Model {
     
     function checkUserLiked($user_id,$post_id){
         $query = $this->db->get_where('like',array('like_user_id'=>$user_id,'like_post_id'=>$post_id));
@@ -12,7 +12,7 @@ class User_API_model extends CI_Model {
     }
     
     function getUserProfile($user_id){      
-      $this->db->select('user_id as id,user_email as email,user_realname as realname,user_bio as bio, user_avatar as avatar');
+      $this->db->select('user_id,user_email,user_realname as user_name,user_bio, user_avatar');
       $this->db->from('user');
       $this->db->where(array('user_id'=>$user_id));      
       $query = $this->db->get();
@@ -44,10 +44,30 @@ class User_API_model extends CI_Model {
     }
     
     function getUserData($uid){
-      $query = $this->db->get_where('users',array('user_id' => $uid));
+      $query = $this->db->get_where('user',array('user_id' => $uid));
       $result = $query->result();
       return $result;
-    }  
+    }
+
+    function checkPasswordForUser($old_pass,$user_id){
+      $query = $this->db->get_where('user',array('user_id'=>$user_id,'user_password'=>$this->encrypt->sha1($this->encrypt->sha1($old_pass))));
+      if($query->num_rows() == 1){
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+    function updateUserPassword($new_pass,$user_id){      
+      $object = array('user_password'=>$this->encrypt->sha1($this->encrypt->sha1($new_pass)));
+      $this->db->where(array('user_id'=>$user_id));
+      $this->db->update('user',$object);
+      if($this->db->affected_rows() == 1){
+        return true;
+      } else {
+        return false;
+      }      
+    }
                             
 }
 

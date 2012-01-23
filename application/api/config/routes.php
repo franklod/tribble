@@ -86,6 +86,10 @@ $route['meta/tags/(:num)'] = 'meta/tags/limit/$1';
 $route['posts/tag/(:any)'] = 'posts/tagged/tag/$1';
 $route['posts/tag/(:any)/(:num)'] = 'posts/tagged/tag/$1/page/$2';
 $route['posts/tag/(:any)/(:num)/(:num)'] = 'posts/tagged/tag/$1/page/$2/limit/$3';
+// GET USER PROFILE
+$route['users/profile/(:num)'] = 'users/profile/id/$1';
+$route['users/check/password'] = 'users/checkOldPassword';
+$route['users/update/password'] = 'users/password';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
