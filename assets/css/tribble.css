@@ -831,3 +831,5 @@ ul.tribbles {
 .inner-wrapper {
   margin-right: 10px;
 }
+
+.box h2 { margin-top: 0; }

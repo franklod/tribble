@@ -46,7 +46,18 @@ class User_model extends CI_Model {
   }
   
   function getUserData($uid){
-    $query = $this->db->get_where('users',array('user_id' => $uid));
+    
+    $this->db->select('
+      id as user_id,
+      realname as user_name,
+      email as user_email,
+      bio as user_bio,
+      avatar as user_avatar
+    ');
+
+    $this->db->from('user');
+    $this->db->where(array('id'=>$uid));
+    $query = $this->db->get();
     $result = $query->result();
     return $result;
   }

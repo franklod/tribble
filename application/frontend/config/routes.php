@@ -75,6 +75,9 @@ $route['logout'] = 'auth/logout';
 $route['logout/(:any)'] = 'auth/logout/$1';
 // TAGS
 $route['tags'] = 'post/tags';
+// USER
+$route['user/profile/edit'] = 'user/edit';
+$route['user/password/edit'] = 'user/password';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

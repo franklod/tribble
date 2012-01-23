@@ -19,9 +19,10 @@ class Users extends REST_Controller
 
   public function __construct()
   {
-    parent::__construct();
-    //$this->output->enable_profiler(TRUE);
-    $this->load->model('User_API_Model', 'mUser');
+    parent::__construct();    
+    $this->load->model('Users_API_Model', 'mUser');
+    $this->load->library('encrypt');
+    $this->output->enable_profiler(TRUE);
   }
 
   public function liked_get()
@@ -30,36 +31,36 @@ class Users extends REST_Controller
     $post_id = $this->get('post');
 
     if (!$user_id || !$post_id)
-      $this->response(array('status' => false, 'message' =>
+      $this->response(array('request_status' => false, 'message' =>
           'Insuficient data provided.'), 404);
 
     $user_like_status = $this->mUser->checkUserLiked($user_id, $post_id);
 
     if ($user_like_status)
     {
-      $this->response(array('status' => true, 'like_status' => true));
+      $this->response(array('request_status' => true, 'like_status' => true));
     } else
     {
-      $this->response(array('status' => true, 'like_status' => false));
+      $this->response(array('request_status' => true, 'like_status' => false));
     }
   }
 
   public function profile_get()
   {
-    $user_id = $this->get('user');
+    $user_id = $this->get('id');
 
     if (!$user_id)
-      $this->response(array('status' => false, 'message' =>
+      $this->response(array('request_status' => false, 'message' =>
           'Insuficient data provided.'), 404);
 
     $profile = $this->mUser->getUserProfile($user_id);
 
     if ($profile)
     {
-      $this->response(array('status' => true, 'user' => $profile));
+      $this->response(array('request_status' => true, 'user' => $profile[0]));
     } else
     {
-      $this->response(array('status' => false, 'message' => 'Unknown user.'));
+      $this->response(array('request_status' => false, 'message' => 'Unknown user.'));
     }
   }
 
@@ -67,18 +68,19 @@ class Users extends REST_Controller
   {
 
     $user_data = array(
-      'user_email' => $this->post('email'),
-      'user_realname' => $this->post('realname'),
-      'user_bio' => $this->post('bio'),
-      'user_avatar' => $this->post('avatar'); );
+      'user_email' => $this->put('email'),
+      'user_realname' => $this->put('realname'),
+      'user_bio' => $this->put('bio'),
+      'user_avatar' => $this->put('avatar')
+    );
 
-    if ($this->mUser->updateProfile($this->post('id'), $user_data))
+    if ($this->mUser->updateProfile($this->put('id'), $user_data))
     {
-      $this->response(array('status' => true, 'message' =>
+      $this->response(array('request_status' => true, 'message' =>
           'User profile successfuly updated.'));
     } else
     {
-      $this->response(array('status' => false, 'message' => 'Couldn\'t update the user profile.'));
+      $this->response(array('request_status' => false, 'message' => 'Couldn\'t update the user profile.'));
     }
 
   }
@@ -118,6 +120,51 @@ class Users extends REST_Controller
       }
 
     
+  }
+
+  public function password_post()
+  {
+    $user_id = $this->post('user_id');
+    $new_pass = $this->post('new_password');
+    $old_pass = $this->post('old_password');
+    
+    if(!$new_pass)
+      $this->response(array('request_status'=>false,'message'=>'The new password was not supplied.'));
+
+    if(!$user_id)
+      $this->response(array('request_status'=>false,'message'=>'The user_id was not supplied.'));
+
+    if(!$old_pass)
+      $this->response(array('request_status'=>false,'message'=>'The old password was not supplied.')); 
+    
+    if($old_pass == $new_pass)
+      $this->response(array('request_status'=>false,'message'=>'The passwords are identical. No change was made.')); 
+
+    $change_pass = $this->mUser->updateUserPassword($new_pass,$user_id);
+
+    if(!$change_pass)
+      $this->response(array('request_status'=>false,'message'=>'We\'re sorry but we couldn\'t change your password. Please try again later.'));
+
+    $this->response(array('request_status'=>true,'message'=>'Your password was changed.'));
+
+  }
+
+  public function checkOldPassword_get()
+  {
+    $user_id = $this->get('user_id');
+    $old_pass = $this->get('old_password');
+
+    if(!$old_pass)
+      $this->response(array('request_status'=>false,'message'=>'The old password was not supplied.'));
+    if(!$user_id)
+      $this->response(array('request_status'=>false,'message'=>'The user_id was not supplied.'));
+    
+    $check_old_pass = $this->mUser->checkPasswordForUser($old_pass,$user_id);
+
+    if(!$check_old_pass)
+      $this->response(array('request_status'=>false,'message'=>'The old password was wrong.'));
+    
+    $this->response(array('request_status'=>true,'message'=>'Old password checks out.'));    
   }
 
 }

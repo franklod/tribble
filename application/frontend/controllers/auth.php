@@ -59,7 +59,7 @@ class Auth extends CI_Controller
     public function logout($lb = NULL)
 	{    
     $sid = $this->session->userdata('sid');
-    $delete = $this->rest->delete('auth/session/',array('id'=>$sid));    
+    $delete = $this->rest->delete('auth/session/',array('id'=>$sid));   
     $this->session->sess_destroy();
     $redirectUrl = site_url().string_to_uri($lb);    
     redirect($redirectUrl);

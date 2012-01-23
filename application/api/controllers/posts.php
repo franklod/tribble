@@ -33,12 +33,28 @@ class Posts extends REST_Controller
   {
     $this->load->model('Posts_API_model', 'mPosts');
     $posts_count = $this->mPosts->countPosts();
+
     if (!$posts_count)
     {
       $this->response(array('request_status' => false, 'message' => 'Could not get the post count.'));
     } else
     {
       $this->response(array('request_status' => true, 'post_count' => $posts_count));
+    }
+  }
+
+  public function countPosts()
+  {
+    $this->load->model('Posts_API_model', 'mPosts');
+    $count = $this->mPosts->countPosts();
+    
+    if (!$count)
+    {
+      return false;
+    } else
+    {
+      return $count;
+      echo "fuck me!";
     }
   }
 
@@ -265,9 +281,7 @@ class Posts extends REST_Controller
       'post_text' => $post_text,
       'post_user_id' => $user_id);
 
-    $insert_post = $this->mPosts->insertNewPost($post_data, $post_tags, $image_data);
-
-    $this->response(array('request_status' => false, 'post_id' => $insert_post));
+    $insert_post = $this->mPosts->insertNewPost($post_data, $post_tags, $image_data);        
 
     if ($insert_post == false)
     {
@@ -275,6 +289,16 @@ class Posts extends REST_Controller
     } else
     {
       $this->response(array('request_status' => true, 'post_id' => $insert_post));
+
+      // CALCULATE THE NUMBER OF POSSIBLE CACHE PAGES FOR THE POST LISTINGS
+      $cache_pages = ceil( $this->countPosts() / 600);
+
+      // KILL THE LISTS CACHE
+      for($i=1;$i<=$cache_pages;$i++){
+        @$this->cache->memcached->delete('list/new'.$i);
+        @$this->cache->memcached->delete('buzzing/new'.$i);
+        @$this->cache->memcached->delete('loved/new'.$i);
+      }
     }
   }
 
