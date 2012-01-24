@@ -30,9 +30,11 @@ class Users extends REST_Controller
     $user_id = $this->get('user');
     $post_id = $this->get('post');
 
-    if (!$user_id || !$post_id)
-      $this->response(array('request_status' => false, 'message' =>
-          'Insuficient data provided.'), 404);
+    if (!$user_id)
+      $this->response(array('request_status' => false, 'message' => lang('E_NO_USERID')), 404);
+    
+    if (!$post_id)
+      $this->response(array('request_status' => false, 'message' => land('E_NO_POST_ID')), 404);
 
     $user_like_status = $this->mUser->checkUserLiked($user_id, $post_id);
 
@@ -50,17 +52,19 @@ class Users extends REST_Controller
     $user_id = $this->get('id');
 
     if (!$user_id)
-      $this->response(array('request_status' => false, 'message' =>
-          'Insuficient data provided.'), 404);
+      $this->response(array('request_status' => false, 'message' => lang('E_NO_USERID')), 404);
 
-    $profile = $this->mUser->getUserProfile($user_id);
+    // load the memcached driver
+    $this->load->driver('cache');
+    // define the cache key
+    $cachekey = sha1('profile/id/'.$user_id);
 
-    if ($profile)
-    {
+    if(!$this->cache->memcached->get($cachekey)){
+      $profile = $this->mUser->getUserProfile($user_id);
+      $this->cache->memcached->save($cachekey, $profile[0], 10 * 60);
       $this->response(array('request_status' => true, 'user' => $profile[0]));
-    } else
-    {
-      $this->response(array('request_status' => false, 'message' => 'Unknown user.'));
+    } else {
+      $this->response(array('request_status' => true, 'user' => $this->cache->memcached->get($cachekey)));
     }
   }
 
@@ -68,21 +72,31 @@ class Users extends REST_Controller
   {
 
     $user_data = array(
-      'user_email' => $this->put('email'),
-      'user_realname' => $this->put('realname'),
-      'user_bio' => $this->put('bio'),
-      'user_avatar' => $this->put('avatar')
+      'user_email' => $this->put('user_email'),
+      'user_realname' => $this->put('user_realname'),
+      'user_bio' => $this->put('user_bio'),
+      'user_avatar' => $this->put('user_avatar')
     );
 
-    if ($this->mUser->updateProfile($this->put('id'), $user_data))
-    {
-      $this->response(array('request_status' => true, 'message' =>
-          'User profile successfuly updated.'));
-    } else
-    {
-      $this->response(array('request_status' => false, 'message' => 'Couldn\'t update the user profile.'));
-    }
+    // do the database update
+    $update = $this->mUser->updateProfile($this->put('user_id'), $user_data);
+    // if update fails
+    if ($update === false)
+      $this->response(array('request_status' => false, 'message' => lang('F_USER_PROFILE_UPDATE')));
+    // if no change was made
+    if ($update == 0)
+      $this->response(array('request_status' => false, 'message' => lang('NC_USER_PROFILE')));
 
+    // load the memcached driver
+    $this->load->driver('cache');
+    // define the cache key
+    $cachekey = sha1('profile/id/'.$this->put('user_id'));
+    // check if the user's profile is cached and delete the object if present
+    if($this->cache->memcached->get($cachekey))
+      $this->cache->memcached->delete($cachekey);
+
+    // EVERYTHING WEN'T WELL.
+    $this->response(array('request_status' => true, 'message' => lang('S_USER_PROFILE_UPDATE')));      
   }
 
   public function signup_put()
@@ -129,24 +143,72 @@ class Users extends REST_Controller
     $old_pass = $this->post('old_password');
     
     if(!$new_pass)
-      $this->response(array('request_status'=>false,'message'=>'The new password was not supplied.'));
+      $this->response(array('request_status'=>false,'message'=>lang('E_NO_NEW_PASSWORD')));
 
     if(!$user_id)
-      $this->response(array('request_status'=>false,'message'=>'The user_id was not supplied.'));
+      $this->response(array('request_status'=>false,'message'=>lang('E_NO_USERID')));
 
     if(!$old_pass)
-      $this->response(array('request_status'=>false,'message'=>'The old password was not supplied.')); 
+      $this->response(array('request_status'=>false,'message'=>lang('E_NO_OLD_PASSWORD'))); 
     
     if($old_pass == $new_pass)
-      $this->response(array('request_status'=>false,'message'=>'The passwords are identical. No change was made.')); 
+      $this->response(array('request_status'=>false,'message'=>lang('E_SAME_PASS')));
+      
+    if(!$this->checkOldPassword($old_pass,$user_id))
+      $this->response(array('request_status'=>false,'message'=>lang('INV_OLD_PASSWORD'))); 
 
     $change_pass = $this->mUser->updateUserPassword($new_pass,$user_id);
 
     if(!$change_pass)
-      $this->response(array('request_status'=>false,'message'=>'We\'re sorry but we couldn\'t change your password. Please try again later.'));
+      $this->response(array('request_status'=>false,'message'=>lang('F_PASSWORD_CHANGE')));
 
-    $this->response(array('request_status'=>true,'message'=>'Your password was changed.'));
+    $this->response(array('request_status'=>true,'message'=>lang('S_PASSWORD_CHANGE')));
 
+  }
+
+  public function password_get()
+  {
+    $user_id = $this->get('user_id');
+    $new_pass = $this->get('new_password');
+    $old_pass = $this->get('old_password');
+    
+    if(!$new_pass)
+      $this->response(array('request_status'=>false,'message'=>lang('E_NO_NEW_PASSWORD')));
+
+    if(!$new_pass)
+      $this->response(array('request_status'=>false,'message'=>lang('E_NO_NEW_PASSWORD')));
+
+    if(!$user_id)
+      $this->response(array('request_status'=>false,'message'=>lang('E_NO_USERID')));
+
+    if(!$old_pass)
+      $this->response(array('request_status'=>false,'message'=>lang('E_NO_OLD_PASSWORD'))); 
+    
+    if($old_pass == $new_pass)
+      $this->response(array('request_status'=>false,'message'=>lang('NC_SAME_PASS')));
+      
+    if(!$this->checkOldPassword($old_pass,$user_id))
+      $this->response(array('request_status'=>false,'message'=>lang('INV_OLD_PASSWORD'))); 
+       
+
+    $change_pass = $this->mUser->updateUserPassword($new_pass,$user_id);
+
+    if(!$change_pass)
+      $this->response(array('request_status'=>false,'message'=>lang('F_PASSWORD_CHANGE')));
+
+    $this->response(array('request_status'=>true,'message'=>lanf('S_PASSWORD_CHANGE')));
+
+  }
+
+  protected function checkOldPassword($old_pass,$user_id)
+  {
+    
+    $check_old_pass = $this->mUser->checkPasswordForUser($old_pass,$user_id);
+
+    if(!$check_old_pass)
+      return false;
+    
+    return true;
   }
 
   public function checkOldPassword_get()
@@ -155,16 +217,16 @@ class Users extends REST_Controller
     $old_pass = $this->get('old_password');
 
     if(!$old_pass)
-      $this->response(array('request_status'=>false,'message'=>'The old password was not supplied.'));
+      $this->response(array('request_status'=>false,'message'=>lang('E_NO_OLD_PASSWORD')));
     if(!$user_id)
-      $this->response(array('request_status'=>false,'message'=>'The user_id was not supplied.'));
+      $this->response(array('request_status'=>false,'message'=>'E_NO_USERID'));
     
     $check_old_pass = $this->mUser->checkPasswordForUser($old_pass,$user_id);
 
     if(!$check_old_pass)
-      $this->response(array('request_status'=>false,'message'=>'The old password was wrong.'));
+      $this->response(array('request_status'=>false,'message'=>lang('INV_OLD_PASSWORD')));
     
-    $this->response(array('request_status'=>true,'message'=>'Old password checks out.'));    
+    $this->response(array('request_status'=>true,'message'=>'S_OLD_PASSWORD_VALIDATION'));    
   }
 
 }

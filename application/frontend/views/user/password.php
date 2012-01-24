@@ -28,6 +28,7 @@
     <?=(form_error('old_password') == TRUE) ? form_error('retype_new_password') : ''; ?>
   </div>    
   <div class="e_wrap">
+    <a href="<?=site_url('/user/profile')?>" class="defaultBtn btn_info">Cancel</a>
     <?=form_submit(array('name'=>'save_profile','id'=>'save_profile','value'=>'Save changes','class'=>'btn_success'))?>
   </div>
   <?=form_close()?>

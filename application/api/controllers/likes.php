@@ -25,27 +25,27 @@ class Likes extends REST_Controller
 
   }
 
-  public function is_liked_get()
+  public function exists_get()
   {
 
     // load the memcached driver
     $this->load->driver('cache');
     // load the posts model
     $this->load->model('Posts_API_model', 'mPosts');
-    $this->load->model('User_API_model', 'mUsers');
+    $this->load->model('Users_API_model', 'mUsers');
 
     // get the uri parameters
     $post_id = $this->get('post');
     $user_id = $this->get('user');
 
     if (!$post_id)
-      $this->response(array('status' => false, 'message' => 'No post id was supplied.'));
+      $this->response(array('status' => false, 'message' => lang('E_NO_POST_ID')));
     if (!$this->mPosts->checkIfPostExists($post_id))
-      $this->response(array('status' => false, 'message' => 'Unknown post.'));
+      $this->response(array('status' => false, 'message' => lang('INV_POST')));
     if (!$user_id)
-      $this->response(array('status' => false, 'message' => 'No user id was supplied.'));
+      $this->response(array('status' => false, 'message' => lang('E_NO_USER_ID')));
     if (!$this->mUsers->checkIfUserExists($user_id))
-      $this->response(array('status' => false, 'message' => 'Unknown user.'));
+      $this->response(array('status' => false, 'message' => lang('INV_USER')));
 
     $like_status = $this->mUsers->checkUserLiked($user_id, $post_id);
 
@@ -68,23 +68,23 @@ class Likes extends REST_Controller
     $this->load->driver('cache');
     // load the posts model
     $this->load->model('Posts_API_model', 'mPosts');
-    $this->load->model('User_API_model', 'mUsers');
+    $this->load->model('Users_API_model', 'mUsers');
     $this->load->model('Likes_API_model', 'mLikes');
     
     if (!$post_id)
-      $this->response(array('status' => false, 'message' => 'No post id was supplied.'));
+      $this->response(array('status' => false, 'message' => lang('E_NO_POST_ID')));
     if (!$this->mPosts->checkIfPostExists($post_id))
-      $this->response(array('status' => false, 'message' => 'Unknown post.'));
+      $this->response(array('status' => false, 'message' => lang('INV_POST')));
     if (!$user_id)
-      $this->response(array('status' => false, 'message' => 'No user id was supplied.'));
+      $this->response(array('status' => false, 'message' => lang('E_NO_USER_ID')));
     if (!$this->mUsers->checkIfUserExists($user_id))
-      $this->response(array('status' => false, 'message' => 'Unknown user.'));
+      $this->response(array('status' => false, 'message' => lang('INV_USER')));
       
     $like_insert = $this->mLikes->add_like($post_id,$user_id);
     
     if ($like_insert == false)
     {
-      $this->response(array('status' => false, 'message' => 'Could not add a like to the post.'));
+      $this->response(array('status' => false, 'message' => lang('F_ADD_LIKE')));
     } else
     {
 
@@ -97,7 +97,7 @@ class Likes extends REST_Controller
       {
         $this->cache->memcached->delete($key);
       }
-      $this->response(array('status' => true, 'message' => 'A like was added to the post.'));
+      $this->response(array('status' => true, 'message' => lang('S_ADD_LIKE')));
     }
     
         
@@ -112,23 +112,23 @@ class Likes extends REST_Controller
     $this->load->driver('cache');
     // load the posts model
     $this->load->model('Posts_API_model', 'mPosts');
-    $this->load->model('User_API_model', 'mUsers');
+    $this->load->model('Users_API_model', 'mUsers');
     $this->load->model('Likes_API_model', 'mLikes');
     
     if (!$post_id)
-      $this->response(array('status' => false, 'message' => 'No post id was supplied.'));
+      $this->response(array('status' => false, 'message' => lang('E_NO_POST_ID')));
     if (!$this->mPosts->checkIfPostExists($post_id))
-      $this->response(array('status' => false, 'message' => 'Unknown post.'));
+      $this->response(array('status' => false, 'message' => lang('INV_POST')));
     if (!$user_id)
-      $this->response(array('status' => false, 'message' => 'No user id was supplied.'));
+      $this->response(array('status' => false, 'message' => lang('E_NO_USER_ID')));
     if (!$this->mUsers->checkIfUserExists($user_id))
-      $this->response(array('status' => false, 'message' => 'Unknown user.'));
+      $this->response(array('status' => false, 'message' => lang('INV_USER')));
       
     $like_delete = $this->mLikes->remove_like($post_id,$user_id);
     
     if ($like_delete == false)
     {
-      $this->response(array('status' => false, 'message' => 'Could not remove like from  post.'));
+      $this->response(array('status' => false, 'message' => lang('F_DELETE_LIKE')));
     } else
     {
 
@@ -141,7 +141,7 @@ class Likes extends REST_Controller
       {
         $this->cache->memcached->delete($key);
       }
-      $this->response(array('status' => true, 'message' => 'Like was removed from post.'));
+      $this->response(array('status' => true, 'message' => lang('S_DELETE_LIKE')));
     }
         
   }

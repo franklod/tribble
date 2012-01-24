@@ -18,9 +18,9 @@ class Auth extends REST_Controller
     $password = $this->post('password');
 
     if (!$email)
-      $this->response(array('resquest_status' => false, 'message' => 'No email was suplied.'));
+      $this->response(array('resquest_status' => false, 'message' => lang('E_NO_EMAIL')));
     if (!$password)
-      $this->response(array('resquest_status' => false, 'message' => 'No password was suplied.'));
+      $this->response(array('resquest_status' => false, 'message' => lang('E_NO_PASSWORD')));
               
     // load the auth model
     $this->load->model('Auth_api_model', 'mAuth');
@@ -29,9 +29,9 @@ class Auth extends REST_Controller
     
     $login = $this->mAuth->checkUserLogin($email,$password);
     if(!$login)
-      $this->response(array('resquest_status' => false, 'message' => 'Invalid user/password combination.'));
+      $this->response(array('request_status' => false, 'message' => $this->lang->line('INV_LOGIN')));
 
-    $this->response(array('resquest_status' => true, 'user' => $login));
+    $this->response(array('request_status' => true, 'user' => $login));
   }
 
   public function logout($lb = null)
@@ -66,7 +66,7 @@ class Auth extends REST_Controller
     // load the memcached driver
     $this->load->driver('cache');
     if(!$this->cache->memcached->get($id)){
-      $this->response(array('request_status'=>false,'message'=>'There\'s no such session.'));
+      $this->response(array('request_status'=>false,'message'=>$this->lang->line('E_SESSION_UNKNOW')));
     } else {
       $metadata = $this->cache->memcached->get_metadata($id);   
       $TTL = (int)floor(($metadata['expire'] - time()) / 60);
@@ -81,10 +81,10 @@ class Auth extends REST_Controller
     // load the memcached driver
     $this->load->driver('cache');
     if(!$this->cache->memcached->get($id)){      
-      $this->response(array('request_status'=>false,'message'=>'Session does not exist.'));
+      $this->response(array('request_status'=>false,'message'=>$this->lang->line('E_SESSION_UNKNOW')));
     } else {
       $this->cache->memcached->delete($id);
-      $this->response(array('request_status'=>true,'message'=>'Session was destroyed'));
+      $this->response(array('request_status'=>true,'message'=>$this->lang->line('S_SESSION_KILLED')));
     }   
   }
 

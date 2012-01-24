@@ -23,15 +23,10 @@ class Users_API_model extends CI_Model {
       }
     }
     
-    function updateProfile($user_id,$user_data){
-      $this->db->update($user_data);
+    function updateProfile($user_id,$user_data){      
       $this->db->where(array('user_id'=>$user_id));
-      $query = $this->db->get();
-      if($query->affected_rows() == 1){
-        return true;        
-      } else {
-        return false;
-      }
+      $this->db->update('user',$user_data);
+      return $this->db->affected_rows();
     }
     
     function checkIfUserExists($user_id){

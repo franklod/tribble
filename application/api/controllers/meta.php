@@ -86,8 +86,7 @@ class Meta extends REST_Controller
       } else
       {
         // we got nothing to show, output error
-        $this->response(array('request_status' => false, 'message' =>
-            'Fatal error: Could not get data either from cache or database.'), 404);
+        $this->response(array('request_status' => false, 'message' => lang('F_DATA_READ')), 404);
       }
     } else
     {
@@ -162,8 +161,7 @@ class Meta extends REST_Controller
       } else
       {
         // we got nothing to show, output error
-        $this->response(array('status' => false, 'message' =>
-            'Fatal error: Could not get data either from cache or database.'), 404);
+        $this->response(array('status' => false, 'message' => lang('F_DATA_READ')), 404);
       }
     } else
     {

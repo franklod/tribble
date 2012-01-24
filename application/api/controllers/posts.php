@@ -36,7 +36,7 @@ class Posts extends REST_Controller
 
     if (!$posts_count)
     {
-      $this->response(array('request_status' => false, 'message' => 'Could not get the post count.'));
+      $this->response(array('request_status' => false, 'message' => lang('F_POST_COUNT')));
     } else
     {
       $this->response(array('request_status' => true, 'post_count' => $posts_count));
@@ -94,7 +94,7 @@ class Posts extends REST_Controller
         case 'loved':
           break;
         default:
-          $this->response(array('status' => false, 'message' => 'An invalid post list type was requested. Supported types are: new, buzzing, loved. '));
+          $this->response(array('status' => false, 'message' =>lang('INV_POST_LIST_TYPE')));
       }
 
       // get the data from the database
@@ -111,8 +111,9 @@ class Posts extends REST_Controller
         $this->response($object);
       } else
       {
-        // we got nothing to show, output error
-        $this->response(array('status' => false, 'message' => 'Fatal error: Could not get data either from cache or database.'), 404);
+        // we got nothing to show, log and output error
+        log_message(1,'API call error: posts/list/' .'/'. $type .'/'. $page .'/'. $limit);
+        $this->response(array('status' => false, 'message' => lang('E_DATA_READ'), 404));
       }
     } else
     {
@@ -128,7 +129,7 @@ class Posts extends REST_Controller
     $post_id = $this->get('id');
 
     if (!$post_id)
-      $this->response(array('status' => false, 'message' => 'No post id was supplied'));
+      $this->response(array('status' => false, 'message' => lang('E_NO_POST_ID')));
 
     // load the memcached driver
     $this->load->driver('cache');
@@ -144,7 +145,8 @@ class Posts extends REST_Controller
       // get the data from the db, cache and echo the json string
       if (!(bool)$post = $this->mPosts->getPostById($post_id))
       {
-        $this->response(array('status' => false, 'message' => 'Couldn\'t get the post data.'));
+        log_message(1,'API call error: posts/detail/'. $post_id);
+        $this->response(array('status' => false, 'message' => lang('E_DATA_READ'), 404));
       } else
       {
         $replies = $this->mPosts->getRepliesByPostId($post_id);
@@ -169,7 +171,7 @@ class Posts extends REST_Controller
     $limit = $this->get('limit');
 
     if (!$tag)
-      $this->response(array('status' => false, 'message' => 'No search text was supplied'));
+      $this->response(array('status' => false, 'message' => lang('E_NO_SEARCH_TAG')));
 
     if (!$page)
       $page = 1;
@@ -214,10 +216,10 @@ class Posts extends REST_Controller
     $limit = $this->get('limit');
 
     if (!$string)
-      $this->response(array('request_status' => false, 'message' => 'No search text was supplied'));
+      $this->response(array('request_status' => false, 'message' => lang('E_NO_SEARCH_TEXT')));
 
     if (strlen($string) < 3)
-      $this->response(array('request_status' => false, 'message' => 'Search text must be longer than 3 characters'));
+      $this->response(array('request_status' => false, 'message' => lang('INV_SEARCH_TEXT')));
 
     if (!$page)
       $page = 1;
@@ -264,17 +266,17 @@ class Posts extends REST_Controller
     $user_id = $this->put('user_id');
 
     if (!$image_data)
-      $this->response(array('response_status' => false, 'message' => 'No image data was suplied.'));
+      $this->response(array('response_status' => false, 'message' => lang('E_NO_POST_IMAGE')));
     if (!$post_title)
-      $this->response(array('response_status' => false, 'message' => 'No post title was suplied.'));
+      $this->response(array('response_status' => false, 'message' => lang('E_NO_POST_TITLE')));
     if (!$post_text)
-      $this->response(array('response_status' => false, 'message' => 'No post text was suplied.'));
+      $this->response(array('response_status' => false, 'message' => lang('E_NO_POST_TEXT')));
     if (!$post_tags)
-      $this->response(array('response_status' => false, 'message' => 'No post tags were suplied.'));
+      $this->response(array('response_status' => false, 'message' => lang('E_NO_POST_TAGS')));
     if (!$user_id)
-      $this->response(array('request_status' => false, 'message' => 'No user id was supplied.'));
+      $this->response(array('request_status' => false, 'message' => lang('E_NO_USER_ID')));
     if (!$this->mUsers->checkIfUserExists($user_id))
-      $this->response(array('request_status' => false, 'message' => 'Unknown user.'));
+      $this->response(array('request_status' => false, 'message' => lang('INV_USER')));
 
     $post_data = array(
       'post_title' => $post_title,
@@ -285,7 +287,7 @@ class Posts extends REST_Controller
 
     if ($insert_post == false)
     {
-      $this->response(array('request_status' => false, 'message' => 'Could create the new post.'), 404);
+      $this->response(array('request_status' => false, 'message' => lang('F_POST_CREATE')), 404);
     } else
     {
       $this->response(array('request_status' => true, 'post_id' => $insert_post));

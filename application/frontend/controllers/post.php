@@ -455,7 +455,7 @@ class Post extends CI_Controller
         $data['user']->name = $session->user->user_name;
         $data['user']->id = $session->user->user_id;
 
-        $LIKE_Data = $this->rest->get('likes/is_liked/post/' . $postId . '/user/' . $session->user->user_id);
+        $LIKE_Data = $this->rest->get('likes/exists/post/' . $postId . '/user/' . $session->user->user_id);
 
         if ($LIKE_Data->request_status)
         {
@@ -580,6 +580,8 @@ class Post extends CI_Controller
             redirect('/view/' . $post_put->post_id);
           } else
           {
+
+            
 
             $data['title'] = 'Tribble - Upload';
             $data['meta_description'] = 'A design content sharing and discussion tool.';
