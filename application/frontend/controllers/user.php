@@ -120,7 +120,7 @@ class User extends CI_Controller
                     'user_avatar' => null
                 );
 
-                if(!$update_result = $this->rest->put('users/profile',$user_profile))
+                if(!$update_result = $this->rest->put('users/profile/update',$user_profile))
                     show_error(lang('F_API_CONNECT'),404);
                 
                 if(!$update_result->request_status){
@@ -132,7 +132,7 @@ class User extends CI_Controller
                     $this->load->view('common/page_end.php', $data);
                 }                
                    
-                // redirect(site_url('/user/profile'));    
+                redirect(site_url('/user/profile'));    
             }                    
 
           } else
