@@ -35,7 +35,7 @@ $config['enable_emulate_request'] = TRUE;
 |	E.g: My Secret REST API
 |
 */
-$config['rest_realm'] = 'Tribble API';
+$config['rest_realm'] = 'API';
 
 /*
 |--------------------------------------------------------------------------
@@ -70,7 +70,22 @@ $config['rest_auth'] = false;
 */
 // $config['auth_override_class_method']['deals']['view'] = 'none';
 // $config['auth_override_class_method']['deals']['insert'] = 'digest';
-$config['auth_override_class_method']['users']['liked'] = 'none';
+// USERS
+$config['auth_override_class_method']['users']['updateprofile'] = 'whitelist';
+$config['auth_override_class_method']['users']['password'] = 'whitelist';
+$config['auth_override_class_method']['users']['checkOldPassword'] = 'whitelist';
+$config['auth_override_class_method']['users']['signup'] = 'whitelist';
+// REPLIES
+$config['auth_override_class_method']['replies']['comment'] = 'whitelist';
+// POSTS
+$config['auth_override_class_method']['posts']['post'] = 'whitelist';
+// LIKES
+$config['auth_override_class_method']['likes']['exists'] = 'whitelist';
+$config['auth_override_class_method']['likes']['like'] = 'whitelist';
+// SESSION
+$config['auth_override_class_method']['auth']['login'] = 'whitelist';
+$config['auth_override_class_method']['auth']['logout'] = 'whitelist';
+$config['auth_override_class_method']['auth']['session'] = 'whitelist';
 
 /*
 |--------------------------------------------------------------------------

@@ -25,27 +25,27 @@ class Users extends REST_Controller
     $this->output->enable_profiler(TRUE);
   }
 
-  public function liked_get()
-  {
-    $user_id = $this->get('user');
-    $post_id = $this->get('post');
+  // public function liked_get()
+  // {
+  //   $user_id = $this->get('user');
+  //   $post_id = $this->get('post');
 
-    if (!$user_id)
-      $this->response(array('request_status' => false, 'message' => lang('E_NO_USERID')), 404);
+  //   if (!$user_id)
+  //     $this->response(array('request_status' => false, 'message' => lang('E_NO_USERID')), 404);
     
-    if (!$post_id)
-      $this->response(array('request_status' => false, 'message' => land('E_NO_POST_ID')), 404);
+  //   if (!$post_id)
+  //     $this->response(array('request_status' => false, 'message' => land('E_NO_POST_ID')), 404);
 
-    $user_like_status = $this->mUser->checkUserLiked($user_id, $post_id);
+  //   $user_like_status = $this->mUser->checkUserLiked($user_id, $post_id);
 
-    if ($user_like_status)
-    {
-      $this->response(array('request_status' => true, 'like_status' => true));
-    } else
-    {
-      $this->response(array('request_status' => true, 'like_status' => false));
-    }
-  }
+  //   if ($user_like_status)
+  //   {
+  //     $this->response(array('request_status' => true, 'like_status' => true));
+  //   } else
+  //   {
+  //     $this->response(array('request_status' => true, 'like_status' => false));
+  //   }
+  // }
 
   public function profile_get()
   {
@@ -68,7 +68,7 @@ class Users extends REST_Controller
     }
   }
 
-  public function profile_put()
+  public function updateprofile_put()
   {
 
     $user_data = array(
@@ -131,9 +131,7 @@ class Users extends REST_Controller
           }
 
         }
-      }
-
-    
+      }    
   }
 
   public function password_post()
