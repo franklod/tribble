@@ -1,4 +1,6 @@
-<div class="g75 login">
+<div class="g75 box">
+  <h2>Update you user profile</h2>
+  <hr>
   <? if(isset($error)): ?>
   <div class="alert-msg error">
     <p><?=$error?></p>
@@ -8,10 +10,9 @@
   <div class="alert-msg success">
     <p><?=$success?></p>
   </div>
-  <? endif;?>
-  <h2>Update you user profile</h2>
-	<?=form_open('user/dosignup',array('class'=>'g75'))?>
-  <div class="e_wrap <?=(form_error('email') == TRUE) ? 'error' : ''; ?>">
+  <? endif;?>  
+	<?=form_open('user/profile/edit',array('class'=>'g75'))?>
+  <div class="e_wrap <?=(form_error('user_email') == TRUE) ? 'error' : ''; ?>">
     <?=form_label('Email','email')?>
     <?=form_input(array('name'=>'email','id'=>'email','placeholder'=>'Your email','value'=>$profile->user_email))?>
     <?=(form_error('email') == TRUE) ? form_error('email') : ''; ?>
@@ -27,6 +28,7 @@
     <?=(form_error('bio') == TRUE) ? form_error('bio') : ''; ?>
   </div>
   <div class="e_wrap">
+    <a href="<?=site_url('/user/profile')?>" class="defaultBtn btn_info">Cancel</a>
     <?=form_submit(array('name'=>'save_profile','id'=>'save_profile','value'=>'Save changes','class'=>'btn_success'))?>
   </div>
   <?=form_close()?>

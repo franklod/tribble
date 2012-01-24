@@ -79,6 +79,18 @@
         'label' => 'Password',
         'rules' => 'required'
       ) 
+    ),
+    'user_profile' => array(
+      array(
+        'field' => 'email',
+        'label' => 'Email',
+        'rules' => 'required'
+      ),
+      array(
+        'field' => 'realname',
+        'label' => 'Name',
+        'rules' => 'required'
+      )
     )
   );
 ?>

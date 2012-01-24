@@ -34,8 +34,8 @@ class User extends CI_Controller
             $data['user']->id = $session->user->user_id;
           } else
           {
-            redirect(site_url('/'));
             $this->session->sess_destroy();
+            redirect(site_url('/'));            
           }
         }
 
@@ -51,9 +51,9 @@ class User extends CI_Controller
             $data['user']->name = $session->user->user_name;
             $data['user']->id = $session->user->user_id;
           } else
-          {
-            redirect(site_url('/'));
+          {            
             $this->session->sess_destroy();
+            redirect(site_url('/'));            
           }
         }
         
@@ -62,7 +62,7 @@ class User extends CI_Controller
         $data['meta_keywords'] = 'Tribble';        
 
         // GET THE USER PROFILE DATA FROM THE API
-        $user_data = $this->rest->get('users/profile/'.$session->user->user_id);
+        $user_data = $this->rest->get('users/profile/id/'.$session->user->user_id);
         
         // CHECK IF WE GOT THE DATA 
         if(!$user_data->request_status)
@@ -86,33 +86,61 @@ class User extends CI_Controller
           {
             $data['user']->name = $session->user->user_name;
             $data['user']->id = $session->user->user_id;
+
+            $data['title'] = 'Tribble - Signup';
+            $data['meta_description'] = 'A design content sharing and discussion tool.';
+            $data['meta_keywords'] = 'Tribble';        
+
+            // GET THE USER PROFILE DATA FROM THE API
+            $user_data = $this->rest->get('users/profile/id/'.$session->user->user_id);            
+
+            // CHECK IF WE GOT THE DATA 
+            if(!$user_data->request_status)
+                show_error($user_data->message,404);
+            
+            // PREPARE TO SHOW THE EDIT PROFILE FORM
+            $data['profile'] = $user_data->user;
+
+            $this->form_validation->set_error_delimiters('<p class="error">', '</p>');
+
+            if($this->form_validation->run('user_profile') == false){        
+                    
+                //form has errors : show page and errors
+                $this->load->view('common/page_top.php', $data);
+                $this->load->view('user/edit.php', $data);
+                $this->load->view('common/page_end.php', $data);
+
+            } else {
+
+                $user_profile = array(
+                    'user_id' => $session->user->user_id,
+                    'user_realname' => $this->input->post('realname'),
+                    'user_email' => $this->input->post('email'),
+                    'user_bio' => $this->input->post('bio'),
+                    'user_avatar' => null
+                );
+
+                if(!$update_result = $this->rest->put('users/profile',$user_profile))
+                    show_error(lang('F_API_CONNECT'),404);
+                
+                if(!$update_result->request_status){
+                    
+                    $data['error'] = $update_result->message;
+
+                    $this->load->view('common/page_top.php', $data);
+                    $this->load->view('user/edit.php', $data);
+                    $this->load->view('common/page_end.php', $data);
+                }                
+                   
+                // redirect(site_url('/user/profile'));    
+            }                    
+
           } else
           {
-            redirect(site_url('/'));
             $this->session->sess_destroy();
+            redirect(site_url('/'));            
           }
-        }
-        
-        $data['title'] = 'Tribble - Signup';
-        $data['meta_description'] = 'A design content sharing and discussion tool.';
-        $data['meta_keywords'] = 'Tribble';        
-
-        // GET THE USER PROFILE DATA FROM THE API
-        $user_data = $this->rest->get('users/profile/'.$session->user->user_id);
-        
-        // CHECK IF WE GOT THE DATA 
-        if(!$user_data->request_status)
-            // show_error("Couldn't get your profile info.",404);
-            var_dump($session);
-            exit();
-        
-        // PREPARE TO SHOW THE EDIT PROFILE FORM
-        $data['profile'] = $user_data->user;
-        
-        $this->load->view('common/page_top.php', $data);
-        $this->load->view('user/edit.php', $data);
-        $this->load->view('common/page_end.php', $data);
-            
+        }                    
     }
 
     public function password()
@@ -193,8 +221,8 @@ class User extends CI_Controller
 
           } else
           {
-            redirect(site_url('/'));
             $this->session->sess_destroy();
+            redirect(site_url('/'));            
           }
         }
             
