@@ -36,7 +36,7 @@ class Replies extends REST_Controller
     // load the posts model
     $this->load->model('Posts_API_model', 'mPosts');
     // load the user model
-    $this->load->model('User_API_model', 'mUser');
+    $this->load->model('Users_API_model', 'mUser');
 
     if (!$user_id)
       $this->response(array('status' => false, 'message' => lang('E_NO_USER_ID')));
@@ -74,7 +74,7 @@ class Replies extends REST_Controller
     // load the posts model
     $this->load->model('Posts_API_model', 'mPosts');
     // load the user model
-    $this->load->model('User_API_model', 'mUsers');
+    $this->load->model('Users_API_model', 'mUsers');
 
     $comment_id = $this->delete('comment_id');
     $post_id = $this->delete('post_id');

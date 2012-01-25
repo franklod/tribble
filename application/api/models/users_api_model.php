@@ -10,6 +10,28 @@ class Users_API_model extends CI_Model {
             return true;
         }
     }
+
+    function getUserList(){
+      $this->db->select('
+        tr_user.user_realname AS user_name,
+        tr_user.user_id,
+        tr_user.user_avatar,
+        COUNT(tr_post.post_id) AS post_count
+      ');
+      $this->db->from('user');
+      $this->db->join('post','tr_user.user_id = tr_post.post_user_id','inner');
+      $this->db->group_by('
+        tr_user.user_realname,
+        tr_user.user_id,
+        tr_user.user_avatar
+      ');
+      $query = $this->db->get();
+      if($query->num_rows() > 0){
+        return $query->result();
+      } else {
+        return false;
+      }
+    }
     
     function getUserProfile($user_id){      
       $this->db->select('user_id,user_email,user_realname as user_name,user_bio, user_avatar');

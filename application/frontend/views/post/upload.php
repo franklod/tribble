@@ -4,7 +4,7 @@
 <p>You can only use jpeg or png files and image size is restricted to 400 x 300 pixels.</p>
 <p>This is simply to keep the storage needs as low as possible and to "encourage" designers to focus on the really important detail rather than posting whole layouts.</p>
 <p>Remember, you can allways post another image!</p>
-<p>Be kind to other, and youself, and give your work a proper title, tags and description.</p>
+<p>Be kind to youself, and others, and give proper title, tags and description to your work.</p>
 <hr>
 <? if(isset($errors)): ?>
 <div class="alert-msg error">
