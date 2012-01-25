@@ -283,7 +283,61 @@ class Posts extends REST_Controller
       'post_text' => $post_text,
       'post_user_id' => $user_id);
 
-    $insert_post = $this->mPosts->insertNewPost($post_data, $post_tags, $image_data);        
+    $insert_post = $this->mPosts->insertPost($post_data, $post_tags, $image_data);        
+
+    if ($insert_post == false)
+    {
+      $this->response(array('request_status' => false, 'message' => lang('F_POST_CREATE')), 404);
+    } else
+    {
+      $this->response(array('request_status' => true, 'post_id' => $insert_post));
+
+      // CALCULATE THE NUMBER OF POSSIBLE CACHE PAGES FOR THE POST LISTINGS
+      $cache_pages = ceil( $this->countPosts() / 600);
+
+      // KILL THE LISTS CACHE
+      for($i=1;$i<=$cache_pages;$i++){
+        @$this->cache->memcached->delete('list/new'.$i);
+        @$this->cache->memcached->delete('buzzing/new'.$i);
+        @$this->cache->memcached->delete('loved/new'.$i);
+      }
+    }
+  }
+
+  public function post_delete()
+  {
+    // load the memcached driver
+    $this->load->driver('cache');
+    // load the posts model
+    $this->load->model('Posts_API_model', 'mPosts');
+    // load the user model
+    $this->load->model('User_API_model', 'mUsers');
+
+    $image_data = $this->put('image_data');
+    $post_title = $this->put('post_title');
+    $post_text = $this->put('post_text');
+    $post_tags = $this->put('post_tags');
+    $user_id = $this->put('user_id');
+
+    if (!$image_data)
+      $this->response(array('response_status' => false, 'message' => lang('E_NO_POST_IMAGE')));
+    if (!$post_title)
+      $this->response(array('response_status' => false, 'message' => lang('E_NO_POST_TITLE')));
+    if (!$post_text)
+      $this->response(array('response_status' => false, 'message' => lang('E_NO_POST_TEXT')));
+    if (!$post_tags)
+      $this->response(array('response_status' => false, 'message' => lang('E_NO_POST_TAGS')));
+    if (!$user_id)
+      $this->response(array('request_status' => false, 'message' => lang('E_NO_USER_ID')));
+    if (!$this->mUsers->checkIfUserExists($user_id))
+      $this->response(array('request_status' => false, 'message' => lang('INV_USER')));
+
+    $post_data = array(
+      'post_title' => $post_title,
+      'post_text' => $post_text,
+      'post_user_id' => $user_id);
+
+    $insert_post = $this->mPosts->deletePost($post_data, $post_tags, $image_data);        
 
     if ($insert_post == false)
     {

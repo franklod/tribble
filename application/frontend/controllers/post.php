@@ -581,7 +581,9 @@ class Post extends CI_Controller
           } else
           {
 
-            
+            if(file_exists($imgdata['image_path'])){
+              echo "YAY";
+            }
 
             $data['title'] = 'Tribble - Upload';
             $data['meta_description'] = 'A design content sharing and discussion tool.';

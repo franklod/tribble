@@ -302,7 +302,7 @@ class Posts_API_model extends CI_Model {
       }
     }
     
-    function insertNewPost($post_data,$tags,$image){
+    function insertPost($post_data,$tags,$image){
           
       
       $this->db->trans_start();
