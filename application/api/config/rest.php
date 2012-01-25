@@ -86,6 +86,14 @@ $config['auth_override_class_method']['likes']['like'] = 'whitelist';
 $config['auth_override_class_method']['auth']['login'] = 'whitelist';
 $config['auth_override_class_method']['auth']['logout'] = 'whitelist';
 $config['auth_override_class_method']['auth']['session'] = 'whitelist';
+// TRASH
+$config['auth_override_class_method']['trash']['throw'] = 'whitelist';
+$config['auth_override_class_method']['trash']['empty'] = 'whitelist';
+
+
+
+
+
 
 /*
 |--------------------------------------------------------------------------

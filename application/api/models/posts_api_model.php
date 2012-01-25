@@ -349,6 +349,20 @@ class Posts_API_model extends CI_Model {
         return $post_id;
       }
     }
+
+    function deletePost($post_id){
+      $this->db->where('post_id', $post_id);
+      $this->db->update('post', array('post_is_deleted'=>1));
+      ($this->db->affected_rows() == 1) ? $response = true : $response = false;
+      return $response;
+    }
+
+    function checkUserPostPermission($post_id,$user_id){
+      $query = $this->db->get_where('post',array('post_id'=>$post_id));
+      $result = $query->result();
+      ($result[0]->post_user_id == $user_id) ? $response = true : $response = false;      
+      return $response;
+    }
                                     
 } 
   

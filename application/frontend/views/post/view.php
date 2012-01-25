@@ -12,8 +12,10 @@
       </h4>
       <div class="tribble-date">
         <?=strftime('%B %d, %Y',mysql_to_unix($post->post_date));?>
-        <?if($post->user_id == $this->session->userdata('uid')):?>
-        | <a href="/">delete</a>
+        <?if(isset($user)):?>
+        <?if($post->user_id == $user->id):?>
+        | <a href="/post/delete/<?=$post->post_id?>" style="position: absolute; top: 26px; font-size: .9em;" class="defaultBtn btn_delete">delete</a>
+        <?endif;?>
         <?endif;?>
       </div>
     </div>

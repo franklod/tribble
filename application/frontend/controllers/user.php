@@ -285,6 +285,31 @@ class User extends CI_Controller
         }
     }
 
+    public function delete(){
+
+        $data['title'] = 'Tribble';
+        $data['meta_description'] = 'A design content sharing and discussion tool.';
+        $data['meta_keywords'] = 'Tribble';
+
+        if ($session = $this->rest->get('auth/session/', array('id' => $this->session->userdata('sid'))));
+        {
+          if ($session->request_status == true)
+          {
+            $data['user']->name = $session->user->user_name;
+            $data['user']->id = $session->user->user_id;
+
+            $this->load->view('common/page_top.php', $data);
+            $this->load->view('user/delete.php', $data);
+            $this->load->view('common/page_end.php', $data);
+
+          } else
+          {
+            $this->session->sess_destroy();
+            redirect(site_url('/'));            
+          }
+        }    
+    }
+
 
 }
 

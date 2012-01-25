@@ -265,7 +265,7 @@ form .warning {
 	color:#fff;
 	background:#eeeeee;
 	zoom:1;
-filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#eeeeee', endColorstr='#c8c8c8');
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#eeeeee', endColorstr='#c8c8c8');
 	background:-moz-linear-gradient(top, #eeeeee 0%, #c8c8c8 100%);
 	background:-webkit-gradient(linear, left top, left bottom, color-stop(0%, #eeeeee), color-stop(100%, #c8c8c8));
 	background:-webkit-linear-gradient(top, #eeeeee 0%, #c8c8c8 100%);
@@ -289,7 +289,7 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#eeeeee', endCo
 .defaultBtn:hover, input[type=submit]:hover, input[type=button]:hover, button:hover {
 	background:#ffffff;
 	zoom:1;
-filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#c8c8c8');
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#c8c8c8');
 	background:-moz-linear-gradient(top, #ffffff 0%, #c8c8c8 100%);
 	background:-webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffffff), color-stop(100%, #c8c8c8));
 	background:-webkit-linear-gradient(top, #ffffff 0%, #c8c8c8 100%);
@@ -406,37 +406,37 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#2c8ccf', endCo
 	-moz-box-shadow:inset 0 3px 5px rgba(0,0,0,0.25);
 	box-shadow:inset 0 3px 5px rgba(0,0,0,0.25);
 }
-input[type=submit].btn_delete, .btn_delete, input[type=button].btn_delete {
-	color:#fff;
-	background:#eb6363;
+input[type=submit].btn_delete, .btn_delete, a.btn_delete, input[type=button].btn_delete {
+	color:#fff !important;
+	background:#eb6363  !important;
 	zoom:1;
 filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#eb6363', endColorstr='#e21f1f');
 	background:-moz-linear-gradient(top, #eb6363 0%, #e21f1f 100%);
-	background:-webkit-gradient(linear, left top, left bottom, color-stop(0%, #eb6363), color-stop(100%, #e21f1f));
-	background:-webkit-linear-gradient(top, #eb6363 0%, #e21f1f 100%);
-	background:-o-linear-gradient(top, #eb6363 0%, #e21f1f 100%);
-	background:-ms-linear-gradient(top, #eb6363 0%, #e21f1f 100%);
-	background:linear-gradient(top, #eb6363 0%, #e21f1f 100%);
-	border-color:#e21f1f;
-	border-bottom-color:#b71717;
-	text-shadow:0 -0.09em 0.03em rgba(0, 0, 0, 0.5);
-	-webkit-box-shadow:inset 0 1px 0 rgba(255, 255, 255, 0.2);
-	-moz-box-shadow:inset 0 1px 0 rgba(255, 255, 255, 0.2);
-	box-shadow:inset 0 1px 0 rgba(255, 255, 255, 0.2);
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0%, #eb6363), color-stop(100%, #e21f1f)) !important;
+	background:-webkit-linear-gradient(top, #eb6363 0%, #e21f1f 100%) !important;
+	background:-o-linear-gradient(top, #eb6363 0%, #e21f1f 100%) !important;
+	background:-ms-linear-gradient(top, #eb6363 0%, #e21f1f 100%) !important;
+	background:linear-gradient(top, #eb6363 0%, #e21f1f 100%) !important;
+	border-color:#e21f1f !important;
+	border-bottom-color:#b71717 !important;
+	text-shadow:0 -0.09em 0.03em rgba(0, 0, 0, 0.5) !important;
+	-webkit-box-shadow:inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+	-moz-box-shadow:inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+	box-shadow:inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
 }
-input[type=submit].btn_delete:hover, .btn_delete:hover, input[type=button].btn_delete:hover {
-	background:#f19090;
+input[type=submit].btn_delete:hover, .btn_delete:hover, a.btn_delete:hover, input[type=button].btn_delete:hover {
+	background:#f19090 !important;
 	zoom:1;
-filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f19090', endColorstr='#e21f1f');
-	background:-moz-linear-gradient(top, #f19090 0%, #e21f1f 100%);
-	background:-webkit-gradient(linear, left top, left bottom, color-stop(0%, #f19090), color-stop(100%, #e21f1f));
-	background:-webkit-linear-gradient(top, #f19090 0%, #e21f1f 100%);
-	background:-o-linear-gradient(top, #f19090 0%, #e21f1f 100%);
-	background:-ms-linear-gradient(top, #f19090 0%, #e21f1f 100%);
-	background:linear-gradient(top, #f19090 0%, #e21f1f 100%);
-	-webkit-box-shadow:0 1px 5px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 0em .5em rgba(255, 255, 255, 0.5);
-	-moz-box-shadow:0 1px 5px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 0em .5em rgba(255, 255, 255, 0.5);
-	box-shadow:0 1px 5px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 0em .5em rgba(255, 255, 255, 0.5);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f19090', endColorstr='#e21f1f');
+	background:-moz-linear-gradient(top, #f19090 0%, #e21f1f 100%) !important;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0%, #f19090), color-stop(100%, #e21f1f)) !important;
+	background:-webkit-linear-gradient(top, #f19090 0%, #e21f1f 100%) !important;
+	background:-o-linear-gradient(top, #f19090 0%, #e21f1f 100%) !important;
+	background:-ms-linear-gradient(top, #f19090 0%, #e21f1f 100%) !important;
+	background:linear-gradient(top, #f19090 0%, #e21f1f 100%) !important;
+	-webkit-box-shadow:0 1px 5px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 0em .5em rgba(255, 255, 255, 0.5) !important;
+	-moz-box-shadow:0 1px 5px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 0em .5em rgba(255, 255, 255, 0.5) !important;
+	box-shadow:0 1px 5px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 0em .5em rgba(255, 255, 255, 0.5) !important;
 }
 input[type=submit].btn_delete:active, .btn_delete:active, input[type=button].btn_delete:active {
 	background:#e74343;

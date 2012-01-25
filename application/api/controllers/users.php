@@ -22,30 +22,27 @@ class Users extends REST_Controller
     parent::__construct();    
     $this->load->model('Users_API_Model', 'mUser');
     $this->load->library('encrypt');
-    $this->output->enable_profiler(TRUE);
+    // $this->output->enable_profiler(TRUE);
   }
 
-  // public function liked_get()
-  // {
-  //   $user_id = $this->get('user');
-  //   $post_id = $this->get('post');
+  
+  public function list_get(){
+    $cachekey = sha1('users/list');
+    // load the memcached driver
+    $this->load->driver('cache');
 
-  //   if (!$user_id)
-  //     $this->response(array('request_status' => false, 'message' => lang('E_NO_USERID')), 404);
-    
-  //   if (!$post_id)
-  //     $this->response(array('request_status' => false, 'message' => land('E_NO_POST_ID')), 404);
+    if(!$this->cache->memcached->get($cachekey)){
+      $user_list = $this->mUser->getUserList();
+      if(!$user_list)
+        $this->response(array('request_status'=>false,'message'=>lang('F_DATA_READ')));
 
-  //   $user_like_status = $this->mUser->checkUserLiked($user_id, $post_id);
-
-  //   if ($user_like_status)
-  //   {
-  //     $this->response(array('request_status' => true, 'like_status' => true));
-  //   } else
-  //   {
-  //     $this->response(array('request_status' => true, 'like_status' => false));
-  //   }
-  // }
+      $this->cache->memcached->save($cachekey,$user_list,60*60);
+      $this->response(array('request_status'=>true,'user_list'=>$user_list));
+    } else {
+      $this->response(array('request_status'=>true,'user_list'=>$this->cache->memcached->get($cachekey)));
+    }
+      
+  }
 
   public function profile_get()
   {

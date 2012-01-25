@@ -20,7 +20,7 @@ class Posts extends REST_Controller
   public function __construct()
   {
     parent::__construct();
-    //$this->output->enable_profiler(TRUE);
+    $this->output->enable_profiler(TRUE);
 
   }
 
@@ -208,6 +208,26 @@ class Posts extends REST_Controller
 
   }
 
+  public function user(){
+     
+
+    // load the memcached driver
+    $this->load->driver('cache');
+    // load the posts model
+    $this->load->model('Posts_API_model', 'mPosts');
+
+    $user_id = $this->get('id');
+
+    if(!$user_id)
+      $this->response(array('request_status'=>false,'message'=>lang('E_NO_USER_ID')));
+    
+    $cachekey = sha1('user/'.$user_id);
+
+    if(!$this->cache->memcached->get($cachekey));
+      $this
+
+  }
+
   public function find_get()
   {
 
@@ -257,7 +277,7 @@ class Posts extends REST_Controller
     // load the posts model
     $this->load->model('Posts_API_model', 'mPosts');
     // load the user model
-    $this->load->model('User_API_model', 'mUsers');
+    $this->load->model('Users_API_model', 'mUsers');
 
     $image_data = $this->put('image_data');
     $post_title = $this->put('post_title');
@@ -290,8 +310,7 @@ class Posts extends REST_Controller
       $this->response(array('request_status' => false, 'message' => lang('F_POST_CREATE')), 404);
     } else
     {
-      $this->response(array('request_status' => true, 'post_id' => $insert_post));
-
+      
       // CALCULATE THE NUMBER OF POSSIBLE CACHE PAGES FOR THE POST LISTINGS
       $cache_pages = ceil( $this->countPosts() / 600);
 
@@ -301,6 +320,8 @@ class Posts extends REST_Controller
         @$this->cache->memcached->delete('buzzing/new'.$i);
         @$this->cache->memcached->delete('loved/new'.$i);
       }
+
+      $this->response(array('request_status' => true, 'post_id' => $insert_post));      
     }
   }
 
@@ -311,52 +332,41 @@ class Posts extends REST_Controller
     // load the posts model
     $this->load->model('Posts_API_model', 'mPosts');
     // load the user model
-    $this->load->model('User_API_model', 'mUsers');
+    $this->load->model('Users_API_model', 'mUsers');
 
-    $image_data = $this->put('image_data');
-    $post_title = $this->put('post_title');
-    $post_text = $this->put('post_text');
-    $post_tags = $this->put('post_tags');
-    $user_id = $this->put('user_id');
+    $post_id = $this->delete('post_id');
+    $user_id = $this->delete('user_id');
 
-    if (!$image_data)
-      $this->response(array('response_status' => false, 'message' => lang('E_NO_POST_IMAGE')));
-    if (!$post_title)
-      $this->response(array('response_status' => false, 'message' => lang('E_NO_POST_TITLE')));
-    if (!$post_text)
-      $this->response(array('response_status' => false, 'message' => lang('E_NO_POST_TEXT')));
-    if (!$post_tags)
-      $this->response(array('response_status' => false, 'message' => lang('E_NO_POST_TAGS')));
-    if (!$user_id)
-      $this->response(array('request_status' => false, 'message' => lang('E_NO_USER_ID')));
-    if (!$this->mUsers->checkIfUserExists($user_id))
-      $this->response(array('request_status' => false, 'message' => lang('INV_USER')));
+    if(!$post_id)
+      $this->response(array('request_status'=>false,'message'=>lang('E_NO_POST_ID')));
+    if(!$post_id)
+      $this->response(array('request_status'=>false,'message'=>lang('E_NO_USER_ID')));
+    
+    $can_user_delete = $this->mPosts->checkUserPostPermission($post_id,$user_id);
 
-    $post_data = array(
-      'post_title' => $post_title,
-      'post_text' => $post_text,
-      'post_user_id' => $user_id);
+    if(!$can_user_delete)
+      $this->response(array('request_status'=>false,'message'=>lang('INV_POST_PERMISSIONS')));
 
-    $insert_post = $this->mPosts->deletePost($post_data, $post_tags, $image_data);        
+    $delete_post = $this->mPosts->deletePost($post_id);
+    if(!$delete_post)
+      $this->response(array('request_status'=>false,'message'=>lang('F_DELETE_POST')));
 
-    if ($insert_post == false)
-    {
-      $this->response(array('request_status' => false, 'message' => lang('F_POST_CREATE')), 404);
-    } else
-    {
-      $this->response(array('request_status' => true, 'post_id' => $insert_post));
+    // CALCULATE THE NUMBER OF POSSIBLE CACHE PAGES FOR THE POST LISTINGS
+    $cache_pages = ceil( $this->countPosts() / 600);
 
-      // CALCULATE THE NUMBER OF POSSIBLE CACHE PAGES FOR THE POST LISTINGS
-      $cache_pages = ceil( $this->countPosts() / 600);
-
-      // KILL THE LISTS CACHE
-      for($i=1;$i<=$cache_pages;$i++){
-        @$this->cache->memcached->delete('list/new'.$i);
-        @$this->cache->memcached->delete('buzzing/new'.$i);
-        @$this->cache->memcached->delete('loved/new'.$i);
-      }
+    // KILL THE LISTS CACHE
+    for($i=1;$i<=$cache_pages;$i++){
+      @$this->cache->memcached->delete(sha1('list/new'.$i));
+      @$this->cache->memcached->delete(sha1('buzzing/new'.$i));
+      @$this->cache->memcached->delete(sha1('loved/new'.$i));
     }
+
+    $this->response(array('request_status'=>true,'message'=>lang('S_DELETE_POST')));
   }
+    
+
+    
+  
 
 }
 

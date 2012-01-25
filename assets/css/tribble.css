@@ -101,12 +101,12 @@ h3 {
 	background: -ms-linear-gradient(top, #484d52 0%, #2A2D30 100%);
 	background: linear-gradient(top, #484d52 0%, #2A2D30 100%);
 }
-.defaultBtn, input[type="submit"], input[type="button"], button {
+/*.defaultBtn, input[type="submit"], input[type="button"], button {
 	color:#2A2D30;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
-}
+}*/
 input[type=text], input[type=password], input[type=file], input[type=reset], textarea, select {
 	zoom:1;
 	-webkit-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.2);
@@ -171,7 +171,7 @@ hr {
 	background-image:-ms-linear-gradient(#ffffff, #ffffff 25%, #e6e6e6);
 	background-image:-o-linear-gradient(#ffffff, #ffffff 25%, #e6e6e6);
 	background-image:linear-gradient(#ffffff, #ffffff 25%, #e6e6e6);
-filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#e6e6e6', GradientType=0);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#e6e6e6', GradientType=0);
 	padding:5px 14px 6px;
 	text-shadow:0 1px 1px rgba(255, 255, 255, 0.75);
 	color:#333;
@@ -192,7 +192,7 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endCo
 	transition:0.1s linear all;
 }
 .defaultBtn:hover, input[type="submit"].defaultBtn:hover, input[type="button"].defaultBtn:hover, a.defaultBtn:hover {
-	background-position:0 -15px;
+	/*background-position:0 -15px;*/
 	color:#333;
 	text-decoration:none;
 	-webkit-box-shadow:none;
@@ -216,7 +216,7 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endCo
 	background-image:-webkit-linear-gradient(top, #666666, #2B343B);
 	background-image:-o-linear-gradient(top, #666666, #2B343B);
 	background-image:linear-gradient(top, #666666, #2B343B);
-filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#666666', endColorstr='#2B343B', GradientType=0);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#666666', endColorstr='#2B343B', GradientType=0);
 	padding:5px 14px 6px;
 	color:#FFF;
 	text-shadow:0 1px 1px rgba(0, 0, 0, 0.75);
@@ -708,11 +708,16 @@ ul.tribbles {
 	content: "|";
 	margin-right:3px;
 }
+.tribble-container {
+	overflow: hidden;
+	position: relative;
+}
 .tribble-container h2 {
 	font-size: 1.4em;
 	font-weight: 700;
 	line-height:1;
 	text-transform:uppercase;
+
 }
 .tribble-container h3 {
 	clear:both;
@@ -833,3 +838,7 @@ ul.tribbles {
 }
 
 .box h2 { margin-top: 0; }
+
+/* utils */
+
+.go_right { float: right; }
