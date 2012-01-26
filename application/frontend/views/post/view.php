@@ -1,7 +1,10 @@
 <div class="g75">
   <div class="inner-wrapper">
     <div class="tribble-container">
-    <div class="tribble-user-info"> <a href="<?=site_url('user/'.$post->user_id)?>" title="<?=$post->user_name?>"><img src="<?= (!empty($post->user_avatar)) ? $post->user_avatar : '/assets/images/avatar.jpg' ?>" alt="Logobig" width="54" height="54"/></a>
+    <div class="tribble-user-info">
+      <a href="<?=site_url('user/'.$post->user_id)?>" title="<?=$post->user_name?>">
+        <?=get_gravatar($post->user_email,54)?>
+      </a>
       <div class="tribble-title">
         <h2>
           <?=$post->post_title?>
@@ -13,13 +16,14 @@
       <div class="tribble-date">
         <?=strftime('%B %d, %Y',mysql_to_unix($post->post_date));?>
         <?if(isset($user)):?>
-        <?if($post->user_id == $user->id):?>
+        <?if($post->user_id == $user->user_id):?>
         | <a href="/post/delete/<?=$post->post_id?>" style="position: absolute; top: 26px; font-size: .9em;" class="defaultBtn btn_delete">delete</a>
         <?endif;?>
         <?endif;?>
       </div>
     </div>
-    <div class="tribble-img-container box clear"> <img src="<?=$post->post_image_path?>" width="400" height="300"/> </div>
+    <div class="tribble-img-container box clear">
+      <img src="<?=cdn_url($post->post_image_path)?>" width="400" height="300"/> </div>
     <div class="tribble-img-data">
       <div class="tribble-desc">
         <p>
@@ -69,7 +73,7 @@
         <?foreach($replies as $reply):?>
         <? if($reply->reply_comment_text):?>
         <li class="response">
-          <h4><a href="/user/<?=$reply->reply_comment_user_id?>"><img src="<?= (!empty($reply->reply_comment_user_avatar)) ? $reply->reply_comment_user_avatar : '/assets/images/avatar.jpg' ?>"  width="42" height="42"/><?=$reply->reply_comment_user_name?></a> </h4>
+          <h4><a href="/user/<?=$reply->reply_comment_user_id?>"><?=get_gravatar($reply->reply_comment_user_email,42)?><?=$reply->reply_comment_user_name?></a> </h4>
           <div class="comment-body">
             <p><?=nl2br($reply->reply_comment_text)?></p>
           </div>
@@ -89,7 +93,7 @@
         <hr />
         <? else: ?>
           <li class="rebound">
-            <h4><a href="/"><img src="<?=$reply->reply_post_user_avatar?>" width="42" height="42"/></a> </h4>
+            <h4><a href="/"><?=get_gravatar($reply->reply_post_user_email,42)?></a> </h4>
             <div class="rebound-image"><a href="<?=site_url('/tribble/view/'.$reply->reply_post_id)?>"><img src="<?=$reply->post_image_path?>" width="74" height="49" class="box"/></a></div>
             <div class="rebound-title">
               <h2><?=$reply->reply_post_title?></h2>
@@ -112,7 +116,7 @@
       </ul>
       <?endif;?>
     </div>
-    <?if(@$user->id):?>    
+    <?if(@$user->user_id):?>    
     <? $this->load->view('post/replyform.php'); ?>
   <?endif;?>
   </div>

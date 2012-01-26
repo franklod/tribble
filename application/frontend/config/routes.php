@@ -38,23 +38,23 @@
 |
 */
 // CI RESERVED ROUTES
-$route['default_controller'] = "post/newer";
+$route['default_controller'] = "post/lists/new";
 $route['404_override'] = '';
 // LIST THE NEWEST POSTS
-$route['new'] = 'post/newer';
-$route['new/page/(:num)'] = 'post/newer/$1';
+$route['new'] = 'post/lists/new';
+$route['new/page/(:num)'] = 'post/lists/new/$1';
 // LIST THE MOST COMMENTED POSTS
-$route['buzzing'] = 'post/buzzing';
-$route['buzzing/page/(:num)'] = 'post/buzzing/$1';
+$route['buzzing'] = 'post/lists/buzzing';
+$route['buzzing/page/(:num)'] = 'post/lists/buzzing/$1';
 // LIST THE MOST LIKED POSTS
-$route['loved'] = 'post/loved';
-$route['loved/page/(:num)'] = 'post/loved/$1';
+$route['loved'] = 'post/lists/loved';
+$route['loved/page/(:num)'] = 'post/lists/loved/$1';
 // SEARCH POSTS
 $route['search/(:any)'] = 'post/search/$1';
 $route['search/page/(:num)'] = 'post/search/$1';
 $route['dosearch'] = 'post/dosearch';
 // VIEW A SINGLE POST
-$route['view/(:num)'] = 'post/view/$1';
+$route['view/(:any)'] = 'post/view/$1';
 
 $route['upload'] = 'post/upload';
 // SEARCH
@@ -72,9 +72,9 @@ $route['tag/(:any)'] = 'post/tag/$1';
 $route['tag/(:any)/page/(:num)'] = 'post/tag/$1/$2';
 // LOGIN
 $route['login'] = 'auth/login';
-$route['login/(:any)'] = 'auth/login/$1';
+$route['login/(:any)/(:any)'] = 'auth/login/$1/$2';
 $route['logout'] = 'auth/logout';
-$route['logout/(:any)'] = 'auth/logout/$1';
+$route['logout/(:any)/(:any)'] = 'auth/logout/$1/$2';
 // TAGS
 $route['tags'] = 'post/tags';
 // USER

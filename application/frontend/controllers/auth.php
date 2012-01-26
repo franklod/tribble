@@ -12,10 +12,10 @@ class Auth extends CI_Controller
         // Load the rest client spark
         $this->load->spark('restclient/2.0.0');
         // Run some setup
-        $this->rest->initialize(array('server' => 'http://api.tribble.local/'));
+        $this->rest->initialize(array('server' => api_url()));
     }
 
-    public function login($lb = NULL)        
+    public function login($controller = '', $slug = '')        
     {                        
         $data['title'] = 'Tribble - Login';
         $data['meta_description'] = 'A design content sharing and discussion tool.';
@@ -54,20 +54,21 @@ class Auth extends CI_Controller
                         show_error($session->message);                 
                           
                     $this->session->set_userdata(array('sid'=>$session->id));
-                    $redirectUrl = site_url().string_to_uri($lb);
-                    redirect($redirectUrl);}
+                    $redirectUrl = site_url().$controller.'/'.$slug;
+                    redirect($redirectUrl);
                 }
-
             }
+
         }
+    }
     
     
-    public function logout($lb = NULL)
+    public function logout($controller = '',$slug = '')
 	{    
         $sid = $this->session->userdata('sid');
         $delete = $this->rest->delete('auth/session/',array('id'=>$sid));   
         $this->session->sess_destroy();
-        $redirectUrl = site_url().string_to_uri($lb);    
+        $redirectUrl = site_url().$controller.'/'.$slug;
         redirect($redirectUrl);
 	}
 

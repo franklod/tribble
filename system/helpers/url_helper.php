@@ -49,6 +49,48 @@ if ( ! function_exists('site_url'))
 // ------------------------------------------------------------------------
 
 /**
+ * CDN URL
+ *
+ * Create a local URL based on your basepath. Segments can be passed via the
+ * first parameter either as a string or an array.
+ *
+ * @access	public
+ * @param	string
+ * @return	string
+ */
+if ( ! function_exists('cdn_url'))
+{
+	function cdn_url($uri = '')
+	{
+		$CI =& get_instance();
+		return $CI->config->cdn_url($uri);
+	}
+}
+
+// ------------------------------------------------------------------------
+
+/**
+ * API URL
+ *
+ * Create a local URL based on your basepath. Segments can be passed via the
+ * first parameter either as a string or an array.
+ *
+ * @access	public
+ * @param	string
+ * @return	string
+ */
+if ( ! function_exists('api_url'))
+{
+	function api_url($uri = '')
+	{
+		$CI =& get_instance();
+		return $CI->config->api_url($uri);
+	}
+}
+
+// ------------------------------------------------------------------------
+
+/**
  * Base URL
  * 
  * Create a local URL based on your basepath.
