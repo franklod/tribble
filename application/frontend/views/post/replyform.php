@@ -11,9 +11,9 @@
   </div>
   <? endif;?>
   
-  <?=form_open_multipart('/comment/add')?>
+  <?=form_open_multipart(site_url('/comment/add'))?>
   
-  <?=form_hidden('user_id',$this->session->userdata('uid'))?>
+  <?=form_hidden('user_id',$user->user_id)?>
   <?=form_hidden('post_id',$post->post_id)?>
   <?=form_fieldset('')?>
     <div class="e_wrap">

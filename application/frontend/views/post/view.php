@@ -17,7 +17,7 @@
         <?=strftime('%B %d, %Y',mysql_to_unix($post->post_date));?>
         <?if(isset($user)):?>
         <?if($post->user_id == $user->user_id):?>
-        | <a href="/post/delete/<?=$post->post_id?>" style="position: absolute; top: 26px; font-size: .9em;" class="defaultBtn btn_delete">delete</a>
+        | <a href="/post/delete/<?=$post->post_id.'-'.url_title($post->post_title)?>" style="position: absolute; top: 26px; font-size: .9em;" class="defaultBtn btn_delete">delete</a>
         <?endif;?>
         <?endif;?>
       </div>
@@ -36,9 +36,9 @@
             <a title="<?=$post->post_like_count?> users like this post" href="#" class="likes"><?=$post->post_like_count?></a>          
           <?else:?>
             <?if($like_status == true):?>
-            <a title="Unlike this post" href="<?=site_url('like/remove/'.$post->post_id)?>" class="likes liked"><?=$post->post_like_count?></a>
+            <a title="Unlike this post" href="<?=site_url('like/remove/'.$post->post_id.'-'.url_title($post->post_title))?>" class="likes liked"><?=$post->post_like_count?></a>
             <?else:?>
-            <a type="Like this post" href="<?=site_url('like/add/'.$post->post_id)?>" class="likes"><?=$post->post_like_count?></a>
+            <a type="Like this post" href="<?=site_url('like/add/'.$post->post_id.'-'.url_title($post->post_title))?>" class="likes"><?=$post->post_like_count?></a>
             <?endif;?>
           <?endif;?>
         </p>
@@ -67,7 +67,7 @@
       <h4><?=$replies_count?> responses</h4>
       <hr />
       <?else:?>
-      <h4><?=$replies_count?> responses</h4>
+      <h4><?=$replies_count?> <?=($replies_count == 1) ? 'response' : 'responses'?></h4>
       <hr />
       <ul id="comments">
         <?foreach($replies as $reply):?>
@@ -75,7 +75,7 @@
         <li class="response">
           <h4><a href="/user/<?=$reply->reply_comment_user_id?>"><?=get_gravatar($reply->reply_comment_user_email,42)?><?=$reply->reply_comment_user_name?></a> </h4>
           <div class="comment-body">
-            <p><?=nl2br($reply->reply_comment_text)?></p>
+            <p><?=auto_link(nl2br($reply->reply_comment_text), 'url', TRUE)?></p>
           </div>
           <!--
 <div class="tribble-tools">
@@ -85,7 +85,7 @@
 -->
           <p class="comment-date">
             <?=when(mysql_to_unix($reply->reply_date))?>
-            <?if($reply->reply_comment_user_id == $this->session->userdata('uid')):?>
+            <?if($reply->reply_comment_user_id == $user->user_id):?>
              | <a href="<?=site_url('comment/delete/'.$reply->reply_comment_id.'/'.$post->post_id.'/'.$reply->reply_comment_user_id)?>" title="Delete this comment">delete</a>
             <?endif;?>
           </p>
