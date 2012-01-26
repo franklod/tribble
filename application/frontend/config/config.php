@@ -29,6 +29,40 @@ $config['base_url']	= 'http://tribble.local/';
 
 /*
 |--------------------------------------------------------------------------
+| Base Site URL
+|--------------------------------------------------------------------------
+|
+| URL to your Content Distribution Network root. If you choose to host your
+| static files on another host set the correct url here. If left blank it
+| defaults to the base surl. Use a trailing slash.
+|
+| http://cdn.example.com/
+|
+| If this is not set then CodeIgniter will guess the protocol, domain and
+| path to your installation.
+|
+*/
+$config['cdn_url'] = 'http://cdn.tribble.local/';
+
+/*
+|--------------------------------------------------------------------------
+| Base Site URL
+|--------------------------------------------------------------------------
+|
+| URL to your API. 
+| If you with to host the site api on another host set the correct url here.
+| defaults to the base surl. Use a trailing slash. If left blank it
+|
+| http://api.example.com/
+|
+| If this is not set then CodeIgniter will guess the protocol, domain and
+| path to your installation.
+|
+*/
+$config['api_url'] = 'http://api.tribble.local/';
+
+/*
+|--------------------------------------------------------------------------
 | Index File
 |--------------------------------------------------------------------------
 |

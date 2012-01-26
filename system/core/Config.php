@@ -267,6 +267,40 @@ class CI_Config {
 		}
 	}
 
+	/**
+	 * Site URL
+	 * Returns base_url . index_page [. uri_string]
+	 *
+	 * @access	public
+	 * @param	string	the URI string
+	 * @return	string
+	 */
+	function cdn_url($uri)
+	{		
+			if(!$this->item('cdn_url') || $this->config['cdn_url'] == ''){
+				return $this->slash_item('base_url').ltrim($this->_uri_string($uri),'/');
+			} else {
+				return $this->slash_item('cdn_url').ltrim($this->_uri_string($uri),'/');
+			}
+	}
+
+	/**
+	 * Site URL
+	 * Returns base_url . index_page [. uri_string]
+	 *
+	 * @access	public
+	 * @param	string	the URI string
+	 * @return	string
+	 */
+	function api_url($uri)
+	{		
+			if(!$this->item('cdn_url') || $this->config['api_url'] == ''){
+				return $this->slash_item('base_url').ltrim($this->_uri_string($uri),'/');
+			} else {
+				return $this->slash_item('api_url').ltrim($this->_uri_string($uri),'/');
+			}
+	}
+
 	// -------------------------------------------------------------
 
 	/**

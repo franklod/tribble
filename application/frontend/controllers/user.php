@@ -13,7 +13,7 @@ class User extends CI_Controller
         // Load the rest client spark
         $this->load->spark('restclient/2.0.0');
         // Run some setup
-        $this->rest->initialize(array('server' => 'http://api.tribble.local/'));
+        $this->rest->initialize(array('server' => api_url()));
         // load the pagination library
         $this->load->library('pagination');
 
@@ -30,8 +30,7 @@ class User extends CI_Controller
         {
           if ($session->request_status == true)
           {
-            $data['user']->name = $session->user->user_name;
-            $data['user']->id = $session->user->user_id;
+            $data['user'] = $session->user;
           } else
           {
             $this->session->sess_destroy();
@@ -48,8 +47,7 @@ class User extends CI_Controller
         {
           if ($session->request_status == true)
           {
-            $data['user']->name = $session->user->user_name;
-            $data['user']->id = $session->user->user_id;
+            $data['user'] = $session->user;
           } else
           {            
             $this->session->sess_destroy();
@@ -84,8 +82,7 @@ class User extends CI_Controller
         {
           if ($session->request_status == true)
           {
-            $data['user']->name = $session->user->user_name;
-            $data['user']->id = $session->user->user_id;
+            $data['user'] = $session->user;
 
             $data['title'] = 'Tribble - Signup';
             $data['meta_description'] = 'A design content sharing and discussion tool.';
@@ -155,8 +152,7 @@ class User extends CI_Controller
         {
           if ($session->request_status == true)
           {
-            $data['user']->name = $session->user->user_name;
-            $data['user']->id = $session->user->user_id;
+            $data['user'] = $session->user;
 
             // GET THE USER PROFILE DATA FROM THE API
             $user_data = $this->rest->get('users/profile/'.$session->user->user_id);
@@ -295,8 +291,7 @@ class User extends CI_Controller
         {
           if ($session->request_status == true)
           {
-            $data['user']->name = $session->user->user_name;
-            $data['user']->id = $session->user->user_id;
+            $data['user'] = $session->user;
 
             $this->load->view('common/page_top.php', $data);
             $this->load->view('user/delete.php', $data);

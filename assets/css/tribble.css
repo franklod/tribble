@@ -4,6 +4,8 @@ html, body {
 body {
 	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 	background: url(../images/bg.jpg) left top scroll repeat #E4E4E4;
+	-webkit-text-size-adjust:100%;
+	-ms-text-size-adjust:none;
 }
 #main {
 	width:978px;

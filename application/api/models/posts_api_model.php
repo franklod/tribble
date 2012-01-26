@@ -15,7 +15,7 @@ class Posts_API_model extends CI_Model {
           (SELECT COUNT(1) FROM tr_reply WHERE tr_reply.reply_post_id = tr_post.post_id AND tr_reply.reply_is_deleted = 0) as post_reply_count,
           tr_user.user_id AS user_id,
           tr_user.user_realname AS user_name,          
-          tr_user.user_avatar AS user_avatar            
+          tr_user.user_email AS user_email            
       ');
       $this->db->from('tr_post');
       $this->db->join('tr_image','tr_post.post_id = tr_image.image_post_id','inner');
@@ -76,7 +76,7 @@ class Posts_API_model extends CI_Model {
           (SELECT COUNT(1) FROM tr_reply WHERE tr_reply.reply_post_id = tr_post.post_id AND tr_reply.reply_is_deleted = 0) as post_reply_count,
           tr_user.user_id AS user_id,
           tr_user.user_realname AS user_name,          
-          tr_user.user_avatar AS user_avatar                              
+          tr_user.user_email AS user_email                              
       ');
       $this->db->from('tr_post');
       $this->db->join('tr_image','tr_post.post_id = tr_image.image_post_id','inner');
@@ -130,7 +130,7 @@ class Posts_API_model extends CI_Model {
         tr_tag.tag_content as post_tags,
         tr_user.user_id as user_id,
         tr_user.user_realname AS user_name,
-        tr_user.user_avatar AS user_avatar,
+        tr_user.user_email AS user_email,
       ');
       $this->db->from('tr_post');
       $this->db->join('tr_like','tr_post.post_id = tr_like.like_post_id','left outer');
@@ -162,12 +162,12 @@ class Posts_API_model extends CI_Model {
         tr_image.image_path AS post_image_path,
         tr_user_post.user_id AS reply_post_user_id,
         tr_user_post.user_realname AS reply_post_user_name,        
-        tr_user_post.user_avatar AS reply_post_user_avatar,
+        tr_user_post.user_email AS reply_post_user_email,
         tr_comment.comment_id as reply_comment_id,        
         tr_comment.comment_text as reply_comment_text,                
         tr_user_comment.user_id AS reply_comment_user_id,
         tr_user_comment.user_realname AS reply_comment_user_name,
-        tr_user_comment.user_avatar AS reply_comment_user_avatar,
+        tr_user_comment.user_email AS reply_comment_user_email,
         tr_reply.reply_timestamp as reply_date                        
       ');
       
@@ -197,7 +197,7 @@ class Posts_API_model extends CI_Model {
           tr_post.post_timestamp AS post_date,
           tr_user.user_realname AS user_name,
           tr_user.user_id AS user_id,
-          tr_user.user_avatar AS user_avatar,
+          tr_user.user_email AS user_email,
           tr_image.image_path as post_image_path,
           (SELECT COUNT(1) FROM tr_like WHERE tr_like.like_post_id = tr_post.post_id) as post_like_count,
           (SELECT COUNT(1) FROM tr_reply WHERE tr_reply.reply_post_id = tr_post.post_id AND tr_reply.reply_is_deleted = 0) as post_reply_count         
@@ -310,7 +310,7 @@ class Posts_API_model extends CI_Model {
          $result->error = 'Error while writing tribble data.';
       }
       
-      log_message('debug','Post data writen');
+      // log_message('debug','Post data writen');
       
       $post_id = $this->db->insert_id();
       
@@ -321,7 +321,7 @@ class Posts_API_model extends CI_Model {
         $result->error = 'Error while writing tag data.';
       }
       
-      log_message('debug', 'tag data writen');
+      // log_message('debug', 'tag data writen');
       
       $imagedata['image_post_id'] = $post_id;
       $imagedata['image_path'] = $image['image_path'];
@@ -331,7 +331,7 @@ class Posts_API_model extends CI_Model {
         $result->error = 'Error while writing image data.';  
       }
       
-      log_message('debug','image data writen');
+      // log_message('debug','image data writen');
       
       
       $likedata['like_post_id'] = $post_id;
@@ -339,8 +339,10 @@ class Posts_API_model extends CI_Model {
             
       if(!$this->db->insert('like',$likedata)){
         $result->error = "Error while writing like data";
-      }            
-      log_message('debug','like data writen');
+      } 
+                 
+      // log_message('debug','like data writen');
+      
       $this->db->trans_complete();
               
       if ($this->db->trans_status() === FALSE){

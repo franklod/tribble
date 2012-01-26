@@ -224,7 +224,7 @@ class Posts extends REST_Controller
     $cachekey = sha1('user/'.$user_id);
 
     if(!$this->cache->memcached->get($cachekey));
-      $this
+      
 
   }
 

@@ -15,7 +15,7 @@ class Users_API_model extends CI_Model {
       $this->db->select('
         tr_user.user_realname AS user_name,
         tr_user.user_id,
-        tr_user.user_avatar,
+        tr_user.user_email,
         COUNT(tr_post.post_id) AS post_count
       ');
       $this->db->from('user');
@@ -23,7 +23,7 @@ class Users_API_model extends CI_Model {
       $this->db->group_by('
         tr_user.user_realname,
         tr_user.user_id,
-        tr_user.user_avatar
+        tr_user.user_email
       ');
       $query = $this->db->get();
       if($query->num_rows() > 0){
@@ -34,7 +34,7 @@ class Users_API_model extends CI_Model {
     }
     
     function getUserProfile($user_id){      
-      $this->db->select('user_id,user_email,user_realname as user_name,user_bio, user_avatar');
+      $this->db->select('user_id,user_email,user_realname as user_name,user_bio');
       $this->db->from('user');
       $this->db->where(array('user_id'=>$user_id));      
       $query = $this->db->get();

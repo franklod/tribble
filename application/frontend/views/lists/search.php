@@ -22,7 +22,7 @@
       </div>
       <div class="tribble-user-info">
         <a href="/">
-          <img name="avatar" src="<?= (!empty($post->user_avatar)) ? $post->user_avatar : '/assets/images/avatar.jpg' ?>" width="18" height="18" alt=""/><?=$post->user_name?>
+          <?=get_gravatar($post->user_email,18)?><?=$post->user_name?>
         </a>
       </div>  
     </li>  

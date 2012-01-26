@@ -5,8 +5,10 @@
   <div class="inner-wrapper">
   <ul class="tags list">
 	<? foreach($user_list as $user): ?>
-    <li>
-       <a href="<?=site_url('user/'.$user->user_id)?>"><strong><?=$user->user_name?></strong><span class="count"><?=$user->post_count?></span></a>
+    <li style="line-height: 56px;">
+       <a href="<?=site_url('user/'.$user->user_id.'-'.url_title($user->user_name))?>">
+        <?=get_gravatar($user->user_email,54)?>
+        <strong style="margin-left: 8px;"><?=$user->user_name?></strong><span class="count"><?=$user->post_count?></span></a>
     </li>  
   <? endforeach; ?>
   </ul>
