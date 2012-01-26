@@ -60,11 +60,12 @@ $route['upload'] = 'post/upload';
 // SEARCH
 $route['search/(:any)/(:num)'] = 'post/view/$1/$2';
 // COMMENTS
-$route['comment/delete/(:num)/(:num)/(:num)'] = 'post/delete_comment/$1/$2/$3';
 $route['comment/add'] = 'post/add_comment';
+$route['comment/delete/(:num)/(:num)/(:num)'] = 'post/delete_comment/$1/$2/$3';
+
 // LIKES
-$route['like/add/(:num)'] = 'post/add_like/$1';
-$route['like/remove/(:num)'] = 'post/remove_like/$1';
+$route['like/add/(:any)'] = 'post/add_like/$1';
+$route['like/remove/(:any)'] = 'post/remove_like/$1';
 // DELETE POST
 $route['post/delete/(:num)'] = 'post/delete/$1';
 // TAGS
@@ -72,13 +73,17 @@ $route['tag/(:any)'] = 'post/tag/$1';
 $route['tag/(:any)/page/(:num)'] = 'post/tag/$1/$2';
 // LOGIN
 $route['login'] = 'auth/login';
+$route['login/(:any)'] = 'auth/login/$1';
 $route['login/(:any)/(:any)'] = 'auth/login/$1/$2';
 $route['logout'] = 'auth/logout';
+$route['logout/(:any)'] = 'auth/logout/$1';
 $route['logout/(:any)/(:any)'] = 'auth/logout/$1/$2';
 // TAGS
 $route['tags'] = 'post/tags';
 // USER
 $route['designers'] = 'post/users';
+$route['user/(:any)'] = 'post/user/$1';
+$route['user/(:any)/page'] = 'post/user/$1/$2';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

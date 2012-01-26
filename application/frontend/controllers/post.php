@@ -116,7 +116,7 @@ class Post extends CI_Controller
 
     // load views and show the page
     $this->load->view('common/page_top.php', $data);
-    $this->load->view('lists/tags.php', $data);
+    $this->load->view('search/tags.php', $data);
     $this->load->view('widgets/widgets.php', $data);
     $this->load->view('common/page_end.php', $data);
   }
@@ -274,142 +274,6 @@ class Post extends CI_Controller
     $this->load->view('common/page_end.php', $data);
   }
 
-  // /**
-  //  * Post::buzzing()
-  //  * 
-  //  * @param integer $page
-  //  * @return
-  //  */
-  // public function buzzing($page = 1)
-  // {
-  //   $data['title'] = 'Tribble - Home';
-  //   $data['meta_description'] = 'A design content sharing and discussion tool.';
-  //   $data['meta_keywords'] = 'Tribble';
-
-  //   if ($session = $this->rest->get('auth/session/', array('id' => $this->session->userdata('sid'))))
-  //     ;
-  //   {
-  //     if ($session->request_status == true)
-  //     {
-  //       $data['user'] = $session->user;
-  //     } else
-  //     {
-  //       $this->session->sess_destroy();
-  //     }
-  //   }
-
-  //   if (!$POST_Total = $this->rest->get('posts/total'))
-  //   {
-  //     show_error(lang('F_API_CONNECT'), 404);
-  //   }
-
-  //   $display_per_page = 12;
-  //   $api_dataset_rows = 600;
-
-  //   $api_page = floor((($page * $display_per_page) - $display_per_page) / $api_dataset_rows) + 1;
-
-  //   if (!$REST_data = $this->rest->get('posts/list/buzzing/' . $api_page))
-  //   {
-  //     show_error(lang('F_API_CONNECT'), 404);
-  //     log_message(1, 'API Failure. CALL: posts/list/buzzing/' . $api_page);
-  //   }
-
-  //   if ($REST_data->request_status == false)
-  //   {
-  //     show_error($REST_data->message, 404);
-  //   }
-
-  //   $page = (int)$page;
-
-  //   $offset = (($page - 1) * $display_per_page) - ($api_dataset_rows * ($api_page - 1));
-
-  //   $tag_data = $this->rest->get('meta/tags');
-  //   $color_data = $this->rest->get('meta/colors');
-  //   $data['tags'] = $tag_data->tags;
-  //   $data['colors'] = $color_data->colors;
-
-  //   $data['posts'] = array_slice($REST_data->posts, $offset, $display_per_page, true);
-
-  //   $config['base_url'] = site_url('buzzing/page');
-  //   $config['total_rows'] = $POST_Total->post_count;
-
-  //   $this->pagination->initialize($config);
-  //   $data['paging'] = $this->pagination->create_links();
-
-  //   $this->load->view('common/page_top.php', $data);
-  //   $this->load->view('lists/main.php', $data);
-  //   $this->load->view('widgets/widgets.php', $data);
-  //   $this->load->view('common/page_end.php', $data);
-  // }
-
-  // /**
-  //  * Post::loved()
-  //  * 
-  //  * @param integer $page
-  //  * @return
-  //  */
-  // public function loved($page = 1)
-  // {
-  //   $data['title'] = 'Tribble - Home';
-  //   $data['meta_description'] = 'A design content sharing and discussion tool.';
-  //   $data['meta_keywords'] = 'Tribble';
-
-  //   if ($session = $this->rest->get('auth/session/', array('id' => $this->session->userdata('sid'))))
-  //     ;
-  //   {
-  //     if ($session->request_status == true)
-  //     {
-  //       $data['user'] = $session->user;
-  //     } else
-  //     {
-  //       $this->session->sess_destroy();
-  //     }
-  //   }
-
-  //   if (!$POST_Total = $this->rest->get('posts/total'))
-  //   {
-  //     show_error(lang('F_API_CONNECT'), 404);
-  //   }
-
-  //   $display_per_page = 12;
-  //   $api_dataset_rows = 600;
-
-  //   $api_page = floor((($page * $display_per_page) - $display_per_page) / $api_dataset_rows) + 1;
-
-  //   if (!$REST_data = $this->rest->get('posts/list/loved/' . $api_page))
-  //   {
-  //     show_error(lang('F_API_CONNECT'), 404);
-  //     log_message(1, 'API Failure. CALL: posts/list/loved/' . $api_page);
-  //   }
-
-  //   if ($REST_data->request_status == false)
-  //   {
-  //     show_error($REST_data->message, 404);
-  //   }
-
-  //   $page = (int)$page;
-
-  //   $offset = (($page - 1) * $display_per_page) - ($api_dataset_rows * ($api_page - 1));
-
-  //   $tag_data = $this->rest->get('meta/tags');
-  //   $color_data = $this->rest->get('meta/colors');
-  //   $data['tags'] = $tag_data->tags;
-  //   $data['colors'] = $color_data->colors;
-
-  //   $data['posts'] = array_slice($REST_data->posts, $offset, $display_per_page, true);
-
-  //   $config['base_url'] = site_url('loved/page');
-  //   $config['total_rows'] = $POST_Total->post_count;
-
-  //   $this->pagination->initialize($config);
-  //   $data['paging'] = $this->pagination->create_links();
-
-  //   $this->load->view('common/page_top.php', $data);
-  //   $this->load->view('lists/main.php', $data);
-  //   $this->load->view('widgets/widgets.php', $data);
-  //   $this->load->view('common/page_end.php', $data);
-  // }
-
   public function tags()
   {
     $data['title'] = 'Tribble - Home';
@@ -442,14 +306,89 @@ class Post extends CI_Controller
     $this->load->view('common/page_end.php', $data);
   }
 
+  public function user($user, $dummy = null, $page = 1)
+  {
+    $data['title'] = 'Tribble - Home';
+    $data['meta_description'] = 'A design content sharing and discussion tool.';
+    $data['meta_keywords'] = 'Tribble';
+
+    if(!strpos($user, '-'))
+    {
+      $slug = strlen($user);
+    } else {
+      $slug = strpos($user, '-');
+    }
+      
+    $user_id = substr($user, 0, $slug);
+
+    if ($session = $this->rest->get('auth/session/', array('id' => $this->session->userdata('sid'))));
+    {
+      if ($session->request_status == true)
+      {
+        $data['user'] = $session->user;
+      } else
+      {
+        $this->session->sess_destroy();
+      }
+    }
+    
+    // set the defaults
+    $display_per_page = 12;
+    // number of rows per result set
+    $api_dataset_rows = 600;
+
+    // calculate wich result set page should we request from the api
+    $api_page = (int)floor((($page * $display_per_page) - $display_per_page) / $api_dataset_rows) + 1;
+
+    var_dump($api_page);
+
+    // try to get the data from the API and show error on failure
+    if (!$user_request = $this->rest->get('posts/user/id/' . $user_id . '/' . $api_page))
+    {
+      show_error(lang('F_API_CONNECT'), 404);
+      log_message(1, 'API Failure. CALL: ' . $api_call . $api_page);
+    }
+
+    if ($user_request->request_status == false)
+    {
+      show_error($user_request->message, 404);
+    }
+
+    $page = (int)$page;
+    $offset = (($page - 1) * $display_per_page) - ($api_dataset_rows * ($api_page - 1));
+
+    $tag_data = $this->rest->get('meta/tags');
+    $color_data = $this->rest->get('meta/colors');
+    $data['tags'] = $tag_data->tags;
+    $data['colors'] = $color_data->colors;
+
+    $data['posts'] = array_slice($user_request->posts, $offset, $display_per_page, true);
+    $data['name'] = $user_request->user_name;
+    $data['count'] = $user_request->post_count;
+
+    // pagination
+    $config['uri_segment'] = 4;
+    $config['base_url'] = site_url('user/'.$user.'/page');
+    $config['total_rows'] = $user_request->post_count;
+
+    $this->pagination->initialize($config);
+    $data['paging'] = $this->pagination->create_links();
+
+    $this->load->view('common/page_top.php', $data);
+    $this->load->view('search/user.php', $data);
+    $this->load->view('widgets/widgets.php', $data);
+    $this->load->view('common/page_end.php', $data);
+
+
+  }
+
   public function users()
   {
     $data['title'] = 'Tribble - Home';
     $data['meta_description'] = 'A design content sharing and discussion tool.';
     $data['meta_keywords'] = 'Tribble';
 
-    if ($session = $this->rest->get('auth/session/', array('id' => $this->session->userdata('sid'))))
-      ;
+    if ($session = $this->rest->get('auth/session/', array('id' => $this->session->userdata('sid'))));
     {
       if ($session->request_status == true)
       {
@@ -483,7 +422,14 @@ class Post extends CI_Controller
   public function view($postId)
   {
 
-    $post_id = substr($postId, 0, strpos($postId, '-'));
+    if(!strpos($postId, '-'))
+    {
+      $slug = strlen($postId);
+    } else {
+      $slug = strpos($postId, '-');
+    }
+      
+    $post_id = substr($postId, 0, $slug);
 
     //Pull in an array of tweets
     $REST_Data = $this->rest->get('posts/single/' . $post_id);
@@ -636,7 +582,17 @@ class Post extends CI_Controller
     }
   }
 
-  public function delete($post_id){
+  public function delete($postId)
+  {
+
+    if(!strpos($postId, '-'))
+    {
+      $slug = strlen($postId);
+    } else {
+      $slug = strpos($postId, '-');
+    }
+      
+    $post_id = substr($postId, 0, $slug);
 
     if ($session = $this->rest->get('auth/session/', array('id' => $this->session->userdata('sid'))));
     {
@@ -673,7 +629,7 @@ class Post extends CI_Controller
   public function add_comment()
   {
 
-    if (!$this->session->userdata('uid'))
+    if (!$this->session->userdata('sid'))
     {
       redirect(site_url());
     }
@@ -689,7 +645,7 @@ class Post extends CI_Controller
     {
       redirect('/view/' . $post_id);
     } else
-    {
+    {      
       redirect(site_url('/view/' . $post_id), 404);
     }
 
@@ -706,7 +662,7 @@ class Post extends CI_Controller
   public function delete_comment($comment_id, $post_id, $user_id)
   {
 
-    if (!$this->session->userdata('uid'))
+    if (!$this->session->userdata('sid'))
     {
       redirect(site_url());
     }
@@ -731,8 +687,18 @@ class Post extends CI_Controller
    * @param mixed $post_id
    * @return
    */
-  public function add_like($post_id)
+  public function add_like($postId)
   {
+
+    if(!strpos($postId, '-'))
+    {
+      $slug = strlen($postId);
+    } else {
+      $slug = strpos($postId, '-');
+    }
+      
+    $post_id = substr($postId, 0, $slug);
+
     if ($session = $this->rest->get('auth/session/', array('id' => $this->session->userdata('sid'))))
       ;
     {
@@ -746,7 +712,7 @@ class Post extends CI_Controller
       }
     }
 
-    $like_add = $this->rest->put('/likes/like', array('post_id' => $post_id, 'user_id' => $data['user']->id));
+    $like_add = $this->rest->put('/likes/like', array('post_id' => $post_id, 'user_id' => $data['user']->user_id));
     if ($like_add->status)
     {
       //var_($like_add);
@@ -764,8 +730,17 @@ class Post extends CI_Controller
    * @param mixed $post_id
    * @return
    */
-  public function remove_like($post_id)
+  public function remove_like($postId)
   {
+
+    if(!strpos($postId, '-'))
+    {
+      $slug = strlen($postId);
+    } else {
+      $slug = strpos($postId, '-');
+    }
+      
+    $post_id = substr($postId, 0, $slug);
 
     if ($session = $this->rest->get('auth/session/', array('id' => $this->session->userdata('sid'))))
       ;
@@ -780,7 +755,7 @@ class Post extends CI_Controller
       }
     }
 
-    $like_remove = $this->rest->delete('/likes/like', array('post_id' => $post_id, 'user_id' => $data['user']->id));
+    $like_remove = $this->rest->delete('/likes/like', array('post_id' => $post_id, 'user_id' => $data['user']->user_id));
     if ($like_remove->status)
     {
       redirect('/view/' . $post_id);

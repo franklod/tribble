@@ -20,7 +20,7 @@ class Posts extends REST_Controller
   public function __construct()
   {
     parent::__construct();
-    $this->output->enable_profiler(TRUE);
+    // $this->output->enable_profiler(TRUE);
 
   }
 
@@ -106,7 +106,7 @@ class Posts extends REST_Controller
           'result_page' => $page,
           'post_count' => $limit,
           'posts' => $posts);
-        @$this->cache->memcached->save($cachekey, $object, 10 * 60);
+        @$this->cache->memcached->save($cachekey, $object, 30 * 60);
         // output the response
         $this->response($object);
       } else
@@ -154,7 +154,7 @@ class Posts extends REST_Controller
           'request_status' => true,
           'post' => $post,
           'post_replies' => array('count' => count($replies), 'replies' => $replies));
-        $this->cache->memcached->save($cachekey, $object, 10 * 60);
+        $this->cache->memcached->save($cachekey, $object, 30 * 60);
         $this->response($object);
       }
     } else
@@ -197,8 +197,10 @@ class Posts extends REST_Controller
           'result_page' => $page,
           'tag' => $posts['tag'],
           'post_count' => $posts['count'],
-          'posts' => $posts['posts']);
-        $this->cache->memcached->save($cachekey, $object, 10 * 60);
+          'posts' => $posts['posts']
+        );
+        
+        $this->cache->memcached->save($cachekey, $object, 30 * 60);
         $this->response($object);
       }
     } else
@@ -208,8 +210,7 @@ class Posts extends REST_Controller
 
   }
 
-  public function user(){
-     
+  public function user_get(){         
 
     // load the memcached driver
     $this->load->driver('cache');
@@ -217,13 +218,41 @@ class Posts extends REST_Controller
     $this->load->model('Posts_API_model', 'mPosts');
 
     $user_id = $this->get('id');
+    $page = $this->get('page');
+    $limit = $this->get('limit');
 
     if(!$user_id)
       $this->response(array('request_status'=>false,'message'=>lang('E_NO_USER_ID')));
-    
-    $cachekey = sha1('user/'.$user_id);
 
-    if(!$this->cache->memcached->get($cachekey));
+    if (!$page)
+      $page = 1;
+
+    if (!$limit)
+      $limit = 600;
+
+    $cachekey = sha1('user/'.$user_id.$page.$limit);
+      
+
+    if(!$this->cache->memcached->get($cachekey))
+    {        
+      $posts = $this->mPosts->getPostsByUser($user_id,$page,$limit);
+
+      if(!$posts)
+        $this->response(array('request_status'=>false,'message'=>lang('F_DATA_READ')));
+      
+      $object = array(
+        'request_status' => true,
+        'result_page' => $page,
+        'user_name' => $posts['user_name'],
+        'post_count' => $posts['count'],
+        'posts' => $posts['posts']
+      );
+            
+      $this->cache->memcached->save($cachekey,$object, 30 * 60);
+      $this->response($object);
+    } else {
+      $this->response($this->cache->memcached->get($cachekey));                    
+    }
       
 
   }
@@ -260,7 +289,7 @@ class Posts extends REST_Controller
       $posts = $this->mPosts->searchPostsTitleAndDescription($string, $page, $limit);
       if ($posts)
       {
-        $this->cache->memcached->save($cachekey, array('request_status' => true, 'search' => $posts), 10 * 60);
+        $this->cache->memcached->save($cachekey, array('request_status' => true, 'search' => $posts), 30 * 60);
         $this->response(array('request_status' => true, 'search' => $posts));
       }
     } else

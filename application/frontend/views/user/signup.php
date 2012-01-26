@@ -11,6 +11,11 @@
   <? endif;?>
   <h2>Create your Tribble account</h2>
 	<?=form_open('user/dosignup',array('class'=>'g75'))?>
+  <div class="e_wrap <?=(form_error('realname') == TRUE) ? 'error' : ''; ?>">
+    <?=form_label('Real name')?>
+    <?=form_input(array('name'=>'realname','id'=>'realname','placeholder'=>'Your real name','value'=>set_value('realname')))?>
+    <?=(form_error('realname') == TRUE) ? form_error('realname') : ''; ?>
+  </div>
   <div class="e_wrap <?=(form_error('email') == TRUE) ? 'error' : ''; ?>">
     <?=form_label('Email','email')?>
     <?=form_input(array('name'=>'email','id'=>'email','placeholder'=>'Your email','value'=>set_value('email')))?>
@@ -25,12 +30,7 @@
     <?=form_label('Password Confirmation','passwordchk')?>
     <?=form_password(array('name'=>'passwordchk','id'=>'passwordchk','placeholder'=>'Confirm your password','value'=>set_value('passwordchk')))?>
     <?=(form_error('passwordchk') == TRUE) ? form_error('passwordchk') : ''; ?>
-  </div>
-  <div class="e_wrap <?=(form_error('realname') == TRUE) ? 'error' : ''; ?>">
-    <?=form_label('Real name')?>
-    <?=form_input(array('name'=>'realname','id'=>'realname','placeholder'=>'Your real name','value'=>set_value('realname')))?>
-    <?=(form_error('realname') == TRUE) ? form_error('realname') : ''; ?>
-  </div>
+  </div>  
   <div class="e_wrap <?=(form_error('bio') == TRUE) ? 'error' : ''; ?>">
     <?=form_label('Some words about you','bio')?>
     <?=form_textarea(array('name'=>'bio','id'=>'bio','value'=>set_value('bio')))?>

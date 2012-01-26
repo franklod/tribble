@@ -33,7 +33,7 @@ $lang['INV_USER'] = "Unknown user.";
 $lang['INV_POST'] = "Unknown post.";
 $lang['INV_POST_LIST_TYPE'] = "An invalid post list type was requested. Supported types are: 'new', 'buzzing' and 'loved'.";
 $lang['INV_SEARCH_TEXT'] = "Search text must be at least 3 characters long.";
-$lang['INV_COMMENT'] = "The comment id was not provided.";
+$lang['INV_COMMENT'] = "Unknown comment.";
 $lang['INV_POST_PERMISSIONS'] = "The supplied user cannot delete the requested post.";
 
 // NO CHANGES MADE
@@ -64,7 +64,7 @@ $lang['S_ADD_COMMENT'] = "Your comment was successfully added to this post.";
 $lang['S_DELETE_COMMENT'] = "Your comment was successfully deleted from this post.";
 $lang['S_SESSION_KILLED'] = "The session was successfully terminated.";
 $lang['S_DELETE_POST'] = "Your post was successfully deleted.";
-$lang['F_USER_LIST'] = "The user list was successfully retrieved";
+$lang['S_USER_LIST'] = "The user list was successfully retrieved";
 
 /* End of file api.php */
 /* Location: ./system/language/english/api_lang.php */

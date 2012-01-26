@@ -39,28 +39,25 @@ class Replies extends REST_Controller
     $this->load->model('Users_API_model', 'mUser');
 
     if (!$user_id)
-    {
-      $this->response(array('request_status' => false, 'message' => 'No user_id was supplied'));
-    } else
-      if (!$this->mPosts->checkIfPostExists($post_id))
-      {
-        $this->response(array('request_status' => false, 'message' => 'Unknown post'));
-      }
-    if (!$post_id)
-    {
-      $this->response(array('request_status' => false, 'message' => 'No post_id was supplied'));
-    } else
-      if (!$this->mUser->checkIfUserExists($user_id))
-      {
-        $this->response(array('request_status' => false, 'message' => 'Unknown user'));
-      }
+      $this->response(array('request_status' => false, 'message' => lang('E_NO_USER_ID')));
+
+    if (!$this->mUser->checkIfUserExists($user_id))
+        $this->response(array('request_status' => false, 'message' => lang('INV_USER')));
+
+    if (!$post_id)  
+      $this->response(array('request_status' => false, 'message' => lang('E_NO_POST_ID')));
+
+    if (!$this->mPosts->checkIfPostExists($post_id))      
+      $this->response(array('request_status' => false, 'message' => lang('INV_POST')));
+
     if (!$comment_text)
-      $this->response(array('request_status' => false, 'message' => 'No comment_text was supplied'));
+      $this->response(array('request_status' => false, 'message' => lang('E_NO_COMMENT_TEXT')));
 
     $comment_insert = $this->mPosts->insert_comment($post_id, $user_id, $comment_text);
+
     if (!$comment_insert)
     {
-      $this->response(array('request_status' => false, 'message' => 'Could not insert comment.'), 404);
+      $this->response(array('request_status' => false, 'message' => lang('F_ADD_COMMENT')), 404);
     } else
     {
 
@@ -73,7 +70,7 @@ class Replies extends REST_Controller
       {
         $this->cache->memcached->delete($key);
       }
-      $this->response(array('request_status' => true, 'message' => 'Comment was inserted successfuly.'));
+      $this->response(array('request_status' => true, 'message' => lang('S_ADD_COMMENT')));
     }
 
   }
@@ -92,23 +89,23 @@ class Replies extends REST_Controller
     $user_id = $this->delete('user_id');
 
     if (!$comment_id)
-      $this->response(array('request_status' => false, 'message' => 'No comment id was supplied.'));
+      $this->response(array('request_status' => false, 'message' => lang('E_NO_COMMENT_ID')));
     if (!$this->mPosts->checkIfCommentExists($comment_id))
-      $this->response(array('request_status' => false, 'message' => 'Unknown comment.'));
+      $this->response(array('request_status' => false, 'message' => lang('INV_COMMENT')));
     if (!$post_id)
-      $this->response(array('request_status' => false, 'message' => 'No post id was supplied.'));
+      $this->response(array('request_status' => false, 'message' => lang('E_NO_POST_ID')));
     if (!$this->mPosts->checkIfPostExists($post_id))
-      $this->response(array('request_status' => false, 'message' => 'Unknown post.'));
+      $this->response(array('request_status' => false, 'message' => lang('INV_POST')));
     if (!$user_id)
-      $this->response(array('request_status' => false, 'message' => 'No user id was supplied.'));
+      $this->response(array('request_status' => false, 'message' => lang('E_NO_USER_ID')));
     if (!$this->mUsers->checkIfUserExists($user_id))
-      $this->response(array('request_status' => false, 'message' => 'Unknown user.'));
+      $this->response(array('request_status' => false, 'message' => lang('INV_USER')));
 
     $comment_delete = $this->mPosts->delete_comment($post_id, $comment_id, $user_id);
 
     if ($comment_delete == false)
     {
-      $this->response(array('request_status' => false, 'message' => 'Could not delete comment.'), 404);
+      $this->response(array('request_status' => false, 'message' => lang('F_DELETE_COMMENT')), 404);
     } else
     {
 
@@ -121,7 +118,7 @@ class Replies extends REST_Controller
       {
         $this->cache->memcached->delete($key);
       }
-      $this->response(array('request_status' => true, 'message' => 'Comment was deleted successfuly.'));
+      $this->response(array('request_status' => true, 'message' => lang('S_DELETE_COMMENT')));
     }
 
   }

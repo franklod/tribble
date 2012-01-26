@@ -50,6 +50,55 @@ class Posts_API_model extends CI_Model {
       }
       
     }
+
+    function getPostsByUser($user_id,$page,$per_page){                   
+      
+      $this->db->select('
+          tr_post.post_id AS post_id,
+          tr_post.post_title AS post_title,
+          tr_post.post_text AS post_text,
+          tr_post.post_timestamp AS post_date,
+          tr_image.image_path as post_image_path,
+          (SELECT COUNT(1) FROM tr_like WHERE tr_like.like_post_id = tr_post.post_id) as post_like_count,
+          (SELECT COUNT(1) FROM tr_reply WHERE tr_reply.reply_post_id = tr_post.post_id AND tr_reply.reply_is_deleted = 0) as post_reply_count,
+          tr_user.user_id AS user_id,
+          tr_user.user_realname AS user_name,          
+          tr_user.user_email AS user_email            
+      ');
+      $this->db->from('tr_post');
+      $this->db->join('tr_image','tr_post.post_id = tr_image.image_post_id','inner');
+      $this->db->join('tr_user','tr_post.post_user_id = tr_user.user_id','inner');
+      //  $this->db->join('tr_tag','tr_post.post_id = tr_tag.tag_post_id','inner');           
+
+      $this->db->where(array('tr_user.user_id' => $user_id));
+      $this->db->order_by('tr_post.post_timestamp','desc');             
+      
+      $page = (int)$page;
+      $per_page = (int)$per_page;
+      
+      if($page <= 1){
+        $page = 1; 
+      }
+
+      $offset = ($page-1) * $per_page;                
+              
+      if($offset > 0){          
+        $this->db->limit($per_page,$offset);
+      } else {          
+        $this->db->limit($per_page); 
+      } 
+      
+      if($query = $this->db->get()){
+
+        $qr = $query->result();
+
+        $result = array('user_name'=>$qr[0]->user_name,'count'=>$query->num_rows(),'posts'=>$query->result());
+        return $result;
+      } else {
+        return false;
+      }
+      
+    }
   
       
     function getPostList($type,$page,$per_page){
