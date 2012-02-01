@@ -9,10 +9,8 @@
   <div class="alert-msg success">
     <p><?=$success?></p>
   </div>
-  <? endif;?>
-  
-  <?=form_open_multipart(site_url('/comment/add'))?>
-  
+  <? endif;?>  
+  <?=form_open_multipart(site_url('/comment/add'))?>  
   <?=form_hidden('user_id',$user->user_id)?>
   <?=form_hidden('post_id',$post->post_id)?>
   <?=form_fieldset('')?>

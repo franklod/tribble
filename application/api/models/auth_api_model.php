@@ -14,11 +14,10 @@ class Auth_api_model extends CI_Model
         $this->db->select('
           user_id,
           user_realname as user_name,
-          user_email,
-          user_avatar
+          user_email
         ');        
         $this->db->from('user');
-        $this->db->where(array('user_email'=>$email,'user_password'=>$this->encrypt->sha1($this->encrypt->sha1($password))));        
+        $this->db->where(array('user_email'=>$email,'user_password'=>$password));        
         $query = $this->db->get();
         
         if($query->num_rows() == 1) {

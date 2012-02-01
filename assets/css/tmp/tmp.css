@@ -1372,7 +1372,7 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#666666', endCo
 }
 #header h1 {
 	display:block;
-	background: url(../images/tribble-small.png) 0 8px scroll no-repeat;
+	background: url(../images/post-small.png) 0 8px scroll no-repeat;
 	width:200px;
 	margin:0 auto;
 	height:60px;
@@ -1443,7 +1443,7 @@ h2.searchResult {
 .login form .e_wrap input.btn_send {
 	margin-left:180px;
 }
-/*tribbles*/
+/*posts*/
 .box {
 	-webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
 	-moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
@@ -1455,31 +1455,31 @@ h2.searchResult {
 .txtRight {
 	text-align: right;
 }
-ul.tribbles li {
+ul.posts li {
 	float: left;
 }
-ul.tribbles {
+ul.posts {
 	list-style-type: none;
 	padding: 0;
 }
-.tribbles li.space {
+.posts li.space {
 	margin:0 5px 0 0;
 	padding:5px;
 	height: 235px;
 }
-.tribble-img {
+.post-img {
 	overflow: hidden;
 	position: relative;
 	padding-bottom:6px
 }
-.tribble-img:hover .tribble-hover {
+.post-img:hover .post-hover {
 	opacity: 0.90;
 	-webkit-transition: opacity 200ms ease-in-out;
 	-moz-transition: opacity 200ms ease-out;
 	-o-transition: opacity 200ms ease-out;
 	transition: opacity 200ms ease-out;
 }
-.tribble-hover {
+.post-hover {
 	position: absolute;
 	background: #fff;
 	height: 100%;
@@ -1487,24 +1487,24 @@ ul.tribbles {
 	/*padding: 8px 8px 0 8px;*/
 	opacity: 0;
 }
-.tribble-img a {
+.post-img a {
 	text-decoration: none;
 }
-.tribble-img a span {
+.post-img a span {
 	display: block;
 	padding: 6px 6px 0 6px;
 }
-.tribble-img span.title {
+.post-img span.title {
 	font-size: 1.1em;
 	color: #2b343b;
 	font-weight: 700;
 	text-shadow:0 1px 0 #ffffff;
 }
-.tribble-img span.desc {
+.post-img span.desc {
 	font-size: 0.95em;
 	color: #2A2D30;
 }
-.tribble-img em {
+.post-img em {
 	font-size: 0.9em;
 	color: #5D6167;
 	position: absolute;
@@ -1512,11 +1512,11 @@ ul.tribbles {
 	left: 6px;
 	font-style: normal;
 }
-.tribble-tools {
+.post-tools {
 	clear:both;
 	padding-bottom:12px;
 }
-.tribble-tools .ico {
+.post-tools .ico {
 	margin-left:5px;
 	float:right;
 	line-height:1em;
@@ -1528,7 +1528,7 @@ ul.tribbles {
 	-moz-border-radius: 2px;
 	border-radius: 2px;
 }
-.tribble-tools .ico a {
+.post-tools .ico a {
 	padding:3px 5px;
 	color: #2A2D30;
 	text-shadow:0 1px 0 #ffffff;
@@ -1551,7 +1551,7 @@ ul.tribbles {
 .ico a.likes {
 	background:url(../images/icons.png) 0 -18px no-repeat scroll;
 }
-.tribble-tools .ico a:hover, .tribble-tools .ico:hover {
+.post-tools .ico a:hover, .post-tools .ico:hover {
 	color:#3399cc;
 	background: rgba(0, 0, 0, 0.04);
 }
@@ -1719,42 +1719,42 @@ ul.tribbles {
 	z-index:1;
 }
 /*******************************tribble details*******************************/
-.tribble-user-info {
+.post-user-info {
 	margin:0;
 	padding:0;
 }
-.tribble-user-info h4 {
+.post-user-info h4 {
 	float:left;
 	margin: 0;
 	color:#3399cc;
 	line-height: 1;
 }
-.tribble-user-info h4 a {
+.post-user-info h4 a {
 	font-size:14px;
 }
-.tribble-user-info img {
+.post-user-info img {
 	float:left;
 	margin:0 10px 10px 0;
 	-webkit-border-radius: 2px;
 	-moz-border-radius: 2px;
 	border-radius: 2px;
 }
-.tribble-img-container {
+.post-img-container {
 	float:left;
 	width:400px;
 	height:300px;
 	margin-right:15px;
 }
-.tribble-img-data {
+.post-img-data {
 	width:280px;
 	float:right;
 }
-.tribble-desc {
+.post-desc {
 	font-size: 1.1em;
 	color: #2A2D30;
 	line-height:1.4;
 }
-.tribble-title {
+.post-title {
 	margin:0;
 	padding:0;
 	font-size: 1.2em;
@@ -1762,7 +1762,7 @@ ul.tribbles {
 	text-shadow:0 1px 0 #ffffff;
 	font-weight: 700;
 }
-.tribble-date {
+.post-date {
 	font-size: 0.9em;
 	color: #5D6167;
 	font-style: normal;
@@ -1771,22 +1771,22 @@ ul.tribbles {
 	margin-left:5px;
 	line-height:2;
 }
-.tribble-date:before {
+.post-date:before {
 	content: "|";
 	margin-right:3px;
 }
-.tribble-container {
+.post-container {
 	overflow: hidden;
 	position: relative;
 }
-.tribble-container h2 {
+.post-container h2 {
 	font-size: 1.4em;
 	font-weight: 700;
 	line-height:1;
 	text-transform:uppercase;
 
 }
-.tribble-container h3 {
+.post-container h3 {
 	clear:both;
 	padding:2px;
 	text-indent:5px;

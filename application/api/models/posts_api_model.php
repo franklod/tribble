@@ -25,7 +25,7 @@ class Posts_API_model extends CI_Model {
       $this->db->like('tr_tag.tag_content', $tag.',', 'after');
       $this->db->or_like('tr_tag.tag_content', ','.$tag.',', 'both');
       $this->db->or_like('tr_tag.tag_content', ','.$tag, 'before');
-      $this->db->order_by('tr_post.post_timestamp','desc');             
+      $this->db->order_by('tr_post.post_timestamp','desc');
       
       $page = (int)$page;
       $per_page = (int)$per_page;
@@ -34,13 +34,13 @@ class Posts_API_model extends CI_Model {
         $page = 1; 
       }
 
-      $offset = ($page-1) * $per_page;                
+      $offset = ($page-1) * $per_page;
               
-      if($offset > 0){          
+      if($offset > 0){
         $this->db->limit($per_page,$offset);
-      } else {          
-        $this->db->limit($per_page); 
-      } 
+      } else {
+        $this->db->limit($per_page);
+      }
       
       if($query = $this->db->get()){
         $result = array('tag'=>$tag,'count'=>$query->num_rows(),'posts'=>$query->result());
@@ -92,7 +92,7 @@ class Posts_API_model extends CI_Model {
 
         $qr = $query->result();
 
-        $result = array('user_name'=>$qr[0]->user_name,'count'=>$query->num_rows(),'posts'=>$query->result());
+        $result = array('user_name'=>$qr[0]->user_name,'user_email'=>$qr[0]->user_email,'count'=>$query->num_rows(),'posts'=>$query->result());
         return $result;
       } else {
         return false;
@@ -173,6 +173,7 @@ class Posts_API_model extends CI_Model {
         tr_post.post_title AS post_title,
         tr_post.post_text AS post_text,
         tr_post.post_timestamp AS post_date,
+        tr_post.post_parent_id AS post_parent_id,
         COUNT(tr_like.like_post_id) AS post_like_count,
         tr_image.image_path as post_image_path,
         tr_image.image_palette as post_image_palette,
@@ -351,9 +352,11 @@ class Posts_API_model extends CI_Model {
       }
     }
     
-    function insertPost($post_data,$tags,$image){
           
       
+    function insertPost($post_data,$tags,$image){
+
+
       $this->db->trans_start();
       if(!$this->db->insert('post', $post_data)){
          $result->error = 'Error while writing tribble data.';
@@ -373,8 +376,9 @@ class Posts_API_model extends CI_Model {
       // log_message('debug', 'tag data writen');
       
       $imagedata['image_post_id'] = $post_id;
-      $imagedata['image_path'] = $image['image_path'];
-      $imagedata['image_palette'] = $image['image_palette'];
+      $imagedata['image_path'] = $image['path'];
+      $imagedata['image_palette'] = $image['palette'];
+      $imagedata['image_color_ranges'] = $image['ranges'];
       
       if(!$this->db->insert('image',$imagedata)){
         $result->error = 'Error while writing image data.';  
@@ -400,6 +404,18 @@ class Posts_API_model extends CI_Model {
         return $post_id;
       }
     }
+
+    function insertReply($reply_id,$parent_id){
+      $data = array('reply_post_id'=>$parent_id,'reply_rebound_id'=>$reply_id);
+      $this->db->insert('reply', $data);
+      if($this->db->affected_rows() == 1){
+        return true;
+      } else{
+        return false;
+      }
+    }
+
+
 
     function deletePost($post_id){
       $this->db->where('post_id', $post_id);

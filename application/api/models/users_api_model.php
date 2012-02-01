@@ -11,20 +11,32 @@ class Users_API_model extends CI_Model {
         }
     }
 
+    function createNewUser($user){
+                    
+      $query = $this->db->get_where('user', array('user_email' => $user['user_email']));
+
+      if ($query->num_rows() > 0){
+        return false;
+      } else {
+        $this->db->insert('user',$user);
+          return  sha1($user['user_email']);
+        } 
+    }
+
     function getUserList(){
       $this->db->select('
         tr_user.user_realname AS user_name,
         tr_user.user_id,
         tr_user.user_email,
-        COUNT(tr_post.post_id) AS post_count
+        (SELECT COUNT(1) FROM `tr_post` WHERE post_user_id = user_id) as post_count
       ');
       $this->db->from('user');
-      $this->db->join('post','tr_user.user_id = tr_post.post_user_id','inner');
       $this->db->group_by('
         tr_user.user_realname,
         tr_user.user_id,
         tr_user.user_email
       ');
+      $this->db->where(array('tr_user.user_is_deleted'=>0));
       $query = $this->db->get();
       if($query->num_rows() > 0){
         return $query->result();
@@ -37,6 +49,7 @@ class Users_API_model extends CI_Model {
       $this->db->select('user_id,user_email,user_realname as user_name,user_bio');
       $this->db->from('user');
       $this->db->where(array('user_id'=>$user_id));      
+      $this->db->where(array('user_is_deleted'=>0));
       $query = $this->db->get();
       if($query->num_rows() == 1){
         return $query->result();

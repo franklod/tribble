@@ -12,6 +12,10 @@ class Auth extends REST_Controller
     parent::__construct();
   }
 
+  private function _double_hash($str){
+    return $this->encrypt->sha1($this->encrypt->sha1($str));
+  }
+
   public function login_post()
   {
     $email = $this->post('email');
@@ -27,7 +31,7 @@ class Auth extends REST_Controller
     
     $this->load->library('encrypt');
     
-    $login = $this->mAuth->checkUserLogin($email,$password);
+    $login = $this->mAuth->checkUserLogin($email,$this->_double_hash($password));
     if(!$login)
       $this->response(array('request_status' => false, 'message' => $this->lang->line('INV_LOGIN')));
 

@@ -62,7 +62,7 @@ class Replies extends REST_Controller
     {
 
       $cacheKeys = array(
-        sha1('detail' . $post_id),
+        sha1('detail/' . $post_id),
         sha1('list/new'),
         sha1('list/buzzing'),
         sha1('list/loved'));
@@ -110,7 +110,7 @@ class Replies extends REST_Controller
     {
 
       $cacheKeys = array(
-        sha1('detail' . $post_id),
+        sha1('detail/' . $post_id),
         sha1('list/new'),
         sha1('list/buzzing'),
         sha1('list/loved'));

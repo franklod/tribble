@@ -10,7 +10,7 @@
   </div>
   <? endif;?>
   <h2>Create your Tribble account</h2>
-	<?=form_open('user/dosignup',array('class'=>'g75'))?>
+	<?=form_open('signup',array('class'=>'g75'))?>
   <div class="e_wrap <?=(form_error('realname') == TRUE) ? 'error' : ''; ?>">
     <?=form_label('Real name')?>
     <?=form_input(array('name'=>'realname','id'=>'realname','placeholder'=>'Your real name','value'=>set_value('realname')))?>

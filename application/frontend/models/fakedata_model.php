@@ -69,7 +69,7 @@ class Fakedata_model extends CI_Model
       $post_title = $posts[$i];
       $post_tags = str_replace(' ',',',$posts[$i]);
       $image = $images[$i];
-      $imagedata['image_palette'] = json_encode(getImageColorPalette("c:\\wamp\\www\\tribble\\data\\tests\\".$image));      
+      $imagedata['image_palette'] = json_encode(getImageColorPalette($this->config->item('app_path').'/data/test/'.$image));      
       
       $data = array(
          'post_text' => $post_text,
@@ -155,6 +155,25 @@ class Fakedata_model extends CI_Model
     
     return $users;
     
+  }
+
+  function update_colors($limit,$offset){
+    $query = $this->db->get_where('image', array('image_color_ranges' => null),$limit,$offset);
+    $res = $query->result();
+
+    foreach ($res as $image) {
+      $img_data = ImageProcessing::GetImageInfo($this->config->item('app_path').$image->image_path);
+
+      $data = array(
+         'image_palette' => json_encode($img_data->relevantColors),
+         'image_color_ranges' => json_encode($img_data->relevantColorRanges)
+      );
+
+      $this->db->where('image_id', $image->image_id);
+      $this->db->update('image', $data);
+
+      var_dump($img_data->path);
+    }
   }
 
 }

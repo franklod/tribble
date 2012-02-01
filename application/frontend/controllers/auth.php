@@ -17,12 +17,24 @@ class Auth extends CI_Controller
 
     public function login($controller = '', $slug = '')        
     {                        
-        $data['title'] = 'Tribble - Login';
-        $data['meta_description'] = 'A design content sharing and discussion tool.';
-        $data['meta_keywords'] = 'Tribble';
+        
+        if ($session = $this->rest->get('auth/session/', array('id' => $this->session->userdata('sid'))))
+        {
+          if ($session->request_status == true)
+          {
+            redirect(site_url());
+          } else
+          {
+            $this->session->sess_destroy();
+          }
+        }
+
+        $data['title'] = $this->config->item('site_name') . ' - Login';
+        $data['meta_description'] = $this->config->item('site_description');
+        $data['meta_keywords'] = $this->config->item('site_keywords');
         $data['form_action'] = current_url();
 
-        $this->form_validation->set_error_delimiters('<p class="help">', '</p>');
+        $this->form_validation->set_error_delimiters('<p class="help">', '</p>'); 
 
         if($this->form_validation->run('login') == false)
         {
@@ -36,7 +48,8 @@ class Auth extends CI_Controller
             $password = $this->input->post('password');
 
             if($result = $this->rest->post('auth/login',array('email'=> $email,'password'=>$password)))
-            {
+            {                                        
+
                 if(!$result->request_status){
                     $data['error'] = $result->message;
                     $this->load->view('common/page_top.php', $data);

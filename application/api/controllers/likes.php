@@ -88,15 +88,18 @@ class Likes extends REST_Controller
     } else
     {
 
-      $cacheKeys = array(
-        sha1('detail' . $post_id),
-        sha1('list/new'),
-        sha1('list/buzzing'),
-        sha1('list/loved'));
-      foreach ($cacheKeys as $key)
-      {
-        $this->cache->memcached->delete($key);
+      // CALCULATE THE NUMBER OF POSSIBLE CACHE PAGES FOR THE POST LISTINGS
+      $cache_pages = ceil( $this->countPosts() / 600);
+
+      // KILL THE LISTS CACHE
+      for($i=1;$i<=$cache_pages;$i++){
+        @$this->cache->memcached->delete(sha1('list/new'.$i));
+        @$this->cache->memcached->delete(sha1('list/buzzing'.$i));
+        @$this->cache->memcached->delete(sha1('list/loved'.$i));
       }
+
+      // kill the post cache
+      $this->cache->memcached->delete(sha1('detail' . $post_id));
       $this->response(array('status' => true, 'message' => lang('S_ADD_LIKE')));
     }
     
@@ -144,6 +147,20 @@ class Likes extends REST_Controller
       $this->response(array('status' => true, 'message' => lang('S_DELETE_LIKE')));
     }
         
+  }
+
+  public function countPosts()
+  {
+    $this->load->model('Posts_API_model', 'mPosts');
+    $count = $this->mPosts->countPosts();
+    
+    if (!$count)
+    {
+      return false;
+    } else
+    {
+      return $count;
+    }
   }
 
 }

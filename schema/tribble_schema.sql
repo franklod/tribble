@@ -1,6 +1,6 @@
 ﻿# SQL Manager 2007 for MySQL 4.3.4.1
 # ---------------------------------------
-# Host     : localhost
+# Host     : blobsnark
 # Port     : 3306
 # Database : tribble_schema
 
@@ -33,7 +33,7 @@ CREATE TABLE `tr_comment` (
   `comment_is_deleted` TINYINT(1) DEFAULT '0',
   PRIMARY KEY (`comment_id`)
 )ENGINE=InnoDB
-AUTO_INCREMENT=37 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
+AUTO_INCREMENT=3 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
 
 #
 # Structure for the `tr_image` table : 
@@ -46,9 +46,10 @@ CREATE TABLE `tr_image` (
   `image_post_id` INTEGER(11) NOT NULL,
   `image_path` VARCHAR(255) COLLATE utf8_general_ci NOT NULL DEFAULT '',
   `image_palette` VARCHAR(255) COLLATE utf8_general_ci NOT NULL DEFAULT '',
+  `image_color_ranges` VARCHAR(255) COLLATE utf8_general_ci DEFAULT NULL,
   PRIMARY KEY (`image_id`)
 )ENGINE=InnoDB
-AUTO_INCREMENT=1816 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
+AUTO_INCREMENT=1203 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
 
 #
 # Structure for the `tr_like` table : 
@@ -62,7 +63,7 @@ CREATE TABLE `tr_like` (
   `like_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`like_id`)
 )ENGINE=InnoDB
-AUTO_INCREMENT=1769 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
+AUTO_INCREMENT=1213 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
 
 #
 # Structure for the `tr_post` table : 
@@ -72,6 +73,7 @@ DROP TABLE IF EXISTS `tr_post`;
 
 CREATE TABLE `tr_post` (
   `post_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `post_parent_id` INTEGER(11) DEFAULT '0',
   `post_title` VARCHAR(255) COLLATE utf8_general_ci DEFAULT '',
   `post_text` VARCHAR(255) COLLATE utf8_general_ci NOT NULL DEFAULT '',
   `post_user_id` INTEGER(11) NOT NULL,
@@ -79,7 +81,7 @@ CREATE TABLE `tr_post` (
   `post_is_deleted` TINYINT(1) DEFAULT '0',
   PRIMARY KEY (`post_id`)
 )ENGINE=InnoDB
-AUTO_INCREMENT=1820 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
+AUTO_INCREMENT=1203 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
 
 #
 # Structure for the `tr_reply` table : 
@@ -96,24 +98,7 @@ CREATE TABLE `tr_reply` (
   `reply_is_deleted` TINYINT(1) DEFAULT '0',
   PRIMARY KEY (`reply_id`)
 )ENGINE=InnoDB
-AUTO_INCREMENT=34 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
-
-#
-# Structure for the `tr_session` table : 
-#
-
-DROP TABLE IF EXISTS `tr_session`;
-
-CREATE TABLE `tr_session` (
-  `session_id` VARCHAR(40) COLLATE utf8_general_ci NOT NULL DEFAULT '0',
-  `ip_address` VARCHAR(16) COLLATE utf8_general_ci NOT NULL DEFAULT '0',
-  `user_agent` VARCHAR(120) COLLATE utf8_general_ci NOT NULL DEFAULT '',
-  `last_activity` INTEGER(10) UNSIGNED NOT NULL DEFAULT '0',
-  `user_data` TEXT COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY (`session_id`),
-  KEY `last_activity_idx` (`last_activity`)
-)ENGINE=InnoDB
-CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
+AUTO_INCREMENT=3 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
 
 #
 # Structure for the `tr_tag` table : 
@@ -127,7 +112,20 @@ CREATE TABLE `tr_tag` (
   `tag_content` TEXT COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`tag_id`)
 )ENGINE=InnoDB
-AUTO_INCREMENT=1812 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
+AUTO_INCREMENT=1203 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
+
+#
+# Structure for the `tr_trash` table : 
+#
+
+DROP TABLE IF EXISTS `tr_trash`;
+
+CREATE TABLE `tr_trash` (
+  `trash_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `trash_path` VARCHAR(256) COLLATE utf8_general_ci DEFAULT NULL,
+  PRIMARY KEY (`trash_id`)
+)ENGINE=MyISAM
+AUTO_INCREMENT=1 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
 
 #
 # Structure for the `tr_user` table : 
@@ -141,12 +139,11 @@ CREATE TABLE `tr_user` (
   `user_password` VARCHAR(128) COLLATE utf8_general_ci NOT NULL DEFAULT '',
   `user_realname` VARCHAR(255) COLLATE utf8_general_ci NOT NULL DEFAULT '',
   `user_bio` TEXT COLLATE utf8_general_ci,
-  `user_avatar` VARCHAR(256) COLLATE utf8_general_ci DEFAULT NULL,
-  `user_stubb` VARCHAR(255) COLLATE utf8_general_ci DEFAULT NULL,
+  `user_is_deleted` TINYINT(1) DEFAULT '0',
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `user_email_UNIQUE` (`user_email`)
 )ENGINE=InnoDB
-AUTO_INCREMENT=1010 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+AUTO_INCREMENT=403 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
 COMMENT='\t';
 
 
