@@ -6,10 +6,7 @@
 * Image color palette extraction and display
 * Comments on posts
 * Reply to a post with another (rebound)
-* List posts by:
-** Most recent
-** Most replies
-** Most likes
+* List posts by: most recent, most replies, most likes
 * Simple text search
 * Find posts by tag
 * Find posts by user
@@ -23,7 +20,9 @@
 * php5-gd
 * php5-mysql
 * mysql-server
-* apache mod_rewrite (optional)
+* apache mod_rewrite (optional - requires configuration)
+* memcached
+
 
 There are 2 sql scripts in the schema folder.
 * tribble_schema = generates an empty database
