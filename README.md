@@ -1,4 +1,6 @@
-Installation requirements:
+# A simple dribbble clone!
+
+### Installation requirements:
 
 * php5
 * php5-curl
