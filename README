@@ -1,3 +1,13 @@
-This is intended to be a simple dribble.com clone.
+Installation requirements:
 
-!!! THIS IS NOT YET FUNCTIONAL, SO PLEASE DON'T ASK ME HOW TO INSTALL !!!
+* php5
+* php5-curl
+* php5-memcache
+* php5-gd
+* php5-mysql
+* mysql-server
+* apache mod_rewrite (optional)
+
+There are 2 sql scripts in the schema folder.
+* tribble_schema = generates an empty database
+* tribble_schema_test = generates a database populated with fake posts and users
