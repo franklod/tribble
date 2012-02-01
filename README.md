@@ -1,5 +1,20 @@
 # A simple dribbble clone!
 
+## Features:
+
+* Post images with title, descriptio, and tags
+* Image color palette extraction and display
+* Comments on posts
+* Reply to a post with another (rebound)
+* List posts by:
+** Most recent
+** Most replies
+** Most likes
+* Simple text search
+* Find posts by tag
+* Find posts by user
+
+
 ### Installation requirements:
 
 * php5
