@@ -28,7 +28,7 @@
     <?=(form_error('bio') == TRUE) ? form_error('bio') : ''; ?>
   </div>
   <div class="e_wrap">
-    <a href="<?=site_url('/user/profile')?>" class="defaultBtn btn_info">Cancel</a>
+    <a href="<?=site_url('/user/profile')?>" class="defaultBtn btn_send">Cancel</a>
     <?=form_submit(array('name'=>'save_profile','id'=>'save_profile','value'=>'Save changes','class'=>'btn_success'))?>
   </div>
   <?=form_close()?>

@@ -57,6 +57,7 @@ class Meta extends REST_Controller
           // iterate over each individual tag
           foreach ($tags as $tag)
           {
+            $tag = trim($tag);
             // check if it exists in the final array
             if (array_key_exists($tag, $unique_tags))
             {
@@ -68,14 +69,14 @@ class Meta extends REST_Controller
               $unique_tags[$tag] = 1;
             }
           }
-        }
-        // sort the final tags array 
-        arsort($unique_tags);
+        }        
         // if the limit is 0 give 'em all the tags
         if ($limit == 0){
+          uksort($unique_tags, 'strcasecmp');
           // define the response object structure
           $object = array('request_status' => true, 'tags' => $unique_tags);
         } else {
+          arsort($unique_tags);
           // define the response object structure                
           $object = array('request_status' => true, 'tags' => array_slice($unique_tags,0,$limit)); 
         }        
@@ -137,7 +138,8 @@ class Meta extends REST_Controller
           // iterate over each individual tag
           foreach ($colors as $color)
           {
-            $color = "#".$color;
+            list($r,$g,$b) = explode(',',$color);
+            $color = RGBToHex($r,$g,$b);
             // check if it exists in the final array
             if (array_key_exists($color, $unique_colors))
             {

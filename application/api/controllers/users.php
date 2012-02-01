@@ -20,9 +20,13 @@ class Users extends REST_Controller
   public function __construct()
   {
     parent::__construct();    
-    $this->load->model('Users_API_Model', 'mUser');
+    $this->load->model('Users_API_Model', 'mUsers');
     $this->load->library('encrypt');
     // $this->output->enable_profiler(TRUE);
+  }
+
+  private function _double_hash($str){
+    return $this->encrypt->sha1($this->encrypt->sha1($str));
   }
 
   
@@ -32,7 +36,7 @@ class Users extends REST_Controller
     $this->load->driver('cache');
 
     if(!$this->cache->memcached->get($cachekey)){
-      $user_list = $this->mUser->getUserList();
+      $user_list = $this->mUsers->getUserList();
       if(!$user_list)
         $this->response(array('request_status'=>false,'message'=>lang('F_DATA_READ')));
 
@@ -57,7 +61,7 @@ class Users extends REST_Controller
     $cachekey = sha1('profile/id/'.$user_id);
 
     if(!$this->cache->memcached->get($cachekey)){
-      $profile = $this->mUser->getUserProfile($user_id);
+      $profile = $this->mUsers->getUserProfile($user_id);
       $this->cache->memcached->save($cachekey, $profile[0], 10 * 60);
       $this->response(array('request_status' => true, 'user' => $profile[0]));
     } else {
@@ -76,7 +80,7 @@ class Users extends REST_Controller
     );
 
     // do the database update
-    $update = $this->mUser->updateProfile($this->put('user_id'), $user_data);
+    $update = $this->mUsers->updateProfile($this->put('user_id'), $user_data);
     // if update fails
     if ($update === false)
       $this->response(array('request_status' => false, 'message' => lang('F_USER_PROFILE_UPDATE')));
@@ -98,37 +102,41 @@ class Users extends REST_Controller
 
   public function signup_put()
   {    
-      $this->load->model('User_model', 'uModel');
-      if ($result = $this->uModel->createNewUser())
-      {
-        if (@$result->error)
-        {
-          $data['error'] = $result->error;
-          $this->load->view('common/page_top.php', $data);
-          $this->load->view('user/signup.php', $data);
-          $this->load->view('common/page_end.php', $data);
-        } else
-        {
-          $user_hash = $result->user_hash;
-          $user_dir = "./data/" . $user_hash;
 
-          if (is_dir($user_dir))
-          {
-            $data['error'] = "Oops. There something happened while finishing your account setup.";
-            $this->load->view('common/page_top.php', $data);
-            $this->load->view('user/signup.php', $data);
-            $this->load->view('common/page_end.php', $data);
-          } else
-          {
-            mkdir($user_dir, 0755);
-            $data['success'] = "You're good to go! Go ahead and login.";
-            $this->load->view('common/page_top.php', $data);
-            $this->load->view('user/signup.php', $data);
-            $this->load->view('common/page_end.php', $data);
-          }
+      $user_realname = $this->put('user_realname');
+      $user_email = $this->put('user_email');
+      $user_bio = $this->put('user_bio');
+      $user_password = $this->put('user_password');
 
-        }
-      }    
+      if(!$user_realname)
+        $this->response(array('request_status'=>false,'message'=>lang('NO_USER_NAME')));
+      if(!$user_email)
+        $this->response(array('request_status'=>false,'message'=>lang('NO_USER_EMAIL')));
+      if(!$user_password)
+        $this->response(array('request_status'=>false,'message'=>lang('NO_USER_PASSWORD')));
+
+      $user = array(
+        'user_realname' => $user_realname,
+        'user_email' => $user_email,
+        'user_password' => $this->_double_hash($user_password),
+        'user_bio' => $user_bio
+      ); 
+
+      $user_insert = $this->mUsers->createNewUser($user);
+
+      if(!$user_insert)
+        $this->response(array('request_status'=>false,'message'=>lang('INV_DUPLICATE_USER')));
+      
+      $user_dir = $this->config->item('app_path').'/data/'.$user_insert;
+
+      if(is_dir($user_dir))
+        $this->response(array('request_status'=>false,'message'=>lang('INV_DUPLICATE_USER_DIR')));
+      
+      if(!mkdir($user_dir,0755))
+        $this->response(array('request_status'=>false,'message'=>lang('F_ADD_USER')));
+      
+      $this->response(array('request_status'=>true,'message'=>lang('S_ADD_USER')));
+      
   }
 
   public function password_post()
@@ -152,7 +160,7 @@ class Users extends REST_Controller
     if(!$this->checkOldPassword($old_pass,$user_id))
       $this->response(array('request_status'=>false,'message'=>lang('INV_OLD_PASSWORD'))); 
 
-    $change_pass = $this->mUser->updateUserPassword($new_pass,$user_id);
+    $change_pass = $this->mUsers->updateUserPassword($new_pass,$user_id);
 
     if(!$change_pass)
       $this->response(array('request_status'=>false,'message'=>lang('F_PASSWORD_CHANGE')));
@@ -186,7 +194,7 @@ class Users extends REST_Controller
       $this->response(array('request_status'=>false,'message'=>lang('INV_OLD_PASSWORD'))); 
        
 
-    $change_pass = $this->mUser->updateUserPassword($new_pass,$user_id);
+    $change_pass = $this->mUsers->updateUserPassword($new_pass,$user_id);
 
     if(!$change_pass)
       $this->response(array('request_status'=>false,'message'=>lang('F_PASSWORD_CHANGE')));
@@ -198,7 +206,7 @@ class Users extends REST_Controller
   protected function checkOldPassword($old_pass,$user_id)
   {
     
-    $check_old_pass = $this->mUser->checkPasswordForUser($old_pass,$user_id);
+    $check_old_pass = $this->mUsers->checkPasswordForUser($old_pass,$user_id);
 
     if(!$check_old_pass)
       return false;
@@ -216,7 +224,7 @@ class Users extends REST_Controller
     if(!$user_id)
       $this->response(array('request_status'=>false,'message'=>'E_NO_USERID'));
     
-    $check_old_pass = $this->mUser->checkPasswordForUser($old_pass,$user_id);
+    $check_old_pass = $this->mUsers->checkPasswordForUser($old_pass,$user_id);
 
     if(!$check_old_pass)
       $this->response(array('request_status'=>false,'message'=>lang('INV_OLD_PASSWORD')));

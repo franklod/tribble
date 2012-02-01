@@ -3,7 +3,7 @@
 <hr />        
 <ul class="color-scheme">
 <?foreach($colors as $color => $count):?>    
-  <li style="background-color: <?=$color?>;"><a title="<?=$color?>" href="<?=site_url('/colors/'.$color)?>"><?=$count?></a></li>
+  <li style="background-color: <?=$color?>;" title="<?=$color?>">&nbsp;</li>
 <?endforeach;?>      
 </ul>
 <?endif;?> 

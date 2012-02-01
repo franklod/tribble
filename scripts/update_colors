@@ -1,0 +1,885 @@
+<pre class='xdebug-var-dump' dir='ltr'>
+<b>object</b>(<i>ImageInfo</i>)[<i>77</i>]
+  <i>public</i> 'path' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'/home/pedro/work/tribble/data/tests/3.jpg'</font> <i>(length=41)</i>
+  <i>public</i> 'format' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'jpeg'</font> <i>(length=4)</i>
+  <i>public</i> 'width' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>400</font>
+  <i>public</i> 'height' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>300</font>
+  <i>public</i> 'relevantColors' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'72,18,18'</font> <i>(length=8)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'255,166,0'</font> <i>(length=9)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'222,43,127'</font> <i>(length=10)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'94,18,20'</font> <i>(length=8)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'251,219,170'</font> <i>(length=11)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'234,67,74'</font> <i>(length=9)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'251,219,168'</font> <i>(length=11)</i>
+      7 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'175,118,98'</font> <i>(length=10)</i>
+  <i>public</i> 'relevantColorRanges' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,0,0'</font> <i>(length=5)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,85,0'</font> <i>(length=8)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,0,85'</font> <i>(length=8)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,0,0'</font> <i>(length=6)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,170,170'</font> <i>(length=11)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,0,0'</font> <i>(length=7)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,170,85'</font> <i>(length=10)</i>
+      7 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,85,85'</font> <i>(length=9)</i>
+</pre><pre class='xdebug-var-dump' dir='ltr'>
+<b>object</b>(<i>ImageInfo</i>)[<i>78</i>]
+  <i>public</i> 'path' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'/home/pedro/work/tribble/data/tests/5.png'</font> <i>(length=41)</i>
+  <i>public</i> 'format' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'png'</font> <i>(length=3)</i>
+  <i>public</i> 'width' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>400</font>
+  <i>public</i> 'height' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>300</font>
+  <i>public</i> 'relevantColors' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'191,191,191'</font> <i>(length=11)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'142,142,142'</font> <i>(length=11)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'34,75,103'</font> <i>(length=9)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'238,201,52'</font> <i>(length=10)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'82,82,82'</font> <i>(length=8)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'142,162,176'</font> <i>(length=11)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'221,199,114'</font> <i>(length=11)</i>
+      7 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'47,86,112'</font> <i>(length=9)</i>
+      8 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'162,175,179'</font> <i>(length=11)</i>
+  <i>public</i> 'relevantColorRanges' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,170,170'</font> <i>(length=11)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,85,85'</font> <i>(length=8)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,0,85'</font> <i>(length=6)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,170,0'</font> <i>(length=9)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,0,0'</font> <i>(length=5)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,85,170'</font> <i>(length=9)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,170,85'</font> <i>(length=10)</i>
+      7 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,85,85'</font> <i>(length=7)</i>
+      8 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,170,170'</font> <i>(length=10)</i>
+</pre><pre class='xdebug-var-dump' dir='ltr'>
+<b>object</b>(<i>ImageInfo</i>)[<i>77</i>]
+  <i>public</i> 'path' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'/home/pedro/work/tribble/data/tests/15.png'</font> <i>(length=42)</i>
+  <i>public</i> 'format' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'png'</font> <i>(length=3)</i>
+  <i>public</i> 'width' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>400</font>
+  <i>public</i> 'height' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>300</font>
+  <i>public</i> 'relevantColors' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'41,41,41'</font> <i>(length=8)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'255,95,69'</font> <i>(length=9)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'112,108,102'</font> <i>(length=11)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'224,84,63'</font> <i>(length=9)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'87,84,80'</font> <i>(length=8)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'88,85,80'</font> <i>(length=8)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'255,255,255'</font> <i>(length=11)</i>
+      7 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'192,120,108'</font> <i>(length=11)</i>
+      8 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'181,172,158'</font> <i>(length=11)</i>
+  <i>public</i> 'relevantColorRanges' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,0,0'</font> <i>(length=5)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,85,0'</font> <i>(length=8)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,85,85'</font> <i>(length=8)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,0,0'</font> <i>(length=7)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,0,0'</font> <i>(length=6)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,85,0'</font> <i>(length=7)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,170,170'</font> <i>(length=11)</i>
+      7 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,85,85'</font> <i>(length=9)</i>
+      8 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,170,85'</font> <i>(length=10)</i>
+</pre><pre class='xdebug-var-dump' dir='ltr'>
+<b>object</b>(<i>ImageInfo</i>)[<i>78</i>]
+  <i>public</i> 'path' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'/home/pedro/work/tribble/data/tests/15.png'</font> <i>(length=42)</i>
+  <i>public</i> 'format' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'png'</font> <i>(length=3)</i>
+  <i>public</i> 'width' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>400</font>
+  <i>public</i> 'height' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>300</font>
+  <i>public</i> 'relevantColors' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'41,41,41'</font> <i>(length=8)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'255,95,69'</font> <i>(length=9)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'112,108,102'</font> <i>(length=11)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'224,84,63'</font> <i>(length=9)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'87,84,80'</font> <i>(length=8)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'88,85,80'</font> <i>(length=8)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'255,255,255'</font> <i>(length=11)</i>
+      7 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'192,120,108'</font> <i>(length=11)</i>
+      8 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'181,172,158'</font> <i>(length=11)</i>
+  <i>public</i> 'relevantColorRanges' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,0,0'</font> <i>(length=5)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,85,0'</font> <i>(length=8)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,85,85'</font> <i>(length=8)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,0,0'</font> <i>(length=7)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,0,0'</font> <i>(length=6)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,85,0'</font> <i>(length=7)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,170,170'</font> <i>(length=11)</i>
+      7 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,85,85'</font> <i>(length=9)</i>
+      8 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,170,85'</font> <i>(length=10)</i>
+</pre><pre class='xdebug-var-dump' dir='ltr'>
+<b>object</b>(<i>ImageInfo</i>)[<i>77</i>]
+  <i>public</i> 'path' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'/home/pedro/work/tribble/data/tests/19.jpg'</font> <i>(length=42)</i>
+  <i>public</i> 'format' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'jpeg'</font> <i>(length=4)</i>
+  <i>public</i> 'width' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>400</font>
+  <i>public</i> 'height' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>300</font>
+  <i>public</i> 'relevantColors' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'255,255,255'</font> <i>(length=11)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'117,117,117'</font> <i>(length=11)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,0,0'</font> <i>(length=5)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'161,210,204'</font> <i>(length=11)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'83,114,109'</font> <i>(length=10)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'131,172,166'</font> <i>(length=11)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'174,174,166'</font> <i>(length=11)</i>
+      7 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'51,86,80'</font> <i>(length=8)</i>
+  <i>public</i> 'relevantColorRanges' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,170,170'</font> <i>(length=11)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,85,85'</font> <i>(length=8)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,0,0'</font> <i>(length=5)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,170,170'</font> <i>(length=10)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,85,85'</font> <i>(length=7)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,170,85'</font> <i>(length=9)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,170,85'</font> <i>(length=10)</i>
+      7 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,85,0'</font> <i>(length=6)</i>
+</pre><pre class='xdebug-var-dump' dir='ltr'>
+<b>object</b>(<i>ImageInfo</i>)[<i>78</i>]
+  <i>public</i> 'path' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'/home/pedro/work/tribble/data/tests/1.jpg'</font> <i>(length=41)</i>
+  <i>public</i> 'format' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'jpeg'</font> <i>(length=4)</i>
+  <i>public</i> 'width' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>400</font>
+  <i>public</i> 'height' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>300</font>
+  <i>public</i> 'relevantColors' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'229,239,238'</font> <i>(length=11)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'2,2,2'</font> <i>(length=5)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'104,99,106'</font> <i>(length=10)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,37,23'</font> <i>(length=8)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,107,205'</font> <i>(length=9)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'169,189,187'</font> <i>(length=11)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'190,148,132'</font> <i>(length=11)</i>
+      7 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'139,92,84'</font> <i>(length=9)</i>
+      8 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'77,111,113'</font> <i>(length=10)</i>
+      9 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'157,158,179'</font> <i>(length=11)</i>
+  <i>public</i> 'relevantColorRanges' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,170,170'</font> <i>(length=11)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,0,0'</font> <i>(length=5)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,85,85'</font> <i>(length=8)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,0,0'</font> <i>(length=6)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,85,170'</font> <i>(length=8)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,170,170'</font> <i>(length=10)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,85,85'</font> <i>(length=9)</i>
+      7 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,85,0'</font> <i>(length=7)</i>
+      8 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,85,85'</font> <i>(length=7)</i>
+      9 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,85,170'</font> <i>(length=9)</i>
+</pre><pre class='xdebug-var-dump' dir='ltr'>
+<b>object</b>(<i>ImageInfo</i>)[<i>77</i>]
+  <i>public</i> 'path' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'/home/pedro/work/tribble/data/tests/9.png'</font> <i>(length=41)</i>
+  <i>public</i> 'format' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'png'</font> <i>(length=3)</i>
+  <i>public</i> 'width' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>400</font>
+  <i>public</i> 'height' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>295</font>
+  <i>public</i> 'relevantColors' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'255,255,255'</font> <i>(length=11)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'88,89,91'</font> <i>(length=8)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'45,124,191'</font> <i>(length=10)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'42,43,47'</font> <i>(length=8)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'161,165,173'</font> <i>(length=11)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'28,84,132'</font> <i>(length=9)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'155,194,225'</font> <i>(length=11)</i>
+      7 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'84,85,88'</font> <i>(length=8)</i>
+      8 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'78,178,253'</font> <i>(length=10)</i>
+  <i>public</i> 'relevantColorRanges' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,170,170'</font> <i>(length=11)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,85,85'</font> <i>(length=8)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,85,170'</font> <i>(length=8)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,0,0'</font> <i>(length=5)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,85,170'</font> <i>(length=9)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,0,85'</font> <i>(length=6)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,170,170'</font> <i>(length=10)</i>
+      7 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,85,85'</font> <i>(length=7)</i>
+      8 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,170,170'</font> <i>(length=9)</i>
+</pre><pre class='xdebug-var-dump' dir='ltr'>
+<b>object</b>(<i>ImageInfo</i>)[<i>78</i>]
+  <i>public</i> 'path' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'/home/pedro/work/tribble/data/tests/18.jpg'</font> <i>(length=42)</i>
+  <i>public</i> 'format' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'jpeg'</font> <i>(length=4)</i>
+  <i>public</i> 'width' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>400</font>
+  <i>public</i> 'height' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>300</font>
+  <i>public</i> 'relevantColors' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'242,246,249'</font> <i>(length=11)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'7,53,131'</font> <i>(length=8)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'218,0,16'</font> <i>(length=8)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'234,95,36'</font> <i>(length=9)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'13,93,180'</font> <i>(length=9)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'151,60,104'</font> <i>(length=10)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'53,66,74'</font> <i>(length=8)</i>
+      7 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'255,200,48'</font> <i>(length=10)</i>
+      8 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'129,45,79'</font> <i>(length=9)</i>
+      9 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'154,163,168'</font> <i>(length=11)</i>
+  <i>public</i> 'relevantColorRanges' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,170,170'</font> <i>(length=11)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,0,85'</font> <i>(length=6)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,0,0'</font> <i>(length=7)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,85,0'</font> <i>(length=8)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,85,170'</font> <i>(length=8)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,0,85'</font> <i>(length=7)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,0,0'</font> <i>(length=5)</i>
+      7 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,170,0'</font> <i>(length=9)</i>
+      8 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,0,0'</font> <i>(length=6)</i>
+      9 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,85,85'</font> <i>(length=8)</i>
+</pre><pre class='xdebug-var-dump' dir='ltr'>
+<b>object</b>(<i>ImageInfo</i>)[<i>77</i>]
+  <i>public</i> 'path' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'/home/pedro/work/tribble/data/tests/3.jpg'</font> <i>(length=41)</i>
+  <i>public</i> 'format' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'jpeg'</font> <i>(length=4)</i>
+  <i>public</i> 'width' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>400</font>
+  <i>public</i> 'height' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>300</font>
+  <i>public</i> 'relevantColors' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'72,18,18'</font> <i>(length=8)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'255,166,0'</font> <i>(length=9)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'222,43,127'</font> <i>(length=10)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'94,18,20'</font> <i>(length=8)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'251,219,170'</font> <i>(length=11)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'234,67,74'</font> <i>(length=9)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'251,219,168'</font> <i>(length=11)</i>
+      7 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'175,118,98'</font> <i>(length=10)</i>
+  <i>public</i> 'relevantColorRanges' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,0,0'</font> <i>(length=5)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,85,0'</font> <i>(length=8)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,0,85'</font> <i>(length=8)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,0,0'</font> <i>(length=6)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,170,170'</font> <i>(length=11)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,0,0'</font> <i>(length=7)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,170,85'</font> <i>(length=10)</i>
+      7 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,85,85'</font> <i>(length=9)</i>
+</pre><pre class='xdebug-var-dump' dir='ltr'>
+<b>object</b>(<i>ImageInfo</i>)[<i>78</i>]
+  <i>public</i> 'path' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'/home/pedro/work/tribble/data/tests/2.jpg'</font> <i>(length=41)</i>
+  <i>public</i> 'format' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'jpeg'</font> <i>(length=4)</i>
+  <i>public</i> 'width' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>400</font>
+  <i>public</i> 'height' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>300</font>
+  <i>public</i> 'relevantColors' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'6,2,1'</font> <i>(length=5)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'255,255,255'</font> <i>(length=11)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'127,129,142'</font> <i>(length=11)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,28,9'</font> <i>(length=7)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'221,105,18'</font> <i>(length=10)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'179,177,136'</font> <i>(length=11)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'171,69,21'</font> <i>(length=9)</i>
+      7 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'169,187,197'</font> <i>(length=11)</i>
+      8 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'124,96,82'</font> <i>(length=9)</i>
+      9 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'160,163,172'</font> <i>(length=11)</i>
+  <i>public</i> 'relevantColorRanges' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,0,0'</font> <i>(length=5)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,170,170'</font> <i>(length=11)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,85,85'</font> <i>(length=8)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,0,0'</font> <i>(length=6)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,85,0'</font> <i>(length=8)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,170,85'</font> <i>(length=10)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,0,0'</font> <i>(length=7)</i>
+      7 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,170,170'</font> <i>(length=10)</i>
+      8 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,85,0'</font> <i>(length=7)</i>
+      9 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,85,170'</font> <i>(length=9)</i>
+</pre><pre class='xdebug-var-dump' dir='ltr'>
+<b>object</b>(<i>ImageInfo</i>)[<i>77</i>]
+  <i>public</i> 'path' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'/home/pedro/work/tribble/data/tests/21.png'</font> <i>(length=42)</i>
+  <i>public</i> 'format' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'png'</font> <i>(length=3)</i>
+  <i>public</i> 'width' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>400</font>
+  <i>public</i> 'height' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>300</font>
+  <i>public</i> 'relevantColors' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'239,239,239'</font> <i>(length=11)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'1,2,1'</font> <i>(length=5)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'156,161,168'</font> <i>(length=11)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'167,168,177'</font> <i>(length=11)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'169,172,182'</font> <i>(length=11)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'171,170,169'</font> <i>(length=11)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'45,112,201'</font> <i>(length=10)</i>
+      7 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'171,168,168'</font> <i>(length=11)</i>
+  <i>public</i> 'relevantColorRanges' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,170,170'</font> <i>(length=11)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,0,0'</font> <i>(length=5)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,85,85'</font> <i>(length=8)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,85,170'</font> <i>(length=9)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,170,170'</font> <i>(length=10)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,170,85'</font> <i>(length=10)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,85,170'</font> <i>(length=8)</i>
+      7 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,85,85'</font> <i>(length=9)</i>
+</pre><pre class='xdebug-var-dump' dir='ltr'>
+<b>object</b>(<i>ImageInfo</i>)[<i>78</i>]
+  <i>public</i> 'path' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'/home/pedro/work/tribble/data/tests/1.jpg'</font> <i>(length=41)</i>
+  <i>public</i> 'format' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'jpeg'</font> <i>(length=4)</i>
+  <i>public</i> 'width' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>400</font>
+  <i>public</i> 'height' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>300</font>
+  <i>public</i> 'relevantColors' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'229,239,238'</font> <i>(length=11)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'2,2,2'</font> <i>(length=5)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'104,99,106'</font> <i>(length=10)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,37,23'</font> <i>(length=8)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,107,205'</font> <i>(length=9)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'169,189,187'</font> <i>(length=11)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'190,148,132'</font> <i>(length=11)</i>
+      7 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'139,92,84'</font> <i>(length=9)</i>
+      8 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'77,111,113'</font> <i>(length=10)</i>
+      9 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'157,158,179'</font> <i>(length=11)</i>
+  <i>public</i> 'relevantColorRanges' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,170,170'</font> <i>(length=11)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,0,0'</font> <i>(length=5)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,85,85'</font> <i>(length=8)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,0,0'</font> <i>(length=6)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,85,170'</font> <i>(length=8)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,170,170'</font> <i>(length=10)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,85,85'</font> <i>(length=9)</i>
+      7 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,85,0'</font> <i>(length=7)</i>
+      8 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,85,85'</font> <i>(length=7)</i>
+      9 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,85,170'</font> <i>(length=9)</i>
+</pre><pre class='xdebug-var-dump' dir='ltr'>
+<b>object</b>(<i>ImageInfo</i>)[<i>77</i>]
+  <i>public</i> 'path' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'/home/pedro/work/tribble/data/tests/7.png'</font> <i>(length=41)</i>
+  <i>public</i> 'format' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'png'</font> <i>(length=3)</i>
+  <i>public</i> 'width' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>400</font>
+  <i>public</i> 'height' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>300</font>
+  <i>public</i> 'relevantColors' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'255,255,255'</font> <i>(length=11)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'25,39,46'</font> <i>(length=8)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'69,162,196'</font> <i>(length=10)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'27,116,160'</font> <i>(length=10)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'128,131,132'</font> <i>(length=11)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'131,201,222'</font> <i>(length=11)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'160,169,174'</font> <i>(length=11)</i>
+      7 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'68,79,85'</font> <i>(length=8)</i>
+  <i>public</i> 'relevantColorRanges' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,170,170'</font> <i>(length=11)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,0,0'</font> <i>(length=5)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,85,170'</font> <i>(length=8)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,85,85'</font> <i>(length=7)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,85,85'</font> <i>(length=8)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,170,170'</font> <i>(length=10)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,85,170'</font> <i>(length=9)</i>
+      7 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,0,85'</font> <i>(length=6)</i>
+</pre><pre class='xdebug-var-dump' dir='ltr'>
+<b>object</b>(<i>ImageInfo</i>)[<i>78</i>]
+  <i>public</i> 'path' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'/home/pedro/work/tribble/data/tests/4.png'</font> <i>(length=41)</i>
+  <i>public</i> 'format' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'png'</font> <i>(length=3)</i>
+  <i>public</i> 'width' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>400</font>
+  <i>public</i> 'height' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>300</font>
+  <i>public</i> 'relevantColors' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'255,255,255'</font> <i>(length=11)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'165,160,153'</font> <i>(length=11)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,167,159'</font> <i>(length=11)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'178,175,167'</font> <i>(length=11)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'88,78,84'</font> <i>(length=8)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'70,63,73'</font> <i>(length=8)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'193,135,74'</font> <i>(length=10)</i>
+      7 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'162,91,27'</font> <i>(length=9)</i>
+      8 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'90,81,85'</font> <i>(length=8)</i>
+  <i>public</i> 'relevantColorRanges' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,170,170'</font> <i>(length=11)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,85,85'</font> <i>(length=8)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,85,85'</font> <i>(length=9)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,170,85'</font> <i>(length=10)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,0,0'</font> <i>(length=6)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,0,0'</font> <i>(length=5)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,85,0'</font> <i>(length=8)</i>
+      7 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,85,0'</font> <i>(length=7)</i>
+      8 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,0,85'</font> <i>(length=7)</i>
+</pre><pre class='xdebug-var-dump' dir='ltr'>
+<b>object</b>(<i>ImageInfo</i>)[<i>77</i>]
+  <i>public</i> 'path' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'/home/pedro/work/tribble/data/tests/16.png'</font> <i>(length=42)</i>
+  <i>public</i> 'format' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'png'</font> <i>(length=3)</i>
+  <i>public</i> 'width' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>400</font>
+  <i>public</i> 'height' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>300</font>
+  <i>public</i> 'relevantColors' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'255,105,42'</font> <i>(length=10)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,0,0'</font> <i>(length=5)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'255,255,255'</font> <i>(length=11)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'128,53,21'</font> <i>(length=9)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'191,79,32'</font> <i>(length=9)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'255,143,95'</font> <i>(length=10)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'255,180,149'</font> <i>(length=11)</i>
+      7 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'128,128,128'</font> <i>(length=11)</i>
+  <i>public</i> 'relevantColorRanges' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,85,0'</font> <i>(length=8)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,0,0'</font> <i>(length=5)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,170,170'</font> <i>(length=11)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,0,0'</font> <i>(length=6)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,0,0'</font> <i>(length=7)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,85,85'</font> <i>(length=9)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,170,85'</font> <i>(length=10)</i>
+      7 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,85,85'</font> <i>(length=8)</i>
+</pre><pre class='xdebug-var-dump' dir='ltr'>
+<b>object</b>(<i>ImageInfo</i>)[<i>78</i>]
+  <i>public</i> 'path' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'/home/pedro/work/tribble/data/tests/17.png'</font> <i>(length=42)</i>
+  <i>public</i> 'format' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'png'</font> <i>(length=3)</i>
+  <i>public</i> 'width' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>400</font>
+  <i>public</i> 'height' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>300</font>
+  <i>public</i> 'relevantColors' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'43,45,47'</font> <i>(length=8)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'224,228,235'</font> <i>(length=11)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'53,135,211'</font> <i>(length=10)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'92,164,224'</font> <i>(length=10)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'111,115,117'</font> <i>(length=11)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'113,186,234'</font> <i>(length=11)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'50,94,113'</font> <i>(length=9)</i>
+      7 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'51,78,90'</font> <i>(length=8)</i>
+  <i>public</i> 'relevantColorRanges' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,0,0'</font> <i>(length=5)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,170,170'</font> <i>(length=11)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,85,170'</font> <i>(length=8)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,85,170'</font> <i>(length=9)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,85,85'</font> <i>(length=8)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,170,170'</font> <i>(length=10)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,85,85'</font> <i>(length=7)</i>
+      7 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,0,85'</font> <i>(length=6)</i>
+</pre><pre class='xdebug-var-dump' dir='ltr'>
+<b>object</b>(<i>ImageInfo</i>)[<i>77</i>]
+  <i>public</i> 'path' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'/home/pedro/work/tribble/data/tests/8.png'</font> <i>(length=41)</i>
+  <i>public</i> 'format' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'png'</font> <i>(length=3)</i>
+  <i>public</i> 'width' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>400</font>
+  <i>public</i> 'height' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>300</font>
+  <i>public</i> 'relevantColors' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'197,200,186'</font> <i>(length=11)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'49,58,70'</font> <i>(length=8)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'160,161,156'</font> <i>(length=11)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'157,66,77'</font> <i>(length=9)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'74,79,88'</font> <i>(length=8)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'172,173,166'</font> <i>(length=11)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'200,147,141'</font> <i>(length=11)</i>
+      7 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'82,86,95'</font> <i>(length=8)</i>
+  <i>public</i> 'relevantColorRanges' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,170,170'</font> <i>(length=11)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,0,0'</font> <i>(length=5)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,85,85'</font> <i>(length=8)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,0,0'</font> <i>(length=6)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,0,85'</font> <i>(length=6)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,170,85'</font> <i>(length=10)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,85,85'</font> <i>(length=9)</i>
+      7 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,85,85'</font> <i>(length=7)</i>
+</pre><pre class='xdebug-var-dump' dir='ltr'>
+<b>object</b>(<i>ImageInfo</i>)[<i>78</i>]
+  <i>public</i> 'path' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'/home/pedro/work/tribble/data/tests/18.jpg'</font> <i>(length=42)</i>
+  <i>public</i> 'format' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'jpeg'</font> <i>(length=4)</i>
+  <i>public</i> 'width' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>400</font>
+  <i>public</i> 'height' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>300</font>
+  <i>public</i> 'relevantColors' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'242,246,249'</font> <i>(length=11)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'7,53,131'</font> <i>(length=8)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'218,0,16'</font> <i>(length=8)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'234,95,36'</font> <i>(length=9)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'13,93,180'</font> <i>(length=9)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'151,60,104'</font> <i>(length=10)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'53,66,74'</font> <i>(length=8)</i>
+      7 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'255,200,48'</font> <i>(length=10)</i>
+      8 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'129,45,79'</font> <i>(length=9)</i>
+      9 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'154,163,168'</font> <i>(length=11)</i>
+  <i>public</i> 'relevantColorRanges' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,170,170'</font> <i>(length=11)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,0,85'</font> <i>(length=6)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,0,0'</font> <i>(length=7)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,85,0'</font> <i>(length=8)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,85,170'</font> <i>(length=8)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,0,85'</font> <i>(length=7)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,0,0'</font> <i>(length=5)</i>
+      7 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,170,0'</font> <i>(length=9)</i>
+      8 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,0,0'</font> <i>(length=6)</i>
+      9 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,85,85'</font> <i>(length=8)</i>
+</pre><pre class='xdebug-var-dump' dir='ltr'>
+<b>object</b>(<i>ImageInfo</i>)[<i>77</i>]
+  <i>public</i> 'path' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'/home/pedro/work/tribble/data/tests/20.jpg'</font> <i>(length=42)</i>
+  <i>public</i> 'format' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'jpeg'</font> <i>(length=4)</i>
+  <i>public</i> 'width' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>400</font>
+  <i>public</i> 'height' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>300</font>
+  <i>public</i> 'relevantColors' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'255,255,255'</font> <i>(length=11)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'92,49,40'</font> <i>(length=8)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'225,165,79'</font> <i>(length=10)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'153,96,53'</font> <i>(length=9)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'225,170,88'</font> <i>(length=10)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'255,154,103'</font> <i>(length=11)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'144,124,97'</font> <i>(length=10)</i>
+      7 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'202,168,218'</font> <i>(length=11)</i>
+      8 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'81,43,42'</font> <i>(length=8)</i>
+      9 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'171,79,54'</font> <i>(length=9)</i>
+  <i>public</i> 'relevantColorRanges' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,170,170'</font> <i>(length=11)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,0,0'</font> <i>(length=6)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,85,0'</font> <i>(length=8)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,85,0'</font> <i>(length=7)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,170,85'</font> <i>(length=10)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,85,85'</font> <i>(length=9)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,85,85'</font> <i>(length=8)</i>
+      7 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,85,170'</font> <i>(length=10)</i>
+      8 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,0,0'</font> <i>(length=5)</i>
+      9 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,0,0'</font> <i>(length=7)</i>
+</pre><pre class='xdebug-var-dump' dir='ltr'>
+<b>object</b>(<i>ImageInfo</i>)[<i>78</i>]
+  <i>public</i> 'path' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'/home/pedro/work/tribble/data/tests/10.jpg'</font> <i>(length=42)</i>
+  <i>public</i> 'format' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'jpeg'</font> <i>(length=4)</i>
+  <i>public</i> 'width' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>400</font>
+  <i>public</i> 'height' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>300</font>
+  <i>public</i> 'relevantColors' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'86,92,104'</font> <i>(length=9)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'50,54,66'</font> <i>(length=8)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'78,84,96'</font> <i>(length=8)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'82,88,100'</font> <i>(length=9)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'175,181,179'</font> <i>(length=11)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'169,175,171'</font> <i>(length=11)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'167,173,169'</font> <i>(length=11)</i>
+      7 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'158,168,170'</font> <i>(length=11)</i>
+      8 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'234,121,164'</font> <i>(length=11)</i>
+  <i>public</i> 'relevantColorRanges' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,85,85'</font> <i>(length=8)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,0,0'</font> <i>(length=5)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,0,85'</font> <i>(length=6)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,85,85'</font> <i>(length=7)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,170,170'</font> <i>(length=11)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,170,170'</font> <i>(length=10)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,170,85'</font> <i>(length=9)</i>
+      7 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,85,170'</font> <i>(length=9)</i>
+      8 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,85,85'</font> <i>(length=9)</i>
+</pre><pre class='xdebug-var-dump' dir='ltr'>
+<b>object</b>(<i>ImageInfo</i>)[<i>77</i>]
+  <i>public</i> 'path' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'/home/pedro/work/tribble/data/tests/13.png'</font> <i>(length=42)</i>
+  <i>public</i> 'format' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'png'</font> <i>(length=3)</i>
+  <i>public</i> 'width' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>400</font>
+  <i>public</i> 'height' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>300</font>
+  <i>public</i> 'relevantColors' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'25,25,25'</font> <i>(length=8)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'235,230,227'</font> <i>(length=11)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'167,145,134'</font> <i>(length=11)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'185,166,156'</font> <i>(length=11)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'120,89,79'</font> <i>(length=9)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'106,79,70'</font> <i>(length=9)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'193,176,167'</font> <i>(length=11)</i>
+      7 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'61,140,217'</font> <i>(length=10)</i>
+      8 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'103,174,226'</font> <i>(length=11)</i>
+      9 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'89,163,224'</font> <i>(length=10)</i>
+  <i>public</i> 'relevantColorRanges' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,0,0'</font> <i>(length=5)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,170,170'</font> <i>(length=11)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,85,85'</font> <i>(length=8)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,85,85'</font> <i>(length=9)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,85,0'</font> <i>(length=7)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,0,0'</font> <i>(length=6)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,170,85'</font> <i>(length=10)</i>
+      7 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,85,170'</font> <i>(length=8)</i>
+      8 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,170,170'</font> <i>(length=10)</i>
+      9 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,85,170'</font> <i>(length=9)</i>
+</pre><pre class='xdebug-var-dump' dir='ltr'>
+<b>object</b>(<i>ImageInfo</i>)[<i>78</i>]
+  <i>public</i> 'path' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'/home/pedro/work/tribble/data/tests/21.png'</font> <i>(length=42)</i>
+  <i>public</i> 'format' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'png'</font> <i>(length=3)</i>
+  <i>public</i> 'width' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>400</font>
+  <i>public</i> 'height' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>300</font>
+  <i>public</i> 'relevantColors' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'239,239,239'</font> <i>(length=11)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'1,2,1'</font> <i>(length=5)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'156,161,168'</font> <i>(length=11)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'167,168,177'</font> <i>(length=11)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'169,172,182'</font> <i>(length=11)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'171,170,169'</font> <i>(length=11)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'45,112,201'</font> <i>(length=10)</i>
+      7 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'171,168,168'</font> <i>(length=11)</i>
+  <i>public</i> 'relevantColorRanges' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,170,170'</font> <i>(length=11)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,0,0'</font> <i>(length=5)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,85,85'</font> <i>(length=8)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,85,170'</font> <i>(length=9)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,170,170'</font> <i>(length=10)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,170,85'</font> <i>(length=10)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,85,170'</font> <i>(length=8)</i>
+      7 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,85,85'</font> <i>(length=9)</i>
+</pre><pre class='xdebug-var-dump' dir='ltr'>
+<b>object</b>(<i>ImageInfo</i>)[<i>77</i>]
+  <i>public</i> 'path' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'/home/pedro/work/tribble/data/tests/9.png'</font> <i>(length=41)</i>
+  <i>public</i> 'format' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'png'</font> <i>(length=3)</i>
+  <i>public</i> 'width' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>400</font>
+  <i>public</i> 'height' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>295</font>
+  <i>public</i> 'relevantColors' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'255,255,255'</font> <i>(length=11)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'88,89,91'</font> <i>(length=8)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'45,124,191'</font> <i>(length=10)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'42,43,47'</font> <i>(length=8)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'161,165,173'</font> <i>(length=11)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'28,84,132'</font> <i>(length=9)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'155,194,225'</font> <i>(length=11)</i>
+      7 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'84,85,88'</font> <i>(length=8)</i>
+      8 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'78,178,253'</font> <i>(length=10)</i>
+  <i>public</i> 'relevantColorRanges' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,170,170'</font> <i>(length=11)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,85,85'</font> <i>(length=8)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,85,170'</font> <i>(length=8)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,0,0'</font> <i>(length=5)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,85,170'</font> <i>(length=9)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,0,85'</font> <i>(length=6)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,170,170'</font> <i>(length=10)</i>
+      7 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,85,85'</font> <i>(length=7)</i>
+      8 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,170,170'</font> <i>(length=9)</i>
+</pre><pre class='xdebug-var-dump' dir='ltr'>
+<b>object</b>(<i>ImageInfo</i>)[<i>78</i>]
+  <i>public</i> 'path' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'/home/pedro/work/tribble/data/tests/20.jpg'</font> <i>(length=42)</i>
+  <i>public</i> 'format' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'jpeg'</font> <i>(length=4)</i>
+  <i>public</i> 'width' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>400</font>
+  <i>public</i> 'height' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>300</font>
+  <i>public</i> 'relevantColors' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'255,255,255'</font> <i>(length=11)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'92,49,40'</font> <i>(length=8)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'225,165,79'</font> <i>(length=10)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'153,96,53'</font> <i>(length=9)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'225,170,88'</font> <i>(length=10)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'255,154,103'</font> <i>(length=11)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'144,124,97'</font> <i>(length=10)</i>
+      7 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'202,168,218'</font> <i>(length=11)</i>
+      8 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'81,43,42'</font> <i>(length=8)</i>
+      9 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'171,79,54'</font> <i>(length=9)</i>
+  <i>public</i> 'relevantColorRanges' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,170,170'</font> <i>(length=11)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,0,0'</font> <i>(length=6)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,85,0'</font> <i>(length=8)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,85,0'</font> <i>(length=7)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,170,85'</font> <i>(length=10)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,85,85'</font> <i>(length=9)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,85,85'</font> <i>(length=8)</i>
+      7 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,85,170'</font> <i>(length=10)</i>
+      8 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,0,0'</font> <i>(length=5)</i>
+      9 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,0,0'</font> <i>(length=7)</i>
+</pre><pre class='xdebug-var-dump' dir='ltr'>
+<b>object</b>(<i>ImageInfo</i>)[<i>77</i>]
+  <i>public</i> 'path' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'/home/pedro/work/tribble/data/tests/23.jpg'</font> <i>(length=42)</i>
+  <i>public</i> 'format' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'jpeg'</font> <i>(length=4)</i>
+  <i>public</i> 'width' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>400</font>
+  <i>public</i> 'height' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>300</font>
+  <i>public</i> 'relevantColors' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'61,51,50'</font> <i>(length=8)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'189,130,62'</font> <i>(length=10)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'184,168,117'</font> <i>(length=11)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'169,109,39'</font> <i>(length=10)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'168,154,109'</font> <i>(length=11)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'186,170,119'</font> <i>(length=11)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'88,47,15'</font> <i>(length=8)</i>
+  <i>public</i> 'relevantColorRanges' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,0,0'</font> <i>(length=5)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,85,0'</font> <i>(length=8)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,85,85'</font> <i>(length=9)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,85,0'</font> <i>(length=7)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,85,85'</font> <i>(length=8)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,170,85'</font> <i>(length=10)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,0,0'</font> <i>(length=6)</i>
+</pre><pre class='xdebug-var-dump' dir='ltr'>
+<b>object</b>(<i>ImageInfo</i>)[<i>78</i>]
+  <i>public</i> 'path' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'/home/pedro/work/tribble/data/tests/5.png'</font> <i>(length=41)</i>
+  <i>public</i> 'format' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'png'</font> <i>(length=3)</i>
+  <i>public</i> 'width' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>400</font>
+  <i>public</i> 'height' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>300</font>
+  <i>public</i> 'relevantColors' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'191,191,191'</font> <i>(length=11)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'142,142,142'</font> <i>(length=11)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'34,75,103'</font> <i>(length=9)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'238,201,52'</font> <i>(length=10)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'82,82,82'</font> <i>(length=8)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'142,162,176'</font> <i>(length=11)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'221,199,114'</font> <i>(length=11)</i>
+      7 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'47,86,112'</font> <i>(length=9)</i>
+      8 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'162,175,179'</font> <i>(length=11)</i>
+  <i>public</i> 'relevantColorRanges' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,170,170'</font> <i>(length=11)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,85,85'</font> <i>(length=8)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,0,85'</font> <i>(length=6)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,170,0'</font> <i>(length=9)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,0,0'</font> <i>(length=5)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,85,170'</font> <i>(length=9)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,170,85'</font> <i>(length=10)</i>
+      7 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,85,85'</font> <i>(length=7)</i>
+      8 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,170,170'</font> <i>(length=10)</i>
+</pre><pre class='xdebug-var-dump' dir='ltr'>
+<b>object</b>(<i>ImageInfo</i>)[<i>77</i>]
+  <i>public</i> 'path' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'/home/pedro/work/tribble/data/tests/6.jpg'</font> <i>(length=41)</i>
+  <i>public</i> 'format' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'jpeg'</font> <i>(length=4)</i>
+  <i>public</i> 'width' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>400</font>
+  <i>public</i> 'height' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>300</font>
+  <i>public</i> 'relevantColors' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'238,235,230'</font> <i>(length=11)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'164,101,146'</font> <i>(length=11)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'213,142,182'</font> <i>(length=11)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'38,35,30'</font> <i>(length=8)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'197,125,165'</font> <i>(length=11)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'140,84,123'</font> <i>(length=10)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'88,80,69'</font> <i>(length=8)</i>
+      7 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'189,179,169'</font> <i>(length=11)</i>
+      8 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'94,85,76'</font> <i>(length=8)</i>
+      9 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'168,159,188'</font> <i>(length=11)</i>
+  <i>public</i> 'relevantColorRanges' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,170,170'</font> <i>(length=11)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,85,85'</font> <i>(length=8)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,85,170'</font> <i>(length=10)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,0,0'</font> <i>(length=5)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,85,85'</font> <i>(length=9)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,0,85'</font> <i>(length=7)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,0,0'</font> <i>(length=6)</i>
+      7 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,170,85'</font> <i>(length=10)</i>
+      8 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,85,0'</font> <i>(length=7)</i>
+      9 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,85,170'</font> <i>(length=9)</i>
+</pre><pre class='xdebug-var-dump' dir='ltr'>
+<b>object</b>(<i>ImageInfo</i>)[<i>78</i>]
+  <i>public</i> 'path' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'/home/pedro/work/tribble/data/tests/17.png'</font> <i>(length=42)</i>
+  <i>public</i> 'format' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'png'</font> <i>(length=3)</i>
+  <i>public</i> 'width' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>400</font>
+  <i>public</i> 'height' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>300</font>
+  <i>public</i> 'relevantColors' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'43,45,47'</font> <i>(length=8)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'224,228,235'</font> <i>(length=11)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'53,135,211'</font> <i>(length=10)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'92,164,224'</font> <i>(length=10)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'111,115,117'</font> <i>(length=11)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'113,186,234'</font> <i>(length=11)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'50,94,113'</font> <i>(length=9)</i>
+      7 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'51,78,90'</font> <i>(length=8)</i>
+  <i>public</i> 'relevantColorRanges' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,0,0'</font> <i>(length=5)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,170,170'</font> <i>(length=11)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,85,170'</font> <i>(length=8)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,85,170'</font> <i>(length=9)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,85,85'</font> <i>(length=8)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,170,170'</font> <i>(length=10)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,85,85'</font> <i>(length=7)</i>
+      7 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,0,85'</font> <i>(length=6)</i>
+</pre><pre class='xdebug-var-dump' dir='ltr'>
+<b>object</b>(<i>ImageInfo</i>)[<i>77</i>]
+  <i>public</i> 'path' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'/home/pedro/work/tribble/data/tests/15.png'</font> <i>(length=42)</i>
+  <i>public</i> 'format' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'png'</font> <i>(length=3)</i>
+  <i>public</i> 'width' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>400</font>
+  <i>public</i> 'height' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>300</font>
+  <i>public</i> 'relevantColors' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'41,41,41'</font> <i>(length=8)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'255,95,69'</font> <i>(length=9)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'112,108,102'</font> <i>(length=11)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'224,84,63'</font> <i>(length=9)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'87,84,80'</font> <i>(length=8)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'88,85,80'</font> <i>(length=8)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'255,255,255'</font> <i>(length=11)</i>
+      7 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'192,120,108'</font> <i>(length=11)</i>
+      8 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'181,172,158'</font> <i>(length=11)</i>
+  <i>public</i> 'relevantColorRanges' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,0,0'</font> <i>(length=5)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,85,0'</font> <i>(length=8)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,85,85'</font> <i>(length=8)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,0,0'</font> <i>(length=7)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,0,0'</font> <i>(length=6)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,85,0'</font> <i>(length=7)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,170,170'</font> <i>(length=11)</i>
+      7 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,85,85'</font> <i>(length=9)</i>
+      8 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,170,85'</font> <i>(length=10)</i>
+</pre><pre class='xdebug-var-dump' dir='ltr'>
+<b>object</b>(<i>ImageInfo</i>)[<i>78</i>]
+  <i>public</i> 'path' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'/home/pedro/work/tribble/data/tests/5.png'</font> <i>(length=41)</i>
+  <i>public</i> 'format' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'png'</font> <i>(length=3)</i>
+  <i>public</i> 'width' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>400</font>
+  <i>public</i> 'height' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>300</font>
+  <i>public</i> 'relevantColors' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'191,191,191'</font> <i>(length=11)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'142,142,142'</font> <i>(length=11)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'34,75,103'</font> <i>(length=9)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'238,201,52'</font> <i>(length=10)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'82,82,82'</font> <i>(length=8)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'142,162,176'</font> <i>(length=11)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'221,199,114'</font> <i>(length=11)</i>
+      7 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'47,86,112'</font> <i>(length=9)</i>
+      8 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'162,175,179'</font> <i>(length=11)</i>
+  <i>public</i> 'relevantColorRanges' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,170,170'</font> <i>(length=11)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,85,85'</font> <i>(length=8)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,0,85'</font> <i>(length=6)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,170,0'</font> <i>(length=9)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,0,0'</font> <i>(length=5)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,85,170'</font> <i>(length=9)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,170,85'</font> <i>(length=10)</i>
+      7 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,85,85'</font> <i>(length=7)</i>
+      8 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,170,170'</font> <i>(length=10)</i>
+</pre><pre class='xdebug-var-dump' dir='ltr'>
+<b>object</b>(<i>ImageInfo</i>)[<i>77</i>]
+  <i>public</i> 'path' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'/home/pedro/work/tribble/data/tests/19.jpg'</font> <i>(length=42)</i>
+  <i>public</i> 'format' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'jpeg'</font> <i>(length=4)</i>
+  <i>public</i> 'width' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>400</font>
+  <i>public</i> 'height' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>300</font>
+  <i>public</i> 'relevantColors' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'255,255,255'</font> <i>(length=11)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'117,117,117'</font> <i>(length=11)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,0,0'</font> <i>(length=5)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'161,210,204'</font> <i>(length=11)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'83,114,109'</font> <i>(length=10)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'131,172,166'</font> <i>(length=11)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'174,174,166'</font> <i>(length=11)</i>
+      7 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'51,86,80'</font> <i>(length=8)</i>
+  <i>public</i> 'relevantColorRanges' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,170,170'</font> <i>(length=11)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,85,85'</font> <i>(length=8)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,0,0'</font> <i>(length=5)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,170,170'</font> <i>(length=10)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,85,85'</font> <i>(length=7)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,170,85'</font> <i>(length=9)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,170,85'</font> <i>(length=10)</i>
+      7 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,85,0'</font> <i>(length=6)</i>
+</pre><pre class='xdebug-var-dump' dir='ltr'>
+<b>object</b>(<i>ImageInfo</i>)[<i>78</i>]
+  <i>public</i> 'path' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'/home/pedro/work/tribble/data/tests/23.jpg'</font> <i>(length=42)</i>
+  <i>public</i> 'format' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'jpeg'</font> <i>(length=4)</i>
+  <i>public</i> 'width' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>400</font>
+  <i>public</i> 'height' <font color='#888a85'>=&gt;</font> <small>int</small> <font color='#4e9a06'>300</font>
+  <i>public</i> 'relevantColors' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'61,51,50'</font> <i>(length=8)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'189,130,62'</font> <i>(length=10)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'184,168,117'</font> <i>(length=11)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'169,109,39'</font> <i>(length=10)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'168,154,109'</font> <i>(length=11)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'186,170,119'</font> <i>(length=11)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'88,47,15'</font> <i>(length=8)</i>
+  <i>public</i> 'relevantColorRanges' <font color='#888a85'>=&gt;</font> 
+    <b>array</b>
+      0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'0,0,0'</font> <i>(length=5)</i>
+      1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,85,0'</font> <i>(length=8)</i>
+      2 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,85,85'</font> <i>(length=9)</i>
+      3 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,85,0'</font> <i>(length=7)</i>
+      4 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,85,85'</font> <i>(length=8)</i>
+      5 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'170,170,85'</font> <i>(length=10)</i>
+      6 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'85,0,0'</font> <i>(length=6)</i>
+</pre>

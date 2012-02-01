@@ -13,6 +13,10 @@ API Text messages:
 $lang['E_NO_EMAIL'] = "User email was not provided.";
 $lang['E_NO_PASS'] = "The password was not provided.";
 $lang['E_NO_USER_ID'] = "The user id was not provided.";
+$lang['E_NO_USER_NAME'] = "The user name was not provided.";
+$lang['E_NO_USER_PASSWORD'] = "The user password was not provided.";
+$lang['E_NO_USER_EMAIL'] = "The user email was not provided.";
+$lang['E_NO_USER_BIO'] = "The user bio was not provided.";
 $lang['E_NO_POST_ID'] = "The post id was not provided.";
 $lang['E_NO_NEW_PASS'] = "The new password was not provided.";
 $lang['E_NO_OLD_PASS'] = "The old password was not provided.";
@@ -24,6 +28,7 @@ $lang['E_NO_POST_IMAGE'] = "The post image was not provided.";
 $lang['E_NO_POST_TAGS'] = "The post tags was not provided.";
 $lang['E_NO_COMMENT_TEXT'] = "The comment text was not provided.";
 $lang['E_NO_COMMENT_ID'] = "The comment id was not provided.";
+$lang['E_NO_PARENT_POST_ID'] = "The parent post id was not provided.";
 
 // DATA VALIDATION
 $lang['INV_LOGIN'] = "The email or password you entered are not correct. Please try again.";
@@ -35,6 +40,8 @@ $lang['INV_POST_LIST_TYPE'] = "An invalid post list type was requested. Supporte
 $lang['INV_SEARCH_TEXT'] = "Search text must be at least 3 characters long.";
 $lang['INV_COMMENT'] = "Unknown comment.";
 $lang['INV_POST_PERMISSIONS'] = "The supplied user cannot delete the requested post.";
+$lang['INV_DUPLICATE_USER'] = "We already have a user using that email.";
+$lang['INV_DUPLICATE_USER_DIR'] = "The user directory allready exists.";
 
 // NO CHANGES MADE
 $lang['NC_USER_PROFILE'] = "There was nothing to update. No changes were made.";
@@ -45,6 +52,7 @@ $lang['F_PASSWORD_CHANGE'] = "We're sorry, but we couldn't change your password.
 $lang['F_USER_PROFILE_UPDATE'] = "We're sorry, but we couldn't update your profile. Please try again later.";
 $lang['F_POST_CREATE'] = "We're sorry, but we couldn't create your new post. Please try again later.";
 $lang['F_POST_COUNT'] = "Could not get the post count.";
+$lang['F_REPLY_CREATE'] = "We're sorry, but we couldn't create your reply post. Please try again later..";
 $lang['F_DATA_READ'] = "Could not get data from the cache or database.";
 $lang['F_ADD_LIKE'] = "We're sorry, but we couldn't add your like to this post. Please try again later.";
 $lang['F_DELETE_LIKE'] = "We're sorry, but we couldn't remove your like from this post. Please try again later.";
@@ -53,6 +61,7 @@ $lang['F_DELETE_COMMENT'] = "We're sorry, but we couldn't delete your comment to
 $lang['F_DELETE_POST'] = "We're sorry, but we couldn't delete your post. Please try again later.";
 $lang['F_API_CONNECT'] = "Dude! WTF have you done? YOU BROKE THE INTERNET!";
 $lang['F_USER_LIST'] = "We're sorry but couldn't get the user list. Please try again later.";
+$lang['F_ADD_USER'] = "We're sorry but couldn't create your user account. Please try again later.";
 
 // OPERATION SUCCESS (S_)
 $lang['S_PASSWORD_CHANGE'] = "Your password was successfully changed.";
@@ -65,6 +74,7 @@ $lang['S_DELETE_COMMENT'] = "Your comment was successfully deleted from this pos
 $lang['S_SESSION_KILLED'] = "The session was successfully terminated.";
 $lang['S_DELETE_POST'] = "Your post was successfully deleted.";
 $lang['S_USER_LIST'] = "The user list was successfully retrieved";
+$lang['S_ADD_USER'] = "Your user account was successfully created. Go ahead and login.";
 
 /* End of file api.php */
 /* Location: ./system/language/english/api_lang.php */

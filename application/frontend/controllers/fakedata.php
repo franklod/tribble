@@ -11,7 +11,7 @@ class Fakedata extends CI_Controller
     $this->load->model('Fakedata_model', 'mFakedata');
   }
 
-  public function users($num)
+  public function users($num = 100)
   {
 
     $emails = $this->mFakedata->users($num);
@@ -21,15 +21,18 @@ class Fakedata extends CI_Controller
       if (@$result->error)
       {
         $data['error'] = $result->error;
+        echo $data['error'] . "<br>";
 
-      } else
-      {
+      }
+      
 
         foreach ($result->users as $user)
         {
 
           $user_hash = $user;
-          $user_dir = "./data/" . $user_hash;
+          $user_dir = $this->config->item('app_path') . '/data/' . $user_hash;
+
+          echo $user_dir . "<br>";
 
           if (is_dir($user_dir))
           {
@@ -43,13 +46,18 @@ class Fakedata extends CI_Controller
         }
 
       }
-    }
+    
 
   }
   
   
   public function posts($num){
     var_dump($this->mFakedata->posts($num));
+  }
+
+  public function update_colors($limit = 20,$offset = 0)
+  {
+    $this->mFakedata->update_colors($limit,$offset);
   }
   
 

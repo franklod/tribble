@@ -308,7 +308,7 @@ class CI_Form_validation {
 				$this->set_rules($this->_config_rules);
 			}
 
-			// We're we able to set the rules correctly?
+			// Were we able to set the rules correctly?
 			if (count($this->_field_data) == 0)
 			{
 				log_message('debug', "Unable to find validation rules");
@@ -335,6 +335,10 @@ class CI_Form_validation {
 				if (isset($_POST[$field]) AND $_POST[$field] != "")
 				{
 					$this->_field_data[$field]['postdata'] = $_POST[$field];
+				}
+				if (isset($_FILES[$field]))
+				{
+					$this->_field_data[$field]['postdata'] = $_FILES[$field];
 				}
 			}
 
@@ -893,6 +897,23 @@ class CI_Form_validation {
 		else
 		{
 			return ( ! empty($str));
+		}
+	}
+
+	/**
+	 * File required
+	 *
+	 * @access	public
+	 * @param	string
+	 * @return	bool
+	 */
+
+	public function file_required($field)
+	{
+		if ( $field['name'] === ''){
+			return  FALSE;
+		} else {
+			return TRUE;
 		}
 	}
 

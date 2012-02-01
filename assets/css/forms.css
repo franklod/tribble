@@ -205,13 +205,22 @@ form .error .e_msg, form .warning .e_msg {
 	display:block;
 	float:right;
 }
-.error input, .error textarea, .error select, .warning input, .warning textarea, .warning select {
+.error input, .error textarea, .error select, .warning input, .warning textarea, .warning select, .error div.tagsinput {
 	margin-bottom:5px;
 	outline:none;
 	border-color:rgba(200, 10, 16, 0.8);
 	-webkit-box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 10px rgba(200, 10, 16, 0.5);
 	-moz-box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 10px rgba(200, 10, 16, 0.5);
 	box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 10px rgba(200, 10, 16, 0.5);
+}
+
+.error .tagsinput input {
+	margin-bottom:0;
+	outline:none;
+	border: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow:none;
+	box-shadow:none;
 }
 form .warning {
 	color:#ff9c00;

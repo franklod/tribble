@@ -16,7 +16,7 @@
     <?=(form_error('password') == TRUE) ? form_error('password') : ''; ?>
   </div>
   <div class="e_wrap">
-    <?=anchor('/user/signup','Signup',array('class'=>'defaultBtn btn_info '))?>
+    <?=anchor('/signup','Signup',array('class'=>'defaultBtn btn_send '))?>
     <?=form_submit(array('name'=>'doLogin','id'=>'doLogin','value'=>'Login','class'=>'btn_success'))?>
   </div>
   <?=form_close()?>

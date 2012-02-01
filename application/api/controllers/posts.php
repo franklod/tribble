@@ -54,7 +54,6 @@ class Posts extends REST_Controller
     } else
     {
       return $count;
-      echo "fuck me!";
     }
   }
 
@@ -137,7 +136,7 @@ class Posts extends REST_Controller
     $this->load->model('Posts_API_model', 'mPosts');
 
     // hash the method name and params to get a cache key
-    $cachekey = sha1('detail' . $post_id);
+    $cachekey = sha1('detail/' . $post_id);
 
     // check if the key exists in cache
     if (@!$this->cache->memcached->get($cachekey))
@@ -244,6 +243,7 @@ class Posts extends REST_Controller
         'request_status' => true,
         'result_page' => $page,
         'user_name' => $posts['user_name'],
+        'user_email' => $posts['user_email'],
         'post_count' => $posts['count'],
         'posts' => $posts['posts']
       );
@@ -315,13 +315,13 @@ class Posts extends REST_Controller
     $user_id = $this->put('user_id');
 
     if (!$image_data)
-      $this->response(array('response_status' => false, 'message' => lang('E_NO_POST_IMAGE')));
+      $this->response(array('request_status' => false, 'message' => lang('E_NO_POST_IMAGE')));
     if (!$post_title)
-      $this->response(array('response_status' => false, 'message' => lang('E_NO_POST_TITLE')));
+      $this->response(array('request_status' => false, 'message' => lang('E_NO_POST_TITLE')));
     if (!$post_text)
-      $this->response(array('response_status' => false, 'message' => lang('E_NO_POST_TEXT')));
+      $this->response(array('request_status' => false, 'message' => lang('E_NO_POST_TEXT')));
     if (!$post_tags)
-      $this->response(array('response_status' => false, 'message' => lang('E_NO_POST_TAGS')));
+      $this->response(array('request_status' => false, 'message' => lang('E_NO_POST_TAGS')));
     if (!$user_id)
       $this->response(array('request_status' => false, 'message' => lang('E_NO_USER_ID')));
     if (!$this->mUsers->checkIfUserExists($user_id))
@@ -345,12 +345,80 @@ class Posts extends REST_Controller
 
       // KILL THE LISTS CACHE
       for($i=1;$i<=$cache_pages;$i++){
-        @$this->cache->memcached->delete('list/new'.$i);
-        @$this->cache->memcached->delete('buzzing/new'.$i);
-        @$this->cache->memcached->delete('loved/new'.$i);
+        @$this->cache->memcached->delete(sha1('list/new'.$i));
+        @$this->cache->memcached->delete(sha1('list/buzzing'.$i));
+        @$this->cache->memcached->delete(sha1('list/loved'.$i));
       }
 
       $this->response(array('request_status' => true, 'post_id' => $insert_post));      
+    }
+  }
+
+  public function reply_put()
+  {
+    // load the memcached driver
+    $this->load->driver('cache');
+    // load the posts model
+    $this->load->model('Posts_API_model', 'mPosts');
+    // load the user model
+    $this->load->model('Users_API_model', 'mUsers');
+
+    $image_data = $this->put('image_data');
+    $post_title = $this->put('post_title');
+    $post_text = $this->put('post_text');
+    $post_tags = $this->put('post_tags');
+    $user_id = $this->put('user_id');
+    $post_parent_id = $this->put('post_parent_id');
+
+    if (!$image_data)
+      $this->response(array('request_status' => false, 'message' => lang('E_NO_POST_IMAGE')));
+    if (!$post_title)
+      $this->response(array('request_status' => false, 'message' => lang('E_NO_POST_TITLE')));
+    if (!$post_text)
+      $this->response(array('request_status' => false, 'message' => lang('E_NO_POST_TEXT')));
+    if (!$post_tags)
+      $this->response(array('request_status' => false, 'message' => lang('E_NO_POST_TAGS')));
+    if (!$user_id)
+      $this->response(array('request_status' => false, 'message' => lang('E_NO_USER_ID')));
+    if (!$post_parent_id)
+      $this->response(array('request_status' => false, 'message' => lang('E_NO_PARENT_POST_ID')));
+    if (!$this->mUsers->checkIfUserExists($user_id))
+      $this->response(array('request_status' => false, 'message' => lang('INV_USER')));
+
+    $post_data = array(
+      'post_parent_id' => $post_parent_id,
+      'post_title' => $post_title,
+      'post_text' => $post_text,
+      'post_user_id' => $user_id);
+
+    $insert_post = $this->mPosts->insertPost($post_data, $post_tags, $image_data); 
+           
+    $insert_reply = $this->mPosts->insertReply($insert_post,$post_parent_id);
+
+    if ($insert_reply == false)
+    {
+      $this->response(array('request_status' => false, 'message' => lang('F_REPLY_CREATE')), 404);
+    }
+
+    if ($insert_post == false)
+    {
+      $this->response(array('request_status' => false, 'message' => lang('F_POST_CREATE')), 404);
+    } else
+    {      
+      // CALCULATE THE NUMBER OF POSSIBLE CACHE PAGES FOR THE POST LISTINGS
+      $cache_pages = ceil( $this->countPosts() / 600);
+
+      // KILL THE LISTS CACHE
+      for($i=1;$i<=$cache_pages;$i++){
+        @$this->cache->memcached->delete(sha1('list/new'.$i));
+        @$this->cache->memcached->delete(sha1('list/buzzing'.$i));
+        @$this->cache->memcached->delete(sha1('list/loved'.$i));
+      }
+
+      @$this->cache->memcached->delete(sha1('detail/'.$post_parent_id));
+      @$this->cache->memcached->delete(sha1('detail/'.$insert_post));
+
+      $this->response(array('request_status' => true, 'post_id' => $post_parent_id));      
     }
   }
 

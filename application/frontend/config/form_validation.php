@@ -53,6 +53,11 @@
     ),
     'upload_image' => array(
       array(
+        'field' => 'image_file',
+        'label' => 'Image',
+        'rules' => 'file_required'
+      ),
+      array(
         'field' => 'post_title',
         'label' => 'Title',
         'rules' => 'required'

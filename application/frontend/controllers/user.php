@@ -22,9 +22,9 @@ class User extends CI_Controller
 
     public function index()
     {
-        $data['title'] = 'Tribble';
-        $data['meta_description'] = 'A design content sharing and discussion tool.';
-        $data['meta_keywords'] = 'Tribble';
+        $data['title'] = $this->config->item('site_name');
+        $data['meta_description'] = $this->config->item('site_description');
+        $data['meta_keywords'] = $this->config->item('site_keywords');
 
         if ($session = $this->rest->get('auth/session/', array('id' => $this->session->userdata('sid'))));
         {
@@ -53,11 +53,7 @@ class User extends CI_Controller
             $this->session->sess_destroy();
             redirect(site_url('/'));            
           }
-        }
-        
-        $data['title'] = 'Tribble - Signup';
-        $data['meta_description'] = 'A design content sharing and discussion tool.';
-        $data['meta_keywords'] = 'Tribble';        
+        }            
 
         // GET THE USER PROFILE DATA FROM THE API
         $user_data = $this->rest->get('users/profile/id/'.$session->user->user_id);
@@ -68,6 +64,10 @@ class User extends CI_Controller
         
         // PREPARE TO SHOW THE EDIT PROFILE FORM
         $data['profile'] = $user_data->user;
+
+        $data['title'] = $this->config->item('site_name') . ' - ' . $user_data->user->user_name . ' - Profile';
+        $data['meta_description'] = $this->config->item('site_description');
+        $data['meta_keywords'] = $this->config->item('site_keywords');
         
         $this->load->view('common/page_top.php', $data);
         $this->load->view('user/profile.php', $data);
@@ -83,11 +83,7 @@ class User extends CI_Controller
           if ($session->request_status == true)
           {
             $data['user'] = $session->user;
-
-            $data['title'] = 'Tribble - Signup';
-            $data['meta_description'] = 'A design content sharing and discussion tool.';
-            $data['meta_keywords'] = 'Tribble';        
-
+            
             // GET THE USER PROFILE DATA FROM THE API
             $user_data = $this->rest->get('users/profile/id/'.$session->user->user_id);            
 
@@ -97,6 +93,10 @@ class User extends CI_Controller
             
             // PREPARE TO SHOW THE EDIT PROFILE FORM
             $data['profile'] = $user_data->user;
+
+            $data['title'] = $this->config->item('site_name') . ' - ' . $user_data->user->user_name . ' - Edit';
+            $data['meta_description'] = $this->config->item('site_description');
+            $data['meta_keywords'] = $this->config->item('site_keywords');
 
             $this->form_validation->set_error_delimiters('<p class="error">', '</p>');
 
@@ -142,12 +142,7 @@ class User extends CI_Controller
 
     public function password()
     {
-
-        $data['title'] = 'Tribble - Signup';
-        $data['meta_description'] = 'A design content sharing and discussion tool.';
-        $data['meta_keywords'] = 'Tribble'; 
-
-     
+             
         if ($session = $this->rest->get('auth/session/', array('id' => $this->session->userdata('sid'))));
         {
           if ($session->request_status == true)
@@ -163,6 +158,10 @@ class User extends CI_Controller
             
             // PREPARE TO SHOW THE EDIT PROFILE FORM
             $data['profile'] = $user_data->user;
+
+            $data['title'] = $this->config->item('site_name') . ' - ' . $user_data->user->user_name . ' - Password';
+            $data['meta_description'] = $this->config->item('site_description');
+            $data['meta_keywords'] = $this->config->item('site_keywords');
 
             $this->form_validation->set_error_delimiters('<p class="error">', '</p>');
 
@@ -226,22 +225,20 @@ class User extends CI_Controller
 
     public function signup()
     {
-        $data['title'] = 'Tribble - Signup';
-        $data['meta_description'] = 'A design content sharing and discussion tool.';
-        $data['meta_keywords'] = 'Tribble';
 
-        $this->load->view('common/page_top.php', $data);
-        $this->load->view('user/signup.php', $data);
-        $this->load->view('common/page_end.php', $data);
-    }
+        if ($session = $this->rest->get('auth/session/', array('id' => $this->session->userdata('sid'))));
+        {
+          if ($session->request_status == true)
+          {
+            redirect(site_url('/'));
+          } 
+        }
 
-    public function dosignup()
-    {
         $this->form_validation->set_error_delimiters('<p class="help">', '</p>');
 
-        $data['title'] = 'Tribble - Signup';
-        $data['meta_description'] = 'A design content sharing and discussion tool.';
-        $data['meta_keywords'] = 'Tribble';
+        $data['title'] = $this->config->item('site_name') . ' - Signup';
+        $data['meta_description'] = $this->config->item('site_description');
+        $data['meta_keywords'] = $this->config->item('site_keywords');
 
         if($this->form_validation->run('signup') == false) {
 
@@ -251,31 +248,30 @@ class User extends CI_Controller
 
         } else {
 
-            $this->load->model('User_model', 'uModel');
-            if($result = $this->uModel->createNewUser()) {
-                if(@$result->error) {
-                    $data['error'] = $result->error;
-                    $this->load->view('common/page_top.php', $data);
-                    $this->load->view('user/signup.php', $data);
-                    $this->load->view('common/page_end.php', $data);
-                } else {
-                    $user_hash = $result->user_hash;
-                    $user_dir = "./data/" . $user_hash;
+            $user_object = array(
+                'user_realname' => $this->input->post('realname'),
+                'user_email' => $this->input->post('email'),
+                'user_password' => $this->input->post('password'),
+                'user_bio' => $this->input->post('bio')
+            );
 
-                    if(is_dir($user_dir)) {
-                        $data['error'] = "Oops. There something happened while finishing your account setup.";
-                        $this->load->view('common/page_top.php', $data);
-                        $this->load->view('user/signup.php', $data);
-                        $this->load->view('common/page_end.php', $data);
-                    } else {
-                        mkdir($user_dir, 0755);
-                        $data['success'] = "You're good to go! Go ahead and login.";
-                        $this->load->view('common/page_top.php', $data);
-                        $this->load->view('user/signup.php', $data);
-                        $this->load->view('common/page_end.php', $data);
-                    }
+            $create_user = $this->rest->put('users/signup',$user_object);            
+            
+            if(!$create_user)
+                show_error(lang('F_API_CONNECT'));
+            
+            // var_dump($create_user);
 
-                }
+            if(!$create_user->request_status) {
+                $data['error'] = $create_user->message;
+                $this->load->view('common/page_top.php', $data);
+                $this->load->view('user/signup.php', $data);
+                $this->load->view('common/page_end.php', $data);
+            } else {
+                $data['success'] = $create_user->message;
+                $this->load->view('common/page_top.php', $data);
+                $this->load->view('user/signup.php', $data);
+                $this->load->view('common/page_end.php', $data);
             }
 
         }
@@ -283,9 +279,9 @@ class User extends CI_Controller
 
     public function delete(){
 
-        $data['title'] = 'Tribble';
-        $data['meta_description'] = 'A design content sharing and discussion tool.';
-        $data['meta_keywords'] = 'Tribble';
+        $data['title'] = $this->config->item('site_name');
+        $data['meta_description'] = $this->config->item('site_description');
+        $data['meta_keywords'] = $this->config->item('site_keywords');
 
         if ($session = $this->rest->get('auth/session/', array('id' => $this->session->userdata('sid'))));
         {

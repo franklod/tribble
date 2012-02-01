@@ -1,6 +1,10 @@
 <div class="g75">
   <?if($profile):?>
-  	<p><?=get_gravatar($profile->user_email,80)?></p>
+  	<p>
+      <?=get_gravatar($profile->user_email,80)?>
+      <br>This site uses <?=anchor('http://gravatar.com', 'gravatar', array('target'=>'_blank'))?> to handle the user avatars.
+      <br>If you don't have a <?=anchor('http://gravatar.com', 'gravatar', array('target'=>'_blank'))?> account yet, get one and add your Tribble email to it.
+    </p>
   	<p>Name: <?=$profile->user_name?></p>
     <p>Email: <?=$profile->user_email?></p>    
     <p>Biography: <?=$profile->user_bio?></p>    

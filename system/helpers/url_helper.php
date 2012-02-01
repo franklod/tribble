@@ -518,7 +518,7 @@ if ( ! function_exists('prep_url'))
  */
 if ( ! function_exists('url_title'))
 {
-	function url_title($str, $separator = 'dash', $lowercase = FALSE)
+	function url_title($str, $separator = 'dash', $lowercase = TRUE)
 	{
 		if ($separator == 'dash')
 		{
@@ -530,6 +530,16 @@ if ( ! function_exists('url_title'))
 			$search		= '-';
 			$replace	= '_';
 		}
+
+		$normalizeChars = array(
+      'Š'=>'S', 'š'=>'s', 'Ð'=>'Dj','Ž'=>'Z', 'ž'=>'z', 'À'=>'A', 'Á'=>'A', 'Â'=>'A', 'Ã'=>'A', 'Ä'=>'A', 
+      'Å'=>'A', 'Æ'=>'A', 'Ç'=>'C', 'È'=>'E', 'É'=>'E', 'Ê'=>'E', 'Ë'=>'E', 'Ì'=>'I', 'Í'=>'I', 'Î'=>'I', 
+      'Ï'=>'I', 'Ñ'=>'N', 'Ò'=>'O', 'Ó'=>'O', 'Ô'=>'O', 'Õ'=>'O', 'Ö'=>'O', 'Ø'=>'O', 'Ù'=>'U', 'Ú'=>'U', 
+      'Û'=>'U', 'Ü'=>'U', 'Ý'=>'Y', 'Þ'=>'B', 'ß'=>'Ss','à'=>'a', 'á'=>'a', 'â'=>'a', 'ã'=>'a', 'ä'=>'a', 
+      'å'=>'a', 'æ'=>'a', 'ç'=>'c', 'è'=>'e', 'é'=>'e', 'ê'=>'e', 'ë'=>'e', 'ì'=>'i', 'í'=>'i', 'î'=>'i', 
+      'ï'=>'i', 'ð'=>'o', 'ñ'=>'n', 'ò'=>'o', 'ó'=>'o', 'ô'=>'o', 'õ'=>'o', 'ö'=>'o', 'ø'=>'o', 'ù'=>'u', 
+      'ú'=>'u', 'û'=>'u', 'ý'=>'y', 'ý'=>'y', 'þ'=>'b', 'ÿ'=>'y', 'ƒ'=>'f'
+    );
 
 		$trans = array(
 						'&\#\d+?;'				=> '',
@@ -544,6 +554,8 @@ if ( ! function_exists('url_title'))
 
 		$str = strip_tags($str);
 
+		$str = strtr($str,$normalizeChars);
+
 		foreach ($trans as $key => $val)
 		{
 			$str = preg_replace("#".$key."#i", $val, $str);
@@ -553,6 +565,8 @@ if ( ! function_exists('url_title'))
 		{
 			$str = strtolower($str);
 		}
+
+
 
 		return trim(stripslashes($str));
 	}

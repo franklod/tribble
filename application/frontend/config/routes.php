@@ -67,7 +67,7 @@ $route['comment/delete/(:num)/(:num)/(:num)'] = 'post/delete_comment/$1/$2/$3';
 $route['like/add/(:any)'] = 'post/add_like/$1';
 $route['like/remove/(:any)'] = 'post/remove_like/$1';
 // DELETE POST
-$route['post/delete/(:num)'] = 'post/delete/$1';
+// $route['post/delete/(:any)'] = 'post/delete/$1';
 // TAGS
 $route['tag/(:any)'] = 'post/tag/$1';
 $route['tag/(:any)/page/(:num)'] = 'post/tag/$1/$2';
@@ -78,12 +78,20 @@ $route['login/(:any)/(:any)'] = 'auth/login/$1/$2';
 $route['logout'] = 'auth/logout';
 $route['logout/(:any)'] = 'auth/logout/$1';
 $route['logout/(:any)/(:any)'] = 'auth/logout/$1/$2';
+$route['signup'] = 'user/signup';
 // TAGS
 $route['tags'] = 'post/tags';
 // USER
 $route['designers'] = 'post/users';
+$route['user/profile'] = 'user/profile';
+$route['user/edit'] = 'user/edit';
+$route['user/delete'] = 'user/edit';
+$route['user/password'] = 'user/password';
+
 $route['user/(:any)'] = 'post/user/$1';
 $route['user/(:any)/page'] = 'post/user/$1/$2';
+
+$route['reply/(:any)'] = 'post/reply/$1';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

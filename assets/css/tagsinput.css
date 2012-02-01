@@ -13,8 +13,8 @@ div.tagsinput span.tag {
 display:block;
 float:left;
 text-decoration:none;
-background:#E9E9E9;
-color:#2A2D30;
+background:#333;
+color:#fff;
 margin-right:2px;
 margin-bottom:5px;
 font-family:helvetica;
@@ -30,7 +30,7 @@ font-size:11px;
 }
 
 div.tagsinput input {
-width:200px;
+width:280px;
 font-family:helvetica;
 font-size:13px;
 border:1px solid transparent;
