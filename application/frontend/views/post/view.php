@@ -17,16 +17,8 @@
         <a href="<?=site_url('user/'.$post->user_id)?>" title="<?=$post->user_name?>"><?=$post->user_name?></a>
       </h4>
       <div class="post-date">
-        <?=strftime('%B %d, %Y',mysql_to_unix($post->post_date));?>
-        <?if(isset($user)):?>
-        <?if($post->user_id == $user->user_id):?>
-        | <a href="/post/delete/<?=$post->post_id.'-'.url_title($post->post_title)?>" style="position: absolute; top: <?=(isset($parent)) ? '53px' : '26px'?>; font-size: .9em;" class="defaultBtn btn_delete">delete</a>
-        <?endif;?>
-        <?endif;?>
-      </div>
-      <?if(@$user->user_id):?>    
-       <a class="defaultBtn btn_success post-reply" href="<?=site_url('reply/'.$post->post_id.'-'.url_title($post->post_title))?>">Reply</a>
-      <?endif;?>
+        <?=strftime('%B %d, %Y',mysql_to_unix($post->post_date));?>        
+      </div>      
     </div>
     <div class="post-img-container box clear">
       <img src="<?=cdn_url($post->post_image_path)?>" width="400" height="300"/> </div>
@@ -36,7 +28,13 @@
           <?=$post->post_text?>
         </p>
       </div>
+      <hr>
       <div class="post-tools">
+      <?if(isset($user)):?>
+        <?if($post->user_id == $user->user_id):?>
+          <a class="defaultBtn btn_send" title="Create a new post as a reply" href="<?=site_url('reply/'.$post->post_id.'-'.url_title($post->post_title))?>">Reply</a><a title="Delete this post" class="defaultBtn btn_delete" href="/post/delete/<?=$post->post_id.'-'.url_title($post->post_title)?>">Delete</a>
+        <?endif;?>
+        <?endif;?>
         <p class="ico">
           <?if(!isset($like_status)):?>
             <a title="<?=$post->post_like_count?> users like this post" href="#" class="likes"><?=$post->post_like_count?></a>          
@@ -49,15 +47,17 @@
           <?endif;?>
         </p>
       </div>
+      <hr>
       <h3>Tags</h3>
       <ul class="tags">
         <? $tags = explode(',',$post->post_tags) ?>
         <? foreach($tags as $tag):?>
-        <li><a href="/">
+        <li><a href="<?=site_url('tag/'.$tag)?>">
           <?=$tag?>
           </a></li>
         <? endforeach; ?>
       </ul>
+      <hr>
       <h3>Color Scheme</h3>
       <ul class="color-scheme">
         <? $colors = $post->post_image_palette ?>

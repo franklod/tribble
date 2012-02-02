@@ -33,16 +33,7 @@ CREATE TABLE `tr_comment` (
   `comment_is_deleted` TINYINT(1) DEFAULT '0',
   PRIMARY KEY (`comment_id`)
 )ENGINE=InnoDB
-AUTO_INCREMENT=3 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
-
-#
-# Data for the `tr_comment` table  (LIMIT 0,500)
-#
-
-INSERT INTO `tr_comment` (`comment_id`, `comment_text`, `comment_user_id`, `comment_is_deleted`) VALUES 
-  (1,'\"New York City and Chicago were in chaos. And what happened with them was happening in all the large cities. A third of the New York police were dead. Their chief was also dead, likewise the mayor. All law and order had ceased. The bodies were lying in the streets un-buried. All railroads and vessels carrying food and such things into the great city had ceased runnings and mobs of the hungry poor were pillaging the stores and warehouses. Murder and robbery and drunkenness were everywhere. Already the people had fled from the city by millions—at first the rich, in their private motor-cars and dirigibles, and then the great mass of the population, on foot, carrying the plague with them, themselves starving and pillaging the farmers and all the towns and villages on the way.\n\n\"The man who sent this news, the wireless operator, was alone with his instrument on the top of a lofty building. The people remaining in the city—he estimated them at several hundred thousand—had gone mad from fear and drink, and on all sides of him great fires were raging. He was a hero, that man who staid by his post—an obscure newspaperman, most likely.',402,0),
-  (2,'\"Wish, by gor! whale eat him, ''stead of him eat whale. I''m bressed if he ain''t more of shark dan Massa Shark hisself,\" muttered the old man, limping away; with which sage ejaculation he went to his hammock.\n\nThat mortal man should feed upon the creature that feeds his lamp, and, like Stubb, eat him by his own light, as you may say; this seems so outlandish a thing that one must needs go a little into the history and philosophy of it.',402,0);
-COMMIT;
+AUTO_INCREMENT=9 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
 
 #
 # Structure for the `tr_image` table : 
@@ -58,7 +49,117 @@ CREATE TABLE `tr_image` (
   `image_color_ranges` VARCHAR(255) COLLATE utf8_general_ci DEFAULT NULL,
   PRIMARY KEY (`image_id`)
 )ENGINE=InnoDB
-AUTO_INCREMENT=1203 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
+AUTO_INCREMENT=1208 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
+
+#
+# Structure for the `tr_like` table : 
+#
+
+DROP TABLE IF EXISTS `tr_like`;
+
+CREATE TABLE `tr_like` (
+  `like_post_id` INTEGER(11) NOT NULL,
+  `like_user_id` INTEGER(11) NOT NULL,
+  `like_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`like_id`)
+)ENGINE=InnoDB
+AUTO_INCREMENT=1225 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
+
+#
+# Structure for the `tr_post` table : 
+#
+
+DROP TABLE IF EXISTS `tr_post`;
+
+CREATE TABLE `tr_post` (
+  `post_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `post_parent_id` INTEGER(11) DEFAULT '0',
+  `post_title` VARCHAR(255) COLLATE utf8_general_ci DEFAULT '',
+  `post_text` VARCHAR(255) COLLATE utf8_general_ci NOT NULL DEFAULT '',
+  `post_user_id` INTEGER(11) NOT NULL,
+  `post_timestamp` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `post_is_deleted` TINYINT(1) DEFAULT '0',
+  PRIMARY KEY (`post_id`)
+)ENGINE=InnoDB
+AUTO_INCREMENT=1208 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
+
+#
+# Structure for the `tr_reply` table : 
+#
+
+DROP TABLE IF EXISTS `tr_reply`;
+
+CREATE TABLE `tr_reply` (
+  `reply_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `reply_post_id` INTEGER(11) NOT NULL,
+  `reply_comment_id` INTEGER(11) DEFAULT NULL,
+  `reply_rebound_id` INTEGER(11) DEFAULT NULL,
+  `reply_timestamp` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `reply_is_deleted` TINYINT(1) DEFAULT '0',
+  PRIMARY KEY (`reply_id`)
+)ENGINE=InnoDB
+AUTO_INCREMENT=14 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
+
+#
+# Structure for the `tr_tag` table : 
+#
+
+DROP TABLE IF EXISTS `tr_tag`;
+
+CREATE TABLE `tr_tag` (
+  `tag_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `tag_post_id` INTEGER(11) DEFAULT NULL,
+  `tag_content` TEXT COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`tag_id`)
+)ENGINE=InnoDB
+AUTO_INCREMENT=1208 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
+
+#
+# Structure for the `tr_trash` table : 
+#
+
+DROP TABLE IF EXISTS `tr_trash`;
+
+CREATE TABLE `tr_trash` (
+  `trash_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `trash_path` VARCHAR(256) COLLATE utf8_general_ci DEFAULT NULL,
+  PRIMARY KEY (`trash_id`)
+)ENGINE=MyISAM
+AUTO_INCREMENT=1 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
+
+#
+# Structure for the `tr_user` table : 
+#
+
+DROP TABLE IF EXISTS `tr_user`;
+
+CREATE TABLE `tr_user` (
+  `user_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `user_email` VARCHAR(255) COLLATE utf8_general_ci NOT NULL DEFAULT '',
+  `user_password` VARCHAR(128) COLLATE utf8_general_ci NOT NULL DEFAULT '',
+  `user_realname` VARCHAR(255) COLLATE utf8_general_ci NOT NULL DEFAULT '',
+  `user_bio` TEXT COLLATE utf8_general_ci,
+  `user_is_deleted` TINYINT(1) DEFAULT '0',
+  PRIMARY KEY (`user_id`),
+  UNIQUE KEY `user_email_UNIQUE` (`user_email`)
+)ENGINE=InnoDB
+AUTO_INCREMENT=403 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT='\t';
+
+#
+# Data for the `tr_comment` table  (LIMIT 0,500)
+#
+
+INSERT INTO `tr_comment` (`comment_id`, `comment_text`, `comment_user_id`, `comment_is_deleted`) VALUES 
+  (1,'\"New York City and Chicago were in chaos. And what happened with them was happening in all the large cities. A third of the New York police were dead. Their chief was also dead, likewise the mayor. All law and order had ceased. The bodies were lying in the streets un-buried. All railroads and vessels carrying food and such things into the great city had ceased runnings and mobs of the hungry poor were pillaging the stores and warehouses. Murder and robbery and drunkenness were everywhere. Already the people had fled from the city by millions—at first the rich, in their private motor-cars and dirigibles, and then the great mass of the population, on foot, carrying the plague with them, themselves starving and pillaging the farmers and all the towns and villages on the way.\n\n\"The man who sent this news, the wireless operator, was alone with his instrument on the top of a lofty building. The people remaining in the city—he estimated them at several hundred thousand—had gone mad from fear and drink, and on all sides of him great fires were raging. He was a hero, that man who staid by his post—an obscure newspaperman, most likely.',402,0),
+  (2,'\"Wish, by gor! whale eat him, ''stead of him eat whale. I''m bressed if he ain''t more of shark dan Massa Shark hisself,\" muttered the old man, limping away; with which sage ejaculation he went to his hammock.\n\nThat mortal man should feed upon the creature that feeds his lamp, and, like Stubb, eat him by his own light, as you may say; this seems so outlandish a thing that one must needs go a little into the history and philosophy of it.',402,0),
+  (3,'asd as asdasd asdsad  asdad s',402,0),
+  (4,'asads das asd',402,0),
+  (5,'sdfs ddsfsd f fdsfqfewf',402,0),
+  (6,'sgdfsdfgdsf gsdg ',402,0),
+  (7,'fgjfgg gfgfgfgj gjghfjfghfgjhhgj fhj\n\nhttp://sapo.pt',402,0),
+  (8,'dsfg sdsdf ssdds sdf  fdg',402,0);
+COMMIT;
 
 #
 # Data for the `tr_image` table  (LIMIT 0,500)
@@ -1280,22 +1381,13 @@ INSERT INTO `tr_image` (`image_id`, `image_post_id`, `image_path`, `image_palett
   (1199,1199,'/data/tests/4.png','[\"255,255,255\",\"165,160,153\",\"170,167,159\",\"178,175,167\",\"88,78,84\",\"70,63,73\",\"193,135,74\",\"162,91,27\",\"90,81,85\"]','[\"170,170,170\",\"85,85,85\",\"170,85,85\",\"170,170,85\",\"85,0,0\",\"0,0,0\",\"170,85,0\",\"85,85,0\",\"85,0,85\"]'),
   (1200,1200,'/data/b5e0eaebec229148d61d1881b27d1865e1bb5003/screen_shot_2011-11-25_at_1.13_.41_am_7.png','[\"255,255,255\",\"119,119,119\",\"172,5,16\",\"36,36,36\",\"145,1,9\"]','[\"170,170,170\",\"85,85,85\",\"170,0,0\",\"0,0,0\",\"85,0,0\"]'),
   (1201,1201,'/data/b5e0eaebec229148d61d1881b27d1865e1bb5003/dribbble2.png','[\"230,212,119\",\"228,201,84\",\"225,225,220\",\"230,167,22\",\"214,79,25\",\"142,182,208\",\"217,168,116\",\"156,168,181\"]','[\"170,170,85\",\"170,170,0\",\"170,170,170\",\"170,85,0\",\"170,0,0\",\"85,170,170\",\"170,85,85\",\"85,85,170\"]'),
-  (1202,1202,'/data/b5e0eaebec229148d61d1881b27d1865e1bb5003/corona-7.jpg','[\"80,72,59\",\"203,197,185\",\"109,101,88\",\"96,88,75\",\"86,78,65\",\"187,181,169\",\"173,167,155\"]','[\"0,0,0\",\"170,170,170\",\"85,85,85\",\"85,85,0\",\"85,0,0\",\"170,170,85\",\"170,85,85\"]');
+  (1202,1202,'/data/b5e0eaebec229148d61d1881b27d1865e1bb5003/corona-7.jpg','[\"80,72,59\",\"203,197,185\",\"109,101,88\",\"96,88,75\",\"86,78,65\",\"187,181,169\",\"173,167,155\"]','[\"0,0,0\",\"170,170,170\",\"85,85,85\",\"85,85,0\",\"85,0,0\",\"170,170,85\",\"170,85,85\"]'),
+  (1203,1203,'/data/b5e0eaebec229148d61d1881b27d1865e1bb5003/20.jpg','[\"255,255,255\",\"92,49,40\",\"225,165,79\",\"153,96,53\",\"225,170,88\",\"255,154,103\",\"144,124,97\",\"202,168,218\",\"81,43,42\",\"171,79,54\"]','[\"170,170,170\",\"85,0,0\",\"170,85,0\",\"85,85,0\",\"170,170,85\",\"170,85,85\",\"85,85,85\",\"170,85,170\",\"0,0,0\",\"170,0,0\"]'),
+  (1204,1204,'/data/b5e0eaebec229148d61d1881b27d1865e1bb5003/15.png','[\"41,41,41\",\"255,95,69\",\"112,108,102\",\"224,84,63\",\"87,84,80\",\"88,85,80\",\"255,255,255\",\"192,120,108\",\"181,172,158\"]','[\"0,0,0\",\"170,85,0\",\"85,85,85\",\"170,0,0\",\"85,0,0\",\"85,85,0\",\"170,170,170\",\"170,85,85\",\"170,170,85\"]'),
+  (1205,1205,'/data/b5e0eaebec229148d61d1881b27d1865e1bb5003/10.jpg','[\"86,92,104\",\"50,54,66\",\"78,84,96\",\"82,88,100\",\"175,181,179\",\"169,175,171\",\"167,173,169\",\"158,168,170\",\"234,121,164\"]','[\"85,85,85\",\"0,0,0\",\"0,0,85\",\"0,85,85\",\"170,170,170\",\"85,170,170\",\"85,170,85\",\"85,85,170\",\"170,85,85\"]'),
+  (1206,1206,'/data/b5e0eaebec229148d61d1881b27d1865e1bb5003/16.png','[\"255,105,42\",\"0,0,0\",\"255,255,255\",\"128,53,21\",\"191,79,32\",\"255,143,95\",\"255,180,149\",\"128,128,128\"]','[\"170,85,0\",\"0,0,0\",\"170,170,170\",\"85,0,0\",\"170,0,0\",\"170,85,85\",\"170,170,85\",\"85,85,85\"]'),
+  (1207,1207,'/data/b5e0eaebec229148d61d1881b27d1865e1bb5003/tabbar.png','[\"65,43,45\",\"244,240,231\",\"68,181,223\",\"85,191,230\",\"162,159,153\",\"251,169,106\",\"245,129,77\",\"98,81,81\",\"251,170,107\",\"52,168,219\"]','[\"0,0,0\",\"170,170,170\",\"0,170,170\",\"85,170,170\",\"85,85,85\",\"170,85,85\",\"170,85,0\",\"85,0,0\",\"170,170,85\",\"0,85,170\"]');
 COMMIT;
-
-#
-# Structure for the `tr_like` table : 
-#
-
-DROP TABLE IF EXISTS `tr_like`;
-
-CREATE TABLE `tr_like` (
-  `like_post_id` INTEGER(11) NOT NULL,
-  `like_user_id` INTEGER(11) NOT NULL,
-  `like_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`like_id`)
-)ENGINE=InnoDB
-AUTO_INCREMENT=1213 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
 
 #
 # Data for the `tr_like` table  (LIMIT 0,500)
@@ -2522,26 +2614,16 @@ INSERT INTO `tr_like` (`like_post_id`, `like_user_id`, `like_id`) VALUES
   (1188,402,1206),
   (1201,402,1207),
   (1189,402,1211),
-  (1190,402,1212);
+  (1190,402,1212),
+  (1203,402,1213),
+  (1204,402,1214),
+  (1198,402,1218),
+  (1206,402,1219),
+  (1199,402,1220),
+  (1205,402,1221),
+  (1196,402,1222),
+  (1207,402,1224);
 COMMIT;
-
-#
-# Structure for the `tr_post` table : 
-#
-
-DROP TABLE IF EXISTS `tr_post`;
-
-CREATE TABLE `tr_post` (
-  `post_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `post_parent_id` INTEGER(11) DEFAULT '0',
-  `post_title` VARCHAR(255) COLLATE utf8_general_ci DEFAULT '',
-  `post_text` VARCHAR(255) COLLATE utf8_general_ci NOT NULL DEFAULT '',
-  `post_user_id` INTEGER(11) NOT NULL,
-  `post_timestamp` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `post_is_deleted` TINYINT(1) DEFAULT '0',
-  PRIMARY KEY (`post_id`)
-)ENGINE=InnoDB
-AUTO_INCREMENT=1203 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
 
 #
 # Data for the `tr_post` table  (LIMIT 0,500)
@@ -3763,25 +3845,13 @@ INSERT INTO `tr_post` (`post_id`, `post_parent_id`, `post_title`, `post_text`, `
   (1199,0,'ugliest tablet logo','ugliest tablet logo',329,'2012-01-30 12:22:48',0),
   (1200,0,'dgggg3','34gg33434g34g',402,'2012-01-31 12:09:42',0),
   (1201,0,'Sunny side up','Happy sun illustration',402,'2012-01-31 16:26:56',0),
-  (1202,0,'Horsies','A guy on a horse',402,'2012-01-31 16:29:50',0);
+  (1202,0,'Horsies','A guy on a horse',402,'2012-01-31 16:29:50',0),
+  (1203,1202,'ghjghj','ghjggh',402,'2012-02-01 16:43:18',0),
+  (1204,1202,'asd sdasad ads asd ',' asdsad ads  asddas ',402,'2012-02-01 16:58:40',0),
+  (1205,1203,'asdasasdasd asdad ','as   sdadsaasd asda',402,'2012-02-01 17:00:30',0),
+  (1206,1203,'asdasasdasd asdad ','as   sdadsaasd asda',402,'2012-02-01 17:01:16',0),
+  (1207,1188,'Tab bar iPhone app design - Round2','Another revision the client asked me recently that gives even more personality in my opinion. I had the pleasure to test the iphone version and it''s pretty sweet :)',402,'2012-02-02 13:04:22',0);
 COMMIT;
-
-#
-# Structure for the `tr_reply` table : 
-#
-
-DROP TABLE IF EXISTS `tr_reply`;
-
-CREATE TABLE `tr_reply` (
-  `reply_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `reply_post_id` INTEGER(11) NOT NULL,
-  `reply_comment_id` INTEGER(11) DEFAULT NULL,
-  `reply_rebound_id` INTEGER(11) DEFAULT NULL,
-  `reply_timestamp` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `reply_is_deleted` TINYINT(1) DEFAULT '0',
-  PRIMARY KEY (`reply_id`)
-)ENGINE=InnoDB
-AUTO_INCREMENT=3 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
 
 #
 # Data for the `tr_reply` table  (LIMIT 0,500)
@@ -3789,22 +3859,19 @@ AUTO_INCREMENT=3 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
 
 INSERT INTO `tr_reply` (`reply_id`, `reply_post_id`, `reply_comment_id`, `reply_rebound_id`, `reply_timestamp`, `reply_is_deleted`) VALUES 
   (1,1198,1,NULL,'2012-01-31 13:31:28',0),
-  (2,1189,2,NULL,'2012-01-31 18:49:48',0);
+  (2,1189,2,NULL,'2012-01-31 18:49:48',0),
+  (3,1202,NULL,1203,'2012-02-01 16:43:18',0),
+  (4,1202,3,NULL,'2012-02-01 16:58:08',0),
+  (5,1202,NULL,1204,'2012-02-01 16:58:40',0),
+  (6,1203,NULL,1205,'2012-02-01 17:00:30',0),
+  (7,1203,NULL,1206,'2012-02-01 17:01:16',0),
+  (8,1203,4,NULL,'2012-02-01 17:01:26',0),
+  (9,1203,5,NULL,'2012-02-01 17:01:56',0),
+  (10,1206,6,NULL,'2012-02-02 12:57:18',0),
+  (11,1188,7,NULL,'2012-02-02 13:02:01',0),
+  (12,1188,NULL,1207,'2012-02-02 13:04:22',0),
+  (13,1207,8,NULL,'2012-02-02 13:06:40',0);
 COMMIT;
-
-#
-# Structure for the `tr_tag` table : 
-#
-
-DROP TABLE IF EXISTS `tr_tag`;
-
-CREATE TABLE `tr_tag` (
-  `tag_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `tag_post_id` INTEGER(11) DEFAULT NULL,
-  `tag_content` TEXT COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY (`tag_id`)
-)ENGINE=InnoDB
-AUTO_INCREMENT=1203 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
 
 #
 # Data for the `tr_tag` table  (LIMIT 0,500)
@@ -5026,40 +5093,13 @@ INSERT INTO `tr_tag` (`tag_id`, `tag_post_id`, `tag_content`) VALUES
   (1199,1199,'ugliest,tablet,logo'),
   (1200,1200,'43g34g,34f43f,3f34f'),
   (1201,1201,'sun,illustration,hand painted,happy'),
-  (1202,1202,'illustration,pencil,sketch');
+  (1202,1202,'illustration,pencil,sketch'),
+  (1203,1203,'gghj'),
+  (1204,1204,'asasd,sdsa,dasdasd,asdasd'),
+  (1205,1205,'asdas,dasdas,das'),
+  (1206,1206,'asdas,dasdas,das'),
+  (1207,1207,'blue,iphone,interface,design,orange,apps,brown,map');
 COMMIT;
-
-#
-# Structure for the `tr_trash` table : 
-#
-
-DROP TABLE IF EXISTS `tr_trash`;
-
-CREATE TABLE `tr_trash` (
-  `trash_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `trash_path` VARCHAR(256) COLLATE utf8_general_ci DEFAULT NULL,
-  PRIMARY KEY (`trash_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=1 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
-
-#
-# Structure for the `tr_user` table : 
-#
-
-DROP TABLE IF EXISTS `tr_user`;
-
-CREATE TABLE `tr_user` (
-  `user_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `user_email` VARCHAR(255) COLLATE utf8_general_ci NOT NULL DEFAULT '',
-  `user_password` VARCHAR(128) COLLATE utf8_general_ci NOT NULL DEFAULT '',
-  `user_realname` VARCHAR(255) COLLATE utf8_general_ci NOT NULL DEFAULT '',
-  `user_bio` TEXT COLLATE utf8_general_ci,
-  `user_is_deleted` TINYINT(1) DEFAULT '0',
-  PRIMARY KEY (`user_id`),
-  UNIQUE KEY `user_email_UNIQUE` (`user_email`)
-)ENGINE=InnoDB
-AUTO_INCREMENT=403 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT='\t';
 
 #
 # Data for the `tr_user` table  (LIMIT 0,500)

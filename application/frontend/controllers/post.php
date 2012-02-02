@@ -54,16 +54,10 @@ class Post extends CI_Controller
   public function tag($tag, $dummy = null, $page = 1)
   {
     
-    if ($session = $this->rest->get('auth/session/', array('id' => $this->session->userdata('sid'))))
-      ;
-    {
-      if ($session->request_status == true)
-      {
-        $data['user'] = $session->user;
-      } else
-      {
-        $this->session->sess_destroy();
-      }
+    $session = $this->alternatesession->session_exists();
+
+    if($session){
+      $data['user'] = $session;
     }
 
     // set the defaults
@@ -135,16 +129,10 @@ class Post extends CI_Controller
     $data['meta_description'] = $this->config->item('site_description');
     $data['meta_keywords'] = $this->config->item('site_keywords');
 
-    if ($session = $this->rest->get('auth/session/', array('id' => $this->session->userdata('sid'))))
-      ;
-    {
-      if ($session->request_status == true)
-      {
-        $data['user'] = $session->user;
-      } else
-      {
-        $this->session->sess_destroy();
-      }
+    $session = $this->alternatesession->session_exists();
+
+    if($session){
+      $data['user'] = $session;
     }
 
     $search_results = $this->rest->get('posts/find/txt/' . $searchString . '/' . $page);
@@ -218,18 +206,12 @@ class Post extends CI_Controller
 
     $data['title'] = $this->config->item('site_name') . $title_append;
     $data['meta_description'] = $this->config->item('site_description');
-    $data['meta_keywords'] = $this->config->item('site_keywords');
+    $data['meta_keywords'] = $this->config->item('site_keywords');    
 
-    if ($session = $this->rest->get('auth/session/', array('id' => $this->session->userdata('sid'))))
-      ;
-    {
-      if ($session->request_status == true)
-      {
-        $data['user'] = $session->user;
-      } else
-      {
-        $this->session->sess_destroy();
-      }
+    $session = $this->alternatesession->session_exists();
+
+    if($session){
+      $data['user'] = $session;
     }
 
     if (!$POST_Total = $this->rest->get('posts/total'))
@@ -285,16 +267,10 @@ class Post extends CI_Controller
     $data['meta_description'] = $this->config->item('site_description');
     $data['meta_keywords'] = $this->config->item('site_keywords');
 
-    if ($session = $this->rest->get('auth/session/', array('id' => $this->session->userdata('sid'))))
-      ;
-    {
-      if ($session->request_status == true)
-      {
-        $data['user'] = $session->user;
-      } else
-      {
-        $this->session->sess_destroy();
-      }
+    $session = $this->alternatesession->session_exists();
+
+    if($session){
+      $data['user'] = $session;
     }
 
     if (!$TAGS_get = $this->rest->get('meta/tags/0'))
@@ -335,15 +311,10 @@ class Post extends CI_Controller
       
     $user_id = substr($user, 0, $slug);
 
-    if ($session = $this->rest->get('auth/session/', array('id' => $this->session->userdata('sid'))));
-    {
-      if ($session->request_status == true)
-      {
-        $data['user'] = $session->user;
-      } else
-      {
-        $this->session->sess_destroy();
-      }
+    $session = $this->alternatesession->session_exists();
+
+    if($session){
+      $data['user'] = $session;
     }
     
     // set the defaults
@@ -406,15 +377,10 @@ class Post extends CI_Controller
     $data['meta_description'] = $this->config->item('site_description');
     $data['meta_keywords'] = $this->config->item('site_keywords');
 
-    if ($session = $this->rest->get('auth/session/', array('id' => $this->session->userdata('sid'))));
-    {
-      if ($session->request_status == true)
-      {
-        $data['user'] = $session->user;
-      } else
-      {
-        $this->session->sess_destroy();
-      }
+    $session = $this->alternatesession->session_exists();
+
+    if($session){
+      $data['user'] = $session;
     }
 
     if (!$users_request = $this->rest->get('users/list'))
@@ -475,22 +441,16 @@ class Post extends CI_Controller
     //Pull in an array of tweets
     $REST_Data = $this->rest->get('posts/single/' . $post_id);
 
-    if ($session = $this->rest->get('auth/session/', array('id' => $this->session->userdata('sid'))));
-    {
-      if ($session->request_status == true)
+    $session = $this->alternatesession->session_exists();
+
+    if($session){
+      $data['user'] = $session;
+
+      $LIKE_Data = $this->rest->get('likes/exists/post/' . $postId . '/user/' . $session->user_id);
+
+      if ($LIKE_Data->request_status)
       {
-        $data['user'] = $session->user;
-
-        $LIKE_Data = $this->rest->get('likes/exists/post/' . $postId . '/user/' . $session->user->user_id);
-
-        if ($LIKE_Data->request_status)
-        {
-          $data['like_status'] = $LIKE_Data->like;
-        }
-
-      } else
-      {
-        $this->session->sess_destroy();
+        $data['like_status'] = $LIKE_Data->like;
       }
     }
 
@@ -537,12 +497,10 @@ class Post extends CI_Controller
     $data['meta_description'] = $this->config->item('site_description');
     $data['meta_keywords'] = $this->config->item('site_keywords');
 
-    if ($session = $this->rest->get('auth/session/', array('id' => $this->session->userdata('sid'))))
-      ;
-    {
-      if ($session->request_status == true)
-      {
-        $data['user'] = $session->user;
+    $session = $this->alternatesession->session_exists();
+
+    if($session){
+        $data['user'] = $session;
 
         $this->form_validation->set_error_delimiters('<p class="help">', '</p>');
 
@@ -559,7 +517,7 @@ class Post extends CI_Controller
         {
 
           // get the uid from the session data and hash it to be used as the user upload folder name
-          $user_hash = do_hash($session->user->user_email);
+          $user_hash = do_hash($session->user_email);
 
           // set the upload configuration
           $ulConfig['upload_path'] = './data/' . $user_hash . '/';
@@ -612,7 +570,7 @@ class Post extends CI_Controller
             'post_title' => $this->input->post('post_title'),
             'post_text' => $this->input->post('post_text'),
             'post_tags' => $this->input->post('post_tags'),
-            'user_id' => $session->user->user_id
+            'user_id' => $session->user_id
           );
           
           $post_put = $this->rest->put('posts/upload', $post_put_data);
@@ -638,15 +596,12 @@ class Post extends CI_Controller
           }
 
         }
-        /**/
 
-      } else
-      {
-        // user is not logged in: redirect to login form
+      } else {
         redirect('/auth/login/upload');
       }
 
-    }
+   
   }
 
   public function delete($postId)
@@ -661,30 +616,26 @@ class Post extends CI_Controller
       
     $post_id = substr($postId, 0, $slug);
 
-    if ($session = $this->rest->get('auth/session/', array('id' => $this->session->userdata('sid'))));
-    {
-      if ($session->request_status == true)
-      {
-        $data['user'] = $session->user;
+    $session = $this->alternatesession->session_exists();
 
-        $delete_request = $this->rest->delete('posts/delete',array('post_id'=>$post_id,'user_id'=>$session->user->user_id));
+    if($session){
+      $data['user'] = $session;
 
-        if(!$delete_request)
-          show_error(lang('F_API_CONNECT'));
-          
-        if(!$delete_request->request_status)
-          show_error($delete_request->message);
-              
-        $data['message'] = $delete_request->message;
-        $data['heading'] = 'It\'s gone!';
-        $data['delay'] = 5;
+      $delete_request = $this->rest->delete('posts/delete',array('post_id'=>$post_id,'user_id'=>$session->user_id));
 
-        $this->load->view('common/success.php',$data);      
-      } else
-      {
-        $this->session->sess_destroy();
-        redirect(site_url());
-      }
+      if(!$delete_request)
+        show_error(lang('F_API_CONNECT'));
+        
+      if(!$delete_request->request_status)
+        show_error($delete_request->message);
+            
+      $data['message'] = $delete_request->message;
+      $data['heading'] = 'It\'s gone!';
+      $data['delay'] = 5;
+
+      $this->load->view('common/success.php',$data);
+    } else {
+      redirect(site_url());
     }
     
   }
@@ -697,8 +648,9 @@ class Post extends CI_Controller
   public function add_comment()
   {
 
-    if (!$this->session->userdata('sid'))
-    {
+    $session = $this->alternatesession->session_exists();
+
+    if(!$session){
       redirect(site_url());
     }
 
@@ -730,8 +682,9 @@ class Post extends CI_Controller
   public function delete_comment($comment_id, $post_id, $user_id)
   {
 
-    if (!$this->session->userdata('sid'))
-    {
+    $session = $this->alternatesession->session_exists();
+
+    if(!$session){
       redirect(site_url());
     }
 
@@ -767,20 +720,15 @@ class Post extends CI_Controller
       
     $post_id = substr($postId, 0, $slug);
 
-    if ($session = $this->rest->get('auth/session/', array('id' => $this->session->userdata('sid'))))
-      ;
-    {
-      if ($session->request_status == true)
-      {
-        $data['user'] = $session->user;
-      } else
-      {
-        $this->session->sess_destroy();
-        redirect(site_url());
-      }
-    }
+    $session = $this->alternatesession->session_exists();
 
-    $like_add = $this->rest->put('/likes/like', array('post_id' => $post_id, 'user_id' => $data['user']->user_id));
+    if($session){
+      $data['user'] = $session;
+    } else {
+      redirect(site_url());
+    }    
+
+    $like_add = $this->rest->put('/likes/like', array('post_id' => $post_id, 'user_id' => $session->user_id));
     if ($like_add->status)
     {
       //var_($like_add);
@@ -810,20 +758,15 @@ class Post extends CI_Controller
       
     $post_id = substr($postId, 0, $slug);
 
-    if ($session = $this->rest->get('auth/session/', array('id' => $this->session->userdata('sid'))))
-      ;
-    {
-      if ($session->request_status == true)
-      {
-        $data['user'] = $session->user;
-      } else
-      {
-        $this->session->sess_destroy();
-        redirect(site_url());
-      }
+    $session = $this->alternatesession->session_exists();
+
+    if($session){
+      $data['user'] = $session;
+    } else {
+      redirect(site_url());
     }
 
-    $like_remove = $this->rest->delete('/likes/like', array('post_id' => $post_id, 'user_id' => $data['user']->user_id));
+    $like_remove = $this->rest->delete('/likes/like', array('post_id' => $post_id, 'user_id' => $session->user_id));
     if ($like_remove->status)
     {
       redirect('/view/' . $post_id);
@@ -856,15 +799,14 @@ class Post extends CI_Controller
   }
 
   public function reply($postId){
-    
-    if ($session = $this->rest->get('auth/session/', array('id' => $this->session->userdata('sid'))))
-      ;
-    {
-      if ($session->request_status == true)
-      {
-        $data['user'] = $session->user;
 
-        $data['title'] = $this->config->item('site_name') . ' - Upload';
+    $session = $this->alternatesession->session_exists();
+
+    if($session){
+
+      $data['user'] = $session;
+
+      $data['title'] = $this->config->item('site_name') . ' - Upload';
         $data['meta_description'] = $this->config->item('site_description');
         $data['meta_keywords'] = $this->config->item('site_keywords');
 
@@ -896,7 +838,7 @@ class Post extends CI_Controller
         {
 
           // get the uid from the session data and hash it to be used as the user upload folder name
-          $user_hash = do_hash($session->user->user_email);
+          $user_hash = do_hash($session->user_email);
 
           // set the upload configuration
           $ulConfig['upload_path'] = './data/' . $user_hash . '/';
@@ -949,7 +891,7 @@ class Post extends CI_Controller
             'post_text' => $this->input->post('post_text'),
             'post_tags' => $this->input->post('post_tags'),
             'post_parent_id' => $this->input->post('post_parent_id'),
-            'user_id' => $session->user->user_id,
+            'user_id' => $session->user_id,
           );          
           
           $post_put = $this->rest->put('reply/post', $post_put_data);
@@ -976,12 +918,9 @@ class Post extends CI_Controller
 
         }
 
-      } else
-      {
-        $this->session->sess_destroy();
-        redirect(site_url());
-      }
-    }    
+    } else {
+      redirect(site_url());
+    }      
 
   }
 

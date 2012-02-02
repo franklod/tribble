@@ -18,15 +18,10 @@ class Auth extends CI_Controller
     public function login($controller = '', $slug = '')        
     {                        
         
-        if ($session = $this->rest->get('auth/session/', array('id' => $this->session->userdata('sid'))))
-        {
-          if ($session->request_status == true)
-          {
-            redirect(site_url());
-          } else
-          {
-            $this->session->sess_destroy();
-          }
+        $session = $this->alternatesession->session_exists();
+
+        if($session){
+          redirect(site_url());
         }
 
         $data['title'] = $this->config->item('site_name') . ' - Login';

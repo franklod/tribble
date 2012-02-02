@@ -20,43 +20,22 @@ class User extends CI_Controller
         // $this->output->enable_profiler(TRUE);
     }
 
-    public function index()
-    {
-        $data['title'] = $this->config->item('site_name');
-        $data['meta_description'] = $this->config->item('site_description');
-        $data['meta_keywords'] = $this->config->item('site_keywords');
-
-        if ($session = $this->rest->get('auth/session/', array('id' => $this->session->userdata('sid'))));
-        {
-          if ($session->request_status == true)
-          {
-            $data['user'] = $session->user;
-          } else
-          {
-            $this->session->sess_destroy();
-            redirect(site_url('/'));            
-          }
-        }
-
-    }
-
     public function profile()
     {
      
-        if ($session = $this->rest->get('auth/session/', array('id' => $this->session->userdata('sid'))));
+        $session = $this->alternatesession->session_exists();
+
+        if($session)
         {
-          if ($session->request_status == true)
-          {
-            $data['user'] = $session->user;
-          } else
-          {            
+          $data['user'] = $session;
+        } else
+        {            
             $this->session->sess_destroy();
             redirect(site_url('/'));            
-          }
-        }            
+        }                    
 
         // GET THE USER PROFILE DATA FROM THE API
-        $user_data = $this->rest->get('users/profile/id/'.$session->user->user_id);
+        $user_data = $this->rest->get('users/profile/id/'.$session->user_id);
         
         // CHECK IF WE GOT THE DATA 
         if(!$user_data->request_status)
@@ -78,19 +57,19 @@ class User extends CI_Controller
     public function edit()
     {
      
-        if ($session = $this->rest->get('auth/session/', array('id' => $this->session->userdata('sid'))));
+        $session = $this->alternatesession->session_exists();
+
+        if($session)
         {
-          if ($session->request_status == true)
-          {
-            $data['user'] = $session->user;
-            
+            $data['user'] = $session;
+
             // GET THE USER PROFILE DATA FROM THE API
-            $user_data = $this->rest->get('users/profile/id/'.$session->user->user_id);            
+            $user_data = $this->rest->get('users/profile/id/'.$session->user_id);            
 
             // CHECK IF WE GOT THE DATA 
             if(!$user_data->request_status)
                 show_error($user_data->message,404);
-            
+
             // PREPARE TO SHOW THE EDIT PROFILE FORM
             $data['profile'] = $user_data->user;
 
@@ -110,7 +89,7 @@ class User extends CI_Controller
             } else {
 
                 $user_profile = array(
-                    'user_id' => $session->user->user_id,
+                    'user_id' => $session->user_id,
                     'user_realname' => $this->input->post('realname'),
                     'user_email' => $this->input->post('email'),
                     'user_bio' => $this->input->post('bio'),
@@ -130,32 +109,31 @@ class User extends CI_Controller
                 }                
                    
                 redirect(site_url('/user/profile'));    
-            }                    
+            }
 
-          } else
-          {
+        } else
+        {            
             $this->session->sess_destroy();
             redirect(site_url('/'));            
-          }
-        }                    
+        }  
+                            
     }
 
     public function password()
     {
-             
-        if ($session = $this->rest->get('auth/session/', array('id' => $this->session->userdata('sid'))));
-        {
-          if ($session->request_status == true)
-          {
-            $data['user'] = $session->user;
 
+        $session = $this->alternatesession->session_exists();
+
+        if($session)
+        {
+            $data['user'] = $session;
             // GET THE USER PROFILE DATA FROM THE API
-            $user_data = $this->rest->get('users/profile/'.$session->user->user_id);
-            
+            $user_data = $this->rest->get('users/profile/'.$session->user_id);
+
             // CHECK IF WE GOT THE DATA 
             if(!$user_data->request_status)
                 show_error("Couldn't get your profile info.",404);
-            
+
             // PREPARE TO SHOW THE EDIT PROFILE FORM
             $data['profile'] = $user_data->user;
 
@@ -178,7 +156,7 @@ class User extends CI_Controller
                 $request_object = array(
                     'old_password'=>$this->input->post('old_password'),
                     'new_password'=>$this->input->post('new_password'),
-                    'user_id'=>$session->user->user_id
+                    'user_id'=>$session->user_id
                 );
 
                 $old_pass_check = $this->rest->get('users/check/password',$request_object);
@@ -213,25 +191,22 @@ class User extends CI_Controller
                 }
 
             }
-
-          } else
-          {
+        } else
+        {            
             $this->session->sess_destroy();
             redirect(site_url('/'));            
-          }
-        }
-            
+        }                                   
     }
 
     public function signup()
     {
 
-        if ($session = $this->rest->get('auth/session/', array('id' => $this->session->userdata('sid'))));
+
+        $session = $this->alternatesession->session_exists();
+
+        if($session)
         {
-          if ($session->request_status == true)
-          {
             redirect(site_url('/'));
-          } 
         }
 
         $this->form_validation->set_error_delimiters('<p class="help">', '</p>');

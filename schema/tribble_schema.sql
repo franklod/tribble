@@ -33,7 +33,7 @@ CREATE TABLE `tr_comment` (
   `comment_is_deleted` TINYINT(1) DEFAULT '0',
   PRIMARY KEY (`comment_id`)
 )ENGINE=InnoDB
-AUTO_INCREMENT=3 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
+AUTO_INCREMENT=9 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
 
 #
 # Structure for the `tr_image` table : 
@@ -49,7 +49,7 @@ CREATE TABLE `tr_image` (
   `image_color_ranges` VARCHAR(255) COLLATE utf8_general_ci DEFAULT NULL,
   PRIMARY KEY (`image_id`)
 )ENGINE=InnoDB
-AUTO_INCREMENT=1203 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
+AUTO_INCREMENT=1208 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
 
 #
 # Structure for the `tr_like` table : 
@@ -63,7 +63,7 @@ CREATE TABLE `tr_like` (
   `like_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`like_id`)
 )ENGINE=InnoDB
-AUTO_INCREMENT=1213 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
+AUTO_INCREMENT=1225 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
 
 #
 # Structure for the `tr_post` table : 
@@ -81,7 +81,7 @@ CREATE TABLE `tr_post` (
   `post_is_deleted` TINYINT(1) DEFAULT '0',
   PRIMARY KEY (`post_id`)
 )ENGINE=InnoDB
-AUTO_INCREMENT=1203 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
+AUTO_INCREMENT=1208 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
 
 #
 # Structure for the `tr_reply` table : 
@@ -98,7 +98,7 @@ CREATE TABLE `tr_reply` (
   `reply_is_deleted` TINYINT(1) DEFAULT '0',
   PRIMARY KEY (`reply_id`)
 )ENGINE=InnoDB
-AUTO_INCREMENT=3 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
+AUTO_INCREMENT=14 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
 
 #
 # Structure for the `tr_tag` table : 
@@ -112,7 +112,7 @@ CREATE TABLE `tr_tag` (
   `tag_content` TEXT COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`tag_id`)
 )ENGINE=InnoDB
-AUTO_INCREMENT=1203 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
+AUTO_INCREMENT=1208 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
 
 #
 # Structure for the `tr_trash` table : 
