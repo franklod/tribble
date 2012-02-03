@@ -2,7 +2,7 @@
 
 ## Features:
 
-* Post images with title, descriptio, and tags
+* Post images with title, description, and tags
 * Image color palette extraction and display
 * Comments on posts
 * Reply to a post with another (rebound)
