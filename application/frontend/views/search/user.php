@@ -4,10 +4,14 @@
     <div class="avatar"><?=get_gravatar($email,64)?></div>
     <h2><?=$name?></h2>
     <p><?=$count?><?= ($count == 1) ? ' post' : ' posts' ?></p>
+    <?if(!empty($bio)):?>
+    <p><?=$bio?></p>
+    <?endif;?>
   </div>  
   <hr />
+  <?if($count > 0):?>
   <ul class="posts" style="overflow: hidden;">
-	<? foreach($posts as $post): ?>
+  <? foreach($posts as $post): ?>
     <li class="space"> 
       <div class="box">     
         <div class="post-img">
@@ -32,6 +36,9 @@
     </li>  
   <? endforeach; ?>
   </ul>
+  <?else:?>
+  <h3><?=$name?> hasn't posted any work yet.</h3>
+  <?endif?>
   <hr />
   <?=$paging?>  
   </div>

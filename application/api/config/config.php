@@ -25,7 +25,7 @@ $config['app_path']	= '/home/pedro/work/tribble';
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://api.tribble.local/';
+$config['base_url']	= 'http://10.134.132.97:8081/';
 //$config['base_url']	= 'http://10.134.132.33/';
 
 /*

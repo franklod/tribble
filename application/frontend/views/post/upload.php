@@ -1,7 +1,7 @@
 <div class="g75 box">
 <h2>Post a new image</h2>
 <hr>
-<p>You can only use jpeg or png files and image size is restricted to 400 x 300 pixels.</p>
+<p>You can only use jpeg or png files and image size is restricted to <b>400 x 300</b>  pixels.</p>
 <p>This is simply to keep the storage needs as low as possible and to "encourage" designers to focus on the really important detail rather than posting whole layouts.</p>
 <p>Remember, you can always post another image!</p>
 <p>Be kind to youself, and others, and give proper title, tags and description to your work.</p>

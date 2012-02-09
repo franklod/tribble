@@ -9,7 +9,7 @@ class Meta_API_model extends CI_Model {
       if($query->num_rows() > 0){
         return $query->result();
       } else {
-        return false;
+        return $query->num_rows();
       }                                              
     }
     
@@ -20,7 +20,7 @@ class Meta_API_model extends CI_Model {
       if($query->num_rows() > 0){
         return $query->result();
       } else {
-        return false;
+        return $query->num_rows();
       }                                              
     }        
                                     

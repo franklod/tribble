@@ -521,8 +521,163 @@ if (!function_exists('timezones')) {
 
 }
 
-if (!function_exists('when')) {
-    function when($dt, $precision = 2)
+if(!function_exists('when'))
+{
+    function when($postTime)
+    {
+        $NOW    = time();
+        $MINUTE = 60;
+        $HOUR   = 60    * $MINUTE;
+        $DAY    = 24    * $HOUR;
+        $WEEK   = 7     * $DAY;
+        $MONTH  = 30    * $DAY;
+        $YEAR   = 365   * $DAY;
+    
+        $time = $NOW - $postTime;
+        $time = $time - ($HOUR - $MINUTE);
+
+        if($time >= $YEAR)
+        {
+            $years = floor($time / $YEAR);
+            return 'Over ' . ($years == 1 ? 'a' : $years) . ' year' . ($years == 1 ? '' : 's') . ' ago';
+        }
+            
+        if($time >= $MONTH)
+        {
+            $months = floor($time / $MONTH);
+            return 'About ' . ($months == 1 ? 'a' : $months) . ' month' . ($months == 1 ? '' : 's') . ' ago';
+        }
+
+        if($time >= $WEEK)
+        {            
+            $weeks = floor($time / $WEEK);
+            return 'About ' . ($weeks == 1 ? 'a' : $weeks) . ' week' . ($weeks == 1 ? '' : 's') . ' ago';
+        }
+
+        if($time >= $DAY * 2)
+        {
+            $days = ceil($time / $DAY);
+            return 'About ' . $days . ' days ago';   
+        }
+
+        if(date('Y-m-d', $NOW - $DAY) == date('Y-m-d', $postTime))
+        {
+            return 'Yesterday';
+        }
+
+        if($time >= $HOUR)
+        {
+            $hours = floor($time / $HOUR);
+            return 'About ' . ($hours == 1 ? 'an' : $hours) . ' hour' . ($hours == 1 ? '' : 's') . ' ago';
+        }
+
+        if($time >= $MINUTE * 2)
+        {
+            $minutes = ceil($time / $MINUTE);
+            return $minutes . ' minutes ago';    
+        }
+
+        return 'Just now';
+    }
+
+}
+
+
+// if (!function_exists('when')) {
+    
+//     function when( $time ) {
+//   //echo $time." is: ";
+//   // if ( ( $time = strtotime( $time ) ) == false ) {
+//   //   return 'an unknown time';
+//   // }
+
+
+
+//   define( 'NOW',        time() );
+//   define( 'ONE_MINUTE', 60 );
+//   define( 'ONE_HOUR',   3600 );
+//   define( 'ONE_DAY',    86400 );
+//   define( 'ONE_WEEK',   ONE_DAY*7 );
+//   define( 'ONE_MONTH',  ONE_WEEK*4 );
+//   define( 'ONE_YEAR',   ONE_MONTH*12 );
+ 
+//   // sod = start of day :)
+//   $sod = mktime( 0, 0, 0, date( 'm', $time ), date( 'd', $time ), date( 'Y', $time ) );
+//   $sod_now = mktime( 0, 0, 0, date( 'm', NOW ), date( 'd', NOW ), date( 'Y', NOW ) );
+ 
+//   // used to convert numbers to strings
+//   $convert = array( 1 => 'one', 2 => 'two', 3 => 'three', 4 => 'four', 5 => 'five', 6 => 'six', 7 => 'seven', 8 => 'eight', 9 => 'nine', 10 => 'ten', 11 => 'eleven' );
+ 
+//   // today
+//   if ( $sod_now == $sod ) {
+//     if ( $time > NOW-(ONE_MINUTE*3) ) {
+//       return 'just a moment ago';
+//     } else if ( $time > NOW-(ONE_MINUTE*7) ) {
+//       return 'a few minutes ago';
+//     } else if ( $time > NOW-(ONE_HOUR) ) {
+//       return 'less than an hour ago';
+//     }
+//     // return 'today at ' . date( 'g:ia', $time );
+
+//       return (NOW - $time)/ONE_HOUR
+//   }
+ 
+//   // yesterday
+//   if ( ($sod_now-$sod) <= ONE_DAY ) {
+//     if ( date( 'i', $time ) > (ONE_MINUTE+30) ) {
+//       $time += ONE_HOUR/2;
+//     }
+//     return 'yesterday around ' . date( 'ga', $time );
+//   }
+ 
+//   // within the last 5 days
+//   if ( ($sod_now-$sod) <= (ONE_DAY*5) ) {
+//     $str = date( 'l', $time );
+//     $hour = date( 'G', $time );
+//     if ( $hour < 12 ) {
+//       $str .= ' morning';
+//     } else if ( $hour < 17 ) {
+//       $str .= ' afternoon';
+//     } else if ( $hour < 20 ) {
+//       $str .= ' evening';
+//     } else {
+//       $str .= ' night';
+//     }
+//     return $str;
+//   }
+ 
+//   // number of weeks (between 1 and 3)...
+//   if ( ($sod_now-$sod) < (ONE_WEEK*3.5) ) {
+//     if ( ($sod_now-$sod) < (ONE_WEEK*1.5) ) {
+//       return 'about a week ago';
+//     } else if ( ($sod_now-$sod) < (ONE_DAY*2.5) ) {
+//       return 'about two weeks ago';
+//     } else {
+//       return 'about three weeks ago';
+//     }
+//   }
+ 
+//   // number of months (between 1 and 11)...
+//   if ( ($sod_now-$sod) < (ONE_MONTH*11.5) ) {
+//     for ( $i = (ONE_WEEK*3.5), $m=0; $i < ONE_YEAR; $i += ONE_MONTH, $m++ ) {
+//       if ( ($sod_now-$sod) <= $i ) {
+//         return 'about ' . $convert[$m] . ' month' . (($m>1)?'s':'') . ' ago';
+//       }
+//     }
+//   }
+ 
+//   // number of years...
+//   for ( $i = (ONE_MONTH*11.5), $y=0; $i < (ONE_YEAR*10); $i += ONE_YEAR, $y++ ) {
+//     if ( ($sod_now-$sod) <= $i ) {
+//       return 'about ' . $convert[$y] . ' year' . (($y>1)?'s':'') . ' ago';
+//     }
+//   }
+ 
+//   // more than ten years...
+//   return 'more than ten years ago';
+// }
+
+    /*function when($dt, $precision = 1)
     {
         $times = array(365 * 24 * 60 * 60 => "year", 30 * 24 * 60 * 60 => "month", 7 *
             24 * 60 * 60 => "week", 24 * 60 * 60 => "day", 60 * 60 => "hour", 60 => "minute",
@@ -533,16 +688,18 @@ if (!function_exists('when')) {
         if ($passed < 5) {
             $output = 'less than 5 seconds ago';
         } elseif ($passed > 172800) {
-            $output = date("jS F,Y", $dt);
+            $output = date("F d, Y", $dt);
         } else {
             $output = array();
             $exit = 0;
 
             foreach ($times as $period => $name) {
+
                 if ($exit >= $precision or ($exit > 0 && $period < 60))
                     break;
 
                 $result = floor($passed / $period);
+
                 if ($result > 0) {
                     $output[] = $result . ' ' . $name . ($result == 1 ? '' : 's');
                     $passed -= $result * $period;
@@ -556,8 +713,8 @@ if (!function_exists('when')) {
         }
 
         return $output;
-    }
-}
+    }*/
+// }
 
 
 /* End of file date_helper.php */

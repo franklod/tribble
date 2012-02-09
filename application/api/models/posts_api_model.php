@@ -61,13 +61,15 @@ class Posts_API_model extends CI_Model {
           tr_image.image_path as post_image_path,
           (SELECT COUNT(1) FROM tr_like WHERE tr_like.like_post_id = tr_post.post_id) as post_like_count,
           (SELECT COUNT(1) FROM tr_reply WHERE tr_reply.reply_post_id = tr_post.post_id AND tr_reply.reply_is_deleted = 0) as post_reply_count,
+          (SELECT COUNT(1) FROM tr_post WHERE tr_post.post_user_id = tr_user.user_id) as post_count,
           tr_user.user_id AS user_id,
           tr_user.user_realname AS user_name,          
-          tr_user.user_email AS user_email            
+          tr_user.user_email AS user_email,
+          tr_user.user_bio AS user_bio
       ');
       $this->db->from('tr_post');
       $this->db->join('tr_image','tr_post.post_id = tr_image.image_post_id','inner');
-      $this->db->join('tr_user','tr_post.post_user_id = tr_user.user_id','inner');
+      $this->db->join('tr_user','tr_post.post_user_id = tr_user.user_id','right outer');
       //  $this->db->join('tr_tag','tr_post.post_id = tr_tag.tag_post_id','inner');           
 
       $this->db->where(array('tr_user.user_id' => $user_id));
@@ -92,7 +94,7 @@ class Posts_API_model extends CI_Model {
 
         $qr = $query->result();
 
-        $result = array('user_name'=>$qr[0]->user_name,'user_email'=>$qr[0]->user_email,'count'=>$query->num_rows(),'posts'=>$query->result());
+        $result = array('user_name'=>$qr[0]->user_name,'user_email'=>$qr[0]->user_email,'user_bio'=>$qr[0]->user_bio,'count'=>$qr[0]->post_count,'posts'=>$query->result());
         return $result;
       } else {
         return false;

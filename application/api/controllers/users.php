@@ -135,6 +135,12 @@ class Users extends REST_Controller
       if(!mkdir($user_dir,0755))
         $this->response(array('request_status'=>false,'message'=>lang('F_ADD_USER')));
       
+
+      $cachekey = sha1('users/list');
+      // load the memcached driver
+      $this->load->driver('cache');
+      $this->cache->memcached->delete($cachekey);
+
       $this->response(array('request_status'=>true,'message'=>lang('S_ADD_USER')));
       
   }

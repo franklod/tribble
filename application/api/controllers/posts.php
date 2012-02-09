@@ -244,7 +244,8 @@ class Posts extends REST_Controller
         'result_page' => $page,
         'user_name' => $posts['user_name'],
         'user_email' => $posts['user_email'],
-        'post_count' => $posts['count'],
+        'user_bio' => $posts['user_bio'],
+        'post_count' => $posts['count'],        
         'posts' => $posts['posts']
       );
             
@@ -417,6 +418,9 @@ class Posts extends REST_Controller
 
       @$this->cache->memcached->delete(sha1('detail/'.$post_parent_id));
       @$this->cache->memcached->delete(sha1('detail/'.$insert_post));
+      @$this->cache->memcached->delete(sha1('users/list'));
+      @$this->cache->memcached->delete(sha1('meta/tags'));
+      @$this->cache->memcached->delete(sha1('meta/colors'));
 
       $this->response(array('request_status' => true, 'post_id' => $post_parent_id));      
     }

@@ -3,4 +3,4 @@
 #
 
 clear
-curl http://api.tribble.local/trash/empty &
+curl http://10.134.132.97:8081/trash/empty &

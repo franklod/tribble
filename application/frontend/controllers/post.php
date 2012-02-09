@@ -350,6 +350,7 @@ class Post extends CI_Controller
     $data['name'] = $user_request->user_name;
     $data['email'] = $user_request->user_email;
     $data['count'] = $user_request->post_count;
+    $data['bio'] = $user_request->user_bio;
 
     $data['title'] = $this->config->item('site_name') . ' - ' . $user_request->user_name;
     $data['meta_description'] = $this->config->item('site_description');
@@ -440,6 +441,10 @@ class Post extends CI_Controller
 
     //Pull in an array of tweets
     $REST_Data = $this->rest->get('posts/single/' . $post_id);
+
+    if($REST_Data->request_status == false)
+      show_404('The post you requested does not exist!');
+      
 
     $session = $this->alternatesession->session_exists();
 
@@ -532,9 +537,9 @@ class Post extends CI_Controller
           $this->upload->initialize($ulConfig);
 
           // check if upload was successful and react
-          if (!$this->upload->do_upload('image_file'))
+          if (! $this->upload->do_upload('image_file'))
           {
-
+            
             $data['errors'] = array('message' => $this->upload->display_errors());
             //form has errors : show page and errors
             $this->load->view('common/page_top.php', $data);
@@ -563,37 +568,38 @@ class Post extends CI_Controller
 
             $this->load->library('image_lib', $config);
             $this->image_lib->resize();
-          }
 
-          $post_put_data = array(
+            $post_put_data = array(
             'image_data' => $imgdata,
             'post_title' => $this->input->post('post_title'),
             'post_text' => $this->input->post('post_text'),
             'post_tags' => $this->input->post('post_tags'),
             'user_id' => $session->user_id
-          );
-          
-          $post_put = $this->rest->put('posts/upload', $post_put_data);
+            );
+            
+            $post_put = $this->rest->put('posts/upload', $post_put_data);
 
-          if ($post_put->request_status)
-          {
-            redirect('/view/' . $post_put->post_id);
-          } else
-          {
+            if ($post_put->request_status)
+            {
+              redirect('/view/' . $post_put->post_id);
+            } else
+            {
 
-            $this->rest->put('trash/throw',array('trash_path'=>$imgdata['image_path']));
+              $this->rest->put('trash/throw',array('trash_path'=>$imgdata['image_path']));
 
-            $data['title'] = $this->config->item('site_name');
-            $data['meta_description'] = $this->config->item('site_description');
-            $data['meta_keywords'] = $this->config->item('site_keywords');
+              $data['title'] = $this->config->item('site_name');
+              $data['meta_description'] = $this->config->item('site_description');
+              $data['meta_keywords'] = $this->config->item('site_keywords');
 
-            $data['errors'] = array('message' => 'Something is broken. Let\'s all pray to the Mighty Carmona!');
+              $data['errors'] = array('message' => 'Something is broken. Let\'s all pray to the Mighty Carmona!');
 
-            //form has errors : show page and errors
-            $this->load->view('common/page_top.php', $data);
-            $this->load->view('post/upload.php', $data);
-            $this->load->view('common/page_end.php', $data);
-          }
+              //form has errors : show page and errors
+              $this->load->view('common/page_top.php', $data);
+              $this->load->view('post/upload.php', $data);
+              $this->load->view('common/page_end.php', $data);
+            }
+
+          }          
 
         }
 

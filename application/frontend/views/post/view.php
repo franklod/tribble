@@ -3,7 +3,7 @@
     <div class="post-container">
     <div class="post-user-info">
       <?if(isset($parent)):?>
-        <p style="font-size: 1.2em; margin-bottom: 0.8em; font-weight: 500;">This post was a reply to <a href="<?=site_url('view/'.$parent->post_id)?>"><?=$parent->post_title?></a></p>
+        <p style="font-size: 1.2em; margin-bottom: 0.8em; font-weight: 500;">This post was a reply to <strong><a href="<?=site_url('view/'.$parent->post_id)?>"><?=$parent->post_title?></a></strong></p>
       <?endif;?>   
       <a href="<?=site_url('user/'.$post->user_id)?>" title="<?=$post->user_name?>">
         <?=get_gravatar($post->user_email,54)?>
@@ -21,7 +21,7 @@
       </div>      
     </div>
     <div class="post-img-container box clear">
-      <img src="<?=cdn_url($post->post_image_path)?>" width="400" height="300"/> </div>
+      <img src="<?=cdn_url($post->post_image_path)?>" /> </div>
     <div class="post-img-data">
       <div class="post-desc">
         <p>
@@ -32,8 +32,9 @@
       <div class="post-tools">
       <?if(isset($user)):?>
         <?if($post->user_id == $user->user_id):?>
-          <a class="defaultBtn btn_send" title="Create a new post as a reply" href="<?=site_url('reply/'.$post->post_id.'-'.url_title($post->post_title))?>">Reply</a><a title="Delete this post" class="defaultBtn btn_delete" href="/post/delete/<?=$post->post_id.'-'.url_title($post->post_title)?>">Delete</a>
+          <a title="Delete this post" class="defaultBtn btn_delete" href="/post/delete/<?=$post->post_id.'-'.url_title($post->post_title)?>">Delete</a>
         <?endif;?>
+        <a class="defaultBtn btn_send" title="Create a new post as a reply" href="<?=site_url('reply/'.$post->post_id.'-'.url_title($post->post_title))?>">Reply</a>
         <?endif;?>
         <p class="ico">
           <?if(!isset($like_status)):?>

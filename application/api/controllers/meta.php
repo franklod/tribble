@@ -46,44 +46,49 @@ class Meta extends REST_Controller
     if (!$this->cache->memcached->get($cachekey))
     {
 
+      $all_tags = $this->mMeta->getTags();
       // get the data from the database
-      if ($all_tags = $this->mMeta->getTags())
+      if ($all_tags !== FALSE)
       {
-        // iterate over the tags from each post
-        foreach ($all_tags as $tag_group)
-        {
-          // explode the post tags csv string
-          $tags = explode(',', $tag_group->tag_content);
-          // iterate over each individual tag
-          foreach ($tags as $tag)
+        if($all_tags !== 0){
+          // iterate over the tags from each post
+          foreach ($all_tags as $tag_group)
           {
-            $tag = trim($tag);
-            // check if it exists in the final array
-            if (array_key_exists($tag, $unique_tags))
+            // explode the post tags csv string
+            $tags = explode(',', $tag_group->tag_content);
+            // iterate over each individual tag
+            foreach ($tags as $tag)
             {
-              // if its there, increment the counter
-              $unique_tags[$tag]++;
-            } else
-            {
-              // or set it to 1
-              $unique_tags[$tag] = 1;
+              $tag = trim($tag);
+              // check if it exists in the final array
+              if (array_key_exists($tag, $unique_tags))
+              {
+                // if its there, increment the counter
+                $unique_tags[$tag]++;
+              } else
+              {
+                // or set it to 1
+                $unique_tags[$tag] = 1;
+              }
             }
-          }
-        }        
-        // if the limit is 0 give 'em all the tags
-        if ($limit == 0){
-          uksort($unique_tags, 'strcasecmp');
-          // define the response object structure
-          $object = array('request_status' => true, 'tags' => $unique_tags);
+          }        
+          // if the limit is 0 give 'em all the tags
+          if ($limit == 0){
+            uksort($unique_tags, 'strcasecmp');
+            // define the response object structure
+            $object = array('request_status' => true, 'tags' => $unique_tags);
+          } else {
+            arsort($unique_tags);
+            // define the response object structure                
+            $object = array('request_status' => true, 'tags' => array_slice($unique_tags,0,$limit)); 
+          }        
+          // we have a dataset from the database, let's save it to memcached
+          @$this->cache->memcached->save($cachekey, $object, 20 * 60);
+          // output the response
+          $this->response($object);
         } else {
-          arsort($unique_tags);
-          // define the response object structure                
-          $object = array('request_status' => true, 'tags' => array_slice($unique_tags,0,$limit)); 
-        }        
-        // we have a dataset from the database, let's save it to memcached
-        @$this->cache->memcached->save($cachekey, $object, 20 * 60);
-        // output the response
-        $this->response($object);
+          $this->response(array('request_status'=>true,'count'=>$all_tags,'tags'=>$unique_tags));
+        }
       } else
       {
         // we got nothing to show, output error

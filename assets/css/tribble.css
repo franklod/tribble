@@ -2,7 +2,10 @@ html, body {
 	height: 100%;
 }
 body {
-	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	/*font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;*/
+	font-family:"DIN 1451 Mittelschrift Standard", Calibri, Helvetica, Arial, sans-serif, serif; 
+	/*font-size: 16px;*/
+	font-size-adjust:0.48;
 	background: url(../images/bg.jpg) left top scroll repeat #E4E4E4;
 	-webkit-text-size-adjust:100%;
 	-ms-text-size-adjust:none;
@@ -408,7 +411,9 @@ ul.posts {
 .post-img {
 	overflow: hidden;
 	position: relative;
-	padding-bottom:6px
+	padding-bottom:6px;
+	width: 200px;
+	height: 159px;
 }
 .post-img:hover .post-hover {
 	opacity: 0.90;
@@ -450,6 +455,8 @@ ul.posts {
 	left: 6px;
 	font-style: normal;
 }
+
+.post-img img { margin: 0 auto; display: block; }
 .post-tools {
 	clear:both;
 	padding-bottom:12px;
@@ -699,6 +706,7 @@ ul.posts {
 	width:400px;
 	height:300px;
 	margin-right:15px;
+	text-align: center;
 }
 .post-img-data {
 	width:280px;
@@ -772,11 +780,11 @@ ul.posts {
 	margin-bottom:10px;
 	padding:10px;
 	color:#26282C;
-	font-size:1em;
-	line-height:1.4;
+	font-size:1.2em;
+	line-height:1.3em;
 }
 .response h4 {
-	font-size:13px;
+	font-size: 14px;
 }
 
 .response h4 a {
