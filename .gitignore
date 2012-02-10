@@ -1,6 +1,5 @@
-*/logs/log-*.php
+*/logs/*
 */user_guide/*
-*config.php*
-*rest.php*
+*/config/*
 */data/*
 */todo/*
