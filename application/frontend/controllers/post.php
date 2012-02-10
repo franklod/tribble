@@ -366,6 +366,7 @@ class Post extends CI_Controller
     $data['posts'] = array_slice($user_request->posts, $offset, $display_per_page, true);
     $data['name'] = $user_request->user_name;
     $data['email'] = $user_request->user_email;
+    $data['id'] = $user_request->user_id;
     $data['count'] = $user_request->post_count;
     $data['bio'] = $user_request->user_bio;
 
@@ -462,6 +463,9 @@ class Post extends CI_Controller
     //Pull in an array of tweets
     $REST_Data = $this->rest->get('posts/single/' . $post_id);
 
+    //Pull in an array of tweets
+    $likers = $this->rest->get('posts/likes/' . $post_id);
+
     if($REST_Data->request_status == false)
       show_404('The post you requested does not exist!');
       
@@ -508,6 +512,9 @@ class Post extends CI_Controller
     $data['post'] = $REST_Data->post[0];    
     $data['replies'] = $REST_Data->post_replies->replies;
     $data['replies_count'] = $REST_Data->post_replies->count;
+
+    if($likers->request_status == true)
+      $data['likers'] = $likers->likes;
 
     $data['title'] = $this->config->item('site_name') . ' - ' . $data['post']->post_title;
     $data['meta_description'] = $this->config->item('site_description') . ' - ' .  $data['post']->post_text;
@@ -979,6 +986,17 @@ class Post extends CI_Controller
       redirect(site_url());
     }      
 
+  }
+
+  public function faq(){
+
+    $data['title'] = $this->config->item('site_name') . ' - Upload';
+    $data['meta_description'] = $this->config->item('site_description');
+    $data['meta_keywords'] = $this->config->item('site_keywords');
+
+    $this->load->view('common/page_top.php', $data);
+    $this->load->view('common/faq.php');
+    $this->load->view('common/page_end.php', $data); 
   }
 
 }

@@ -100,6 +100,7 @@ class Likes extends REST_Controller
 
       // kill the post cache
       $this->cache->memcached->delete(sha1('detail/' . $post_id));
+      $this->cache->memcached->delete(sha1('posts/likes/' . $post_id));
       $this->response(array('status' => true, 'message' => lang('S_ADD_LIKE')));
     }
     
@@ -147,6 +148,7 @@ class Likes extends REST_Controller
 
       // kill the post cache
       $this->cache->memcached->delete(sha1('detail/' . $post_id));
+      $this->cache->memcached->delete(sha1('posts/likes/' . $post_id));
       $this->response(array('status' => true, 'message' => lang('S_DELETE_LIKE')));
     }
         

@@ -14,7 +14,7 @@
 
 	<? foreach($tags as $tag): ?>
     <li>
-      <a href="<?=site_url('tag/'.$tag['item'])?>">
+      <a href="<?=site_url('tag/'.convert_accented_characters($tag['item']))?>">
         <strong style="margin-left: 8px;"><?=$tag['item']?></strong><span class="count"><?=$tag['count']?></span>
         <span class="percentage-bar" style="width: <?=$tag['percent']?>%;"></span>
       </a>

@@ -29,8 +29,8 @@
         </div>        
       </div>
       <div class="post-user-info">
-        <a href="<?=site_url('/user/'.$post->user_id.'-'.url_title($post->user_name))?>">
-          <?=get_gravatar($post->user_email,18)?><?=$post->user_name?>
+        <a href="<?=site_url('/user/'.$id.'-'.url_title($name))?>">
+          <?=get_gravatar($email,18)?><?=$name?>
         </a>
       </div>  
     </li>  

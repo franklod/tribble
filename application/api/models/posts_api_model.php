@@ -60,20 +60,14 @@ class Posts_API_model extends CI_Model {
           tr_post.post_timestamp AS post_date,
           tr_image.image_path as post_image_path,
           (SELECT COUNT(1) FROM tr_like WHERE tr_like.like_post_id = tr_post.post_id) as post_like_count,
-          (SELECT COUNT(1) FROM tr_reply WHERE tr_reply.reply_post_id = tr_post.post_id AND tr_reply.reply_is_deleted = 0) as post_reply_count,
-          (SELECT COUNT(1) FROM tr_post WHERE tr_post.post_user_id = tr_user.user_id AND tr_post.post_is_deleted = 0) as post_count,
-          tr_user.user_id AS user_id,
-          tr_user.user_realname AS user_name,          
-          tr_user.user_email AS user_email,
-          tr_user.user_bio AS user_bio
+          (SELECT COUNT(1) FROM tr_reply WHERE tr_reply.reply_post_id = tr_post.post_id AND tr_reply.reply_is_deleted = 0) as post_reply_count
       ');
       $this->db->from('tr_post');
       $this->db->join('tr_image','tr_post.post_id = tr_image.image_post_id','inner');
-      $this->db->join('tr_user','tr_post.post_user_id = tr_user.user_id','right outer');
       //  $this->db->join('tr_tag','tr_post.post_id = tr_tag.tag_post_id','inner');           
 
-      $this->db->where(array('tr_user.user_id' => $user_id));
-      $this->db->where(array('tr_post.post_is_deleted' => 0));
+      $this->db->where(array('tr_post.post_user_id' => $user_id));
+      $this->db->where(array('tr_post.post_is_deleted' => 0)); 
       $this->db->order_by('tr_post.post_timestamp','desc');             
       
       $page = (int)$page;
@@ -89,13 +83,29 @@ class Posts_API_model extends CI_Model {
         $this->db->limit($per_page,$offset);
       } else {          
         $this->db->limit($per_page); 
-      } 
+      }
       
       if($query = $this->db->get()){
 
-        $qr = $query->result();
+        $posts = $query->result();
+        $count = $query->num_rows();
 
-        $result = array('user_name'=>$qr[0]->user_name,'user_email'=>$qr[0]->user_email,'user_bio'=>$qr[0]->user_bio,'count'=>$qr[0]->post_count,'posts'=>$query->result());
+        $this->db->select('
+          user_id,
+          user_realname AS user_name,
+          user_email,
+          user_bio,
+        ');
+
+        $this->db->from('user');
+        $this->db->where(array('user_id'=>$user_id));
+        $this->db->where(array('user_is_deleted'=>0));
+        
+        $query = $this->db->get();
+
+        $user = $query->result();
+
+        $result = array('user_id'=>$user[0]->user_id,'user_name'=>$user[0]->user_name,'user_email'=>$user[0]->user_email,'user_bio'=>$user[0]->user_bio,'count'=>$count,'posts'=>$posts);
         return $result;
       } else {
         return false;
@@ -123,6 +133,7 @@ class Posts_API_model extends CI_Model {
           tr_post.post_title AS post_title,
           tr_post.post_text AS post_text,
           tr_post.post_timestamp AS post_date,
+          tr_post.post_parent_id AS is_reply,
           tr_image.image_path as post_image_path,
           (SELECT COUNT(1) FROM tr_like WHERE tr_like.like_post_id = tr_post.post_id) as post_like_count,
           (SELECT COUNT(1) FROM tr_reply WHERE tr_reply.reply_post_id = tr_post.post_id AND tr_reply.reply_is_deleted = 0) as post_reply_count,
@@ -431,11 +442,59 @@ class Posts_API_model extends CI_Model {
       return $response;
     }
 
-    function checkUserPostPermission($post_id,$user_id){
+    function checkPostOwnership($post_id,$user_id){
       $query = $this->db->get_where('post',array('post_id'=>$post_id));
       $result = $query->result();
       ($result[0]->post_user_id == $user_id) ? $response = true : $response = false;      
       return $response;
+    }
+
+    function getPostForEdit($post_id){
+      $this->db->select('
+        post_title,
+        post_text
+      ');
+      $this->db->from('post');
+      $this->db->where(array('post_id'=>$post_id));
+      $query = $this->db->get();
+
+      $result = $query->result();
+
+      $object->post = $result[0];
+
+      $this->db->select('
+        tag_content as post_tags
+      ');
+      $this->db->from('tag');
+      $this->db->where(array('tag_post_id'=>$post_id));
+      $query = $this->db->get();
+
+      $result = $query->result();
+
+      $object->tags = $result[0];
+
+      return $object;
+    }
+
+    function updatePostData() {
+      
+    }
+
+    function getPostLikers($post_id){      
+
+      $this->db->select('
+        user_realname,
+        user_id
+      ');
+
+      $this->db->from('tr_like');
+      $this->db->join('tr_user','tr_like.like_user_id = tr_user.user_id','inner');
+      $this->db->where(array('like_post_id'=>$post_id));
+      $this->db->order_by('tr_user.user_realname','asc');
+      if(!$query = $this->db->get())
+        return false;
+
+        return $query->result();
     }
                                     
 } 

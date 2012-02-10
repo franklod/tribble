@@ -17,11 +17,13 @@ require APPPATH . '/libraries/REST_Controller.php';
 class Replies extends REST_Controller
 {
 
+  var $cache_ttl;
+
   public function __construct()
   {
     parent::__construct();
     //$this->output->enable_profiler(TRUE);
-    $cacheTTL = 15 * 60;
+    $this->cache_ttl = $this->config->item('short_cache');
 
   }
 

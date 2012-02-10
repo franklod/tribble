@@ -94,5 +94,7 @@ $route['user/(:any)/page'] = 'post/user/$1/$2';
 
 $route['reply/(:any)'] = 'post/reply/$1';
 
+$route['faq'] = 'post/faq';
+
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

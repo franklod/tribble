@@ -13,9 +13,11 @@
           <img src="<?=cdn_url(getThumb($post->post_image_path))?>"  alt="<?=$post->post_title?>" />
         </div>
         <div class="post-tools">
-          <p class="ico"><a href="" class="comments" title="There are <?=$post->post_reply_count?> replies to this post"><?=$post->post_reply_count?></a>Comments</p>
+          <p class="ico"><a href="" class="comments" title="There are <?=$post->post_reply_count?> responses to this post"><?=$post->post_reply_count?></a>Comments</p>
           <p class="ico"><a href="" class="likes" title="<?=$post->post_like_count?> users like this post"><?=$post->post_like_count?></a>likes</p>  
-          <p class="ico"><a href="" class="rebound"><?=$post->post_like_count?></a>likes</p>     
+          <?if($post->is_reply != 0):?>
+            <p class="ico"><a href="" class="rebound" title="This post is a reply.">This post is a reply.</a></p>
+          <?endif;?>
         </div>        
       </div>
       <div class="post-user-info">
