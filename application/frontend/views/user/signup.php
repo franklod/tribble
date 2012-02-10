@@ -1,4 +1,7 @@
-<div class="g75 login">
+<div class="g75">
+  <div class="inner-wrapper">
+  <h2>Create your Tribble account</h2>
+  <hr/>
   <? if(isset($error)): ?>
   <div class="alert-msg error">
     <p><?=$error?></p>
@@ -9,8 +12,7 @@
     <p><?=$success?></p>
   </div>
   <? endif;?>
-  <h2>Create your Tribble account</h2>
-	<?=form_open('signup',array('class'=>'g75'))?>
+	<?=form_open('signup',array('class'=>'signUp'))?>
   <div class="e_wrap <?=(form_error('realname') == TRUE) ? 'error' : ''; ?>">
     <?=form_label('Real name')?>
     <?=form_input(array('name'=>'realname','id'=>'realname','placeholder'=>'Your real name','value'=>set_value('realname')))?>
@@ -37,7 +39,8 @@
     <?=(form_error('bio') == TRUE) ? form_error('bio') : ''; ?>
   </div>
   <div class="e_wrap">
-    <?=form_submit(array('name'=>'doSignup','id'=>'doSignup','value'=>'Signup','class'=>'btn_success'))?>
+    <?=form_submit(array('name'=>'doSignup','id'=>'doSignup','value'=>'Signup','class'=>'defaultBtn btn_success float_right'))?>
   </div>
   <?=form_close()?>
+  </div>
 </div>

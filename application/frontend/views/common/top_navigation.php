@@ -33,7 +33,6 @@ if($this->session->userdata('sid')){
       </a></li>
     <? endif; ?>
     <? endforeach; ?>
-    <hr />
   </ul>
   <?= form_open(site_url('/dosearch')) ?>  
     <input name="search" type="text" class="" id="search" placeholder="Pesquisar" />
