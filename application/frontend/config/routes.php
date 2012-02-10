@@ -39,6 +39,7 @@
 */
 // CI RESERVED ROUTES
 $route['default_controller'] = "post/lists/new";
+// $route['default_controller'] = "post/lists/new";
 $route['404_override'] = '';
 // LIST THE NEWEST POSTS
 $route['new'] = 'post/lists/new';

@@ -11,7 +11,7 @@
     <p><?=$success?></p>
   </div>
   <? endif;?>  
-	<?=form_open('user/profile/edit',array('class'=>'g75'))?>    
+	<?=form_open('user/edit',array('class'=>'g75'))?>    
   <div class="e_wrap <?=(form_error('realname') == TRUE) ? 'error' : ''; ?>">
     <?=form_label('Real name')?>
     <?=form_input(array('name'=>'realname','id'=>'realname','placeholder'=>'Your real name','value'=>$profile->user_name))?>

@@ -684,6 +684,7 @@ ul.posts {
 	margin:0;
 	padding:0;
 	position: relative;
+	line-height: 18px;
 }
 .post-user-info h4 {
 	float:left;
@@ -928,4 +929,12 @@ ul.alphabet-links li a {
 	position: absolute;
 	right: 0;
 	top: 0;
+}
+
+.login-to-comment {
+	padding: 20px 0px 40px 0;
+}
+
+.float_right {
+	float: right !important;
 }

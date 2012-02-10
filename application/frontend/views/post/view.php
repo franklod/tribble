@@ -25,7 +25,7 @@
     <div class="post-img-data">
       <div class="post-desc">
         <p>
-          <?=$post->post_text?>
+          <?=auto_link(nl2br($post->post_text))?>
         </p>
       </div>
       <hr>
@@ -103,7 +103,7 @@
         <? else: ?>
           <li class="rebound">
             <h4><a href="/"><?=get_gravatar($reply->reply_post_user_email,42)?></a> </h4>
-            <div class="rebound-image"><a href="<?=site_url('view/'.$reply->reply_post_id)?>"><img src="<?=$reply->post_image_path?>" width="74" height="49" class="box"/></a></div>
+            <div class="rebound-image"><a href="<?=site_url('view/'.$reply->reply_post_id.'-'.url_title($reply->reply_post_title))?>"><img src="<?=$reply->post_image_path?>" width="74" height="49" class="box"/></a></div>
             <div class="rebound-title">
               <h2><?=$reply->reply_post_title?></h2>
               <h4><a href="/user/<?=$reply->reply_post_user_id?>"><?=$reply->reply_post_user_name?></a></h4>
@@ -123,6 +123,9 @@
         <? endif; ?>
         <?endforeach;?>                      
       </ul>
+      <?endif;?>
+      <?if(!isset($user)):?>
+      <h4 class="login-to-comment"><a href="<?=site_url('login/view/'.$post->post_id.'-'.url_title($post->post_title))?>">Log in</a> to comment on this post.</h4>
       <?endif;?>
     </div>
     <?if(@$user->user_id):?>    

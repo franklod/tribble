@@ -33,6 +33,10 @@ class Post extends CI_Controller
     // $this->output->enable_profiler(TRUE);
   }
 
+  public function obras(){
+    show_error('Closed for maintenance!',500,'Carmona says:');
+  }
+
   /**
    * Post::dosearch()
    * 
@@ -80,12 +84,13 @@ class Post extends CI_Controller
       show_error($REST_data->message, 404);
     }
 
-    // get the data for the sidebar widgets
     $tag_data = $this->rest->get('meta/tags');
     $color_data = $this->rest->get('meta/colors');
-    // set the data fro the sidebar widgets
+    $users_data = $this->rest->get('meta/users');
+
     $data['tags'] = $tag_data->tags;
     $data['colors'] = $color_data->colors;
+    $data['users'] = $users_data->users;
 
     // pagination
     $config['uri_segment'] = 4;
@@ -145,8 +150,11 @@ class Post extends CI_Controller
 
     $tag_data = $this->rest->get('meta/tags');
     $color_data = $this->rest->get('meta/colors');
+    $users_data = $this->rest->get('meta/users');
+
     $data['tags'] = $tag_data->tags;
     $data['colors'] = $color_data->colors;
+    $data['users'] = $users_data->users;
 
     if ($search_results->search->count == 0)
     {
@@ -244,8 +252,12 @@ class Post extends CI_Controller
 
     $tag_data = $this->rest->get('meta/tags');
     $color_data = $this->rest->get('meta/colors');
+    $users_data = $this->rest->get('meta/users');
+
     $data['tags'] = $tag_data->tags;
     $data['colors'] = $color_data->colors;
+    $data['users'] = $users_data->users;
+
 
     $data['posts'] = array_slice($REST_data->posts, $offset, $display_per_page, true);
 
@@ -291,8 +303,11 @@ class Post extends CI_Controller
 
     $tag_data = $this->rest->get('meta/tags');
     $color_data = $this->rest->get('meta/colors');
+    $users_data = $this->rest->get('meta/users');
+
     $data['tags'] = $tag_data->tags;
     $data['colors'] = $color_data->colors;
+    $data['users'] = $users_data->users;
 
     $this->load->view('common/page_top.php', $data);
     $this->load->view('lists/tags.php', $data);
@@ -342,9 +357,11 @@ class Post extends CI_Controller
 
     $tag_data = $this->rest->get('meta/tags');
     $color_data = $this->rest->get('meta/colors');
+    $users_data = $this->rest->get('meta/users');
 
     $data['tags'] = $tag_data->tags;
     $data['colors'] = $color_data->colors;
+    $data['users'] = $users_data->users;
 
     $data['posts'] = array_slice($user_request->posts, $offset, $display_per_page, true);
     $data['name'] = $user_request->user_name;
@@ -412,8 +429,11 @@ class Post extends CI_Controller
 
     $tag_data = $this->rest->get('meta/tags');
     $color_data = $this->rest->get('meta/colors');
+    $users_data = $this->rest->get('meta/users');
+
     $data['tags'] = $tag_data->tags;
     $data['colors'] = $color_data->colors;
+    $data['users'] = $users_data->users;
 
     $this->load->view('common/page_top.php', $data);
     $this->load->view('lists/users.php', $data);
@@ -461,8 +481,11 @@ class Post extends CI_Controller
 
     $tag_data = $this->rest->get('meta/tags');
     $color_data = $this->rest->get('meta/colors');
+    $users_data = $this->rest->get('meta/users');
+
     $data['tags'] = $tag_data->tags;
-    $data['colors'] = $color_data->colors;    
+    $data['colors'] = $color_data->colors;
+    $data['users'] = $users_data->users;   
 
     $rgb = json_decode($REST_Data->post[0]->post_image_palette);
 
@@ -785,11 +808,39 @@ class Post extends CI_Controller
   private function _alphabetize($data,$top){
 
     $normalizeChars = array(
-      'Š'=>'S', 'š'=>'s', 'Ð'=>'Dj','Ž'=>'Z', 'ž'=>'z', 'À'=>'A', 'Á'=>'A', 'Â'=>'A', 'Ã'=>'A', 'Ä'=>'A', 
-      'Å'=>'A', 'Æ'=>'A', 'Ç'=>'C', 'È'=>'E', 'É'=>'E', 'Ê'=>'E', 'Ë'=>'E', 'Ì'=>'I', 'Í'=>'I', 'Î'=>'I', 
-      'Ï'=>'I', 'Ñ'=>'N', 'Ò'=>'O', 'Ó'=>'O', 'Ô'=>'O', 'Õ'=>'O', 'Ö'=>'O', 'Ø'=>'O', 'Ù'=>'U', 'Ú'=>'U', 
-      'Û'=>'U', 'Ü'=>'U', 'Ý'=>'Y', 'Þ'=>'B', 'ß'=>'Ss','à'=>'a', 'á'=>'a', 'â'=>'a', 'ã'=>'a', 'ä'=>'a', 
-      'å'=>'a', 'æ'=>'a', 'ç'=>'c', 'è'=>'e', 'é'=>'e', 'ê'=>'e', 'ë'=>'e', 'ì'=>'i', 'í'=>'i', 'î'=>'i', 
+      'Š'=>'S', 
+      'š'=>'s', 
+      'Ð'=>'Dj',
+      'Ž'=>'Z', 
+      'ž'=>'z', 
+      'À'=>'A', 
+      'Á'=>'A', 
+      'Â'=>'A', 
+      'Ã'=>'A', 
+      'Ä'=>'A', 
+      'Å'=>'A', 
+      'Æ'=>'A', 
+      'Ç'=>'C', 
+      'È'=>'E', 
+      'É'=>'E', 
+      'Ê'=>'E', 
+      'Ë'=>'E', 
+      'Ì'=>'I', 
+      'Í'=>'I', 
+      'Î'=>'I', 
+      'Ï'=>'I', 
+      'Ñ'=>'N', 
+      'Ò'=>'O', 
+      'Ó'=>'O', 
+      'Ô'=>'O', 
+      'Õ'=>'O', 
+      'Ö'=>'O', 
+      'Ø'=>'O', 
+      'Ù'=>'U', 
+      'Ú'=>'U', 
+      'Û'=>'U', 
+      'Ü'=>'U', 'Ý'=>'Y', 'Þ'=>'B', 'ß'=>'Ss','à'=>'A', 'á'=>'A', 'â'=>'A', 'ã'=>'a', 'ä'=>'a', 
+      'å'=>'a', 'æ'=>'a', 'ç'=>'c', 'è'=>'A', 'é'=>'e', 'ê'=>'E', 'ë'=>'e', 'ì'=>'i', 'í'=>'i', 'î'=>'i', 
       'ï'=>'i', 'ð'=>'o', 'ñ'=>'n', 'ò'=>'o', 'ó'=>'o', 'ô'=>'o', 'õ'=>'o', 'ö'=>'o', 'ø'=>'o', 'ù'=>'u', 
       'ú'=>'u', 'û'=>'u', 'ý'=>'y', 'ý'=>'y', 'þ'=>'b', 'ÿ'=>'y', 'ƒ'=>'f'
     );
@@ -797,7 +848,7 @@ class Post extends CI_Controller
     $alpha = array();
 
     foreach ($data as $item => $count){
-      $initial = strtr(mb_substr($item,0,1),$normalizeChars);
+      $initial = strtr(strtolower(mb_substr($item,0,1)),$normalizeChars);
       $alpha[$initial][] = array('item'=>$item,'count'=>$count,'percent'=>floor((($count/$top)*100)));
     }
 

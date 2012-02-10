@@ -20,7 +20,7 @@ class Posts extends REST_Controller
   public function __construct()
   {
     parent::__construct();
-    // $this->output->enable_profiler(TRUE);
+    $this->output->enable_profiler(TRUE);
 
   }
 
@@ -237,7 +237,7 @@ class Posts extends REST_Controller
       $posts = $this->mPosts->getPostsByUser($user_id,$page,$limit);
 
       if(!$posts)
-        $this->response(array('request_status'=>false,'message'=>lang('F_DATA_READ')));
+        // $this->response(array('request_status'=>false,'message'=>lang('F_DATA_READ')));
       
       $object = array(
         'request_status' => true,
@@ -249,10 +249,10 @@ class Posts extends REST_Controller
         'posts' => $posts['posts']
       );
             
-      $this->cache->memcached->save($cachekey,$object, 30 * 60);
-      $this->response($object);
-    } else {
-      $this->response($this->cache->memcached->get($cachekey));                    
+    //   $this->cache->memcached->save($cachekey,$object, 30 * 60);
+    //   $this->response($object);
+    // } else {
+    //   $this->response($this->cache->memcached->get($cachekey));                    
     }
       
 
@@ -350,6 +350,8 @@ class Posts extends REST_Controller
         @$this->cache->memcached->delete(sha1('list/buzzing'.$i));
         @$this->cache->memcached->delete(sha1('list/loved'.$i));
       }
+
+      @$this->cache->memcached->delete(sha1('users/list'));
 
       $this->response(array('request_status' => true, 'post_id' => $insert_post));      
     }

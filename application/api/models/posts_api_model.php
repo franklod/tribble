@@ -61,7 +61,7 @@ class Posts_API_model extends CI_Model {
           tr_image.image_path as post_image_path,
           (SELECT COUNT(1) FROM tr_like WHERE tr_like.like_post_id = tr_post.post_id) as post_like_count,
           (SELECT COUNT(1) FROM tr_reply WHERE tr_reply.reply_post_id = tr_post.post_id AND tr_reply.reply_is_deleted = 0) as post_reply_count,
-          (SELECT COUNT(1) FROM tr_post WHERE tr_post.post_user_id = tr_user.user_id) as post_count,
+          (SELECT COUNT(1) FROM tr_post WHERE tr_post.post_user_id = tr_user.user_id AND tr_post.post_is_deleted = 0) as post_count,
           tr_user.user_id AS user_id,
           tr_user.user_realname AS user_name,          
           tr_user.user_email AS user_email,
@@ -73,6 +73,7 @@ class Posts_API_model extends CI_Model {
       //  $this->db->join('tr_tag','tr_post.post_id = tr_tag.tag_post_id','inner');           
 
       $this->db->where(array('tr_user.user_id' => $user_id));
+      $this->db->where(array('tr_post.post_is_deleted' => 0));
       $this->db->order_by('tr_post.post_timestamp','desc');             
       
       $page = (int)$page;
@@ -420,6 +421,10 @@ class Posts_API_model extends CI_Model {
 
 
     function deletePost($post_id){
+
+      $this->db->where('reply_rebound_id', $post_id);
+      $this->db->update('reply', array('reply_is_deleted'=>1));
+
       $this->db->where('post_id', $post_id);
       $this->db->update('post', array('post_is_deleted'=>1));
       ($this->db->affected_rows() == 1) ? $response = true : $response = false;

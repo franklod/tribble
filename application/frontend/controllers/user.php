@@ -92,8 +92,7 @@ class User extends CI_Controller
                     'user_id' => $session->user_id,
                     'user_realname' => $this->input->post('realname'),
                     'user_email' => $this->input->post('email'),
-                    'user_bio' => $this->input->post('bio'),
-                    'user_avatar' => null
+                    'user_bio' => $this->input->post('bio')
                 );
 
                 if(!$update_result = $this->rest->put('users/profile/update',$user_profile))

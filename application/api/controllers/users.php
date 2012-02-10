@@ -73,10 +73,10 @@ class Users extends REST_Controller
   {
 
     $user_data = array(
+      'user_id' => $this->put('user_id'),
       'user_email' => $this->put('user_email'),
       'user_realname' => $this->put('user_realname'),
-      'user_bio' => $this->put('user_bio'),
-      'user_avatar' => $this->put('user_avatar')
+      'user_bio' => $this->put('user_bio')
     );
 
     // do the database update

@@ -19,7 +19,7 @@ if( ! function_exists('gravatar_helper')){
     $url .= md5( strtolower( trim( $email ) ) );
     $url .= "?s=$s&d=$d&r=$r";
     if ( $img ) {
-      $url = '<img style="vertical-align: middle;" src="' . $url . '"';
+      $url = '<img class="avatar" style="vertical-align: middle;" src="' . $url . '"';
       foreach ( $atts as $key => $val )
         $url .= ' ' . $key . '="' . $val . '"';
       $url .= ' />';

@@ -178,6 +178,41 @@ class Meta extends REST_Controller
     }
   }
 
+  public function users_get()
+  {
+    // load the memcached driver
+    $this->load->driver('cache');
+    // load the posts model
+    $this->load->model('Meta_API_model', 'mMeta');
+    // create the cache key
+    $cachekey = sha1('meta/users');
+    
+    
+    if(!$this->cache->memcached->get($cachekey))
+    {
+      $users = $this->mMeta->getUsers();
+      if($users)
+      {
+        $object = array(
+          'request_status' => true,
+          'users' => $users
+        );
+        $this->cache->memcached->save($cachekey,$object, 10 * 60);
+        $this->response($object);
+      } else 
+      {
+         $object = array(
+          'request_status' => false,
+          'message' => 'Could not get the user list'
+        );
+         
+      }
+    } else {
+      $this->response($this->cache->memcached->get($cachekey ));
+    }
+        
+  }
+
 
 }
 

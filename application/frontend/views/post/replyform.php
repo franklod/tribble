@@ -19,7 +19,7 @@
   <?=form_textarea(array('name'=>'comment_text','id'=>'comment_text','placeholder'=>''))?>
   </div>
   <div class="e_wrap">
-  <?=form_submit(array('name'=>'reply','id'=>'reply','value'=>'Comment','class'=>'btn_success'))?>
+  <?=form_submit(array('name'=>'reply','id'=>'reply','value'=>'Comment','class'=>'btn_success','style'=>'float: right;'))?>
   </div>
   <?=form_fieldset_close()?>
   <?=form_close()?>
