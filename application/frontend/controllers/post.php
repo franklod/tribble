@@ -121,6 +121,72 @@ class Post extends CI_Controller
     $this->load->view('common/page_end.php', $data);
   }
 
+  public function color($color, $dummy = null, $page = 1)
+  {
+    
+    $session = $this->alternatesession->session_exists();
+
+    if($session){
+      $data['user'] = $session;
+    }
+
+    // set the defaults
+    $display_per_page = 12;
+    // number of rows per result set
+    $api_dataset_rows = 600;
+
+    // calculate wich result set page should we request from the api
+    $api_page = (int)floor((($page * $display_per_page) - $display_per_page) / $api_dataset_rows) + 1;
+
+    // try to get the data from the API and show error on failure
+    if (!$REST_data = $this->rest->get('posts/color/' . $color . '/' . $api_page));
+    {
+      // show_error(lang('F_API_CONNECT'), 404);
+      log_message(1, 'API Failure. CALL: posts/color/' . $color . '/' . $api_page);
+    }
+    // check if the data is here
+    if ($REST_data->request_status == false)
+    {
+      // show_error($REST_data->message, 404);
+    }
+
+    $tag_data = $this->rest->get('meta/tags');
+    $color_data = $this->rest->get('meta/colors');
+    $users_data = $this->rest->get('meta/users');
+
+    $data['tags'] = $tag_data->tags;
+    $data['colors'] = $color_data->colors;
+    $data['users'] = $users_data->users;
+
+    // pagination
+    $config['uri_segment'] = 4;
+    $config['base_url'] = '/color/' . substr($REST_data->hex, 1) . '/page';
+    $config['total_rows'] = $REST_data->post_count;
+    $this->pagination->initialize($config);
+    $data['paging'] = $this->pagination->create_links();
+
+    // cast the uri segment as int
+    $page = (int)$page;
+
+    // calculate the offset to use below
+    $offset = (($page - 1) * $display_per_page) - ($api_dataset_rows * ($api_page - 1));
+
+    // chop the posts data object to the default per page length
+    $data['posts'] = array_slice($REST_data->posts, $offset, $display_per_page, true);
+    $data['color'] = $REST_data->hex;
+    $data['count'] = $REST_data->post_count;
+
+    $data['title'] = $this->config->item('site_name') . ' - ' . $REST_data->tag;
+    $data['meta_description'] = $this->config->item('site_description');
+    $data['meta_keywords'] = $this->config->item('site_keywords');
+
+    // load views and show the page
+    $this->load->view('common/page_top.php', $data);
+    $this->load->view('search/color.php', $data);
+    $this->load->view('widgets/widgets.php', $data);
+    $this->load->view('common/page_end.php', $data);
+  }
+
   /**
    * Post::search()
    * 
@@ -491,6 +557,9 @@ class Post extends CI_Controller
     //Pull in an array of tweets
     $REST_Data = $this->rest->get('posts/single/' . $post_id);
 
+    //Pull in an array of tweets
+    $likers = $this->rest->get('posts/likes/' . $post_id);
+
     if($REST_Data->request_status == false)
       show_404('The post you requested does not exist!');
       
@@ -537,6 +606,9 @@ class Post extends CI_Controller
     $data['post'] = $REST_Data->post[0];    
     $data['replies'] = $REST_Data->post_replies->replies;
     $data['replies_count'] = $REST_Data->post_replies->count;
+
+    if($likers->request_status == true)
+      $data['likers'] = $likers->likes;
 
     $data['title'] = $this->config->item('site_name') . ' - ' . $data['post']->post_title;
     $data['meta_description'] = $this->config->item('site_description') . ' - ' .  $data['post']->post_text;

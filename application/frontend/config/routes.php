@@ -93,6 +93,7 @@ $route['user/(:any)'] = 'post/user/$1';
 $route['user/(:any)/page'] = 'post/user/$1/$2';
 
 $route['reply/(:any)'] = 'post/reply/$1';
+$route['color/(:any)'] = 'post/color/$1';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

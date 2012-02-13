@@ -452,6 +452,121 @@ class Posts_API_model extends CI_Model {
       ($result[0]->post_user_id == $user_id) ? $response = true : $response = false;      
       return $response;
     }
+
+    function getPostLikers($post_id){      
+
+      $this->db->select('
+        user_realname,
+        user_id
+      ');
+
+      $this->db->from('tr_like');
+      $this->db->join('tr_user','tr_like.like_user_id = tr_user.user_id','inner');
+      $this->db->where(array('like_post_id'=>$post_id));
+      $this->db->order_by('tr_user.user_realname','asc');
+      if(!$query = $this->db->get())
+        return false;
+
+        return $query->result();
+    }
+
+    function colorSearch($hex, $variation = 20){
+
+      $this->db->select('color_H as H, color_S as S, color_V as V');
+      $this->db->from('palette');
+      $this->db->where(array('color_hex'=>'#'.$hex));
+      $query = $this->db->get();
+
+      $res = $query->result();
+
+      $H = $res[0]->H;
+      $S = $res[0]->S;
+      $V = $res[0]->V;
+
+
+      $this->db->select('
+        post_id
+      ');
+      $this->db->distinct();
+
+      $variation = $variation / 1000;
+
+      $this->db->from('palette');
+      $this->db->where('color_H > '.$H.' - '.$variation.' AND color_H < '.$H.' + '.$variation);
+      $this->db->where('color_S > 0.2 AND color_S < 1');
+      $this->db->where('color_V > 0.2');
+                  
+      $this->db->order_by('post_id','desc');
+      
+      $query = $this->db->get();
+
+      if($query->num_rows() > 0){
+        return $query->result();
+      } else {
+        return $query->num_rows();
+      }
+    
+    }
+
+    function getListOfPosts($list,$page,$per_page){
+
+      $post_count = count($list);
+    
+    
+      $page = (int)$page;
+      $per_page = (int)$per_page;
+      
+      // if($page <= 1){
+      //   $page = 1; 
+      // }
+
+      // $offset = ($page-1) * $per_page;
+              
+      // if($offset > 0){
+      //   $subjects = array_slice($list, $offset, $per_page);
+      // } else {
+      //   $subjects = array_slice($list, $offset, $per_page);
+      // }
+                       
+
+      
+      $posts = array();
+
+      foreach($list as $post){
+
+        $this->db->select('
+          tr_post.post_id AS post_id,
+          tr_post.post_title AS post_title,
+          tr_post.post_text AS post_text,
+          tr_post.post_timestamp AS post_date,
+          tr_image.image_path as post_image_path,
+          (SELECT COUNT(1) FROM tr_like WHERE tr_like.like_post_id = tr_post.post_id) as post_like_count,
+          (SELECT COUNT(1) FROM tr_reply WHERE tr_reply.reply_post_id = tr_post.post_id AND tr_reply.reply_is_deleted = 0) as post_reply_count,
+          tr_user.user_id AS user_id,
+          tr_user.user_realname AS user_name,          
+          tr_user.user_email AS user_email            
+        ');
+
+        $this->db->from('tr_post');
+        $this->db->join('tr_image','tr_post.post_id = tr_image.image_post_id','inner');
+        $this->db->join('tr_user','tr_post.post_user_id = tr_user.user_id','inner');
+        $this->db->join('tr_tag','tr_post.post_id = tr_tag.tag_post_id','inner');
+        $this->db->where(array('post_id'=>$post->post_id));
+        $this->db->where(array('post_is_deleted'=>0));
+        $query = $this->db->get();
+        $result = $query->result();
+        
+        if($query->num_rows() == 1){
+          array_push($posts, $result[0]);
+        }
+
+      }      
+
+      $response = array('post_count'=>$post_count,'posts'=>$posts);
+
+      return $response;
+      
+    }
                                     
 } 
   

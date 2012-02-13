@@ -93,6 +93,9 @@ h3 {
 	line-height:2.2;
 	font-weight:normal;
 	border-bottom:3px solid #0099CC;
+	background: none;
+	border-left: none;
+	border-right: none;
 }
 input[type=text], input[type=password], input[type=file], input[type=reset], textarea, select {
 	zoom:1;

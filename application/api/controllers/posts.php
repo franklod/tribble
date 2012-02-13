@@ -20,7 +20,7 @@ class Posts extends REST_Controller
   public function __construct()
   {
     parent::__construct();
-    //$this->output->enable_profiler(TRUE);
+    $this->output->enable_profiler(TRUE);
 
   }
 
@@ -468,7 +468,91 @@ class Posts extends REST_Controller
   }
     
 
+  function likes_get() {
+
+    // load the posts model
+    $this->load->model('Posts_API_model', 'mPosts');
+
+    $post_id = $this->get('post_id');
+
+    if(!$post_id)
+      $this->response(array('request_status'=>false,'message'=>lang('E_NO_POST_ID')));
+
+    // load the memcached driver
+    $this->load->driver('cache');
+    $cachekey = sha1('posts/likes/'.$post_id);
+
+    if(!$this->cache->memcached->get($cachekey)){
+
+      $likes = $this->mPosts->getPostLikers($post_id);
+
+
+      if(!$likes)
+        $this->response(array('request_status'=>false,'message'=>'Boo hoo, it seems no one likes you.'));
+
     
+      $this->cache->memcached->save($cachekey,$likes, 10 * 60);
+      $this->response(array('request_status'=>true,'likes'=>$likes));
+      
+    } else {
+      $this->response(array('request_status'=>true,'likes'=>$this->cache->memcached->get($cachekey)));
+    }
+
+
+
+  }
+
+
+  public function color_get(){
+    
+    $hex = $this->get('hex');
+    $page = $this->get('page');
+    $limit = $this->get('limit');
+
+    if (!$page)
+      $page = 1;
+
+    if (!$limit)
+      $limit = 600;
+
+    if(!$hex)
+      $this->response(array('request_status'=>false,'message'=>lang('E_NO_COLOR')));
+
+    $cachekey = sha1('posts/color/hex/'.$hex);
+
+    // load the memcached driver
+    $this->load->driver('cache');
+
+    if(!$this->cache->memcached->get($cachekey)){
+      
+      $this->load->model('Posts_API_model', 'mPosts');
+      $posts_by_color = $this->mPosts->colorSearch($hex,25);
+
+      if($posts_by_color == 0)
+        $this->response(array('request_status'=>false,'message'=>'Could not find posts to match that color'));
+
+      $search_result =$this->mPosts->getListOfPosts($posts_by_color,$page,$limit);
+
+      $object = array(
+        'request_status' => true,
+        'hex'=>'#'.$hex,
+        'post_count'=>$search_result['post_count'],
+        'posts'=>$search_result['posts']
+      );
+
+      $this->cache->memcached->save($cachekey,$object,10 * 60);
+      $this->response($object);
+    } else {
+        $this->response($this->cache->memcached->get($cachekey));
+    }
+
+
+
+    
+    
+    // load the user model
+    $this->load->model('Users_API_model', 'mUsers');
+  }    
   
 
 }

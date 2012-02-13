@@ -18,11 +18,13 @@ require APPPATH . '/libraries/REST_Controller.php';
 class Meta extends REST_Controller
 {
 
+  var $cache_ttl;
+
   public function __construct()
   {
     parent::__construct();
-    //$this->output->enable_profiler(TRUE);
-    $cacheTTL = 15 * 60;
+    $this->output->enable_profiler(TRUE);
+    
 
   }
 
@@ -178,6 +180,36 @@ class Meta extends REST_Controller
     }
   }
 
+
+  public function testcolors_get(){
+    $id = $this->get('id');
+    $this->load->model('Meta_API_model', 'mMeta');
+    $colors = $this->mMeta->getColorsExtended($id);
+
+    // var_dump($colors);
+
+    foreach($colors as $color){
+      echo '<div style="background-color: '.$color->HEX.'">HEX: '.$color->HEX.' | H: '.$color->H.' | S: '.$color->S.' | V: '.$color->V.' | R: '.$color->R.' | G: '.$color->G.' | B: '.$color->B.'</div>';
+    }
+
+  }
+
+  public function searchcolor_get(){
+    $id = '#'.$this->get('hex');
+    $v = $this->get('v');
+    $this->load->model('Meta_API_model', 'mMeta');
+    $colors = $this->mMeta->colorSearch($id,$v);
+
+    // var_dump($colors);
+
+    foreach($colors as $color){
+      echo "<h3>".$color->post_id."</h3>";
+      echo '<div style="background-color: '.$color->color_hex.'">H: '.$color->color_H.' | S: '.$color->color_S.' | V: '.$color->color_V.' | R: '.$color->color_R.' | G: '.$color->color_G.' | B: '.$color->color_B.'</div>';
+    }
+
+  }
+
+
   public function colors2_get()
   {
 
@@ -192,9 +224,9 @@ class Meta extends REST_Controller
       $limit = 28;
 
     // create the cache key
-    $cachekey = sha1('meta/colors/' . $limit);
+    $cachekey = sha1('meta/colors2/' . $limit);
     // create the final array
-    $unique_colors = array();
+
     
     
     //$palettes = $this->mMeta->getColors();
@@ -214,43 +246,49 @@ class Meta extends REST_Controller
         // iterate over the tags from each post
         foreach ($palettes as $palette)
         {
+          $hsv_colors = array();
           // explode the post tags csv string
           $colors = json_decode($palette->image_palette);
           // iterate over each individual tag
           foreach ($colors as $color)
           {
-            list($r,$g,$b) = explode(',',$color);
-            $color = RGBToHex($r,$g,$b);
+            // var_dump($color);
+            list($R,$G,$B) = explode(',',$color);
+            // var_dump($color);
+            $HSV = RGBToHSV($R,$G,$B);
+            $HEX = RGBToHex($R,$G,$B);
+          
+            $H = $HSV['H'];
+            $S = $HSV['S'];
+            $V = $HSV['V'];            
+            // var_dump($HSV);
+            //$this->mMeta->updateHSV($$HSV);
+            // var_dump(HSVToRGB($HSV['H'],$HSV['S'],$HSV['V']));
             // check if it exists in the final array
-            if (array_key_exists($color, $unique_colors))
-            {
-              // if its there, increment the counter
-              $unique_colors[$color]++;
-            } else
-            {
-              // or set it to 1
-              $unique_colors[$color] = 1;
-            }
-          }
+            // array_push($hsv_colors, $HSV);
+            $this->mMeta->transferPalette($palette->image_post_id,$HEX,$R,$G,$B,$H,$S,$V);
+          }          
         }
-        // sort the final tags array 
-        arsort($unique_colors);
-        // define the response object structure                
-        $object = array('status' => true, 'colors' => array_slice($unique_colors,0,$limit));
-        // we have a dataset from the database, let's save it to memcached
-        @$this->cache->memcached->save($cachekey, $object, 20 * 60);
-        // output the response
-        $this->response($object);
+
+
+        // // sort the final tags array 
+        // arsort($unique_colors);
+        // // define the response object structure                
+        // $object = array('status' => true, 'colors' => array_slice($unique_colors,0,$limit));
+        // // we have a dataset from the database, let's save it to memcached
+        // @$this->cache->memcached->save($cachekey, $object, 20 * 60);
+        // // output the response
+        // $this->response($object);
       } else
       {
         // we got nothing to show, output error
-        $this->response(array('status' => false, 'message' => lang('F_DATA_READ')), 404);
+        // $this->response(array('status' => false, 'message' => lang('F_DATA_READ')), 404);
       }
     } else
     {
       // the object is cached, send it
-      $cache = $this->cache->memcached->get($cachekey);
-      $this->response($cache);
+      // $cache = $this->cache->memcached->get($cachekey);
+      // $this->response($cache);
     }
   }
 
