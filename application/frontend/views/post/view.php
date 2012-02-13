@@ -1,36 +1,3 @@
-<?
-  
-
-// var_dump($likers);
-
-if(isset($likers)){
-
-  $num = count($likers);
-  $liker_list = '';
-
-  if($num == 1)
-    $liker_list = $likers[0]->user_realname . ' likes this.';
-
-  if($num == 2)
-    $liker_list .= $likers[0]->user_realname . ' and ' . $likers[1]->user_realname . ' like this.';
-
-  if($num > 2){
-    
-    foreach($likers as $liker){
-      $liker_list .= $liker->user_realname . ", ";
-    }
-    $liker_list .= 'like this.';
-    $liker_list = substr_replace($liker_list, '', strrpos($liker_list, ','),1);
-    $liker_list = substr_replace($liker_list, ' and', strrpos($liker_list, ','),1);
-  } 
-} else {
-    $liker_list = 'Boowhoo, it seems no one likes this!';
-  }
-
-  
-
-  
-?>
 <div class="g75">
   <div class="inner-wrapper">
     <div class="post-container">
@@ -58,7 +25,7 @@ if(isset($likers)){
     <div class="post-img-data">
       <div class="post-desc">
         <p>
-          <?=auto_link(nl2br($post->post_text),'url',TRUE)?>
+          <?=auto_link(nl2br($post->post_text))?>
         </p>
       </div>
       <hr>
@@ -71,12 +38,12 @@ if(isset($likers)){
         <?endif;?>
         <p class="ico">
           <?if(!isset($like_status)):?>
-            <a href="#" title="<?=$liker_list?>" class="likes"><?=$post->post_like_count?></a>          
+            <a title="<?=$post->post_like_count?> users like this post" href="#" class="likes"><?=$post->post_like_count?></a>          
           <?else:?>
             <?if($like_status == true):?>
-            <a href="<?=site_url('like/remove/'.$post->post_id.'-'.url_title($post->post_title))?>" title="<?=$liker_list?>" class="likes liked"><?=$post->post_like_count?></a>
+            <a title="Unlike this post" href="<?=site_url('like/remove/'.$post->post_id.'-'.url_title($post->post_title))?>" class="likes liked"><?=$post->post_like_count?></a>
             <?else:?>
-            <a href="<?=site_url('like/add/'.$post->post_id.'-'.url_title($post->post_title))?>" title="<?=$liker_list?>" class="likes"><?=$post->post_like_count?></a>
+            <a type="Like this post" href="<?=site_url('like/add/'.$post->post_id.'-'.url_title($post->post_title))?>" class="likes"><?=$post->post_like_count?></a>
             <?endif;?>
           <?endif;?>
         </p>
@@ -96,7 +63,7 @@ if(isset($likers)){
       <ul class="color-scheme">
         <? $colors = $post->post_image_palette ?>
         <? foreach($colors as $key => $color):?>
-        <li style="background: <?=$color?>" title="<?=$color?>"><a href="/" title="<?=$color?>">
+        <li style="background-color: <?=$color?>" title="<?=$color?>"><a href="/" title="<?=$color?>">
           <?=$color?>
           </a></li>
         <? endforeach; ?>

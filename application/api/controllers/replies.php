@@ -17,13 +17,11 @@ require APPPATH . '/libraries/REST_Controller.php';
 class Replies extends REST_Controller
 {
 
-  var $cache_ttl;
-
   public function __construct()
   {
     parent::__construct();
     //$this->output->enable_profiler(TRUE);
-    $this->cache_ttl = $this->config->item('short_cache');
+    $cacheTTL = 15 * 60;
 
   }
 
@@ -64,10 +62,10 @@ class Replies extends REST_Controller
     {
 
       $cacheKeys = array(
-        sha1('detail/' . $post_id),
-        sha1('list/new'),
-        sha1('list/buzzing'),
-        sha1('list/loved'));
+        sha1('posts/detail/id/' . $post_id),
+        sha1('posts/list/new'),
+        sha1('posts/list/buzzing'),
+        sha1('posts/list/loved'));
       foreach ($cacheKeys as $key)
       {
         $this->cache->memcached->delete($key);
@@ -112,10 +110,10 @@ class Replies extends REST_Controller
     {
 
       $cacheKeys = array(
-        sha1('detail/' . $post_id),
-        sha1('list/new'),
-        sha1('list/buzzing'),
-        sha1('list/loved'));
+        sha1('posts/detail/id/' . $post_id),
+        sha1('posts/list/new'),
+        sha1('posts/list/buzzing'),
+        sha1('posts/list/loved'));
       foreach ($cacheKeys as $key)
       {
         $this->cache->memcached->delete($key);

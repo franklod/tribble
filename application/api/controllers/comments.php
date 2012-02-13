@@ -54,10 +54,10 @@ class Replies extends REST_Controller
       $this->response(array('status' => false, 'message' => lang('F_ADD_COMMENT')), 404);
 
       $cacheKeys = array(
-        sha1('detail' . $post_id),
-        sha1('list/new'),
-        sha1('list/buzzing'),
-        sha1('list/loved'));
+        sha1('posts/detail/id/' . $post_id),
+        sha1('posts/list/new'),
+        sha1('posts/list/buzzing'),
+        sha1('posts/list/loved'));
       foreach ($cacheKeys as $key)
       {
         $this->cache->memcached->delete($key);
@@ -102,10 +102,10 @@ class Replies extends REST_Controller
     {
 
       $cacheKeys = array(
-        sha1('detail' . $post_id),
-        sha1('list/new'),
-        sha1('list/buzzing'),
-        sha1('list/loved'));
+        sha1('posts/detail/id/' . $post_id),
+        sha1('posts/list/new'),
+        sha1('posts/list/buzzing'),
+        sha1('posts/list/loved'));
       foreach ($cacheKeys as $key)
       {
         $this->cache->memcached->delete($key);

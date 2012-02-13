@@ -28,7 +28,7 @@ class Users_API_model extends CI_Model {
         tr_user.user_realname AS user_name,
         tr_user.user_id,
         tr_user.user_email,
-        (SELECT COUNT(1) FROM `tr_post` WHERE post_user_id = user_id AND tr_post.post_is_deleted = 0) as post_count
+        (SELECT COUNT(1) FROM `tr_post` WHERE post_user_id = user_id) as post_count
       ');
       $this->db->from('user');
       $this->db->group_by('

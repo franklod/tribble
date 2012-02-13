@@ -128,7 +128,7 @@ class Post extends CI_Controller
    * @param mixed $page
    * @return
    */
-  public function search($searchString, $page = null)
+  public function search($searchString, $dummy = '', $page = 1)
   {
     $data['title'] = $this->config->item('site_name');
     $data['meta_description'] = $this->config->item('site_description');
@@ -139,6 +139,14 @@ class Post extends CI_Controller
     if($session){
       $data['user'] = $session;
     }
+
+    // set the defaults
+    $display_per_page = 12;
+    // number of rows per result set
+    $api_dataset_rows = 600;
+
+    // calculate wich result set page should we request from the api
+    $api_page = (int)floor((($page * $display_per_page) - $display_per_page) / $api_dataset_rows) + 1;
 
     $search_results = $this->rest->get('posts/find/txt/' . $searchString . '/' . $page);
 
@@ -169,8 +177,29 @@ class Post extends CI_Controller
       $config['base_url'] = site_url('search');
       $config['total_rows'] = $search_results->search->count;
 
+      // pagination
+      $config['uri_segment'] = 4;
+      $config['base_url'] = '/search/' . $searchString . '/page';
+      $config['total_rows'] = $search_results->search->count;
       $this->pagination->initialize($config);
       $data['paging'] = $this->pagination->create_links();
+
+      // cast the uri segment as int
+      $page = (int)$page;
+
+      // calculate the offset to use below
+      $offset = (($page - 1) * $display_per_page) - ($api_dataset_rows * ($api_page - 1));
+
+      
+
+      // chop the posts data object to the default per page length
+      $data['posts'] = array_slice($search_results->search->posts, $offset, $display_per_page, true);
+      $data['tag'] = $search_results->search->string;
+      $data['count'] = $search_results->search->count;
+
+      $data['title'] = $this->config->item('site_name') . ' - ' . $search_results->search->string;
+      $data['meta_description'] = $this->config->item('site_description');
+      $data['meta_keywords'] = $this->config->item('site_keywords');
 
       $this->load->view('common/page_top.php', $data);
       $this->load->view('search/search.php', $data);
@@ -366,7 +395,6 @@ class Post extends CI_Controller
     $data['posts'] = array_slice($user_request->posts, $offset, $display_per_page, true);
     $data['name'] = $user_request->user_name;
     $data['email'] = $user_request->user_email;
-    $data['id'] = $user_request->user_id;
     $data['count'] = $user_request->post_count;
     $data['bio'] = $user_request->user_bio;
 
@@ -463,9 +491,6 @@ class Post extends CI_Controller
     //Pull in an array of tweets
     $REST_Data = $this->rest->get('posts/single/' . $post_id);
 
-    //Pull in an array of tweets
-    $likers = $this->rest->get('posts/likes/' . $post_id);
-
     if($REST_Data->request_status == false)
       show_404('The post you requested does not exist!');
       
@@ -512,9 +537,6 @@ class Post extends CI_Controller
     $data['post'] = $REST_Data->post[0];    
     $data['replies'] = $REST_Data->post_replies->replies;
     $data['replies_count'] = $REST_Data->post_replies->count;
-
-    if($likers->request_status == true)
-      $data['likers'] = $likers->likes;
 
     $data['title'] = $this->config->item('site_name') . ' - ' . $data['post']->post_title;
     $data['meta_description'] = $this->config->item('site_description') . ' - ' .  $data['post']->post_text;
@@ -986,17 +1008,6 @@ class Post extends CI_Controller
       redirect(site_url());
     }      
 
-  }
-
-  public function faq(){
-
-    $data['title'] = $this->config->item('site_name') . ' - Upload';
-    $data['meta_description'] = $this->config->item('site_description');
-    $data['meta_keywords'] = $this->config->item('site_keywords');
-
-    $this->load->view('common/page_top.php', $data);
-    $this->load->view('common/faq.php');
-    $this->load->view('common/page_end.php', $data); 
   }
 
 }

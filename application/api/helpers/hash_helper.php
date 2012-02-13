@@ -4,4 +4,5 @@
     function double_hash($str){
     return $this->encrypt->sha1($this->encrypt->sha1($srt));
   }
+
 }

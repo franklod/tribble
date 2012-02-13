@@ -48,7 +48,7 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = '10.134.132.97';
+$db['default']['hostname'] = 'localhost';
 $db['default']['username'] = 'tribble';
 $db['default']['password'] = 'tribble';
 $db['default']['database'] = 'tribble_schema';

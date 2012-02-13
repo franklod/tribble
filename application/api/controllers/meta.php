@@ -38,7 +38,7 @@ class Meta extends REST_Controller
     $limit = (int)$this->get('limit');
 
     // create the cache key
-    $cachekey = sha1('tags/' . $limit);
+    $cachekey = sha1('meta/tags/' . $limit);
     
     // create the final array
     $unique_tags = array();
@@ -113,10 +113,86 @@ class Meta extends REST_Controller
     $limit = $this->get('limit');
 
     if (!$limit)
-      $limit = 12;
+      $limit = 28;
 
     // create the cache key
-    $cachekey = sha1('colors/' . $limit);
+    $cachekey = sha1('meta/colors/' . $limit);
+    // create the final array
+    $unique_colors = array();
+    
+    
+    //$palettes = $this->mMeta->getColors();
+//    foreach($palettes as $palette){
+//      $colors = json_decode($palette->image_palette);
+//      foreach($colors as $color){
+//        var_dump($color);
+//      }
+//    }
+    
+    // check if the key exists in cache
+    if (!$this->cache->memcached->get($cachekey))
+    {
+      // get the data from the database
+      if ($palettes = $this->mMeta->getColors())
+      {        
+        // iterate over the tags from each post
+        foreach ($palettes as $palette)
+        {
+          // explode the post tags csv string
+          $colors = json_decode($palette->image_palette);
+          // iterate over each individual tag
+          foreach ($colors as $color)
+          {
+            list($r,$g,$b) = explode(',',$color);
+            $color = RGBToHex($r,$g,$b);
+            // check if it exists in the final array
+            if (array_key_exists($color, $unique_colors))
+            {
+              // if its there, increment the counter
+              $unique_colors[$color]++;
+            } else
+            {
+              // or set it to 1
+              $unique_colors[$color] = 1;
+            }
+          }
+        }
+        // sort the final tags array 
+        arsort($unique_colors);
+        // define the response object structure                
+        $object = array('status' => true, 'colors' => array_slice($unique_colors,0,$limit));
+        // we have a dataset from the database, let's save it to memcached
+        @$this->cache->memcached->save($cachekey, $object, 20 * 60);
+        // output the response
+        $this->response($object);
+      } else
+      {
+        // we got nothing to show, output error
+        $this->response(array('status' => false, 'message' => lang('F_DATA_READ')), 404);
+      }
+    } else
+    {
+      // the object is cached, send it
+      $cache = $this->cache->memcached->get($cachekey);
+      $this->response($cache);
+    }
+  }
+
+  public function colors2_get()
+  {
+
+    // load the memcached driver
+    $this->load->driver('cache');
+    // load the posts model
+    $this->load->model('Meta_API_model', 'mMeta');
+
+    $limit = $this->get('limit');
+
+    if (!$limit)
+      $limit = 28;
+
+    // create the cache key
+    $cachekey = sha1('meta/colors/' . $limit);
     // create the final array
     $unique_colors = array();
     

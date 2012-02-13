@@ -244,7 +244,7 @@ class User extends CI_Controller
             } else {
                 $data['success'] = $create_user->message;
                 $this->load->view('common/page_top.php', $data);
-                $this->load->view('user/signup_success.php', $data);
+                $this->load->view('user/signup.php', $data);
                 $this->load->view('common/page_end.php', $data);
             }
 

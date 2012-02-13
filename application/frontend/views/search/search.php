@@ -1,6 +1,6 @@
 <div class="g75">
   <div class="inner-wrapper">
-  <h3>We found <?=$results?> posts containing <em><?=$search_text?>!</em></h3>
+  <h3>We found <?=$results?> posts containing <em>&ldquo;<?=$search_text?>&rdquo;.</em></h3>
   <hr />
   <ul class="posts" style="overflow: hidden;">
 	<? foreach($posts as $post): ?>

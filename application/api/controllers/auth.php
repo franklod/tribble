@@ -7,12 +7,9 @@ require APPPATH . '/libraries/REST_Controller.php';
 class Auth extends REST_Controller
 {
 
-  var $cache_ttl;
-
   public function __construct()
   {
     parent::__construct();
-    $this->cache_ttl = $this->config->item('long_cache');
   }
 
   private function _double_hash($str){
@@ -60,7 +57,7 @@ class Auth extends REST_Controller
     $this->load->driver('cache');
     $cachekey = sha1($session_data['user_email']);
     if(!$this->cache->memcached->get($cachekey)){
-      $this->cache->memcached->save($cachekey,$session_data,$this->cache_ttl);
+      $this->cache->memcached->save($cachekey,$session_data,24*60*60);
       $this->response(array('request_status'=>true,'id'=>$cachekey));
     } else {
       $this->response(array('request_status'=>true,'id'=>$cachekey));
@@ -78,7 +75,7 @@ class Auth extends REST_Controller
       $metadata = $this->cache->memcached->get_metadata($id);   
       $TTL = (int)floor(($metadata['expire'] - time()) / 60);
       if($TTL < 26)
-        $this->cache->memcached->save($id,$metadata['data'],$this->cache_ttl);                    
+        $this->cache->memcached->save($id,$metadata['data'],24*60*60);                    
       $this->response(array('request_status'=>true,'user'=>$this->cache->memcached->get($id)));
     }     
   }

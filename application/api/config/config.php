@@ -10,7 +10,7 @@
 |	c:\mywebserver\myapp
 |
 */
-$config['app_path']	= 'C:/wamp/www/tribble/';
+$config['app_path'] = '/home/pedro/work/tribble';
 /*
 |--------------------------------------------------------------------------
 | Base Site URL
@@ -25,7 +25,7 @@ $config['app_path']	= 'C:/wamp/www/tribble/';
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://api.tribble.local/';
+$config['base_url'] = 'http://10.134.132.97:8081/';
 //$config['base_url']	= 'http://10.134.132.33/';
 
 /*
@@ -138,7 +138,7 @@ $config['subclass_prefix'] = 'MY_';
 | DO NOT CHANGE THIS UNLESS YOU FULLY UNDERSTAND THE REPERCUSSIONS!!
 |
 */
-$config['permitted_uri_chars'] = 'a-z 0-9~%.:_\-\+';
+$config['permitted_uri_chars'] = 'a-z 0-9~%.:_\-';
 
 
 /*

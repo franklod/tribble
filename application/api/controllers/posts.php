@@ -17,12 +17,9 @@ require APPPATH . '/libraries/REST_Controller.php';
 class Posts extends REST_Controller
 {
 
-  var $cache_ttl;
-
   public function __construct()
   {
     parent::__construct();
-    $this->cache_ttl = $this->config->item('short_cache');
     //$this->output->enable_profiler(TRUE);
 
   }
@@ -74,7 +71,7 @@ class Posts extends REST_Controller
     $limit = $this->get('limit');
 
     // create the cache key
-    $cachekey = sha1('list/' . $type . $page . $limit);
+    $cachekey = sha1('posts/list/' . $type . $page . $limit);
 
     // if we dont get page and limit vars set the defaults for 600 posts (50 * 12)
     if (!$page)
@@ -108,7 +105,7 @@ class Posts extends REST_Controller
           'result_page' => $page,
           'post_count' => $limit,
           'posts' => $posts);
-        @$this->cache->memcached->save($cachekey, $object, $this->cache_ttl);
+        @$this->cache->memcached->save($cachekey, $object, 30 * 60);
         // output the response
         $this->response($object);
       } else
@@ -139,7 +136,7 @@ class Posts extends REST_Controller
     $this->load->model('Posts_API_model', 'mPosts');
 
     // hash the method name and params to get a cache key
-    $cachekey = sha1('detail/' . $post_id);
+    $cachekey = sha1('posts/detail/id/' . $post_id);
 
     // check if the key exists in cache
     if (@!$this->cache->memcached->get($cachekey))
@@ -156,7 +153,7 @@ class Posts extends REST_Controller
           'request_status' => true,
           'post' => $post,
           'post_replies' => array('count' => count($replies), 'replies' => $replies));
-        $this->cache->memcached->save($cachekey, $object, $this->cache_ttl);
+        $this->cache->memcached->save($cachekey, $object, 30 * 60);
         $this->response($object);
       }
     } else
@@ -168,7 +165,7 @@ class Posts extends REST_Controller
 
   public function tagged_get()
   {
-    $tag = urldecode($this->get('tag'));
+    $tag = $this->get('tag');
     $page = $this->get('page');
     $limit = $this->get('limit');
 
@@ -187,7 +184,7 @@ class Posts extends REST_Controller
     $this->load->model('Posts_API_model', 'mPosts');
 
     // hash the method name and params to get a cache key
-    $cachekey = sha1('tagged/' . $tag . $page . $limit);
+    $cachekey = sha1('posts/tag/' . $tag . $page . $limit);
 
     if (@!$this->cache->memcached->get($cachekey))
     {
@@ -202,7 +199,7 @@ class Posts extends REST_Controller
           'posts' => $posts['posts']
         );
         
-        $this->cache->memcached->save($cachekey, $object, $this->cache_ttl);
+        $this->cache->memcached->save($cachekey, $object, 30 * 60);
         $this->response($object);
       }
     } else
@@ -232,7 +229,7 @@ class Posts extends REST_Controller
     if (!$limit)
       $limit = 600;
 
-    $cachekey = sha1('user/'.$user_id.$page.$limit);
+    $cachekey = sha1('posts/user/id/'.$user_id.$page.$limit);
       
 
     if(!$this->cache->memcached->get($cachekey))
@@ -245,7 +242,6 @@ class Posts extends REST_Controller
       $object = array(
         'request_status' => true,
         'result_page' => $page,
-        'user_id' => $posts['user_id'],
         'user_name' => $posts['user_name'],
         'user_email' => $posts['user_email'],
         'user_bio' => $posts['user_bio'],
@@ -253,10 +249,10 @@ class Posts extends REST_Controller
         'posts' => $posts['posts']
       );
             
-      $this->cache->memcached->save($cachekey,$object, $this->cache_ttl);
+      $this->cache->memcached->save($cachekey,$object, 30 * 60);
       $this->response($object);
     } else {
-      $this->response($this->cache->memcached->get($cachekey));                    
+      $this->response($this->cache->memcached->get($cachekey));
     }
       
 
@@ -287,14 +283,14 @@ class Posts extends REST_Controller
     $this->load->model('Posts_API_model', 'mPosts');
 
     // hash the method name and params to get a cache key
-    $cachekey = sha1('search' . $string . $page . $limit);
+    $cachekey = sha1('posts/find/txt' . $string . $page . $limit);
 
     if (@!$this->cache->memcached->get($cachekey))
     {
       $posts = $this->mPosts->searchPostsTitleAndDescription($string, $page, $limit);
       if ($posts)
       {
-        $this->cache->memcached->save($cachekey, array('request_status' => true, 'search' => $posts), $this->cache_ttl);
+        $this->cache->memcached->save($cachekey, array('request_status' => true, 'search' => $posts), 30 * 60);
         $this->response(array('request_status' => true, 'search' => $posts));
       }
     } else
@@ -356,9 +352,6 @@ class Posts extends REST_Controller
       }
 
       @$this->cache->memcached->delete(sha1('users/list'));
-      @$this->cache->memcached->delete(sha1('tags/0'));
-      @$this->cache->memcached->delete(sha1('tags'));
-      @$this->cache->memcached->delete(sha1('colors'));
 
       $this->response(array('request_status' => true, 'post_id' => $insert_post));      
     }
@@ -452,7 +445,7 @@ class Posts extends REST_Controller
     if(!$post_id)
       $this->response(array('request_status'=>false,'message'=>lang('E_NO_USER_ID')));
     
-    $can_user_delete = $this->mPosts->checkPostOwnership($post_id,$user_id);
+    $can_user_delete = $this->mPosts->checkUserPostPermission($post_id,$user_id);
 
     if(!$can_user_delete)
       $this->response(array('request_status'=>false,'message'=>lang('INV_POST_PERMISSIONS')));
@@ -471,103 +464,12 @@ class Posts extends REST_Controller
       @$this->cache->memcached->delete(sha1('loved/new'.$i));
     }
 
-    @$this->cache->memcached->delete(sha1('meta/tags'.$i));
-    @$this->cache->memcached->delete(sha1('meta/tags/0'.$i));
-    @$this->cache->memcached->delete(sha1('meta/users'.$i));
-    @$this->cache->memcached->delete(sha1('meta/users/0'.$i));
-
     $this->response(array('request_status'=>true,'message'=>lang('S_DELETE_POST')));
   }
     
 
-  public function edit_get(){
-
-    // load the posts model
-    $this->load->model('Posts_API_model', 'mPosts');
     
-    // verify if we have all the data
-    $post_id = $this->get('post_id');
-    $user_id = $this->get('user_id');
-
-    if(!$post_id)
-      $this->response(array('request_status'=>false,'message'=>lang('E_NO_POST_ID')));
-    if(!$user_id)
-      $this->response(array('request_status'=>false,'message'=>lang('E_NO_USER_ID')));
-
-    // // check if this user is allowed to edit this post
-    if(!$this->mPosts->checkPostOwnership($post_id,$user_id))
-      $this->response(array('request_status'=>false,'message'=>lang('INV_POST_PERMISSIONS')));
-
-    // get the editable post data (title, text, tags)
-    $data = $this->mPosts->getPostForEdit($post_id);
-
-    $data_object = array(
-      'post_title' => $data->post->post_title,
-      'post_text' => $data->post->post_text,
-      'post_tags' => $data->tags->post_tags
-    );
-
-    $this->response(array('request_status'=>true,$data_object));
-  }    
   
-  public function edit_put(){
-
-    // load the posts model
-    $this->load->model('Posts_API_model', 'mPosts');
-
-    if (!$this->put('post_title'))
-      $this->response(array('request_status' => false, 'message' => lang('E_NO_POST_TITLE')));
-    if (!$this->put('post_text'))
-      $this->response(array('request_status' => false, 'message' => lang('E_NO_POST_TEXT')));
-    if (!$this->put('post_tags'))
-      $this->response(array('request_status' => false, 'message' => lang('E_NO_POST_TAGS')));
-    if(!$this->put('user_id'))
-      $this->response(array('request_status'=>false,'message'=>lang('E_NO_USER_ID')));
-    if(!$this->put('post_id'))
-      $this->response(array('request_status'=>false,'message'=>lang('E_NO_POST_ID')));
-
-    // // check if this user is allowed to edit this post
-    if(!$this->mPosts->checkPostOwnership($post_id,$this->put('user_id')))
-      $this->response(array('request_status'=>false,'message'=>lang('INV_POST_PERMISSIONS')));
-
-    // load the memcached driver
-    $this->load->driver('cache');
-
-  }
-
-  function likes_get() {
-
-    // load the posts model
-    $this->load->model('Posts_API_model', 'mPosts');
-
-    $post_id = $this->get('post_id');
-
-    if(!$post_id)
-      $this->response(array('request_status'=>false,'message'=>lang('E_NO_POST_ID')));
-
-    // load the memcached driver
-    $this->load->driver('cache');
-    $cachekey = sha1('posts/likes/'.$post_id);
-
-    if(!$this->cache->memcached->get($cachekey)){
-
-      $likes = $this->mPosts->getPostLikers($post_id);
-
-
-      if(!$likes)
-        $this->response(array('request_status'=>false,'message'=>'Boo hoo, it seems no one likes you.'));
-
-    
-      $this->cache->memcached->save($cachekey,$likes, $this->cache_ttl);
-      $this->response(array('request_status'=>true,'likes'=>$likes));
-      
-    } else {
-      $this->response(array('request_status'=>true,'likes'=>$this->cache->memcached->get($cachekey)));
-    }
-
-
-
-  }
 
 }
 

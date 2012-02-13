@@ -95,7 +95,5 @@ $route['users/profile/(:num)'] = 'users/profile/id/$1';
 $route['users/check/password'] = 'users/checkOldPassword';
 $route['users/update/password'] = 'users/password';
 
-$route['posts/likes/(:num)'] = 'posts/likes/post_id/$1';
-
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

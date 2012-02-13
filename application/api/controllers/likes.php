@@ -93,14 +93,13 @@ class Likes extends REST_Controller
 
       // KILL THE LISTS CACHE
       for($i=1;$i<=$cache_pages;$i++){
-        @$this->cache->memcached->delete(sha1('list/new'.$i));
-        @$this->cache->memcached->delete(sha1('list/buzzing'.$i));
-        @$this->cache->memcached->delete(sha1('list/loved'.$i));
+        @$this->cache->memcached->delete(sha1('posts/list/new'.$i));
+        @$this->cache->memcached->delete(sha1('posts/list/buzzing'.$i));
+        @$this->cache->memcached->delete(sha1('posts/list/loved'.$i));
       }
 
       // kill the post cache
-      $this->cache->memcached->delete(sha1('detail/' . $post_id));
-      $this->cache->memcached->delete(sha1('posts/likes/' . $post_id));
+      $this->cache->memcached->delete(sha1('posts/detail/id/' . $post_id));
       $this->response(array('status' => true, 'message' => lang('S_ADD_LIKE')));
     }
     
@@ -141,14 +140,13 @@ class Likes extends REST_Controller
 
       // KILL THE LISTS CACHE
       for($i=1;$i<=$cache_pages;$i++){
-        @$this->cache->memcached->delete(sha1('list/new'.$i));
-        @$this->cache->memcached->delete(sha1('list/buzzing'.$i));
-        @$this->cache->memcached->delete(sha1('list/loved'.$i));
+        @$this->cache->memcached->delete(sha1('posts/list/new'.$i));
+        @$this->cache->memcached->delete(sha1('posts/list/buzzing'.$i));
+        @$this->cache->memcached->delete(sha1('posts/list/loved'.$i));
       }
 
       // kill the post cache
-      $this->cache->memcached->delete(sha1('detail/' . $post_id));
-      $this->cache->memcached->delete(sha1('posts/likes/' . $post_id));
+      $this->cache->memcached->delete(sha1('posts/detail/id/' . $post_id));
       $this->response(array('status' => true, 'message' => lang('S_DELETE_LIKE')));
     }
         

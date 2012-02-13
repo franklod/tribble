@@ -658,14 +658,18 @@ ul.posts {
 	-webkit-border-radius:2px;
 	-moz-border-radius:2px;
 	border-radius:2px;
+	background-image: url(../images/glass-light.png);
+	background-repeat: repeat-x;
+	background-position: 0px -91px;
+	box-shadow: 0 0 1px rgba(100,100,100,0.5);
 }
 .sidebar-item .color-scheme li  {	width: 30px;
 	height: 20px;}
 .color-scheme li a {
 	float:left;
 	display:block;
-	width: 18px;
-	height: 15px;
+	width: 25px;
+	height: 18px;
 	overflow:hidden;
 	text-indent:-9999px;
 	-webkit-transition:0.1s linear all;
