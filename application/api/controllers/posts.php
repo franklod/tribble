@@ -526,7 +526,7 @@ class Posts extends REST_Controller
     if(!$this->cache->memcached->get($cachekey)){
       
       $this->load->model('Posts_API_model', 'mPosts');
-      $posts_by_color = $this->mPosts->colorSearch($hex,25);
+      $posts_by_color = $this->mPosts->colorSearch($hex,100);
 
       if($posts_by_color == 0)
         $this->response(array('request_status'=>false,'message'=>'Could not find posts to match that color'));
