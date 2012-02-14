@@ -17,12 +17,18 @@ require APPPATH . '/libraries/REST_Controller.php';
 class Likes extends REST_Controller
 {
 
+  var $ttl;
+
   public function __construct()
   {
     parent::__construct();
-    //$this->output->enable_profiler(TRUE);
-    $cacheTTL = 15 * 60;
 
+    $this->ttl->one_day = $this->config->item('api_1_day_cache');
+    $this->ttl->one_hour = $this->config->item('api_1_hour_cache');
+    $this->ttl->thirty_minutes = $this->config->item('api_30_minutes_cache');
+    $this->ttl->ten_minutes = $this->config->item('api_10_minutes_cache');
+
+    //$this->output->enable_profiler(TRUE);
   }
 
   public function exists_get()

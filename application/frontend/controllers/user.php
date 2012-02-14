@@ -95,7 +95,7 @@ class User extends CI_Controller
                     'user_bio' => $this->input->post('bio')
                 );
 
-                if(!$update_result = $this->rest->put('users/profile/update',$user_profile))
+                if(!$update_result = $this->rest->put('users/profile',$user_profile))
                     show_error(lang('F_API_CONNECT'),404);
                 
                 if(!$update_result->request_status){

@@ -3,29 +3,23 @@
 if (!defined('BASEPATH'))
   exit('No direct script access allowed');
 
-/**
- * Posts
- * 
- * @package tribble
- * @author xxx xxx xxx
- * @copyright 2011
- * @version $Id$
- * @access public
- */
-
 require APPPATH . '/libraries/REST_Controller.php';
 
 class Meta extends REST_Controller
 {
 
-  var $cache_ttl;
+  var $ttl;
 
   public function __construct()
   {
     parent::__construct();
-    $this->output->enable_profiler(TRUE);
-    
 
+    $this->ttl->one_day = $this->config->item('api_1_day_cache');
+    $this->ttl->one_hour = $this->config->item('api_1_hour_cache');
+    $this->ttl->thirty_minutes = $this->config->item('api_30_minutes_cache');
+    $this->ttl->ten_minutes = $this->config->item('api_10_minutes_cache');
+
+    // $this->output->enable_profiler(TRUE);
   }
 
   public function tags_get()
@@ -85,7 +79,7 @@ class Meta extends REST_Controller
             $object = array('request_status' => true, 'tags' => array_slice($unique_tags,0,$limit)); 
           }        
           // we have a dataset from the database, let's save it to memcached
-          @$this->cache->memcached->save($cachekey, $object, 20 * 60);
+          @$this->cache->memcached->save($cachekey, $object, $this->ttl->thirty_minutes);
           // output the response
           $this->response($object);
         } else {
@@ -164,7 +158,7 @@ class Meta extends REST_Controller
         // define the response object structure                
         $object = array('status' => true, 'colors' => array_slice($unique_colors,0,$limit));
         // we have a dataset from the database, let's save it to memcached
-        @$this->cache->memcached->save($cachekey, $object, 20 * 60);
+        @$this->cache->memcached->save($cachekey, $object, $this->ttl->thirty_minutes);
         // output the response
         $this->response($object);
       } else
@@ -210,7 +204,7 @@ class Meta extends REST_Controller
   }
 
 
-  public function colors2_get()
+  public function updatepalette_get()
   {
 
     // load the memcached driver
@@ -226,16 +220,6 @@ class Meta extends REST_Controller
     // create the cache key
     $cachekey = sha1('meta/colors2/' . $limit);
     // create the final array
-
-    
-    
-    //$palettes = $this->mMeta->getColors();
-//    foreach($palettes as $palette){
-//      $colors = json_decode($palette->image_palette);
-//      foreach($colors as $color){
-//        var_dump($color);
-//      }
-//    }
     
     // check if the key exists in cache
     if (!$this->cache->memcached->get($cachekey))
@@ -271,14 +255,7 @@ class Meta extends REST_Controller
         }
 
 
-        // // sort the final tags array 
-        // arsort($unique_colors);
-        // // define the response object structure                
-        // $object = array('status' => true, 'colors' => array_slice($unique_colors,0,$limit));
-        // // we have a dataset from the database, let's save it to memcached
-        // @$this->cache->memcached->save($cachekey, $object, 20 * 60);
-        // // output the response
-        // $this->response($object);
+        
       } else
       {
         // we got nothing to show, output error
@@ -311,7 +288,7 @@ class Meta extends REST_Controller
           'request_status' => true,
           'users' => $users
         );
-        $this->cache->memcached->save($cachekey,$object, 10 * 60);
+        $this->cache->memcached->save($cachekey,$object, $this->ttl->ten_minutes);
         $this->response($object);
       } else 
       {

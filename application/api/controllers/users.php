@@ -17,11 +17,21 @@ require APPPATH . '/libraries/REST_Controller.php';
 class Users extends REST_Controller
 {
 
+  var $ttl;
+
   public function __construct()
   {
-    parent::__construct();    
+    parent::__construct();
+
+    $this->ttl->one_day = $this->config->item('api_1_day_cache');
+    $this->ttl->one_hour = $this->config->item('api_1_hour_cache');
+    $this->ttl->thirty_minutes = $this->config->item('api_30_minutes_cache');
+    $this->ttl->ten_minutes = $this->config->item('api_10_minutes_cache');
+       
     $this->load->model('Users_API_Model', 'mUsers');
+
     $this->load->library('encrypt');
+    
     // $this->output->enable_profiler(TRUE);
   }
 
@@ -40,7 +50,7 @@ class Users extends REST_Controller
       if(!$user_list)
         $this->response(array('request_status'=>false,'message'=>lang('F_DATA_READ')));
 
-      $this->cache->memcached->save($cachekey,$user_list,60*60);
+      $this->cache->memcached->save($cachekey,$user_list,$this->ttl->one_hour);
       $this->response(array('request_status'=>true,'user_list'=>$user_list));
     } else {
       $this->response(array('request_status'=>true,'user_list'=>$this->cache->memcached->get($cachekey)));
@@ -62,14 +72,14 @@ class Users extends REST_Controller
 
     if(!$this->cache->memcached->get($cachekey)){
       $profile = $this->mUsers->getUserProfile($user_id);
-      $this->cache->memcached->save($cachekey, $profile[0], 10 * 60);
+      $this->cache->memcached->save($cachekey, $profile[0], $this->ttl->ten_minutes);
       $this->response(array('request_status' => true, 'user' => $profile[0]));
     } else {
       $this->response(array('request_status' => true, 'user' => $this->cache->memcached->get($cachekey)));
     }
   }
 
-  public function updateprofile_put()
+  public function profile_put()
   {
 
     $user_data = array(

@@ -2,25 +2,24 @@
 if (!defined('BASEPATH'))
   exit('No direct script access allowed');
 
-/**
- * Posts
- * 
- * @package tribble
- * @author xxx xxx xxx
- * @copyright 2011
- * @version $Id$
- * @access public
- */
 
 require APPPATH . '/libraries/REST_Controller.php';
 
 class Posts extends REST_Controller
 {
 
+  var $ttl;
+
   public function __construct()
   {
     parent::__construct();
-    $this->output->enable_profiler(TRUE);
+
+    $this->ttl->one_day = $this->config->item('api_1_day_cache');
+    $this->ttl->one_hour = $this->config->item('api_1_hour_cache');
+    $this->ttl->thirty_minutes = $this->config->item('api_30_minutes_cache');
+    $this->ttl->ten_minutes = $this->config->item('api_10_minutes_cache');
+
+    // $this->output->enable_profiler(TRUE);
 
   }
 
@@ -71,7 +70,10 @@ class Posts extends REST_Controller
     $limit = $this->get('limit');
 
     // create the cache key
-    $cachekey = sha1('posts/list/' . $type . $page . $limit);
+    $api_methods = $this->config->item('api_methods');
+    $cachekey = sha1($api_methods['Posts'][__FUNC__]['uri'].$type.$page.$limit);
+
+    // $cachekey = sha1('posts/list/' . $type . $page . $limit);
 
     // if we dont get page and limit vars set the defaults for 600 posts (50 * 12)
     if (!$page)
@@ -105,7 +107,7 @@ class Posts extends REST_Controller
           'result_page' => $page,
           'post_count' => $limit,
           'posts' => $posts);
-        @$this->cache->memcached->save($cachekey, $object, 30 * 60);
+        @$this->cache->memcached->save($cachekey, $object, $this->ttl->thirty_minutes);
         // output the response
         $this->response($object);
       } else
@@ -136,7 +138,9 @@ class Posts extends REST_Controller
     $this->load->model('Posts_API_model', 'mPosts');
 
     // hash the method name and params to get a cache key
-    $cachekey = sha1('posts/detail/id/' . $post_id);
+    // $cachekey = sha1('posts/detail/id/' . $post_id);
+    $api_methods = $this->config->item('api_methods');
+    $cachekey = sha1($api_methods['Posts'][__FUNCTION__]['uri'].$post_id);
 
     // check if the key exists in cache
     if (@!$this->cache->memcached->get($cachekey))
@@ -153,7 +157,7 @@ class Posts extends REST_Controller
           'request_status' => true,
           'post' => $post,
           'post_replies' => array('count' => count($replies), 'replies' => $replies));
-        $this->cache->memcached->save($cachekey, $object, 30 * 60);
+        $this->cache->memcached->save($cachekey, $object, $this->ttl->thirty_minutes);
         $this->response($object);
       }
     } else
@@ -163,7 +167,7 @@ class Posts extends REST_Controller
     }
   }
 
-  public function tagged_get()
+  public function tag_get()
   {
     $tag = $this->get('tag');
     $page = $this->get('page');
@@ -184,7 +188,9 @@ class Posts extends REST_Controller
     $this->load->model('Posts_API_model', 'mPosts');
 
     // hash the method name and params to get a cache key
-    $cachekey = sha1('posts/tag/' . $tag . $page . $limit);
+    // $cachekey = sha1('posts/tag/' . $tag . $page . $limit);
+    $api_methods = $this->config->item('api_methods');
+    $cachekey = sha1($api_methods['Posts'][__FUNCTION__]['uri'].$tag.$page.$limit);
 
     if (@!$this->cache->memcached->get($cachekey))
     {
@@ -199,7 +205,7 @@ class Posts extends REST_Controller
           'posts' => $posts['posts']
         );
         
-        $this->cache->memcached->save($cachekey, $object, 30 * 60);
+        $this->cache->memcached->save($cachekey, $object, $this->ttl->thirty_minutes);
         $this->response($object);
       }
     } else
@@ -229,7 +235,9 @@ class Posts extends REST_Controller
     if (!$limit)
       $limit = 600;
 
-    $cachekey = sha1('posts/user/id/'.$user_id.$page.$limit);
+    // $cachekey = sha1('posts/user/id/'.$user_id.$page.$limit);
+    $api_methods = $this->config->item('api_methods');
+    $cachekey = sha1($api_methods['Posts'][__FUNCTION__]['uri'].$user_id.$page.$limit);
       
 
     if(!$this->cache->memcached->get($cachekey))
@@ -249,7 +257,7 @@ class Posts extends REST_Controller
         'posts' => $posts['posts']
       );
             
-      $this->cache->memcached->save($cachekey,$object, 30 * 60);
+      $this->cache->memcached->save($cachekey,$object, $this->ttl->thirty_minutes);
       $this->response($object);
     } else {
       $this->response($this->cache->memcached->get($cachekey));
@@ -283,14 +291,16 @@ class Posts extends REST_Controller
     $this->load->model('Posts_API_model', 'mPosts');
 
     // hash the method name and params to get a cache key
-    $cachekey = sha1('posts/find/txt' . $string . $page . $limit);
+    // $cachekey = sha1('posts/find/txt' . $string . $page . $limit);
+    $api_methods = $this->config->item('api_methods');
+    $cachekey = sha1($api_methods['Posts'][__FUNCTION__]['uri'].$string.$page.$limit);
 
     if (@!$this->cache->memcached->get($cachekey))
     {
       $posts = $this->mPosts->searchPostsTitleAndDescription($string, $page, $limit);
       if ($posts)
       {
-        $this->cache->memcached->save($cachekey, array('request_status' => true, 'search' => $posts), 30 * 60);
+        $this->cache->memcached->save($cachekey, array('request_status' => true, 'search' => $posts), $this->ttl->thirty_minutes);
         $this->response(array('request_status' => true, 'search' => $posts));
       }
     } else
@@ -480,7 +490,10 @@ class Posts extends REST_Controller
 
     // load the memcached driver
     $this->load->driver('cache');
-    $cachekey = sha1('posts/likes/'.$post_id);
+
+    // $cachekey = sha1('posts/likes/'.$post_id);
+    $api_methods = $this->config->item('api_methods');
+    $cachekey = sha1($api_methods['Posts'][__FUNCTION__]['uri'].$post_id);
 
     if(!$this->cache->memcached->get($cachekey)){
 
@@ -491,7 +504,7 @@ class Posts extends REST_Controller
         $this->response(array('request_status'=>false,'message'=>'Boo hoo, it seems no one likes you.'));
 
     
-      $this->cache->memcached->save($cachekey,$likes, 10 * 60);
+      $this->cache->memcached->save($cachekey,$likes, $this->ttl->ten_minutes);
       $this->response(array('request_status'=>true,'likes'=>$likes));
       
     } else {
@@ -518,7 +531,10 @@ class Posts extends REST_Controller
     if(!$hex)
       $this->response(array('request_status'=>false,'message'=>lang('E_NO_COLOR')));
 
-    $cachekey = sha1('posts/color/hex/'.$hex);
+    // $cachekey = sha1('posts/color/hex/'.$hex);
+
+    $api_methods = $this->config->item('api_methods');
+    $cachekey = sha1($api_methods['Posts'][__FUNCTION__]['uri'].$hex);
 
     // load the memcached driver
     $this->load->driver('cache');
@@ -540,7 +556,7 @@ class Posts extends REST_Controller
         'posts'=>$search_result['posts']
       );
 
-      $this->cache->memcached->save($cachekey,$object,10 * 60);
+      $this->cache->memcached->save($cachekey,$object,$this->ttl->ten_minutes);
       $this->response($object);
     } else {
         $this->response($this->cache->memcached->get($cachekey));

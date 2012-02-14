@@ -7,9 +7,16 @@ require APPPATH . '/libraries/REST_Controller.php';
 class Auth extends REST_Controller
 {
 
+  var $ttl;
+
   public function __construct()
   {
     parent::__construct();
+
+    $this->ttl->one_day = $this->config->item('api_1_day_cache');
+    $this->ttl->one_hour = $this->config->item('api_1_hour_cache');
+    $this->ttl->thirty_minutes = $this->config->item('api_30_minutes_cache');
+    $this->ttl->ten_minutes = $this->config->item('api_10_minutes_cache');;
   }
 
   private function _double_hash($str){
@@ -57,7 +64,7 @@ class Auth extends REST_Controller
     $this->load->driver('cache');
     $cachekey = sha1($session_data['user_email']);
     if(!$this->cache->memcached->get($cachekey)){
-      $this->cache->memcached->save($cachekey,$session_data,24*60*60);
+      $this->cache->memcached->save($cachekey,$session_data,$this->ttl->one_day);
       $this->response(array('request_status'=>true,'id'=>$cachekey));
     } else {
       $this->response(array('request_status'=>true,'id'=>$cachekey));
@@ -75,7 +82,7 @@ class Auth extends REST_Controller
       $metadata = $this->cache->memcached->get_metadata($id);   
       $TTL = (int)floor(($metadata['expire'] - time()) / 60);
       if($TTL < 26)
-        $this->cache->memcached->save($id,$metadata['data'],24*60*60);                    
+        $this->cache->memcached->save($id,$metadata['data'],$this->ttl->one_day);                    
       $this->response(array('request_status'=>true,'user'=>$this->cache->memcached->get($id)));
     }     
   }

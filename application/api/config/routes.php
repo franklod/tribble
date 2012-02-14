@@ -86,8 +86,8 @@ $route['likes/remove'] = 'posts/like';
 $route['meta/tags'] = 'meta/tags/limit/12';
 $route['meta/tags/(:num)'] = 'meta/tags/limit/$1';
 // GET POST LIST BY TAG
-$route['posts/tag/(:any)'] = 'posts/tagged/tag/$1';
-$route['posts/tag/(:any)/(:num)'] = 'posts/tagged/tag/$1/page/$2';
+$route['posts/tag/(:any)'] = 'posts/tag/tag/$1';
+$route['posts/tag/(:any)/(:num)'] = 'posts/tag/tag/$1/page/$2';
 $route['posts/tag/(:any)/(:num)/(:num)'] = 'posts/tagged/tag/$1/page/$2/limit/$3';
 // POSTS BY HEX COLOR
 $route['posts/color/(:any)'] = 'posts/color/hex/$1';
