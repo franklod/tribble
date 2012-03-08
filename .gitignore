@@ -1,3 +1,4 @@
 */config/*
 */logs/log-*.php
 */logs/!index.html
+*/data/*
