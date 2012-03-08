@@ -6,10 +6,9 @@
 * Image color palette extraction and display
 * Comments on posts
 * Reply to a post with another (rebound)
-* List posts by: most recent, most replies, most likes
-* Simple text search
-* Find posts by tag
-* Find posts by user
+* List posts by: most recent, most replies, most likes, user
+* Text search
+* Color search (find posts containing similar colors).
 
 
 ### Installation requirements:
@@ -20,10 +19,10 @@
 * php5-gd
 * php5-mysql
 * mysql-server
-* apache mod_rewrite (optional - requires configuration)
 * memcached
+* imagemagick
+* apache mod_rewrite (optional - requires configuration)
 
 
-There are 2 sql scripts in the schema folder.
-* tribble_schema = generates an empty database
-* tribble_schema_test = generates a database populated with fake posts and users
+### Database
+* The "schema" folder contains the database generation sql script
