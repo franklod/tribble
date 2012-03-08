@@ -76,6 +76,8 @@ class Likes extends REST_Controller
     $this->load->model('Posts_API_model', 'mPosts');
     $this->load->model('Users_API_model', 'mUsers');
     $this->load->model('Likes_API_model', 'mLikes');
+
+    log_message('error','controller');
     
     if (!$post_id)
       $this->response(array('status' => false, 'message' => lang('E_NO_POST_ID')));
@@ -94,19 +96,18 @@ class Likes extends REST_Controller
     } else
     {
 
+      $this->event->add('like',lang('EVENT_LIKE_ADD'),$post_id,$user_id);
+
       // CALCULATE THE NUMBER OF POSSIBLE CACHE PAGES FOR THE POST LISTINGS
-      $cache_pages = ceil( $this->countPosts() / 600);
+      $cache_pages = ceil($this->_countPosts() / 600);
 
-      // KILL THE LISTS CACHE
-      for($i=1;$i<=$cache_pages;$i++){
-        @$this->cache->memcached->delete(sha1('posts/list/new'.$i));
-        @$this->cache->memcached->delete(sha1('posts/list/buzzing'.$i));
-        @$this->cache->memcached->delete(sha1('posts/list/loved'.$i));
-      }
+      // log_message('error','cache pages: '.$cache_pages);
 
-      // kill the post cache
-      $this->cache->memcached->delete(sha1('posts/detail/id/' . $post_id));
+      $this->cachehandler->purge_cache(__FUNCTION__,$cache_pages,$post_id);
+
+      // output the api response
       $this->response(array('status' => true, 'message' => lang('S_ADD_LIKE')));
+
     }
     
         
@@ -141,28 +142,30 @@ class Likes extends REST_Controller
     } else
     {
 
-      // CALCULATE THE NUMBER OF POSSIBLE CACHE PAGES FOR THE POST LISTINGS
-      $cache_pages = ceil( $this->countPosts() / 600);
+      // // CALCULATE THE NUMBER OF POSSIBLE CACHE PAGES FOR THE POST LISTINGS
+      $cache_pages = ceil( $this->_countPosts() / 600);
 
-      // KILL THE LISTS CACHE
-      for($i=1;$i<=$cache_pages;$i++){
-        @$this->cache->memcached->delete(sha1('posts/list/new'.$i));
-        @$this->cache->memcached->delete(sha1('posts/list/buzzing'.$i));
-        @$this->cache->memcached->delete(sha1('posts/list/loved'.$i));
+      // check if there is allready a 'like' event from this user on this post
+      $event_id = $this->event->event_exists('like',$user_id,$post_id);
+
+      if($event_id != false){
+        log_message('error','delete event: '.$event_id);
+        $this->event->delete($event_id);
       }
 
-      // kill the post cache
-      $this->cache->memcached->delete(sha1('posts/detail/id/' . $post_id));
+      
+      $this->cachehandler->purge_cache(__FUNCTION__,$cache_pages,$post_id);
       $this->response(array('status' => true, 'message' => lang('S_DELETE_LIKE')));
+
     }
         
   }
 
-  public function countPosts()
+  function _countPosts()
   {
     $this->load->model('Posts_API_model', 'mPosts');
-    $count = $this->mPosts->countPosts();
-    
+    $count = $this->mPosts->_countPosts();
+
     if (!$count)
     {
       return false;

@@ -28,7 +28,7 @@ $config['api_methods'] = array(
       'uri' => 'posts/likes/'
     ),
     'color_get' => array(
-      'uri' => 'posts/color/hex/'
+      'uri' => 'posts/color/'
     )
   ),
   'Meta' => array(
@@ -51,6 +51,11 @@ $config['api_methods'] = array(
     ),
     'profile_put' => array(
       'uri' => 'users/profile/id/'
+    )
+  ),
+  'Auth' => array(
+    'session_put' => array(
+      'uri' => 'auth/session/user/'
     )
   )
 );

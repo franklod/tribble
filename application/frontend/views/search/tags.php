@@ -1,6 +1,6 @@
 <div class="g75">
   <div class="inner-wrapper">
-  <h3>We found <?=$count?> posts tagged as &ldquo;<?=$tag?>&rdquo;</h3>
+  <h3>We found <?=$count?> posts tagged as &ldquo;<?=urldecode($tag)?>&rdquo;</h3>
   <hr />
   <ul class="posts" style="overflow: hidden;">
 	<? foreach($posts as $post): ?>
@@ -12,7 +12,7 @@
             <span class="desc"><?=word_limiter($post->post_text,20)?></span>
             <em><?=strftime('%B %d, %Y',mysql_to_unix($post->post_date));?></em>              
           </a>
-          <img src="<?=getThumb($post->post_image_path)?>"  alt="<?=$post->post_title?>" />
+          <img src="<?=cdn_url(getThumb($post->post_image_path))?>"  alt="<?=$post->post_title?>" />
         </div>
         <div class="post-tools">
           <p class="ico"><a href="" class="comments"><?=$post->post_reply_count?></a>Comments</p>

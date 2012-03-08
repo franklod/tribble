@@ -28,7 +28,7 @@ class Users_API_model extends CI_Model {
         tr_user.user_realname AS user_name,
         tr_user.user_id,
         tr_user.user_email,
-        (SELECT COUNT(1) FROM `tr_post` WHERE post_user_id = user_id) as post_count
+        (SELECT COUNT(1) FROM `tr_post` WHERE post_user_id = user_id AND post_is_deleted = 0) as post_count
       ');
       $this->db->from('user');
       $this->db->group_by('
@@ -80,7 +80,7 @@ class Users_API_model extends CI_Model {
     }
 
     function checkPasswordForUser($old_pass,$user_id){
-      $query = $this->db->get_where('user',array('user_id'=>$user_id,'user_password'=>$this->encrypt->sha1($this->encrypt->sha1($old_pass))));
+      $query = $this->db->get_where('user',array('user_id'=>$user_id,'user_password'=>$old_pass));
       if($query->num_rows() == 1){
         return true;
       } else {
@@ -89,7 +89,7 @@ class Users_API_model extends CI_Model {
     }
 
     function updateUserPassword($new_pass,$user_id){      
-      $object = array('user_password'=>$this->encrypt->sha1($this->encrypt->sha1($new_pass)));
+      $object = array('user_password'=>$new_pass);
       $this->db->where(array('user_id'=>$user_id));
       $this->db->update('user',$object);
       if($this->db->affected_rows() == 1){

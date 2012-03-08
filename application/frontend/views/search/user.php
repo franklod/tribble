@@ -3,10 +3,8 @@
   <div class="user-banner box">
     <div class="avatar"><?=get_gravatar($email,64)?></div>
     <h2><?=$name?></h2>
-    <p><?=$count?><?= ($count == 1) ? ' post' : ' posts' ?></p>
-    <?if(!empty($bio)):?>
-    <p><?=$bio?></p>
-    <?endif;?>
+    <p class="count"><span><?=$count?></span><?= ($count == 1) ? '<br>post' : '<br>posts' ?></p>
+    <?=(!empty($bio)) ? '<p>'.$bio.'</p>' : '<p>&nbsp;</p>'?>
   </div>  
   <hr />
   <?if($count > 0):?>
@@ -20,7 +18,7 @@
             <span class="desc"><?=word_limiter($post->post_text,20)?></span>
             <em><?=strftime('%B %d, %Y',mysql_to_unix($post->post_date));?></em>              
           </a>
-          <img src="<?=getThumb($post->post_image_path)?>"  alt="<?=$post->post_title?>" />
+          <img src="<?=cdn_url(getThumb($post->post_image_path))?>"  alt="<?=$post->post_title?>" />
         </div>
         <div class="post-tools">
           <p class="ico"><a href="" class="comments"><?=$post->post_reply_count?></a>Comments</p>

@@ -73,7 +73,7 @@ class Post extends CI_Controller
     $api_page = (int)floor((($page * $display_per_page) - $display_per_page) / $api_dataset_rows) + 1;
 
     // try to get the data from the API and show error on failure
-    if (!$REST_data = $this->rest->get('posts/tag/' . $tag . '/' . $api_page))
+    if (!$REST_data = $this->rest->get('posts/tag/' . urlencode($tag) . '/' . $api_page))
     {
       show_error(lang('F_API_CONNECT'), 404);
       log_message(1, 'API Failure. CALL: posts/tag/' . $tag . '/' . $api_page);
@@ -176,7 +176,7 @@ class Post extends CI_Controller
     $data['color'] = $REST_data->hex;
     $data['count'] = $REST_data->post_count;
 
-    $data['title'] = $this->config->item('site_name') . ' - ' . $REST_data->tag;
+    $data['title'] = $this->config->item('site_name') . ' - ' . $REST_data->hex;
     $data['meta_description'] = $this->config->item('site_description');
     $data['meta_keywords'] = $this->config->item('site_keywords');
 
@@ -286,25 +286,25 @@ class Post extends CI_Controller
 
     switch ($type) {
       case 'new':
-        $api_call = 'posts/list/new/';
-        $list_type = 'new';
-        $title_append = ' - Most recent';
-        break;
+      $api_call = 'posts/list/new/';
+      $list_type = 'new';
+      $title_append = ' - Most recent';
+      break;
       case 'buzzing':
-        $api_call = 'posts/list/buzzing/';
-        $list_type = 'buzzing';
-        $title_append = ' - Most commented';
-        break;
+      $api_call = 'posts/list/buzzing/';
+      $list_type = 'buzzing';
+      $title_append = ' - Most commented';
+      break;
       case 'loved':
-        $api_call = 'posts/list/loved/';
-        $list_type = 'loved';
-        $title_append = ' - Most liked';
-        break;
+      $api_call = 'posts/list/loved/';
+      $list_type = 'loved';
+      $title_append = ' - Most liked';
+      break;
       default:
-        $api_call = 'posts/list/new/';
-        $list_type = 'new';
-        $title_append = ' - Most recent';
-        break;
+      $api_call = 'posts/list/new/';
+      $list_type = 'new';
+      $title_append = ' - Most recent';
+      break;
     }
 
     $data['title'] = $this->config->item('site_name') . $title_append;
@@ -418,7 +418,7 @@ class Post extends CI_Controller
     } else {
       $slug = strpos($user, '-');
     }
-      
+    
     $user_id = substr($user, 0, $slug);
 
     $session = $this->alternatesession->session_exists();
@@ -512,7 +512,7 @@ class Post extends CI_Controller
       'å'=>'a', 'æ'=>'a', 'ç'=>'c', 'è'=>'e', 'é'=>'e', 'ê'=>'e', 'ë'=>'e', 'ì'=>'i', 'í'=>'i', 'î'=>'i', 
       'ï'=>'i', 'ð'=>'o', 'ñ'=>'n', 'ò'=>'o', 'ó'=>'o', 'ô'=>'o', 'õ'=>'o', 'ö'=>'o', 'ø'=>'o', 'ù'=>'u', 
       'ú'=>'u', 'û'=>'u', 'ý'=>'y', 'ý'=>'y', 'þ'=>'b', 'ÿ'=>'y', 'ƒ'=>'f'
-    );
+      );
 
     foreach ($users_request->user_list as $user){
       $initial = strtr(mb_substr($user->user_name,0,1),$normalizeChars);
@@ -551,18 +551,8 @@ class Post extends CI_Controller
     } else {
       $slug = strpos($postId, '-');
     }
-      
+    
     $post_id = substr($postId, 0, $slug);
-
-    //Pull in an array of tweets
-    $REST_Data = $this->rest->get('posts/single/' . $post_id);
-
-    //Pull in an array of tweets
-    $likers = $this->rest->get('posts/likes/' . $post_id);
-
-    if($REST_Data->request_status == false)
-      show_404('The post you requested does not exist!');
-      
 
     $session = $this->alternatesession->session_exists();
 
@@ -577,6 +567,21 @@ class Post extends CI_Controller
       }
     }
 
+    if(isset($session->user_id)){
+      $request = 'posts/single/' . $post_id . '/' . $session->user_id;
+    } else {
+      $request = 'posts/single/' . $post_id;
+    }
+
+    //Pull in an array of tweets
+    $REST_Data = $this->rest->get($request);
+
+    //Pull in an array of tweets
+    $likers = $this->rest->get('posts/likes/' . $post_id);
+
+    if($REST_Data->request_status == false)
+      show_404('The post you requested does not exist!');
+
     $tag_data = $this->rest->get('meta/tags');
     $color_data = $this->rest->get('meta/colors');
     $users_data = $this->rest->get('meta/users');
@@ -585,14 +590,7 @@ class Post extends CI_Controller
     $data['colors'] = $color_data->colors;
     $data['users'] = $users_data->users;   
 
-    $rgb = json_decode($REST_Data->post[0]->post_image_palette);
-
-    $hex = array();
-
-    foreach($rgb as $color){
-      list($r,$g,$b) = explode(',',$color);
-      $hex[] = RGBToHex($r,$g,$b);
-    }
+    
 
     $parent_id = $REST_Data->post[0]->post_parent_id;
 
@@ -601,9 +599,9 @@ class Post extends CI_Controller
       $data['parent'] = $parent_data->post[0];
     }
 
-    $REST_Data->post[0]->post_image_palette = $hex;
 
     $data['post'] = $REST_Data->post[0];    
+    $data['palette'] = $REST_Data->palette;   
     $data['replies'] = $REST_Data->post_replies->replies;
     $data['replies_count'] = $REST_Data->post_replies->count;
 
@@ -613,6 +611,9 @@ class Post extends CI_Controller
     $data['title'] = $this->config->item('site_name') . ' - ' . $data['post']->post_title;
     $data['meta_description'] = $this->config->item('site_description') . ' - ' .  $data['post']->post_text;
     $data['meta_keywords'] = $this->config->item('site_keywords') . $data['post']->post_tags;
+
+    $data['css'] = '<link rel="stylesheet" href="'.cdn_url('assets/css/jquery.fancybox.css').'" type="text/css" media="screen" />';
+    $data['js'] = '<script type="text/javascript" src="'.cdn_url('assets/js/jquery.fancybox.pack.js').'"></script>';
 
     $this->load->view('common/page_top.php', $data);
     $this->load->view('post/view.php', $data);
@@ -629,109 +630,114 @@ class Post extends CI_Controller
     $session = $this->alternatesession->session_exists();
 
     if($session){
-        $data['user'] = $session;
+      $data['user'] = $session;
 
-        $this->form_validation->set_error_delimiters('<p class="help">', '</p>');
+      $this->form_validation->set_error_delimiters('<p class="help">', '</p>');
 
         // check form submission and validate
-        if ($this->form_validation->run('upload_image') == false)
-        {
+      if ($this->form_validation->run('upload_image') == false)
+      {
 
           //form has errors : show page and errors
+        $this->load->view('common/page_top.php', $data);
+        $this->load->view('post/upload.php', $data);
+        $this->load->view('common/page_end.php', $data);
+
+      } else
+      {
+
+          // get the uid from the session data and hash it to be used as the user upload folder name
+        $user_hash = do_hash($session->user_email);
+
+          // set the upload configuration
+        $ulConfig['upload_path'] = './data/' . $user_hash . '/';
+        $ulConfig['allowed_types'] = 'jpg|png';
+        $ulConfig['max_width'] = '800';
+        $ulConfig['max_height'] = '600';
+        $ulConfig['encrypt_name'] = true;
+        $ulConfig['overwrite'] = false;
+
+          // $ulConfig['min_width'] = '400';
+          // $ulConfig['min_height'] = '300';
+
+          // load the file uploading lib and initialize
+        $this->load->library('upload', $ulConfig);
+        $this->upload->initialize($ulConfig);
+
+          // check if upload was successful and react
+        if (! $this->upload->do_upload('image_file'))
+        {
+          
+          $data['errors'] = array('message' => $this->upload->display_errors());
+            //form has errors : show page and errors
           $this->load->view('common/page_top.php', $data);
           $this->load->view('post/upload.php', $data);
           $this->load->view('common/page_end.php', $data);
 
         } else
         {
-
-          // get the uid from the session data and hash it to be used as the user upload folder name
-          $user_hash = do_hash($session->user_email);
-
-          // set the upload configuration
-          $ulConfig['upload_path'] = './data/' . $user_hash . '/';
-          $ulConfig['allowed_types'] = 'jpg|png';
-          $ulConfig['max_width'] = '400';
-          $ulConfig['max_height'] = '300';
-          // $ulConfig['min_width'] = '400';
-          // $ulConfig['min_height'] = '300';
-
-          // load the file uploading lib and initialize
-          $this->load->library('upload', $ulConfig);
-          $this->upload->initialize($ulConfig);
-
-          // check if upload was successful and react
-          if (! $this->upload->do_upload('image_file'))
-          {
-            
-            $data['errors'] = array('message' => $this->upload->display_errors());
-            //form has errors : show page and errors
-            $this->load->view('common/page_top.php', $data);
-            $this->load->view('post/upload.php', $data);
-            $this->load->view('common/page_end.php', $data);
-
-          } else
-          {
-            $data = array('upload_data' => $this->upload->data());
+          $data = array('upload_data' => $this->upload->data());
             // set the data to write in db;
 
-            $image_color_data = ImageProcessing::GetImageInfo($data['upload_data']['full_path']);
-
-            $imgdata = array(
-              'path' => substr($ulConfig['upload_path'] . $data['upload_data']['file_name'], 1), 
-              'palette' => json_encode($image_color_data->relevantColors),
-              'ranges' => json_encode($image_color_data->relevantColorRanges)
+          $imgdata = array(
+            'path' => substr($ulConfig['upload_path'] . $data['upload_data']['file_name'], 1), 
             );
 
-            $config['image_library'] = 'gd2';
-            $config['source_image'] = $ulConfig['upload_path'] . $data['upload_data']['file_name'];
-            $config['create_thumb'] = true;
-            $config['maintain_ratio'] = true;
-            $config['width'] = 200;
-            $config['height'] = 150;
+          $config['image_library'] = 'gd2';
+          $config['source_image'] = $ulConfig['upload_path'] . $data['upload_data']['file_name'];
+          $config['create_thumb'] = true;
+          $config['maintain_ratio'] = true;
+          $config['width'] = 200;
+          $config['height'] = 150;
+          $config['quality'] = 80;
 
-            $this->load->library('image_lib', $config);
-            $this->image_lib->resize();
+          $this->load->library('image_lib', $config);
+          $this->image_lib->resize();
 
-            $post_put_data = array(
+          $post_put_data = array(
             'image_data' => $imgdata,
             'post_title' => $this->input->post('post_title'),
             'post_text' => $this->input->post('post_text'),
             'post_tags' => $this->input->post('post_tags'),
             'user_id' => $session->user_id
             );
-            
-            $post_put = $this->rest->put('posts/upload', $post_put_data);
+          
+          $CREATE_POST = $this->rest->put('posts/upload', $post_put_data);
 
-            if ($post_put->request_status)
-            {
-              redirect('/view/' . $post_put->post_id);
-            } else
-            {
+          var_dump($CREATE_POST);
 
-              $this->rest->put('trash/throw',array('trash_path'=>$imgdata['image_path']));
+          if ($CREATE_POST->request_status == true)
+          {
+            redirect('/view/' . $CREATE_POST->post_id);
+          } else
+          {
 
-              $data['title'] = $this->config->item('site_name');
-              $data['meta_description'] = $this->config->item('site_description');
-              $data['meta_keywords'] = $this->config->item('site_keywords');
+            $this->rest->put('trash/throw',array('trash_path'=>$imgdata['path']));
 
-              $data['errors'] = array('message' => 'Something is broken. Let\'s all pray to the Mighty Carmona!');
+            $data['title'] = $this->config->item('site_name');
+            $data['meta_description'] = $this->config->item('site_description');
+            $data['meta_keywords'] = $this->config->item('site_keywords');
+
+            $data['errors'] = array('message' => 'Something is broken. Let\'s all pray to the Mighty Carmona!');
+              // log_message('error','api call: posts/upload/');
+              // log_message('error','api request status: '.$post_put->request_status);
+              // log_message('error','api request message: '.$post_put->message);
 
               //form has errors : show page and errors
-              $this->load->view('common/page_top.php', $data);
-              $this->load->view('post/upload.php', $data);
-              $this->load->view('common/page_end.php', $data);
-            }
+            $this->load->view('common/page_top.php', $data);
+            $this->load->view('post/upload.php', $data);
+            $this->load->view('common/page_end.php', $data);
+          }
 
-          }          
+        }          
 
-        }
-
-      } else {
-        redirect('/auth/login/upload');
       }
 
-   
+    } else {
+      redirect('/auth/login/upload');
+    }
+
+    
   }
 
   public function delete($postId)
@@ -743,7 +749,7 @@ class Post extends CI_Controller
     } else {
       $slug = strpos($postId, '-');
     }
-      
+    
     $post_id = substr($postId, 0, $slug);
 
     $session = $this->alternatesession->session_exists();
@@ -755,13 +761,15 @@ class Post extends CI_Controller
 
       if(!$delete_request)
         show_error(lang('F_API_CONNECT'));
-        
+
+      // echo $delete_request;
+      
       if(!$delete_request->request_status)
         show_error($delete_request->message);
-            
+      
       $data['message'] = $delete_request->message;
       $data['heading'] = 'It\'s gone!';
-      $data['delay'] = 5;
+      $data['delay'] = 3;
 
       $this->load->view('common/success.php',$data);
     } else {
@@ -787,7 +795,7 @@ class Post extends CI_Controller
     $user_id = $this->input->post('user_id');
     $post_id = $this->input->post('post_id');
     $comment_text = $this->input->post('comment_text');
-    $comment_response = $this->rest->put('/reply/comment', array(
+    $comment_response = $this->rest->put('reply/comment', array(
       'post_id' => $post_id,
       'user_id' => $user_id,
       'comment_text' => $comment_text));
@@ -818,7 +826,7 @@ class Post extends CI_Controller
       redirect(site_url());
     }
 
-    $comment_response = $this->rest->delete('/reply/comment', array(
+    $comment_response = $this->rest->delete('reply/comment', array(
       'post_id' => $post_id,
       'comment_id' => $comment_id,
       'user_id' => $user_id));
@@ -847,7 +855,7 @@ class Post extends CI_Controller
     } else {
       $slug = strpos($postId, '-');
     }
-      
+    
     $post_id = substr($postId, 0, $slug);
 
     $session = $this->alternatesession->session_exists();
@@ -858,7 +866,7 @@ class Post extends CI_Controller
       redirect(site_url());
     }    
 
-    $like_add = $this->rest->put('/likes/like', array('post_id' => $post_id, 'user_id' => $session->user_id));
+    $like_add = $this->rest->put('likes/like', array('post_id' => $post_id, 'user_id' => $session->user_id));
     if ($like_add->status)
     {
       //var_($like_add);
@@ -885,7 +893,7 @@ class Post extends CI_Controller
     } else {
       $slug = strpos($postId, '-');
     }
-      
+    
     $post_id = substr($postId, 0, $slug);
 
     $session = $this->alternatesession->session_exists();
@@ -896,7 +904,7 @@ class Post extends CI_Controller
       redirect(site_url());
     }
 
-    $like_remove = $this->rest->delete('/likes/like', array('post_id' => $post_id, 'user_id' => $session->user_id));
+    $like_remove = $this->rest->delete('likes/like', array('post_id' => $post_id, 'user_id' => $session->user_id));
     if ($like_remove->status)
     {
       redirect('/view/' . $post_id);
@@ -944,7 +952,7 @@ class Post extends CI_Controller
       'å'=>'a', 'æ'=>'a', 'ç'=>'c', 'è'=>'A', 'é'=>'e', 'ê'=>'E', 'ë'=>'e', 'ì'=>'i', 'í'=>'i', 'î'=>'i', 
       'ï'=>'i', 'ð'=>'o', 'ñ'=>'n', 'ò'=>'o', 'ó'=>'o', 'ô'=>'o', 'õ'=>'o', 'ö'=>'o', 'ø'=>'o', 'ù'=>'u', 
       'ú'=>'u', 'û'=>'u', 'ý'=>'y', 'ý'=>'y', 'þ'=>'b', 'ÿ'=>'y', 'ƒ'=>'f'
-    );
+      );
 
     $alpha = array();
 
@@ -965,83 +973,84 @@ class Post extends CI_Controller
       $data['user'] = $session;
 
       $data['title'] = $this->config->item('site_name') . ' - Upload';
-        $data['meta_description'] = $this->config->item('site_description');
-        $data['meta_keywords'] = $this->config->item('site_keywords');
+      $data['meta_description'] = $this->config->item('site_description');
+      $data['meta_keywords'] = $this->config->item('site_keywords');
 
-        if(!strpos($postId, '-'))
-        {
-          $slug = strlen($postId);
-        } else {
-          $slug = strpos($postId, '-');
-        }
-          
-        $post_id = substr($postId, 0, $slug);
+      if(!strpos($postId, '-'))
+      {
+        $slug = strlen($postId);
+      } else {
+        $slug = strpos($postId, '-');
+      }
+      
+      $post_id = substr($postId, 0, $slug);
 
         //Pull in an array of tweets
-        $post_data = $this->rest->get('posts/single/' . $post_id);
-        $data['post'] = $post_data->post[0];
+      $post_data = $this->rest->get('posts/single/' . $post_id);
+      $data['post'] = $post_data->post[0];
 
-        $this->form_validation->set_error_delimiters('<p class="help">', '</p>');
+      $this->form_validation->set_error_delimiters('<p class="help">', '</p>');
 
         // check form submission and validate
-        if ($this->form_validation->run('upload_image') == false)
-        {
+      if ($this->form_validation->run('upload_image') == false)
+      {
 
           //form has errors : show page and errors
+        $this->load->view('common/page_top.php', $data);
+        $this->load->view('post/reply.php', $data);
+        $this->load->view('common/page_end.php', $data); 
+
+      } else
+      {
+
+          // get the uid from the session data and hash it to be used as the user upload folder name
+        $user_hash = do_hash($session->user_email);
+
+          // set the upload configuration
+        $ulConfig['upload_path'] = './data/' . $user_hash . '/';
+        $ulConfig['allowed_types'] = 'jpg|png';
+        $ulConfig['max_width'] = '400';
+        $ulConfig['max_height'] = '300';
+        $ulConfig['encrypt_name'] = true;
+        $ulConfig['overwrite'] = false;
+
+          // load the file uploading lib and initialize
+        $this->load->library('upload', $ulConfig);
+        $this->upload->initialize($ulConfig);
+
+          // check if upload was successful and react
+        if (!$this->upload->do_upload('image_file'))
+        {
+
+          $data['errors'] = array('message' => $this->upload->display_errors());
+            //form has errors : show page and errors
+            //form has errors : show page and errors
           $this->load->view('common/page_top.php', $data);
           $this->load->view('post/reply.php', $data);
           $this->load->view('common/page_end.php', $data); 
 
         } else
         {
-
-          // get the uid from the session data and hash it to be used as the user upload folder name
-          $user_hash = do_hash($session->user_email);
-
-          // set the upload configuration
-          $ulConfig['upload_path'] = './data/' . $user_hash . '/';
-          $ulConfig['allowed_types'] = 'jpg|png';
-          $ulConfig['max_width'] = '400';
-          $ulConfig['max_height'] = '300';
-
-          // load the file uploading lib and initialize
-          $this->load->library('upload', $ulConfig);
-          $this->upload->initialize($ulConfig);
-
-          // check if upload was successful and react
-          if (!$this->upload->do_upload('image_file'))
-          {
-
-            $data['errors'] = array('message' => $this->upload->display_errors());
-            //form has errors : show page and errors
-            //form has errors : show page and errors
-            $this->load->view('common/page_top.php', $data);
-            $this->load->view('post/reply.php', $data);
-            $this->load->view('common/page_end.php', $data); 
-
-          } else
-          {
-            $data = array('upload_data' => $this->upload->data());
+          $data = array('upload_data' => $this->upload->data());
             // set the data to write in db;
 
-            $image_color_data = ImageProcessing::GetImageInfo($data['upload_data']['full_path']);
+          $image_color_data = ImageProcessing::GetImageInfo($data['upload_data']['full_path']);
 
-            $imgdata = array(
-              'path' => substr($ulConfig['upload_path'] . $data['upload_data']['file_name'], 1), 
-              'palette' => json_encode($image_color_data->relevantColors),
-              'ranges' => json_encode($image_color_data->relevantColorRanges)
+          $imgdata = array(
+            'path' => substr($ulConfig['upload_path'] . $data['upload_data']['file_name'], 1), 
+            'palette' => json_encode($image_color_data->relevantColors),
+            'ranges' => json_encode($image_color_data->relevantColorRanges)
             );
 
-            $config['image_library'] = 'gd2';
-            $config['source_image'] = $ulConfig['upload_path'] . $data['upload_data']['file_name'];
-            $config['create_thumb'] = true;
-            $config['maintain_ratio'] = true;
-            $config['width'] = 200;
-            $config['height'] = 150;
+          $config['image_library'] = 'gd2';
+          $config['source_image'] = $ulConfig['upload_path'] . $data['upload_data']['file_name'];
+          $config['create_thumb'] = true;
+          $config['maintain_ratio'] = true;
+          $config['width'] = 200;
+          $config['height'] = 150;
 
-            $this->load->library('image_lib', $config);
-            $this->image_lib->resize();
-          }
+          $this->load->library('image_lib', $config);
+          $this->image_lib->resize();
 
           $post_put_data = array(
             'image_data' => $imgdata,
@@ -1050,7 +1059,7 @@ class Post extends CI_Controller
             'post_tags' => $this->input->post('post_tags'),
             'post_parent_id' => $this->input->post('post_parent_id'),
             'user_id' => $session->user_id,
-          );          
+            );          
           
           $post_put = $this->rest->put('reply/post', $post_put_data);
 
@@ -1068,13 +1077,104 @@ class Post extends CI_Controller
 
             $data['errors'] = array('message' => 'Something is broken. Let\'s all pray to the Mighty Carmona!');
 
-            //form has errors : show page and errors
+              //form has errors : show page and errors
             $this->load->view('common/page_top.php', $data);
             $this->load->view('post/reply.php', $data);
             $this->load->view('common/page_end.php', $data); 
           }
 
         }
+
+      }
+
+    } else {
+      redirect(site_url());
+    }      
+
+  }
+
+  public function edit($postId){
+
+    $session = $this->alternatesession->session_exists();
+
+    if($session){
+
+      $data['user'] = $session;
+
+      $data['title'] = $this->config->item('site_name') . ' - Upload';
+      $data['meta_description'] = $this->config->item('site_description');
+      $data['meta_keywords'] = $this->config->item('site_keywords');
+
+      if(!strpos($postId, '-'))
+      {
+        $slug = strlen($postId);
+      } else {
+        $slug = strpos($postId, '-');
+      }
+      
+      $post_id = substr($postId, 0, $slug);        
+
+      $this->form_validation->set_error_delimiters('<p class="help">', '</p>');
+
+        //Pull in an array of tweets
+      $post_data = $this->rest->get('posts/edit',array('post_id'=>$post_id,'user_id'=>$session->user_id));
+      
+      if(!$post_data->request_status)
+        show_error($post_data->message);
+
+      $data['post'] = $post_data->post;
+      $data['js'] = "<script type=\"text/javascript\">$(document).ready(function(){ $('#post_tags').importTags('".$data['post']->post_tags."'); });</script>";
+
+        // check form submission and validate
+      if ($this->form_validation->run('upload_image') == false)
+      {          
+
+          //form has errors : show page and errors
+        $this->load->view('common/page_top.php', $data);
+        $this->load->view('post/edit.php', $data);
+        $this->load->view('common/page_end.php', $data);
+
+      } else
+      {
+
+
+        $post_put_data = array(
+          'post_id' => $this->input->post('post_id'),
+          'post_title' => $this->input->post('post_title'),
+          'post_text' => $this->input->post('post_text'),
+          'post_tags' => $this->input->post('post_tags'),
+          'user_id' => $session->user_id,
+          );
+
+        var_dump($post_put_data);
+        
+        $post_put = $this->rest->post('posts/edit', $post_put_data);
+
+        echo($post_put);
+
+        if ($post_put->request_status)
+        {
+          redirect('/view/' . $post_put_data['post_id']);
+        } else
+        {
+
+            // var_dump($post_put);
+
+          
+
+          $data['title'] = $this->config->item('site_name');
+          $data['meta_description'] = $this->config->item('site_description');
+          $data['meta_keywords'] = $this->config->item('site_keywords');
+
+          $data['errors'] = array('message' => 'Something is broken. Let\'s all pray to the Mighty Carmona!');
+
+            //form has errors : show page and errors
+          $this->load->view('common/page_top.php', $data);
+          $this->load->view('post/edit.php', $data);
+          $this->load->view('common/page_end.php', $data); 
+        }
+
+      }
 
     } else {
       redirect(site_url());

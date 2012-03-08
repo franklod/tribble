@@ -1,7 +1,7 @@
 <div class="g75 box">
 <h2>Post a new image</h2>
 <hr>
-<p>You can only use jpeg or png files and image size is restricted to <b>400 x 300</b>  pixels.</p>
+<p>You can only use jpeg or png files and image size is restricted to <b>800 x 600</b>  pixels.</p>
 <p>This is simply to keep the storage needs as low as possible and to "encourage" designers to focus on the really important detail rather than posting whole layouts.</p>
 <p>Remember, you can always post another image!</p>
 <p>Be kind to youself, and others, and give proper title, tags and description to your work.</p>
@@ -18,8 +18,8 @@
   <p><?=$success?></p>
 </div>
 <? endif;?>
+<?=form_open_multipart('/upload',array('id'=>'upload'))?>
 <?=form_fieldset()?>
-<?=form_open_multipart('/upload')?>
 <div class="e_wrap <?=(form_error('image_file') == TRUE) ? 'error' : ''; ?>">
 <?=form_label('Image','image_file')?>
 <?=form_upload(array('name'=>'image_file','id'=>'image_file','value'=>set_value('image_file')))?>

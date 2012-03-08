@@ -9,5 +9,16 @@
   <meta charset="utf-8">
   <meta name="description" content="<?=$meta_description?>" />
   <meta name="keywords" content="<?=$meta_keywords?>" />
+  <?if(isset($css)):?>
+    <?=$css?>
+  <?endif;?>
 </head>
 <body>
+<div id="overlay" class="black_overlay">
+  <div class="wrapper">
+    <div id="light" class="overlay_content">
+      <span class="loader">&nbsp;</span>
+      <h4>Please wait while your image is processed.</h4>
+    </div>
+  </div>
+</div>

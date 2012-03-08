@@ -18,8 +18,8 @@ $lang['E_NO_USER_PASSWORD'] = "The user password was not provided.";
 $lang['E_NO_USER_EMAIL'] = "The user email was not provided.";
 $lang['E_NO_USER_BIO'] = "The user bio was not provided.";
 $lang['E_NO_POST_ID'] = "The post id was not provided.";
-$lang['E_NO_NEW_PASS'] = "The new password was not provided.";
-$lang['E_NO_OLD_PASS'] = "The old password was not provided.";
+$lang['E_NO_NEW_PASSWORD'] = "The new password was not provided.";
+$lang['E_NO_OLD_PASSWORD'] = "The old password was not provided.";
 $lang['E_NO_SEARCH_TEXT'] = "The search text was not provided.";
 $lang['E_NO_SEARCH_TAG'] = "The search tag was not provided.";
 $lang['E_NO_POST_TITLE'] = "The post title was not provided.";
@@ -63,6 +63,8 @@ $lang['F_DELETE_POST'] = "We're sorry, but we couldn't delete your post. Please 
 $lang['F_API_CONNECT'] = "Dude! WTF have you done? YOU BROKE THE INTERNET!";
 $lang['F_USER_LIST'] = "We're sorry but couldn't get the user list. Please try again later.";
 $lang['F_ADD_USER'] = "We're sorry but couldn't create your user account. Please try again later.";
+$lang['F_DB_QUERY'] = "Could not get the data from database.";
+$lang['F_EDIT_POST'] = "We're sorry, but we couldn't edit your post. Please try again later.";
 
 // OPERATION SUCCESS (S_)
 $lang['S_PASSWORD_CHANGE'] = "Your password was successfully changed.";
@@ -76,6 +78,11 @@ $lang['S_SESSION_KILLED'] = "The session was successfully terminated.";
 $lang['S_DELETE_POST'] = "Your post was successfully deleted.";
 $lang['S_USER_LIST'] = "The user list was successfully retrieved";
 $lang['S_ADD_USER'] = "Your user account was successfully created. Go ahead and login.";
+$lang['S_EDIT_POST'] = "Your post was successfully edited.";
+
+$lang['EVENT_LIKE_ADD'] = ' liked your post.';
+$lang['EVENT_COMMENT_ADD'] = ' commented on your post.';
+$lang['EVENT_REPLY_ADD'] = 'replied to your post.';
 
 /* End of file api.php */
 /* Location: ./system/language/english/api_lang.php */

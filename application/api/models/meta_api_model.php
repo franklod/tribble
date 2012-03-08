@@ -5,6 +5,27 @@ class Meta_API_model extends CI_Model {
     function getTags(){
       $this->db->select('tag_content');
       $this->db->from('tag');
+      $this->db->join('tr_post','tr_tag.tag_post_id = tr_post.post_id','inner');
+      $this->db->where(array('tr_post.post_is_deleted'=>0));
+      $query = $this->db->get();
+      if($query->num_rows() > 0){
+        return $query->result();
+      } else {
+        return $query->num_rows();
+      }                                              
+    }
+
+
+    function getColors(){
+      $this->db->select('HEX');
+      $this->db->distinct();
+      $this->db->from('palette');
+      $this->db->join('tr_post','tr_palette.palette_post_id = tr_post.post_id','inner');
+      $this->db->where(array('tr_post.post_is_deleted'=>0));
+      $this->db->where('tr_palette.HSL_L > 20');
+      $this->db->where('tr_palette.HSL_S > 60');
+      $this->db->order_by('HSL_H','ASC');
+      // $this->db->order_by('HSL_L','DESC');   
       $query = $this->db->get();
       if($query->num_rows() > 0){
         return $query->result();
@@ -13,8 +34,8 @@ class Meta_API_model extends CI_Model {
       }                                              
     }
     
-    function getColors(){
-      $this->db->select('image_palette,image_post_id');
+    function getImagePaths(){
+      $this->db->select('image_path,image_post_id as post_id');
       $this->db->from('image');
       $query = $this->db->get();
       if($query->num_rows() > 0){
@@ -65,18 +86,10 @@ class Meta_API_model extends CI_Model {
       $this->db->update('image', $data); 
     }
 
-    function transferPalette($ID,$HEX,$R,$G,$B,$H,$S,$V){
-      $data = array(
-         'post_id' => $ID,
-         'color_hex' => $HEX,
-         'color_R' => $R,
-         'color_G' => $G,
-         'color_B' => $B,
-         'color_H' => $H,
-         'color_S' => $S,
-         'color_V' => $V,
-      );
-      $this->db->insert('palette',$data);
+    function transferPalette($palette){
+      foreach ($palette as $color) {
+        $this->db->insert('palette',$color);
+      }      
     }
     
     function getUsers()      {
@@ -88,6 +101,7 @@ class Meta_API_model extends CI_Model {
       ');
       $this->db->from('tr_user');
       $this->db->join('tr_post','tr_user.user_id = tr_post.post_user_id','inner');
+      $this->db->where(array('tr_post.post_is_deleted'=>0));
       $this->db->group_by('
         tr_user.user_id,
         tr_user.user_realname,

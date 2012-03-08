@@ -31,6 +31,20 @@ class Replies extends REST_Controller
     //$this->output->enable_profiler(TRUE);
   }
 
+  private function _countPosts()
+  {
+    $this->load->model('Posts_API_model', 'mPosts');
+    $count = $this->mPosts->_countPosts();
+    
+    if (!$count)
+    {
+      return false;
+    } else
+    {
+      return $count;
+    }
+  }
+
   public function comment_put()
   {
     $user_id = $this->put('user_id');
@@ -67,15 +81,13 @@ class Replies extends REST_Controller
     } else
     {
 
-      $cacheKeys = array(
-        sha1('posts/detail/id/' . $post_id),
-        sha1('posts/list/new'),
-        sha1('posts/list/buzzing'),
-        sha1('posts/list/loved'));
-      foreach ($cacheKeys as $key)
-      {
-        $this->cache->memcached->delete($key);
-      }
+      $this->event->add('comment',lang('EVENT_COMMENT_ADD'),$post_id,$user_id);
+      // lets wipe the relevant cache items
+      // calculate how many cache pages we have
+      $cache_pages = ceil( $this->_countPosts() / 600);
+
+      // kill 'em all!
+      $this->cachehandler->purge_cache(__FUNCTION__,$cache_pages,$post_id);
       $this->response(array('request_status' => true, 'message' => lang('S_ADD_COMMENT')));
     }
 
@@ -115,15 +127,21 @@ class Replies extends REST_Controller
     } else
     {
 
-      $cacheKeys = array(
-        sha1('posts/detail/id/' . $post_id),
-        sha1('posts/list/new'),
-        sha1('posts/list/buzzing'),
-        sha1('posts/list/loved'));
-      foreach ($cacheKeys as $key)
-      {
-        $this->cache->memcached->delete($key);
+
+      // check if there is allready a 'like' event from this user on this post
+      $event_id = $this->event->event_exists('comment',$user_id,$post_id);
+
+      if($event_id != false){
+        log_message('error','delete event: '.$event_id);
+        $this->event->delete($event_id);
       }
+
+      // lets wipe the relevant cache items
+      // calculate how many cache pages we have
+      $cache_pages = ceil( $this->_countPosts() / 600);
+
+      // kill 'em all!
+      $this->cachehandler->purge_cache(__FUNCTION__,$cache_pages,$post_id);      
       $this->response(array('request_status' => true, 'message' => lang('S_DELETE_COMMENT')));
     }
 

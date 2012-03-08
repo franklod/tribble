@@ -244,15 +244,16 @@ class REST_Controller extends CI_Controller {
 		{
 			// all the compression settings must be done before sending any headers
 			// if php is not handling the compression by itself
-      //if (@(bool)ini_get('zlib.output_compression') === FALSE) {
-//          // ob_gzhandler depends on zlib
-//          if (extension_loaded('zlib')) {
-//              // if the client supports GZIP compression
-//              if (isset($_SERVER['HTTP_ACCEPT_ENCODING']) AND strpos($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip') !== FALSE) {
-//                  ob_start('ob_gzhandler');
-//              }
-//          }
-//      }
+
+			//  if (@(bool)ini_get('zlib.output_compression') === FALSE) {
+			//     // ob_gzhandler depends on zlib
+			//     if (extension_loaded('zlib')) {
+			//         // if the client supports GZIP compression
+			//         if (isset($_SERVER['HTTP_ACCEPT_ENCODING']) AND strpos($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip') !== FALSE) {
+			//             ob_start('ob_gzhandler');
+			//         }
+			//     }
+			// }
 
 			is_numeric($http_code) OR $http_code = 200;
 
@@ -285,8 +286,10 @@ class REST_Controller extends CI_Controller {
 		header('HTTP/1.1: ' . $http_code);
 		header('Status: ' . $http_code);
 		header('Content-Length: ' . strlen($output));
-
+		// log_message('error',$output);
 		exit($output);
+
+		
 	}
 
 	/*
@@ -851,4 +854,3 @@ class REST_Controller extends CI_Controller {
 		return $this->get('callback') . '(' . json_encode($data) . ')';
 	}
 }
-?>

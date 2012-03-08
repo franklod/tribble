@@ -25,7 +25,7 @@
 </div>
 <? endif;?>
 <?=form_fieldset()?>
-<?=form_open_multipart(uri_string())?>
+<?=form_open_multipart(uri_string(),array('id'=>'upload'))?>
 <?=form_hidden('post_parent_id',$post->post_id)?>
 <div class="e_wrap <?=(form_error('image_file') == TRUE) ? 'error' : ''; ?>">
 <?=form_label('Image','image_file')?>

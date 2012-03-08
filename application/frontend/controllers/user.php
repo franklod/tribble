@@ -131,7 +131,7 @@ class User extends CI_Controller
 
             // CHECK IF WE GOT THE DATA 
             if(!$user_data->request_status)
-                show_error("Couldn't get your profile info.",404);
+                show_error("Couldn't get your profile information.",404);
 
             // PREPARE TO SHOW THE EDIT PROFILE FORM
             $data['profile'] = $user_data->user;
@@ -158,35 +158,40 @@ class User extends CI_Controller
                     'user_id'=>$session->user_id
                 );
 
-                $old_pass_check = $this->rest->get('users/check/password',$request_object);
+                $old_pass_check = $this->rest->post('users/check/password',$request_object);
 
                 if(!$old_pass_check->request_status){
 
-                    $data['error'] = 'The old password was not correct.';
+                    $data['error'] = $old_pass_check->message;
 
                     //form has errors : show page and errors
                     $this->load->view('common/page_top.php', $data);
                     $this->load->view('user/password.php', $data);
                     $this->load->view('common/page_end.php', $data);
-                }
-
-                $update_pass = $this->rest->post('users/update/password',$request_object);
-
-                if(!$update_pass->request_status){
-                    $data['error'] = $update_pass->message;
-
-                    //form has errors : show page and errors
-                    $this->load->view('common/page_top.php', $data);
-                    $this->load->view('user/password.php', $data);
-                    $this->load->view('common/page_end.php', $data);
+                                    
                 } else {
-                    
-                    $data['success'] = $update_pass->message;
 
-                    //form has errors : show page and errors
-                    $this->load->view('common/page_top.php', $data);
-                    $this->load->view('user/password.php', $data);
-                    $this->load->view('common/page_end.php', $data);
+                    $update_pass = $this->rest->post('users/update/password',$request_object);
+
+                    if(!$update_pass->request_status){
+
+                        $data['error'] = $update_pass->message;
+
+                        //form has errors : show page and errors
+                        $this->load->view('common/page_top.php', $data);
+                        $this->load->view('user/password.php', $data);
+                        $this->load->view('common/page_end.php', $data);
+
+                    } else {
+                        
+                        $data['success'] = $update_pass->message;
+
+                        //form has errors : show page and errors
+                        $this->load->view('common/page_top.php', $data);
+                        $this->load->view('user/password.php', $data);
+                        $this->load->view('common/page_end.php', $data);
+                    }
+
                 }
 
             }

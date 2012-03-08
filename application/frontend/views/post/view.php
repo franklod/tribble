@@ -1,7 +1,6 @@
 <?
-  
 
-// var_dump($likers);
+// var_dump($palette)
 
 if(isset($likers)){
 
@@ -51,28 +50,33 @@ if(isset($likers)){
         <a href="<?=site_url('user/'.$post->user_id)?>" title="<?=$post->user_name?>"><?=$post->user_name?></a>
       </h4>
       <div class="post-date">
-        <?=strftime('%B %d, %Y',mysql_to_unix($post->post_date));?>        
+        <?=strftime('%B %d, %Y',mysql_to_unix($post->post_date));?>      
       </div>      
     </div>
     <div class="post-img-container box clear">
-      <img src="<?=cdn_url($post->post_image_path)?>" /> </div>
+      <a id="post_image" title="<?=$post->post_title?>" href="<?=cdn_url($post->post_image_path)?>">
+        <!-- <img src="<?=cdn_url($post->post_image_path)?>" /> -->
+        <span class="fake_image" style="background-image: url(<?=cdn_url($post->post_image_path)?>)"></span>
+      </a> 
+    </div>
     <div class="post-img-data">
       <div class="post-desc">
         <p>
-          <?=auto_link(nl2br($post->post_text))?>
+          <?=auto_link(nl2br(str_replace('-', '&#8209;', $post->post_text)))?>
         </p>
       </div>
       <hr>
       <div class="post-tools">
       <?if(isset($user)):?>
         <?if($post->user_id == $user->user_id):?>
+          <a title="Edit this post" class="defaultBtn" href="<?=site_url('edit/'.$post->post_id.'-'.url_title($post->post_title))?>">Edit</a>
           <a title="Delete this post" class="defaultBtn btn_delete" href="/post/delete/<?=$post->post_id.'-'.url_title($post->post_title)?>">Delete</a>
         <?endif;?>
         <a class="defaultBtn btn_send" title="Create a new post as a reply" href="<?=site_url('reply/'.$post->post_id.'-'.url_title($post->post_title))?>">Reply</a>
         <?endif;?>
         <p class="ico">
           <?if(!isset($like_status)):?>
-            <a href="#" title="<?=$liker_list?>" class="likes"><?=$post->post_like_count?></a>          
+            <span title="<?=$liker_list?>" class="likes"><?=$post->post_like_count?></span>
           <?else:?>
             <?if($like_status == true):?>
             <a href="<?=site_url('like/remove/'.$post->post_id.'-'.url_title($post->post_title))?>" title="<?=$liker_list?>" class="likes liked"><?=$post->post_like_count?></a>
@@ -95,11 +99,13 @@ if(isset($likers)){
       <hr>
       <h3>Color Scheme</h3>
       <ul class="color-scheme">
-        <? $colors = $post->post_image_palette ?>
+        <? $colors = $palette ?>
         <? foreach($colors as $key => $color):?>
-        <li style="background-color: <?=$color?>" title="<?=$color?>"><a href="<?=site_url('color/'.substr($color, 1))?>" title="<?=$color?>">
-          <?=$color?>
-          </a></li>
+        <li style="background-color: <?=$color->HEX?>" title="<?=$color->HEX?>">
+          <a href="<?=site_url('color/'.substr($color->HEX, 1))?>" title="<?=$color->HEX?>">
+          <?=$color->HEX?>
+          </a>
+        </li>
         <? endforeach; ?>
       </ul>
     </div>
@@ -137,7 +143,7 @@ if(isset($likers)){
         <? else: ?>
           <li class="rebound">
             <h4><a href="/"><?=get_gravatar($reply->reply_post_user_email,42)?></a> </h4>
-            <div class="rebound-image"><a href="<?=site_url('view/'.$reply->reply_post_id.'-'.url_title($reply->reply_post_title))?>"><img src="<?=$reply->post_image_path?>" width="74" height="49" class="box"/></a></div>
+            <div class="rebound-image"><a href="<?=site_url('view/'.$reply->reply_post_id.'-'.url_title($reply->reply_post_title))?>"><img src="<?=cdn_url($reply->post_image_path)?>" width="74" height="49" class="box"/></a></div>
             <div class="rebound-title">
               <h2><?=$reply->reply_post_title?></h2>
               <h4><a href="/user/<?=$reply->reply_post_user_id?>"><?=$reply->reply_post_user_name?></a></h4>

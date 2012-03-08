@@ -39,7 +39,7 @@
 */
 // CI RESERVED ROUTES
 $route['default_controller'] = "post/lists/new";
-// $route['default_controller'] = "post/lists/new";
+// $route['default_controller'] = "post/obras";
 $route['404_override'] = '';
 // LIST THE NEWEST POSTS
 $route['new'] = 'post/lists/new';
@@ -56,6 +56,9 @@ $route['search/page/(:num)'] = 'post/search/$1';
 $route['dosearch'] = 'post/dosearch';
 // VIEW A SINGLE POST
 $route['view/(:any)'] = 'post/view/$1';
+
+// VIEW A SINGLE POST
+$route['edit/(:any)'] = 'post/edit/$1';
 
 $route['upload'] = 'post/upload';
 // SEARCH

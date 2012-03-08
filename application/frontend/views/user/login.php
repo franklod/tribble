@@ -7,7 +7,7 @@
     <p><?=$error?></p>
   </div>
   <? endif;?>
-	<?=form_open($form_action,array('class'=>'g75','id'=>'login'))?>
+	<?=form_open($form_action,array('class'=>'g75'))?>
   <div class="e_wrap <?=(form_error('email') == TRUE) ? 'error' : ''; ?>">
     <?=form_label('Email','email')?>
     <?=form_input(array('name'=>'email','id'=>'email','placeholder'=>'Your email','value'=>''))?>

@@ -63,7 +63,9 @@ $route['posts/list/loved'] = 'posts/list/type/loved/';
 $route['posts/list/loved/format/(xml|json|serialized)'] = 'posts/list/type/loved/format/$1';
 // GET A SINGLE POST
 $route['posts/single/(:num)'] = 'posts/detail/id/$1';
-$route['posts/single/(:num)/format/(xml|json|serialized)'] = 'posts/detail/id/$1/format/$2';
+// $route['posts/single/(:num)/format/(xml|json|serialized)'] = 'posts/detail/id/$1/format/$2';
+$route['posts/single/(:num)/(:num)'] = 'posts/detail/id/$1/user/$2';
+// $route['posts/single/(:num)/(:num)/format/(xml|json|serialized)'] = 'posts/detail/id/$1/user/$2/format/$3';
 // GET POST COUNT TOTAL
 $route['posts/count'] = 'posts/total';
 $route['posts/count/format/(xml|json|serialized)'] = 'posts/total/format/$1';
@@ -91,8 +93,9 @@ $route['posts/tag/(:any)/(:num)'] = 'posts/tag/tag/$1/page/$2';
 $route['posts/tag/(:any)/(:num)/(:num)'] = 'posts/tagged/tag/$1/page/$2/limit/$3';
 // POSTS BY HEX COLOR
 $route['posts/color/(:any)'] = 'posts/color/hex/$1';
-$route['posts/color/(:any)/(:num)'] = 'posts/color/hex/$1/page/$2';
-$route['posts/color/(:any)/(:num)/(:num)'] = 'posts/color/hex/$1/page/$2/limit/$3';
+$route['posts/color/(:any)/v/(:num)/p/(:num)'] = 'posts/color/hex/$1/v/$2/p/$3';
+// $route['posts/color/(:any)/(:num)'] = 'posts/color/hex/$1/page/$2';
+// $route['posts/color/(:any)/(:num)/(:num)'] = 'posts/color/hex/$1/page/$2/limit/$3';
 // GET USER PROFILE
 $route['users/profile/update'] = 'users/updateprofile';
 $route['users/profile/(:num)'] = 'users/profile/id/$1';

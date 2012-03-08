@@ -62,7 +62,12 @@ class Auth extends REST_Controller
     );
     // load the memcached driver
     $this->load->driver('cache');
-    $cachekey = sha1($session_data['user_email']);
+    //$cachekey = sha1($session_data['user_email']);
+
+    // create the cache key
+    $api_methods = $this->config->item('api_methods');
+    $cachekey = sha1($api_methods['Auth'][__FUNCTION__]['uri'].$session_data['user_email']);
+
     if(!$this->cache->memcached->get($cachekey)){
       $this->cache->memcached->save($cachekey,$session_data,$this->ttl->one_day);
       $this->response(array('request_status'=>true,'id'=>$cachekey));
@@ -77,7 +82,7 @@ class Auth extends REST_Controller
     // load the memcached driver
     $this->load->driver('cache');
     if(!$this->cache->memcached->get($id)){
-      $this->response(array('request_status'=>false,'message'=>$this->lang->line('E_SESSION_UNKNOW')));
+      $this->response(array('request_status'=>false,'message'=>$this->lang->line('INV_SESSION')));
     } else {
       $metadata = $this->cache->memcached->get_metadata($id);   
       $TTL = (int)floor(($metadata['expire'] - time()) / 60);
@@ -92,7 +97,7 @@ class Auth extends REST_Controller
     // load the memcached driver
     $this->load->driver('cache');
     if(!$this->cache->memcached->get($id)){      
-      $this->response(array('request_status'=>false,'message'=>$this->lang->line('E_SESSION_UNKNOW')));
+      $this->response(array('request_status'=>false,'message'=>$this->lang->line('INV_SESSION')));
     } else {
       $this->cache->memcached->delete($id);
       $this->response(array('request_status'=>true,'message'=>$this->lang->line('S_SESSION_KILLED')));

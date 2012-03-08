@@ -20,7 +20,7 @@ class Trash_api_model extends CI_Model
     }
 
     function putInTrash($trash_path){
-        $this->db->insert('trash',array('trash_path'=>$trash_path))
+        $this->db->insert('trash',array('trash_path'=>$trash_path));
     }
 
 }

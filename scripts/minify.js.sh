@@ -6,8 +6,9 @@ echo "1. Merging JS files into assets/js/tmp.css"
 touch $JSDIR/tmp.js
 
  # Combine all the javascript to a single temporary file
-cat $JSDIR/jquery.1.4.1-min.js \
+cat $JSDIR/jquery-1.7.1.min.js \
 $JSDIR/jquery.tagsinput.min.js \
+$JSDIR/smartupdater.4.0.js \
 $JSDIR/tribble.js > $JSDIR/tmp.js
 
 echo "2. Minifying tmp.js to assets/js/tribble-min.js"

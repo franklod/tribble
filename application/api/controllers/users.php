@@ -40,10 +40,13 @@ class Users extends REST_Controller
   }
 
   
-  public function list_get(){
-    $cachekey = sha1('users/list');
+  public function list_get(){    
     // load the memcached driver
     $this->load->driver('cache');
+
+    // create the cache key
+    $api_methods = $this->config->item('api_methods');
+    $cachekey = sha1($api_methods[__CLASS__][__FUNCTION__]['uri']);
 
     if(!$this->cache->memcached->get($cachekey)){
       $user_list = $this->mUsers->getUserList();
@@ -63,12 +66,14 @@ class Users extends REST_Controller
     $user_id = $this->get('id');
 
     if (!$user_id)
-      $this->response(array('request_status' => false, 'message' => lang('E_NO_USERID')), 404);
+      $this->response(array('request_status' => false, 'message' => lang('E_NO_USER_ID')), 404);
 
     // load the memcached driver
     $this->load->driver('cache');
-    // define the cache key
-    $cachekey = sha1('profile/id/'.$user_id);
+
+    // create the cache key
+    $api_methods = $this->config->item('api_methods');
+    $cachekey = sha1($api_methods[__CLASS__][__FUNCTION__]['uri'].$user_id);
 
     if(!$this->cache->memcached->get($cachekey)){
       $profile = $this->mUsers->getUserProfile($user_id);
@@ -100,8 +105,11 @@ class Users extends REST_Controller
 
     // load the memcached driver
     $this->load->driver('cache');
-    // define the cache key
-    $cachekey = sha1('profile/id/'.$this->put('user_id'));
+    
+    // create the cache key
+    $api_methods = $this->config->item('api_methods');
+    $cachekey = sha1($api_methods[__CLASS__][__FUNCTION__]['uri'].$user_data['user_id']);
+
     // check if the user's profile is cached and delete the object if present
     if($this->cache->memcached->get($cachekey))
       $this->cache->memcached->delete($cachekey);
@@ -142,7 +150,7 @@ class Users extends REST_Controller
       if(is_dir($user_dir))
         $this->response(array('request_status'=>false,'message'=>lang('INV_DUPLICATE_USER_DIR')));
       
-      if(!mkdir($user_dir,0755))
+      if(!mkdir($user_dir,0777))
         $this->response(array('request_status'=>false,'message'=>lang('F_ADD_USER')));
       
 
@@ -158,94 +166,84 @@ class Users extends REST_Controller
   public function password_post()
   {
     $user_id = $this->post('user_id');
-    $new_pass = $this->post('new_password');
-    $old_pass = $this->post('old_password');
+    $new_pass = $this->_double_hash($this->post('new_password'));
+    $old_pass = $this->_double_hash($this->post('old_password'));
     
     if(!$new_pass)
       $this->response(array('request_status'=>false,'message'=>lang('E_NO_NEW_PASSWORD')));
 
     if(!$user_id)
-      $this->response(array('request_status'=>false,'message'=>lang('E_NO_USERID')));
+      $this->response(array('request_status'=>false,'message'=>lang('E_NO_USER_ID')));
 
     if(!$old_pass)
-      $this->response(array('request_status'=>false,'message'=>lang('E_NO_OLD_PASSWORD'))); 
+      $this->response(array('request_status'=>false,'message'=>lang('E_NO_OLD_PASSWORD')));
+
+    if(!$this->_checkOldPassword($old_pass,$user_id))
+      $this->response(array('request_status'=>false,'message'=>lang('INV_OLD_PASSWORD'))); 
     
     if($old_pass == $new_pass)
-      $this->response(array('request_status'=>false,'message'=>lang('E_SAME_PASS')));
-      
-    if(!$this->checkOldPassword($old_pass,$user_id))
-      $this->response(array('request_status'=>false,'message'=>lang('INV_OLD_PASSWORD'))); 
+      $this->response(array('request_status'=>false,'message'=>lang('NC_SAME_PASS')));              
 
-    $change_pass = $this->mUsers->updateUserPassword($new_pass,$user_id);
-
-    if(!$change_pass)
+    if(!$this->mUsers->updateUserPassword($new_pass,$user_id))
       $this->response(array('request_status'=>false,'message'=>lang('F_PASSWORD_CHANGE')));
 
     $this->response(array('request_status'=>true,'message'=>lang('S_PASSWORD_CHANGE')));
-
   }
 
-  public function password_get()
-  {
-    $user_id = $this->get('user_id');
-    $new_pass = $this->get('new_password');
-    $old_pass = $this->get('old_password');
+  // public function password_get()
+  // {
+  //   $user_id = $this->get('user_id');
+  //   $new_pass = $this->_double_hash($this->get('new_password'));
+  //   $old_pass = $this->_double_hash($this->get('old_password'));
     
-    if(!$new_pass)
-      $this->response(array('request_status'=>false,'message'=>lang('E_NO_NEW_PASSWORD')));
+  //   if(!$new_pass)
+  //     $this->response(array('request_status'=>false,'message'=>lang('E_NO_NEW_PASSWORD')));
 
-    if(!$new_pass)
-      $this->response(array('request_status'=>false,'message'=>lang('E_NO_NEW_PASSWORD')));
+  //   if(!$user_id)
+  //     $this->response(array('request_status'=>false,'message'=>lang('E_NO_USER_ID')));
 
-    if(!$user_id)
-      $this->response(array('request_status'=>false,'message'=>lang('E_NO_USERID')));
+  //   if(!$old_pass)
+  //     $this->response(array('request_status'=>false,'message'=>lang('E_NO_OLD_PASSWORD')));
 
-    if(!$old_pass)
-      $this->response(array('request_status'=>false,'message'=>lang('E_NO_OLD_PASSWORD'))); 
+  //   if(!$this->checkOldPassword($old_pass,$user_id))
+  //     $this->response(array('request_status'=>false,'message'=>lang('INV_OLD_PASSWORD'))); 
     
-    if($old_pass == $new_pass)
-      $this->response(array('request_status'=>false,'message'=>lang('NC_SAME_PASS')));
-      
-    if(!$this->checkOldPassword($old_pass,$user_id))
-      $this->response(array('request_status'=>false,'message'=>lang('INV_OLD_PASSWORD'))); 
-       
+  //   if($old_pass == $new_pass)
+  //     $this->response(array('request_status'=>false,'message'=>lang('NC_SAME_PASS')));              
 
-    $change_pass = $this->mUsers->updateUserPassword($new_pass,$user_id);
+  //   $change_pass = $this->mUsers->updateUserPassword($new_pass,$user_id);
 
-    if(!$change_pass)
-      $this->response(array('request_status'=>false,'message'=>lang('F_PASSWORD_CHANGE')));
+  //   if(!$change_pass)
+  //     $this->response(array('request_status'=>false,'message'=>lang('F_PASSWORD_CHANGE')));
 
-    $this->response(array('request_status'=>true,'message'=>lanf('S_PASSWORD_CHANGE')));
+  //   $this->response(array('request_status'=>true,'message'=>lang('S_PASSWORD_CHANGE')));
+  // }
 
-  }
-
-  protected function checkOldPassword($old_pass,$user_id)
+  protected function _checkOldPassword($old_pass,$user_id)
   {
     
-    $check_old_pass = $this->mUsers->checkPasswordForUser($old_pass,$user_id);
-
-    if(!$check_old_pass)
+    if(!$this->mUsers->checkPasswordForUser($old_pass,$user_id))
       return false;
     
     return true;
   }
 
-  public function checkOldPassword_get()
+  public function checkOldPassword_post()
   {
-    $user_id = $this->get('user_id');
-    $old_pass = $this->get('old_password');
+    $user_id = $this->post('user_id');
+    $old_pass = $this->_double_hash($this->post('old_password'));
+
+    if(!$user_id)
+      $this->response(array('request_status'=>false,'message'=>lang('E_NO_USER_ID')));
+
 
     if(!$old_pass)
-      $this->response(array('request_status'=>false,'message'=>lang('E_NO_OLD_PASSWORD')));
-    if(!$user_id)
-      $this->response(array('request_status'=>false,'message'=>'E_NO_USERID'));
-    
-    $check_old_pass = $this->mUsers->checkPasswordForUser($old_pass,$user_id);
+      $this->response(array('request_status'=>false,'message'=>lang('E_NO_OLD_PASSWORD')));    
 
-    if(!$check_old_pass)
+    if(!$this->mUsers->checkPasswordForUser($old_pass,$user_id))
       $this->response(array('request_status'=>false,'message'=>lang('INV_OLD_PASSWORD')));
     
-    $this->response(array('request_status'=>true,'message'=>'S_OLD_PASSWORD_VALIDATION'));    
+    $this->response(array('request_status'=>true,'message'=>lang('S_OLD_PASSWORD_VALIDATION')));    
   }
 
 }

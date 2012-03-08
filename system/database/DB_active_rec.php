@@ -669,6 +669,10 @@ class CI_DB_active_record extends CI_DB_driver {
 			{
 				$like_statement = $prefix." $k $not LIKE '{$v}%'";
 			}
+			elseif ($side == 'none')
+			{
+				$like_statement = $prefix." $k $not LIKE '{$v}'";
+			}
 			else
 			{
 				$like_statement = $prefix." $k $not LIKE '%{$v}%'";

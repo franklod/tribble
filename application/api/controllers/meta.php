@@ -34,7 +34,8 @@ class Meta extends REST_Controller
     $limit = (int)$this->get('limit');
 
     // create the cache key
-    $cachekey = sha1('meta/tags/' . $limit);
+    $api_methods = $this->config->item('api_methods');
+    $cachekey = sha1($api_methods[__CLASS__][__FUNCTION__]['uri'].$limit);
     
     // create the final array
     $unique_tags = array();
@@ -109,54 +110,23 @@ class Meta extends REST_Controller
     $limit = $this->get('limit');
 
     if (!$limit)
-      $limit = 28;
+      $limit = 70;
 
     // create the cache key
-    $cachekey = sha1('meta/colors/' . $limit);
+    $api_methods = $this->config->item('api_methods');
+    $cachekey = sha1($api_methods[__CLASS__][__FUNCTION__]['uri']);
+
     // create the final array
     $unique_colors = array();
-    
-    
-    //$palettes = $this->mMeta->getColors();
-//    foreach($palettes as $palette){
-//      $colors = json_decode($palette->image_palette);
-//      foreach($colors as $color){
-//        var_dump($color);
-//      }
-//    }
     
     // check if the key exists in cache
     if (!$this->cache->memcached->get($cachekey))
     {
       // get the data from the database
       if ($palettes = $this->mMeta->getColors())
-      {        
-        // iterate over the tags from each post
-        foreach ($palettes as $palette)
-        {
-          // explode the post tags csv string
-          $colors = json_decode($palette->image_palette);
-          // iterate over each individual tag
-          foreach ($colors as $color)
-          {
-            list($r,$g,$b) = explode(',',$color);
-            $color = RGBToHex($r,$g,$b);
-            // check if it exists in the final array
-            if (array_key_exists($color, $unique_colors))
-            {
-              // if its there, increment the counter
-              $unique_colors[$color]++;
-            } else
-            {
-              // or set it to 1
-              $unique_colors[$color] = 1;
-            }
-          }
-        }
-        // sort the final tags array 
-        arsort($unique_colors);
+      {              
         // define the response object structure                
-        $object = array('status' => true, 'colors' => array_slice($unique_colors,0,$limit));
+        $object = array('status' => true, 'colors' => array_slice($palettes,0,$limit));
         // we have a dataset from the database, let's save it to memcached
         @$this->cache->memcached->save($cachekey, $object, $this->ttl->thirty_minutes);
         // output the response
@@ -164,7 +134,7 @@ class Meta extends REST_Controller
       } else
       {
         // we got nothing to show, output error
-        $this->response(array('status' => false, 'message' => lang('F_DATA_READ')), 404);
+        // $this->response(array('status' => false, 'message' => lang('F_DATA_READ')), 404);
       }
     } else
     {
@@ -191,6 +161,7 @@ class Meta extends REST_Controller
   public function searchcolor_get(){
     $id = '#'.$this->get('hex');
     $v = $this->get('v');
+    $p = $this->get('p');
     $this->load->model('Meta_API_model', 'mMeta');
     $colors = $this->mMeta->colorSearch($id,$v);
 
@@ -215,57 +186,18 @@ class Meta extends REST_Controller
     $limit = $this->get('limit');
 
     if (!$limit)
-      $limit = 28;
+    $limit = 28;
 
-    // create the cache key
-    $cachekey = sha1('meta/colors2/' . $limit);
     // create the final array
-    
-    // check if the key exists in cache
-    if (!$this->cache->memcached->get($cachekey))
-    {
-      // get the data from the database
-      if ($palettes = $this->mMeta->getColors())
-      {        
-        // iterate over the tags from each post
-        foreach ($palettes as $palette)
-        {
-          $hsv_colors = array();
-          // explode the post tags csv string
-          $colors = json_decode($palette->image_palette);
-          // iterate over each individual tag
-          foreach ($colors as $color)
-          {
-            // var_dump($color);
-            list($R,$G,$B) = explode(',',$color);
-            // var_dump($color);
-            $HSV = RGBToHSV($R,$G,$B);
-            $HEX = RGBToHex($R,$G,$B);
-          
-            $H = $HSV['H'];
-            $S = $HSV['S'];
-            $V = $HSV['V'];            
-            // var_dump($HSV);
-            //$this->mMeta->updateHSV($$HSV);
-            // var_dump(HSVToRGB($HSV['H'],$HSV['S'],$HSV['V']));
-            // check if it exists in the final array
-            // array_push($hsv_colors, $HSV);
-            $this->mMeta->transferPalette($palette->image_post_id,$HEX,$R,$G,$B,$H,$S,$V);
-          }          
-        }
-
-
         
-      } else
-      {
-        // we got nothing to show, output error
-        // $this->response(array('status' => false, 'message' => lang('F_DATA_READ')), 404);
+    // get the data from the database
+    if ($images = $this->mMeta->getImagePaths())
+    {        
+      foreach($images as $image){
+        $full_path = $this->config->item('app_path').$image->image_path;
+        // var_dump($full_path);
+        $this->mMeta->transferPalette(GetImagePalette($full_path,$image->post_id));        
       }
-    } else
-    {
-      // the object is cached, send it
-      // $cache = $this->cache->memcached->get($cachekey);
-      // $this->response($cache);
     }
   }
 
@@ -275,8 +207,10 @@ class Meta extends REST_Controller
     $this->load->driver('cache');
     // load the posts model
     $this->load->model('Meta_API_model', 'mMeta');
+
     // create the cache key
-    $cachekey = sha1('meta/users');
+    $api_methods = $this->config->item('api_methods');
+    $cachekey = sha1($api_methods[__CLASS__][__FUNCTION__]['uri']);
     
     
     if(!$this->cache->memcached->get($cachekey))
