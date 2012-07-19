@@ -397,7 +397,7 @@ class Posts extends REST_Controller
     {      
       
 
-      $this->event->add('reply',lang('EVENT_REPLY_ADD'),$post_id,$user_id);
+      $this->event->add('reply',lang('EVENT_REPLY_ADD'),$insert_post,$user_id);
 
       // lets wipe the relevant cache items
       // calculate how many cache pages we have
@@ -408,17 +408,18 @@ class Posts extends REST_Controller
         to tell the cache_clean functions which key to delete 
       */
 
-      $this->cachehandler->purge_cache(__FUNCTION__,$cache_pages,$post_id,$user_id);
+      $this->cachehandler->purge_cache(__FUNCTION__,$cache_pages,$insert_post,$user_id);
       $this->cachehandler->purge_cache(__FUNCTION__,$cache_pages,$post_parent_id,$user_id);
 
       $this->response(array('request_status' => true, 'post_id' => $post_parent_id));      
     }
   }
 
-  public function post_delete()
+  public function delete_delete()
   {
     $post_id = $this->delete('post_id');
     $user_id = $this->delete('user_id');
+
 
     if(!$post_id)
       $this->response(array('request_status'=>false,'message'=>lang('E_NO_POST_ID')));
@@ -430,13 +431,22 @@ class Posts extends REST_Controller
     if(!$can_user_delete)
       $this->response(array('request_status'=>false,'message'=>lang('INV_POST_PERMISSIONS')));
 
+    $post_replies = $this->mPosts->getPostReplies($post_id);
+
     $delete_post = $this->mPosts->deletePost($post_id);
 
     if(!$delete_post)
       $this->response(array('request_status'=>false,'message'=>lang('F_DELETE_POST')));
 
+    // lets wipe the relevant cache items
+    // calculate how many cache pages we have
+    $cache_pages = ceil( $this->_countPosts() / 600);
+
     // kill 'em all!
     $this->cachehandler->purge_cache(__FUNCTION__,$cache_pages,$post_id,$user_id);
+    foreach( $post_replies as $reply ) {
+        $this->cachehandler->purge_cache(__FUNCTION__,$cache_pages,$reply->post_id,$reply->post_user_id);
+    }
     $this->response(array('request_status'=>true,'message'=>lang('S_DELETE_POST')));
   }
     

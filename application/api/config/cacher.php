@@ -163,6 +163,12 @@ $config['cacher'] = array(
 			'user_id' => 0
 		),
 		array(
+			'method' => 'posts/detail/id/',
+			'paged'  => 0,
+			'post_id' => 1,
+			'user_id' => 0
+		),
+		array(
 			'method' => 'meta/users/',
 			'paged'  => 0,
 			'post_id' => 0,
@@ -170,7 +176,7 @@ $config['cacher'] = array(
 		)
 	),
 	/* DELETE POST */
-	'post_delete' => array(
+	'delete_delete' => array(
 		array(
 			'method' => 'posts/list/new/',
 			'paged'  => 1, 
@@ -214,54 +220,9 @@ $config['cacher'] = array(
 			'user_id' => 0
 		),
 		array(
-			'method' => 'meta/users/',
+			'method' => 'posts/detail/id/',
 			'paged'  => 0,
-			'post_id' => 0,
-			'user_id' => 0
-		)
-	),
-	/* ADD REBOUND REPLY */
-	'reply_put' => array(
-		array(
-			'method' => 'posts/list/new/',
-			'paged'  => 1, 
-			'post_id' => 0,
-			'user_id' => 0
-		),
-		array(
-			'method' => 'posts/list/buzzing/',
-			'paged'  => 1, 
-			'post_id' => 0,
-			'user_id' => 0
-		),
-		array(
-			'method' => 'posts/list/loved/',
-			'paged'  => 1,
-			'post_id' => 0,
-			'user_id' => 0
-		),
-		array(
-			'method' => 'posts/user/id/',
-			'paged'  => 0,
-			'post_id' => 0,
-			'user_id' => 1
-		),
-		array(
-			'method' => 'users/list/',
-			'paged'  => 1,
-			'post_id' => 0,
-			'user_id' => 0
-		),
-		array(
-			'method' => 'meta/colors/',
-			'paged'  => 1,
-			'post_id' => 0,
-			'user_id' => 0
-		),
-		array(
-			'method' => 'meta/tags/',
-			'paged'  => 1,
-			'post_id' => 0,
+			'post_id' => 1,
 			'user_id' => 0
 		),
 		array(

@@ -508,26 +508,32 @@ class Posts_API_model extends CI_Model {
 
     }
 
+    function getPostReplies($post_id){
+
+      $this->db->select('post_id, post_user_id');
+      $this->db->from('tr_post');
+      $this->db->where(array('post_parent_id'=>$post_id));
+
+      if(!$query = $this->db->get())
+        return false;
+
+      return $query->result();
+    }
+
     function deletePost($post_id){
 
       $this->db->where('reply_rebound_id', $post_id);
-      $this->db->update('reply', array('reply_is_deleted'=>1));
+      $this->db->update('tr_reply', array('reply_is_deleted'=>1));
 
       $this->db->where('post_id', $post_id);
-      $this->db->update('post', array('post_is_deleted'=>1));
+      $this->db->update('tr_post', array('post_is_deleted'=>1));
 
       $num_rows = $this->db->affected_rows();
 
       if($num_rows == 1){
-        $this->db->select('post_parent_id');
-        $this->db->from('post');
-        $this->db->where(array('post_id'=>$post_id));
-        $query = $this->db->get();
-        $result = $query->result();
-
-        if($result[0]->post_parent_id != 0){
-          return $result[0];
-        }
+        $this->db->where('post_parent_id', $post_id);
+        $this->db->update('tr_post', array('post_parent_id'=>0));
+	return true;
       } else {
         return false;
       }

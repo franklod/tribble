@@ -71,7 +71,7 @@ $route['comment/delete/(:num)/(:num)/(:num)'] = 'post/delete_comment/$1/$2/$3';
 $route['like/add/(:any)'] = 'post/add_like/$1';
 $route['like/remove/(:any)'] = 'post/remove_like/$1';
 // DELETE POST
-// $route['post/delete/(:any)'] = 'post/delete/$1';
+$route['post/delete/(:any)'] = 'post/delete/$1';
 // TAGS
 $route['tag/(:any)'] = 'post/tag/$1';
 $route['tag/(:any)/page/(:num)'] = 'post/tag/$1/$2';
