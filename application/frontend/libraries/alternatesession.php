@@ -2,8 +2,6 @@
 
 class AlternateSession {
 
-  var $use_own_sessions = TRUE;
-
   public function __construct($params = array()){
     $this->CI =& get_instance();
   }
@@ -25,7 +23,41 @@ class AlternateSession {
       }
 
     } else{
-      echo "BOF";
+
+      // Check if there is an SSO session.
+      if( $_SERVER[ "HTTP_SHIB_SESSION_ID" ] ) {
+
+        $corp_id = $_SERVER["HTTP_SSOMAIL"];
+
+	// Check if the corporate ID from Shibboleth belong to any of our users.
+        $user_data = $this->CI->rest->post( 'auth/sso_login/', array( 'corp_id' => $corp_id ) );
+
+        if( $user_data->request_status == true ) {
+
+          // Create a session for our user.
+          $session_data = array(
+            'user_id'     => $user_data->user[0]->user_id,
+            'user_name'   => $user_data->user[0]->user_name,
+            'user_email'  => $user_data->user[0]->user_email,
+            'user_avatar' => false );
+
+          $session_id = $this->CI->rest->put( 'auth/session', $session_data );
+
+          if( $session_id->request_status == true ) {
+
+            // Load the session just created.
+            $session = $this->CI->rest->get('auth/session/', array( 'id' => $session_id->id ) );
+
+            if( $session->request_status == true ) {
+              // Set the session ID and return the authenticated user data.
+              $this->CI->session->set_userdata( array( 'sid' => $session_id->id ) );
+              return $session->user;
+            }
+          }
+        }
+      }
+      return false;
+
     }
   }
 

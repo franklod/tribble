@@ -173,8 +173,10 @@ CREATE TABLE `tr_user` (
   `user_realname` VARCHAR(255) COLLATE utf8_general_ci NOT NULL DEFAULT '',
   `user_bio` TEXT COLLATE utf8_general_ci,
   `user_is_deleted` TINYINT(1) DEFAULT '0',
+  `user_corp_id` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`user_id`),
-  UNIQUE KEY `user_email_UNIQUE` (`user_email`)
+  UNIQUE KEY `user_email_UNIQUE` (`user_email`),
+  UNIQUE KEY `user_corp_id` (`user_corp_id`)
 )ENGINE=InnoDB
 AUTO_INCREMENT=429 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
 COMMENT='\t';

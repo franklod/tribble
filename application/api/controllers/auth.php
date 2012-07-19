@@ -45,6 +45,23 @@ class Auth extends REST_Controller
     $this->response(array('request_status' => true, 'user' => $login));
   }
 
+  public function sso_login_post()
+  {
+    $corp_id = $this->post('corp_id');
+
+    if (!$corp_id)
+      $this->response(array('resquest_status' => false, 'message' => lang('E_NO_CORP_ID')));
+
+    // load the auth model
+    $this->load->model('Auth_api_model', 'mAuth');
+
+    $login = $this->mAuth->checkUserCorpId( $corp_id );
+    if(!$login)
+      $this->response(array('request_status' => false, 'message' => $this->lang->line('INV_CORP_ID')));
+
+    $this->response(array('request_status' => true, 'user' => $login));
+  }
+
   public function logout($lb = null)
   {
     $this->session->sess_destroy();
