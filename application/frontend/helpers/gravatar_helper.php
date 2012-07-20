@@ -15,7 +15,12 @@
 
 if( ! function_exists('gravatar_helper')){
   function get_gravatar( $email, $s = 80, $d = '', $r = 'g', $img = true, $atts = array() ) {
-    $url = 'http://www.gravatar.com/avatar/';
+    $CI =& get_instance();
+    if( $CI->config->item('secure_site') ) {
+        $url = 'https://secure.gravatar.com/avatar/';
+    } else {
+        $url = 'http://www.gravatar.com/avatar/';
+    }
     $url .= md5( strtolower( trim( $email ) ) );
     $url .= "?s=$s&d=$d&r=$r";
     if ( $img ) {
