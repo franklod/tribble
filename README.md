@@ -9,6 +9,7 @@
 * List posts by: most recent, most replies, most likes, user
 * Text search
 * Color search (find posts containing similar colors).
+* Users get notified when their posts receive likes, comments and replies (rebounds)
 
 
 ### Installation requirements:
