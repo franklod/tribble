@@ -1,6 +1,6 @@
 $( function() {
 
-  var site_url = 'http://10.134.132.97:8080/';
+  var site_url = 'https://tribbble.intra.sapo.pt';
 
 	$('#post_tags').tagsInput({
 		 //'autocomplete_url': url_to_autocomplete_api,
@@ -71,4 +71,4 @@ $( function() {
       }
     });
     }
-}); 
+});
