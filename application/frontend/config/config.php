@@ -10,7 +10,7 @@
 |	c:\mywebserver\myapp
 |
 */
-$config['app_path']	= '/home/pedro/work/tribble';
+$config['app_path']	= '/var/www/tribbble';
 /*
 |--------------------------------------------------------------------------
 | Base Site URL
@@ -25,7 +25,7 @@ $config['app_path']	= '/home/pedro/work/tribble';
 | path to your installation.
 |
 */
-$config['base_url'] = 'http://10.134.132.97:8080/';
+$config['base_url'] = 'https://tribbble.example.com/';
 
 /*
 |--------------------------------------------------------------------------
@@ -42,7 +42,7 @@ $config['base_url'] = 'http://10.134.132.97:8080/';
 | path to your installation.
 |
 */
-$config['cdn_url'] = 'http://10.134.132.97:8082/';
+$config['cdn_url'] = 'https://tribbble.example.com/';
 
 /*
 |--------------------------------------------------------------------------
@@ -59,7 +59,7 @@ $config['cdn_url'] = 'http://10.134.132.97:8082/';
 | path to your installation.
 |
 */
-$config['api_url'] = 'http://10.134.132.97:8081/';
+$config['api_url'] = 'http://127.0.0.1/api.php';
 
 /*
 |--------------------------------------------------------------------------

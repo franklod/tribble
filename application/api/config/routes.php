@@ -77,7 +77,7 @@ $route['posts/search/(:any)/(:num)'] = 'posts/searchPostsText/$1/$2';
 // PUT A NEW POST
 $route['posts/upload'] = 'posts/post';
 // DELETE A POST
-$route['posts/delete'] = 'posts/post';
+$route['posts/delete'] = 'posts/delete';
 // PUT/DELETE COMMENT
 $route['reply/post'] = 'posts/reply';
 $route['reply/comment'] = 'replies/comment';
