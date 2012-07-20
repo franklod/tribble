@@ -25,7 +25,7 @@ $config['app_path']	= '/var/www/tribbble';
 | path to your installation.
 |
 */
-$config['base_url'] = 'https://tribbble.example.com/';
+$config['base_url'] = 'https://tribbble.intra.sapo.pt/';
 
 /*
 |--------------------------------------------------------------------------
@@ -42,7 +42,7 @@ $config['base_url'] = 'https://tribbble.example.com/';
 | path to your installation.
 |
 */
-$config['cdn_url'] = 'https://tribbble.example.com/';
+$config['cdn_url'] = 'https://tribbble.intra.sapo.pt/';
 
 /*
 |--------------------------------------------------------------------------
