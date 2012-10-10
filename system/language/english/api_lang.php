@@ -30,6 +30,7 @@ $lang['E_NO_COMMENT_TEXT'] = "The comment text was not provided.";
 $lang['E_NO_COMMENT_ID'] = "The comment id was not provided.";
 $lang['E_NO_PARENT_POST_ID'] = "The parent post id was not provided.";
 $lang['E_NO_COLOR'] = "The hex color code was not provided.";
+$lang['E_NO_UNIXNAME'] = "The corporate id was not provided";
 
 // DATA VALIDATION
 $lang['INV_LOGIN'] = "The email or password you entered are not correct. Please try again.";

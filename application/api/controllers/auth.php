@@ -108,8 +108,37 @@ class Auth extends REST_Controller
       $this->response(array('request_status'=>true,'user'=>$this->cache->memcached->get($id)));
     }     
   }
+
+  public function corporate_get(){    
+    $unixname = $this->get('unixname');
+
+    if (!$unixname)
+      $this->response(array('resquest_status' => false, 'message' => lang('E_NO_UNIXNAME')));
+
+    // load the memcached driver
+    $this->load->driver('cache');
+    if(!$this->cache->memcached->get($unixname)){
+
+      // load the auth model
+      $this->load->model('Auth_api_model', 'mAuth');
+
+      $login = $this->mAuth->checkUserLoginCorp($unixname);
+
+      if(!$login)
+        $this->response(array('request_status' => false, 'message' => $this->lang->line('INV_LOGIN')));
+
+      $this->response(array('request_status' => true, 'user' => $login));
+
+    } else {
+      $metadata = $this->cache->memcached->get_metadata($unixname);   
+      $TTL = (int)floor(($metadata['expire'] - time()) / 60);
+      if($TTL < 26)
+        $this->cache->memcached->save($unixname,$metadata['data'],$this->ttl->one_day);  
+        $this->response(array('request_status'=>true,'user'=>$this->cache->memcached->get($unixname)));
+    }     
+  }
   
-  public function session_delete(){    
+  public function session_delete(){   
     $id = $this->delete('id');
     // load the memcached driver
     $this->load->driver('cache');

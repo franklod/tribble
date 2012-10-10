@@ -25,7 +25,7 @@ $config['app_path']	= '/var/www/tribbble';
 | path to your installation.
 |
 */
-$config['base_url'] = 'https://tribbble.intra.sapo.pt/';
+$config['base_url'] = 'http://10.134.132.97:8080/';
 
 /*
 |--------------------------------------------------------------------------
@@ -42,7 +42,7 @@ $config['base_url'] = 'https://tribbble.intra.sapo.pt/';
 | path to your installation.
 |
 */
-$config['cdn_url'] = 'https://tribbble.intra.sapo.pt/';
+$config['cdn_url'] = 'http://10.134.132.97:8082/';
 
 /*
 |--------------------------------------------------------------------------
@@ -59,7 +59,7 @@ $config['cdn_url'] = 'https://tribbble.intra.sapo.pt/';
 | path to your installation.
 |
 */
-$config['api_url'] = 'http://127.0.0.1/api.php';
+$config['api_url'] = 'http://10.134.132.97:8081/';
 
 /*
 |--------------------------------------------------------------------------
