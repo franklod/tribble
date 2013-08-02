@@ -172,8 +172,16 @@ class Posts_API_model extends CI_Model {
         $this->db->limit($per_page); 
       }                         
       
-      if($query = $this->db->get()){
-        return $query->result();
+      if($query = $this->db->get())
+      {
+          if ($query->num_rows() > 0)
+          {
+              return $query->result();
+          }
+          else
+          {
+              return new CI_DB_mysql_result;
+          }
       } else {
         return false;
       }                            
