@@ -333,8 +333,8 @@ class Post extends CI_Controller
     // try to get the data from the API and show error on failure
     if (!$REST_data = $this->rest->get($api_call . $api_page))
     {
-      show_error(lang('F_API_CONNECT'), 404);
-      log_message(1, 'API Failure. CALL: ' . $api_call . $api_page);
+        log_message(1, 'API Failure. CALL: ' . $api_call . $api_page);
+        show_error(lang('F_API_CONNECT'), 404);
     }
 
     if ($REST_data->request_status == false)

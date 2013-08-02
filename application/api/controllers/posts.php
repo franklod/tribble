@@ -51,7 +51,7 @@ class Posts extends REST_Controller
     $this->load->model('Posts_API_model', 'mPosts');
     $posts_count = $this->mPosts->_countPosts();
 
-    if (!$posts_count)
+    if (!is_numeric($posts_count))
     {
       $this->response(array('request_status' => false, 'message' => lang('F_POST_COUNT')));
     } else
